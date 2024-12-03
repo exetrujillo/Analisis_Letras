@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Exequiel Trujillo Escobar">
-<meta name="dcterms.date" content="2024-12-02">
+<meta name="dcterms.date" content="2024-12-03">
 <meta name="description" content="Exploración y análisis de letras de canciones utilizando la API de LRC Lib.">
 
-<title>Analisis de Letras</title>
+<title>Análisis de Letras</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analisis de Letras</h1>
+<h1 class="title">Análisis de Letras</h1>
 </div>
 
 <div>
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 2, 2024</p>
+      <p class="date">December 3, 2024</p>
     </div>
   </div>
   
@@ -117,26 +117,344 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<p>Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de [LRCLIB](<a href="https://lrclib.net/db-dumps" class="uri">https://lrclib.net/db-dumps</a>)</p>
+<section id="instalación-de-librerías" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-de-librerías">Instalación de librerías</h2>
+<p>Primero, cargamos las librerías necesarias:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">p_load</span>(httr,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       jsonlite,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>       dplyr,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       rvest,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       DBI,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       RSQLite</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+</section>
+<section id="exploración-de-la-base-de-datos" class="level1">
+<h1>Exploración de la base de datos</h1>
+<p>Aquí importamos la base de datos, sus tablas y el tipo de información que pueden contener</p>
+<section id="importar-base-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="importar-base-de-datos">Importar base de datos</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conectar a la base de datos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>db_file <span class="ot">&lt;-</span> <span class="st">"db.sqlite3"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">dbname =</span> db_file)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar tablas</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tables &lt;- dbListTables(conn)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>You can add options to executable code like this</p>
+<p>El resultado son las siguientes tablas:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 14%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>“_litestream_lock”</td>
+<td>“_litestream_seq”</td>
+<td>“flags”</td>
+<td>“lyrics”</td>
+<td>“missing_tracks”</td>
+<td>“sqlite_sequence”</td>
+</tr>
+<tr class="even">
+<td>“tracks”</td>
+<td>“tracks_fts”</td>
+<td>“tracks_fts_config”</td>
+<td>“tracks_fts_data”</td>
+<td>“tracks_fts_docsize”</td>
+<td>“tracks_fts_idx”</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exploramos-las-tablas" class="level2">
+<h2 class="anchored" data-anchor-id="exploramos-las-tablas">Exploramos las tablas</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Leer los primeros registros de una tabla</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM lyrics LIMIT 5000"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(data)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consultar la estructura de la tabla</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>columns <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"PRAGMA table_info(lyrics)"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(columns)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="estructura-de-las-tablas-de-interés" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-de-las-tablas-de-interés">Estructura de las tablas de interés</h2>
+<p>Nos interesa particularmente la tabla tracks y la tabla lyrics</p>
+<section id="tracks" class="level3">
+<h3 class="anchored" data-anchor-id="tracks">Tracks</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 39%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Columna</th>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>INT</td>
+<td>Clave primaria de la tabla. Usada para identificar de manera única cada canción o pista.</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td><code>name</code></td>
+<td>TEXT</td>
+<td>Nombre de la canción o pista. Es sensible a mayúsculas y minúsculas.</td>
+<td>Wildest Dreams</td>
+</tr>
+<tr class="odd">
+<td><code>name_lower</code></td>
+<td>TEXT</td>
+<td>Versión en minúsculas del nombre de la pista (<code>name</code>).</td>
+<td>wildest dreams</td>
+</tr>
+<tr class="even">
+<td><code>artist_name</code></td>
+<td>TEXT</td>
+<td>Nombre del artista que interpreta la canción. Sensible a mayúsculas y minúsculas.</td>
+<td>ZAYN feat. Sia</td>
+</tr>
+<tr class="odd">
+<td><code>artist_name_lower</code></td>
+<td>TEXT</td>
+<td>Versión en minúsculas del nombre del artista (<code>artist_name</code>).</td>
+<td>zayn feat sia</td>
+</tr>
+<tr class="even">
+<td><code>album_name</code></td>
+<td>TEXT</td>
+<td>Nombre del álbum en el que se encuentra la canción.</td>
+<td>Dusk Till Dawn (Radio Edit)</td>
+</tr>
+<tr class="odd">
+<td><code>album_name_lower</code></td>
+<td>TEXT</td>
+<td>Versión en minúsculas del nombre del álbum (<code>album_name</code>).</td>
+<td>dusk till dawn radio edit</td>
+</tr>
+<tr class="even">
+<td><code>duration</code></td>
+<td>FLOAT</td>
+<td>Duración de la canción en segundos.</td>
+<td>239</td>
+</tr>
+<tr class="odd">
+<td><code>last_lyrics_id</code></td>
+<td>INT</td>
+<td>Referencia a otra tabla (como <code>lyrics</code>) que almacena las letras de las canciones. Algunas no coinciden con <code>id</code> necesariamente.</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td><code>created_at</code></td>
+<td>DATE</td>
+<td>Representa la fecha y la hora en que se creó el registro.</td>
+<td>2022-11-14 11:46:45.978+00:00</td>
+</tr>
+<tr class="odd">
+<td><code>updated_at</code></td>
+<td>DATE</td>
+<td>Indica la fecha (y hora) en que se actualizó por última vez el registro.</td>
+<td>2022-11-14 11:46:45.978+00:00</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lyrics" class="level3">
+<h3 class="anchored" data-anchor-id="lyrics">Lyrics</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 39%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Columna</th>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>INT</td>
+<td>Clave primaria de la tabla, única para cada registro de letras.</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td><code>plain_lyrics</code></td>
+<td>TEXT</td>
+<td>Letras de la canción en formato simple (sin sincronización con la música).</td>
+<td>Not tryna be indie\nNot tryna be cool\nJust tryna be in this\nTell me, are you too?\n\nCan […]</td>
+</tr>
+<tr class="odd">
+<td><code>synced_lyrics</code></td>
+<td>TEXT</td>
+<td>Letras sincronizadas, con marcas de tiempo para seguir la canción mientras se reproduce.</td>
+<td>[00:09.66] Not tryna be indie\n[00:12.30] Not tryna be cool\n[00:14.99] Just tryna be in […]</td>
+</tr>
+<tr class="even">
+<td><code>track_id</code></td>
+<td>INT</td>
+<td>Clave foránea que referencia la columna <code>id</code> en la tabla <code>tracks</code>. Esto vincula las letras con las canciones.</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td><code>has_plain_lyrics</code></td>
+<td>BOOLEAN</td>
+<td>Indica si hay letras simples disponibles ([<code>TRUE</code> = 1] o [<code>FALSE</code> = 0]).</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><code>has_synced_lyrics</code></td>
+<td>BOOLEAN</td>
+<td>Indica si hay letras sincronizadas disponibles ([<code>TRUE</code> = 1] o [<code>FALSE</code> = 0]).</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><code>instrumental</code></td>
+<td>BOOLEAN</td>
+<td>Indica si la pista es instrumental y, por lo tanto, no tiene letras. ([<code>TRUE</code> = 1] o [<code>FALSE</code> = 0]).</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><code>source</code></td>
+<td>TEXT</td>
+<td>Fuente de las letras (La mayoría está en NA).</td>
+<td>NA</td>
+</tr>
+<tr class="odd">
+<td><code>created_at</code></td>
+<td>DATE</td>
+<td>Fecha y hora de creación del registro.</td>
+<td>2022-11-14 11:46:45.978+00:00</td>
+</tr>
+<tr class="even">
+<td><code>updated_at</code></td>
+<td>DATE</td>
+<td>Fecha y hora de la última actualización del registro.</td>
+<td>2022-11-14 11:46:45.978+00:00</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="definición-de-funciones" class="level1">
+<h1>Definición de funciones</h1>
+<p>Ya teniendo claridad de la estructura de las tablas que nos interesan, comenzaremos a crear las funciones que nos permitan crear nuestros propios data frames y analizar las canciones que nos interesen.</p>
+<section id="obtener-canciones-de-un-artista-con-las-letras" class="level2">
+<h2 class="anchored" data-anchor-id="obtener-canciones-de-un-artista-con-las-letras">Obtener canciones de un artista con las letras</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para buscar canciones de un artista y agregar información de letras</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>buscarPorArtista <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre_artista, conexion) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 1: Buscar las canciones del artista en la tabla tracks</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  tracks_query <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT name, artist_name, album_name, duration, last_lyrics_id </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM tracks </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE artist_name_lower = '%s'</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span>, <span class="fu">tolower</span>(nombre_artista))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Obtener las canciones del artista</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  tracks_data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conexion, tracks_query)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar si se encontraron canciones</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(tracks_data) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No se encontraron canciones para este artista.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 2: Recorrer la tabla lyrics y obtener información adicional</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear una consulta para obtener las letras correspondientes a last_lyrics_id</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  lyrics_ids <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">na.omit</span>(tracks_data<span class="sc">$</span>last_lyrics_id))  <span class="co"># Eliminar NA y duplicados</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(lyrics_ids) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Ninguna canción tiene letras asociadas.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(tracks_data)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  lyrics_query <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT id AS last_lyrics_id, plain_lyrics, synced_lyrics, </span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="st">           has_plain_lyrics, has_synced_lyrics, instrumental</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM lyrics </span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE id IN (%s)</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span>, <span class="fu">paste</span>(lyrics_ids, <span class="at">collapse =</span> <span class="st">", "</span>))</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Obtener los datos de letras</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  lyrics_data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conexion, lyrics_query)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 3: Unir los datos de tracks con los de letras</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Usamos un merge para unir los datos basados en last_lyrics_id</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">merge</span>(tracks_data, lyrics_data, <span class="at">by =</span> <span class="st">"last_lyrics_id"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retornar el dataframe final</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso de la función</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>artista_ejemplo <span class="ot">&lt;-</span> <span class="st">"Asia Menor"</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>df_artista_ejemplo <span class="ot">&lt;-</span> <span class="fu">buscarPorArtista</span>(artista_ejemplo, conn)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe final</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_artista_ejemplo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>  last_lyrics_id           name artist_name    album_name duration
+1        3547152           1920  Asia Menor     Enola Gay      375
+2        3547390 Defensa/Cortar  Asia Menor     Enola Gay      253
+3        3547424           Doce  Asia Menor Doce - Single      258
+4        3547425           Doce  Asia Menor     Enola Gay      258
+5        3547467         Estrés  Asia Menor     Enola Gay      260
+6        3547639   Instrumental  Asia Menor     Enola Gay      109
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          plain_lyrics
+1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Huesos\nQue se parten\nBesos\nEn las heridas\nDucha\nDe agua helada\nOjos\nColor sangre\n\nMe crece tiempo en la cien\n\nDiluirse en la idea\nEs parte de\nAsumirse feo\nEs parte de\n\nTrato de desengancharlo\nQuiero poder\nEcharlo a andar\nTrato de enfocarlo\nBusco distancia para mirar\n\nArmar de cero\nDesarmar lo que está bien\nRomper lo bello, de paso\nUna pieza grande\nDonde quepa toda la basura\nComparto cuerpo\nCon el desecho que arroja el mar\nQue está muriendo en mí
+2                                                                                                                                                                                                                                                                                                Nada, nada ni nadie\nLo provoca\nNada ni nadie\n\nSe siente tan raro, se siente tan raro\nEl vapor en el aire, el hueso y la piel\n\nNo tiene nombre, no se llama de ninguna forma\nNo tiene nombre, no se llama de ninguna forma\nNo tiene nombre, no se llama de ninguna forma\nNo tiene nombre, no se llama de ninguna forma\n\nAntes de dormirse y antes de levantarse\nAntes de dormirse y antes de levantarse\nTengo tanto sueño acumulado\nTengo tanto sueño acumulado\n\nNo tiene nombre, no se llama de ninguna forma\nNo tiene nombre, no se llama de ninguna forma\nNo tiene nombre, no se llama de ninguna forma\nNo tiene nombre, no se llama de ninguna forma\n\nMi suerte de suerte está en tus manos\n\nQuerer cortar la cadena\nDe favores que\nLe prometí al río\nQuerer rearmar\nUna nueva defensa\nQuerer rearmar
+3 Se me ocurren\nTantas ideas\nLa mayoría son cosas que saldrían mal\nMe quiero juntar\nCon mis amigos\nQuiero que me digan\nLo que no quiero escuchar\nMe atropelló\nEl mismo auto\nCuando cruzaba por la misma calle que ayer\nY que antes de ayer\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies\n\nLa costumbre\nDe ser golpeado\nPor la misma mano que me da de comer\nY que puedo ver\nPegada a mi brazo\nTramita a una alianza con las partes restantes de mí\nA la fuerza\nMe convierto en uno, conmigo mismo\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies
+4 Se me ocurren\nTantas ideas\nLa mayoría son cosas que saldrían mal\nMe quiero juntar\nCon mis amigos\nQuiero que me digan\nLo que no quiero escuchar\nMe atropelló\nEl mismo auto\nCuando cruzaba por la misma calle que ayer\nY que antes de ayer\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies\n\nLa costumbre\nDe ser golpeado\nPor la misma mano que me da de comer\nY que puedo ver\nPegada a mi brazo\nTramita a una alianza con las partes restantes de mí\nA la fuerza\nMe convierto en uno, conmigo mismo\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies\n\nTanto ruido que hacen después de comer\nDespués de comer, después de comer\nSe queda pegado en las paredes\nComo tierra en los pies, como tierra en los pies
+5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  El nivel de estrés en el cuerpo\nMe hace ver el mundo de otra forma\nSiento el calor del combustible quemado dentro mío\n\nEl cuerpo mecánico\nSabe que hacer\nEl cuerpo mecánico\nSabe que hacer\n\nLas partes en mi se comunican\nLas partes en mi se comunican\nSin decirme nada\n\nEl cuerpo mecánico\nSabe que hacer\nYa, ya no siento nada\nNo pienso en nada
+6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 &lt;NA&gt;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          synced_lyrics
+1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [00:15.61] Huesos\n[00:17.99] Que se parten\n[00:21.02] Besos\n[00:23.02] En las heridas\n[00:26.41] Ducha\n[00:28.43] De agua helada\n[00:31.75] Ojos\n[00:33.70] Color sangre\n[00:37.02] Me crece tiempo en la cien\n[00:47.04] \n[01:06.62] Diluirse en la idea\n[01:11.66] Es parte de\n[01:17.32] Asumirse feo\n[01:22.26] Es parte de\n[01:28.50] Trato de desengancharlo\n[01:33.09] Quiero poder\n[01:35.05] Echarlo a andar\n[01:37.88] Trato de enfocarlo\n[01:42.49] Busco distancia para mirar\n[01:47.46] \n[02:00.95] Armar de cero\n[02:06.34] Desarmar lo que está bien\n[02:12.15] Romper lo bello, de paso\n[02:24.14] Una pieza grande\n[02:29.84] Donde quepa toda la basura\n[02:46.88] Comparto cuerpo\n[02:51.95] Con el desecho que arroja el mar\n[02:58.62] Que está muriendo en mí\n[03:05.87] 
+2                                                                                                                                                                                                                                                                                                                                                                                    [00:05.91] Nada, nada ni nadie\n[00:10.95] Lo provoca\n[00:13.98] Nada ni nadie\n[00:18.73] Se siente tan raro, se siente tan raro\n[00:25.29] El vapor en el aire, el hueso y la piel\n[00:29.52] \n[00:31.75] No tiene nombre, no se llama de ninguna forma\n[00:38.16] No tiene nombre, no se llama de ninguna forma\n[00:44.51] No tiene nombre, no se llama de ninguna forma\n[00:51.38] No tiene nombre, no se llama de ninguna forma\n[00:57.84] \n[01:18.57] Antes de dormirse y antes de levantarse\n[01:24.89] Antes de dormirse y antes de levantarse\n[01:31.01] Tengo tanto sueño acumulado\n[01:37.40] Tengo tanto sueño acumulado\n[01:43.52] No tiene nombre, no se llama de ninguna forma\n[01:49.79] No tiene nombre, no se llama de ninguna forma\n[01:56.16] No tiene nombre, no se llama de ninguna forma\n[02:02.22] No tiene nombre, no se llama de ninguna forma\n[02:08.54] \n[02:20.93] Mi suerte de suerte está en tus manos\n[02:28.74] \n[03:34.85] Querer cortar la cadena\n[03:40.70] De favores que\n[03:45.21] Le prometí al río\n[03:48.54] Querer rearmar\n[03:52.10] Una nueva defensa\n[03:55.74] Querer rearmar\n[03:58.82] 
+3 [00:15.28] Se me ocurren\n[00:17.60] Tantas ideas\n[00:20.30] La mayoría son cosas que saldrían mal\n[00:25.16] Me quiero juntar\n[00:27.84] Con mis amigos\n[00:30.56] Quiero que me digan\n[00:32.92] Lo que no quiero escuchar\n[00:35.35] Me atropelló\n[00:38.05] El mismo auto\n[00:40.49] Cuando cruzaba por la misma calle que ayer\n[00:45.38] Y que antes de ayer\n[00:51.47] Tanto ruido que hacen después de comer\n[00:54.28] Después de comer, después de comer\n[00:56.66] Se queda pegado en las paredes\n[00:58.42] Como tierra en los pies, como tierra en los pies\n[01:01.62] Tanto ruido que hacen después de comer\n[01:04.35] Después de comer, después de comer\n[01:06.75] Se queda pegado en las paredes\n[01:08.58] Como tierra en los pies, como tierra en los pies\n[01:11.73] \n[01:23.36] La costumbre\n[01:26.09] De ser golpeado\n[01:28.72] Por la misma mano que me da de comer\n[01:33.59] Y que puedo ver\n[01:36.24] Pegada a mi brazo\n[01:38.68] Tramita a una alianza con las partes restantes de mí\n[01:44.25] A la fuerza\n[01:49.04] Me convierto en uno, conmigo mismo\n[02:00.38] Tanto ruido que hacen después de comer\n[02:03.07] Después de comer, después de comer\n[02:05.15] Se queda pegado en las paredes\n[02:07.07] Como tierra en los pies, como tierra en los pies\n[02:10.37] Tanto ruido que hacen después de comer\n[02:12.86] Después de comer, después de comer\n[02:15.26] Se queda pegado en las paredes\n[02:17.33] Como tierra en los pies, como tierra en los pies\n[02:20.50] 
+4 [00:15.28] Se me ocurren\n[00:17.60] Tantas ideas\n[00:20.30] La mayoría son cosas que saldrían mal\n[00:25.16] Me quiero juntar\n[00:27.84] Con mis amigos\n[00:30.56] Quiero que me digan\n[00:32.92] Lo que no quiero escuchar\n[00:35.35] Me atropelló\n[00:38.05] El mismo auto\n[00:40.49] Cuando cruzaba por la misma calle que ayer\n[00:45.38] Y que antes de ayer\n[00:51.47] Tanto ruido que hacen después de comer\n[00:54.28] Después de comer, después de comer\n[00:56.66] Se queda pegado en las paredes\n[00:58.42] Como tierra en los pies, como tierra en los pies\n[01:01.62] Tanto ruido que hacen después de comer\n[01:04.35] Después de comer, después de comer\n[01:06.75] Se queda pegado en las paredes\n[01:08.58] Como tierra en los pies, como tierra en los pies\n[01:11.73] \n[01:23.36] La costumbre\n[01:26.09] De ser golpeado\n[01:28.72] Por la misma mano que me da de comer\n[01:33.59] Y que puedo ver\n[01:36.24] Pegada a mi brazo\n[01:38.68] Tramita a una alianza con las partes restantes de mí\n[01:44.25] A la fuerza\n[01:49.04] Me convierto en uno, conmigo mismo\n[02:00.38] Tanto ruido que hacen después de comer\n[02:03.07] Después de comer, después de comer\n[02:05.15] Se queda pegado en las paredes\n[02:07.07] Como tierra en los pies, como tierra en los pies\n[02:10.37] Tanto ruido que hacen después de comer\n[02:12.86] Después de comer, después de comer\n[02:15.26] Se queda pegado en las paredes\n[02:17.33] Como tierra en los pies, como tierra en los pies\n[02:20.50] 
+5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [00:17.54] El nivel de estrés en el cuerpo\n[00:23.54] Me hace ver el mundo de otra forma\n[00:29.65] Siento el calor del combustible quemado dentro mío\n[00:40.21] \n[00:55.72] El cuerpo mecánico\n[01:04.98] Sabe que hacer\n[01:09.28] El cuerpo mecánico\n[01:18.00] Sabe que hacer\n[01:23.00] \n[01:41.84] Las partes en mi se comunican\n[01:47.01] Las partes en mi se comunican\n[01:52.17] Sin decirme nada\n[02:13.07] El cuerpo mecánico\n[02:21.87] Sabe que hacer\n[02:26.38] Ya, ya no siento nada\n[02:35.34] No pienso en nada\n[02:39.61] 
+6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
+  has_plain_lyrics has_synced_lyrics instrumental
+1                1                 1            0
+2                1                 1            0
+3                1                 1            0
+4                1                 1            0
+5                1                 1            0
+6                0                 0            1</code></pre>
 </div>
 </div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+</section>
 </section>
 
 </main>

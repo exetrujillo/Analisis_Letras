@@ -1,5 +1,5 @@
 ---
-title: "Analisis de Letras"
+title: "Análisis de Letras"
 author: "Exequiel Trujillo Escobar"
 date: "`r Sys.Date()`"
 description: "Exploración y análisis de letras de canciones utilizando la API de LRC Lib."
@@ -12,7 +12,7 @@ editor: visual
 
 # Introducción
 
-Este proyecto utiliza R para realizar web scraping en Musixmatch (https://www.musixmatch.com) con el fin de extraer las letras de canciones de un artista específico. El código es modular y permite pasar parámetros como el nombre del artista para obtener sus canciones y sus letras de manera automatizada.
+Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de \[LRCLIB\](<https://lrclib.net/db-dumps>)
 
 ## Instalación de librerías
 
@@ -25,26 +25,141 @@ library(pacman)
 p_load(httr,
        jsonlite,
        dplyr,
-       rvest
+       rvest,
+       DBI,
+       RSQLite
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
 ```
 
-# Definición de funciones
+# Exploración de la base de datos
 
-Aquí definimos funciones modulares
+Aquí importamos la base de datos, sus tablas y el tipo de información que pueden contener
 
-## Búsqueda de canciones por artista
+## Importar base de datos
 
 ```{r}
 
-# Función para buscar canciones por el nombre del artista
-buscar_canciones_por_artista <- function(artista) {
+# Conectar a la base de datos
+db_file <- "db.sqlite3"
+conn <- dbConnect(RSQLite::SQLite(), dbname = db_file)
+
+# Listar tablas
+# tables <- dbListTables(conn)
+# print(tables)
+```
+
+El resultado son las siguientes tablas:
+
+|  |  |  |  |  |  |
+|-------------|-------------|-------------|-------------|-------------|-----------|
+| "\_litestream_lock" | "\_litestream_seq" | "flags" | "lyrics" | "missing_tracks" | "sqlite_sequence" |
+| "tracks" | "tracks_fts" | "tracks_fts_config" | "tracks_fts_data" | "tracks_fts_docsize" | "tracks_fts_idx" |
+
+## Exploramos las tablas
+
+```{r}
+
+# Leer los primeros registros de una tabla
+data <- dbGetQuery(conn, "SELECT * FROM lyrics LIMIT 5000")
+# print(data)
+
+# Consultar la estructura de la tabla
+columns <- dbGetQuery(conn, "PRAGMA table_info(lyrics)")
+# print(columns)
+```
+
+## Estructura de las tablas de interés
+
+Nos interesa particularmente la tabla tracks y la tabla lyrics
+
+### Tracks
+
+| Columna | Tipo | Descripción | Ejemplo |
+|---------|---------|-----------------------------|--------------------------|
+| `id` | INT | Clave primaria de la tabla. Usada para identificar de manera única cada canción o pista. | 3 |
+| `name` | TEXT | Nombre de la canción o pista. Es sensible a mayúsculas y minúsculas. | Wildest Dreams |
+| `name_lower` | TEXT | Versión en minúsculas del nombre de la pista (`name`). | wildest dreams |
+| `artist_name` | TEXT | Nombre del artista que interpreta la canción. Sensible a mayúsculas y minúsculas. | ZAYN feat. Sia |
+| `artist_name_lower` | TEXT | Versión en minúsculas del nombre del artista (`artist_name`). | zayn feat sia |
+| `album_name` | TEXT | Nombre del álbum en el que se encuentra la canción. | Dusk Till Dawn (Radio Edit) |
+| `album_name_lower` | TEXT | Versión en minúsculas del nombre del álbum (`album_name`). | dusk till dawn radio edit |
+| `duration` | FLOAT | Duración de la canción en segundos. | 239 |
+| `last_lyrics_id` | INT | Referencia a otra tabla (como `lyrics`) que almacena las letras de las canciones. Algunas no coinciden con `id` necesariamente. | 3 |
+| `created_at` | DATE | Representa la fecha y la hora en que se creó el registro. | 2022-11-14 11:46:45.978+00:00 |
+| `updated_at` | DATE | Indica la fecha (y hora) en que se actualizó por última vez el registro. | 2022-11-14 11:46:45.978+00:00 |
+
+### Lyrics
+
+| Columna | Tipo | Descripción | Ejemplo |
+|---------|---------|-----------------------------|--------------------------|
+| `id` | INT | Clave primaria de la tabla, única para cada registro de letras. | 3 |
+| `plain_lyrics` | TEXT | Letras de la canción en formato simple (sin sincronización con la música). | Not tryna be indie\\nNot tryna be cool\\nJust tryna be in this\\nTell me, are you too?\\n\\nCan \[...\] |
+| `synced_lyrics` | TEXT | Letras sincronizadas, con marcas de tiempo para seguir la canción mientras se reproduce. | \[00:09.66\] Not tryna be indie\\n\[00:12.30\] Not tryna be cool\\n\[00:14.99\] Just tryna be in \[...\] |
+| `track_id` | INT | Clave foránea que referencia la columna `id` en la tabla `tracks`. Esto vincula las letras con las canciones. | 3 |
+| `has_plain_lyrics` | BOOLEAN | Indica si hay letras simples disponibles (\[`TRUE` = 1\] o \[`FALSE` = 0\]). | 1 |
+| `has_synced_lyrics` | BOOLEAN | Indica si hay letras sincronizadas disponibles (\[`TRUE` = 1\] o \[`FALSE` = 0\]). | 1 |
+| `instrumental` | BOOLEAN | Indica si la pista es instrumental y, por lo tanto, no tiene letras. (\[`TRUE` = 1\] o \[`FALSE` = 0\]). | 0 |
+| `source` | TEXT | Fuente de las letras (La mayoría está en NA). | NA |
+| `created_at` | DATE | Fecha y hora de creación del registro. | 2022-11-14 11:46:45.978+00:00 |
+| `updated_at` | DATE | Fecha y hora de la última actualización del registro. | 2022-11-14 11:46:45.978+00:00 |
+
+# Definición de funciones
+
+Ya teniendo claridad de la estructura de las tablas que nos interesan, comenzaremos a crear las funciones que nos permitan crear nuestros propios data frames y analizar las canciones que nos interesen.
+
+## Obtener canciones de un artista con las letras
+
+```{r}
+# Función para buscar canciones de un artista y agregar información de letras
+buscarPorArtista <- function(nombre_artista, conexion) {
+  # Paso 1: Buscar las canciones del artista en la tabla tracks
+  tracks_query <- sprintf("
+    SELECT name, artist_name, album_name, duration, last_lyrics_id 
+    FROM tracks 
+    WHERE artist_name_lower = '%s'
+  ", tolower(nombre_artista))
   
+  # Obtener las canciones del artista
+  tracks_data <- dbGetQuery(conexion, tracks_query)
+  
+  # Verificar si se encontraron canciones
+  if (nrow(tracks_data) == 0) {
+    cat("No se encontraron canciones para este artista.\n")
+    return(NULL)
+  }
+  
+  # Paso 2: Recorrer la tabla lyrics y obtener información adicional
+  # Crear una consulta para obtener las letras correspondientes a last_lyrics_id
+  lyrics_ids <- unique(na.omit(tracks_data$last_lyrics_id))  # Eliminar NA y duplicados
+  if (length(lyrics_ids) == 0) {
+    cat("Ninguna canción tiene letras asociadas.\n")
+    return(tracks_data)
+  }
+  
+  lyrics_query <- sprintf("
+    SELECT id AS last_lyrics_id, plain_lyrics, synced_lyrics, 
+           has_plain_lyrics, has_synced_lyrics, instrumental
+    FROM lyrics 
+    WHERE id IN (%s)
+  ", paste(lyrics_ids, collapse = ", "))
+  
+  # Obtener los datos de letras
+  lyrics_data <- dbGetQuery(conexion, lyrics_query)
+  
+  # Paso 3: Unir los datos de tracks con los de letras
+  # Usamos un merge para unir los datos basados en last_lyrics_id
+  result <- merge(tracks_data, lyrics_data, by = "last_lyrics_id", all.x = TRUE)
+  
+  # Retornar el dataframe final
+  return(result)
 }
 
-# Ejemplo de uso
-# resultado <- buscar_canciones_por_artista("Taylor Swift")
-# print(resultado)
+# Ejemplo de uso de la función
+artista_ejemplo <- "Asia Menor"
+df_artista_ejemplo <- buscarPorArtista(artista_ejemplo, conn)
+
+# Mostrar las primeras filas del dataframe final
+head(df_artista_ejemplo)
 ```
