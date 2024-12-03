@@ -14,6 +14,38 @@ editor: visual
 
 Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de \[LRCLIB\](<https://lrclib.net/db-dumps>)
 
+#### Tareas por hacer (ToDo):
+
+-   **Validación de entradas:**
+
+    -   Asegurarse de manejar caracteres especiales en el nombre del artista para evitar errores en la consulta SQL. Por ejemplo, usando `dbQuoteString`:
+
+        `nombre_artista <- dbQuoteString(conexion, tolower(nombre_artista))`
+
+    -   Revisar si es necesario consultar lyrics después de filtrar los lyrics_ids, en lugar de usar un JOIN simplemente en la consulta SQL inicial. Esto lo hice inicialmente porque el número de filas en la tabla tracks y la tabla lyrics no coincidían y la de lyrics tenía más.
+
+    -   Manejo de duplicados:
+
+        -   ¿Preferir la existencia de letras sincronizadas? (`has_synced_lyrics = 1`).
+
+        -   ¿Elegir el registro más reciente? (`updated_at` más alto. implica modificar ).
+
+    -   La conexión a la base de datos podría estar en una función separada.
+
+    -   Mejora en la visualización:
+
+        -   Para inspeccionar el `dataframe` resultante, usar librerías como `DT` o `kableExtra`
+
+    -   Análisis:
+
+        -   Frecuencias de palabras
+
+        -   ¿Sentimientos? ¿Emociones?
+
+        -   Gráficos ggplot
+
+    -   Explorar la existencia de paquetes para estudios lingüísticos y literarios con reconocimiento de pátrones de lenguaje por gramática en español.
+
 ## Instalación de librerías
 
 Primero, cargamos las librerías necesarias:
@@ -53,7 +85,7 @@ conn <- dbConnect(RSQLite::SQLite(), dbname = db_file)
 El resultado son las siguientes tablas:
 
 |  |  |  |  |  |  |
-|-------------|-------------|-------------|-------------|-------------|-----------|
+|------------|------------|------------|------------|------------|------------|
 | "\_litestream_lock" | "\_litestream_seq" | "flags" | "lyrics" | "missing_tracks" | "sqlite_sequence" |
 | "tracks" | "tracks_fts" | "tracks_fts_config" | "tracks_fts_data" | "tracks_fts_docsize" | "tracks_fts_idx" |
 
@@ -62,12 +94,12 @@ El resultado son las siguientes tablas:
 ```{r}
 
 # Leer los primeros registros de una tabla
-data <- dbGetQuery(conn, "SELECT * FROM lyrics LIMIT 5000")
+# data <- dbGetQuery(conn, "SELECT * FROM lyrics LIMIT 10")
 # print(data)
 
 # Consultar la estructura de la tabla
 columns <- dbGetQuery(conn, "PRAGMA table_info(lyrics)")
-# print(columns)
+print(columns)
 ```
 
 ## Estructura de las tablas de interés
@@ -77,7 +109,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics
 ### Tracks
 
 | Columna | Tipo | Descripción | Ejemplo |
-|---------|---------|-----------------------------|--------------------------|
+|-----------------|-----------------|---------------------|------------------|
 | `id` | INT | Clave primaria de la tabla. Usada para identificar de manera única cada canción o pista. | 3 |
 | `name` | TEXT | Nombre de la canción o pista. Es sensible a mayúsculas y minúsculas. | Wildest Dreams |
 | `name_lower` | TEXT | Versión en minúsculas del nombre de la pista (`name`). | wildest dreams |
@@ -93,7 +125,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics
 ### Lyrics
 
 | Columna | Tipo | Descripción | Ejemplo |
-|---------|---------|-----------------------------|--------------------------|
+|-----------------|-----------------|---------------------|------------------|
 | `id` | INT | Clave primaria de la tabla, única para cada registro de letras. | 3 |
 | `plain_lyrics` | TEXT | Letras de la canción en formato simple (sin sincronización con la música). | Not tryna be indie\\nNot tryna be cool\\nJust tryna be in this\\nTell me, are you too?\\n\\nCan \[...\] |
 | `synced_lyrics` | TEXT | Letras sincronizadas, con marcas de tiempo para seguir la canción mientras se reproduce. | \[00:09.66\] Not tryna be indie\\n\[00:12.30\] Not tryna be cool\\n\[00:14.99\] Just tryna be in \[...\] |
@@ -109,17 +141,47 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics
 
 Ya teniendo claridad de la estructura de las tablas que nos interesan, comenzaremos a crear las funciones que nos permitan crear nuestros propios data frames y analizar las canciones que nos interesen.
 
+## Variables iniciales de ejemplo
+
+```{r}
+
+artista_ej <- "Niños del Cerro"
+```
+
+## Normalizar nombre de artista
+
+Normalizar los nombres de los artistas es estandarizar su "formato" para que sean uniformes, independientemente de cómo estén registrados en la base de datos o ingresados por el usuario. Esto es útil para evitar problemas como registros duplicados o consultas fallidas debido a diferencias en mayúsculas, espacios, acentos, o caracteres especiales, como la ñ en "Niños del Cerro".
+
+```{r}
+
+normalizarNombre <- function(nombre_artista) {
+  library(stringi)
+  nombre_artista <- tolower(nombre_artista)                          # Minúsculas
+  nombre_artista <- trimws(nombre_artista)                           # Espacios
+  nombre_artista <- gsub("\\s+", " ", nombre_artista)                # Espacios
+  nombre_artista <- stri_trans_general(nombre_artista, "Latin-ASCII") # Acentos
+  nombre_artista <- gsub("[^a-z0-9 ]", "", nombre_artista)           # Puntuación
+  return(nombre_artista)
+}
+
+# Lo probamos
+artista_ej_normalizado <- normalizarNombre(artista_ej)
+print(artista_ej_normalizado)
+```
+
+Se ve que el resultado es "ninos del cerro", sin espacios, ni ñ, ni mayúsculas.
+
 ## Obtener canciones de un artista con las letras
 
 ```{r}
 # Función para buscar canciones de un artista y agregar información de letras
-buscarPorArtista <- function(nombre_artista, conexion) {
+buscarPorArtista <- function(nombre_artista_normalizado, conexion) {
   # Paso 1: Buscar las canciones del artista en la tabla tracks
   tracks_query <- sprintf("
     SELECT name, artist_name, album_name, duration, last_lyrics_id 
     FROM tracks 
     WHERE artist_name_lower = '%s'
-  ", tolower(nombre_artista))
+  ", tolower(nombre_artista_normalizado))
   
   # Obtener las canciones del artista
   tracks_data <- dbGetQuery(conexion, tracks_query)
@@ -156,10 +218,21 @@ buscarPorArtista <- function(nombre_artista, conexion) {
   return(result)
 }
 
-# Ejemplo de uso de la función
-artista_ejemplo <- "Asia Menor"
-df_artista_ejemplo <- buscarPorArtista(artista_ejemplo, conn)
+# Ejemplo de uso de la función con nombre normalizado
+df_artista_ej <- buscarPorArtista(artista_ej_normalizado, conn)
 
 # Mostrar las primeras filas del dataframe final
-head(df_artista_ejemplo)
+head(df_artista_ej)
+```
+
+Arroja 47 filas con 10 variables. Hay sumar los campos de actualizado y subido (fechas).
+
+## Resolver casos duplicados
+
+```{r}
+
+#resolverDuplicados <- function(data) {
+
+#  }
+#df_filtrado <- resolverDuplicados(df_artista_ejemplo)
 ```
