@@ -1,0 +1,85 @@
+/* Fondo general y texto */
+body {
+  background-color: #121212; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto claro */
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: #bb86fc; /* Morado claro */
+  font-weight: bold;
+  border-bottom: 1px solid #333; /* Línea sutil debajo */
+}
+
+/* Enlaces */
+a {
+  color: #03dac6; /* Turquesa */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Código embebido (inline code) dentro de párrafos */
+p code {
+  background-color: #2d2d2d !important; /* Fondo oscuro forzado */
+  color: #ffcb6b !important; /* Texto amarillo (destacado) */
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra ligera para contraste */
+  display: inline-block; /* Asegura que se comporte como bloque inline */
+}
+
+/* Código en bloques */
+pre {
+  background-color: #1e1e1e !important;
+  color: #d4d4d4 !important;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 5px;
+  padding: 1em;
+  overflow-x: auto;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Tablas */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+}
+th, td {
+  border: 1px solid #333;
+  padding: 0.5em;
+  text-align: left;
+}
+th {
+  background-color: #1f1f1f;
+  color: #03dac6;
+}
+
+/* Bloques de código plegables */
+.quarto-code-fold {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+/* Barras de navegación (si tienes toc) */
+.navbar {
+  background-color: #1f1f1f;
+  border-bottom: 1px solid #333;
+}
+.navbar a {
+  color: #bb86fc;
+}
+
+/* Ajustes para el contenedor principal */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+}

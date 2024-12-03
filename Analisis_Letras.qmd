@@ -1,0 +1,50 @@
+---
+title: "Analisis de Letras"
+author: "Exequiel Trujillo Escobar"
+date: "`r Sys.Date()`"
+description: "Exploración y análisis de letras de canciones utilizando la API de LRC Lib."
+format: 
+  html:
+    css: styles.css
+    highlight-style: monokai
+editor: visual
+---
+
+# Introducción
+
+Este proyecto utiliza R para realizar web scraping en Musixmatch (https://www.musixmatch.com) con el fin de extraer las letras de canciones de un artista específico. El código es modular y permite pasar parámetros como el nombre del artista para obtener sus canciones y sus letras de manera automatizada.
+
+## Instalación de librerías
+
+Primero, cargamos las librerías necesarias:
+
+```{r}
+
+library(pacman)
+
+p_load(httr,
+       jsonlite,
+       dplyr,
+       rvest
+       )
+
+rm(list = ls()) # Descomentar si necesitamos limpiar entorno
+```
+
+# Definición de funciones
+
+Aquí definimos funciones modulares
+
+## Búsqueda de canciones por artista
+
+```{r}
+
+# Función para buscar canciones por el nombre del artista
+buscar_canciones_por_artista <- function(artista) {
+  
+}
+
+# Ejemplo de uso
+# resultado <- buscar_canciones_por_artista("Taylor Swift")
+# print(resultado)
+```
