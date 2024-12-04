@@ -5,7 +5,7 @@ Este proyecto utiliza R para realizar análisis de letras de canciones. Se usar�
 
 ## 📋 Requisitos
 
-Asegúrate de tener instalados los siguientes paquetes en R antes de comenzar:
+Paquetes:
 
 - **rvest**: Para realizar scraping estático.
 - **httr**: Para realizar solicitudes HTTP.
@@ -13,3 +13,5 @@ Asegúrate de tener instalados los siguientes paquetes en R antes de comenzar:
 - **dplyr**: Para manipulación de datos.
 - **DBI**: Interfaz genérica para interactuar con bases de datos en R.
 - **RSQLite**: Para una implementación específica para trabajar con bases de datos SQLite en R.
+- **stringi**: Para manejar y procesar cadenas de texto.
+- **DT**: Para mejor visualización de DATA frames, con interactivos.
