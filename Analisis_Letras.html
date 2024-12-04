@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Exequiel Trujillo Escobar">
-<meta name="dcterms.date" content="2024-12-03">
+<meta name="dcterms.date" content="2024-12-04">
 <meta name="description" content="Exploración y análisis de letras de canciones utilizando la API de LRC Lib.">
 
 <title>Análisis de Letras</title>
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 3, 2024</p>
+      <p class="date">December 4, 2024</p>
     </div>
   </div>
   
@@ -125,14 +125,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p><strong>Validación de entradas:</strong></p>
 <ul>
-<li><p>Asegurarse de manejar caracteres especiales en el nombre del artista para evitar errores en la consulta SQL. Por ejemplo, usando <code>dbQuoteString</code>:</p>
-<p><code>nombre_artista &lt;- dbQuoteString(conexion, tolower(nombre_artista))</code></p></li>
-<li><p>Revisar si es necesario consultar lyrics después de filtrar los lyrics_ids, en lugar de usar un JOIN simplemente en la consulta SQL inicial. Esto lo hice inicialmente porque el número de filas en la tabla tracks y la tabla lyrics no coincidían y la de lyrics tenía más.</p></li>
-<li><p>Manejo de duplicados:</p>
-<ul>
-<li><p>¿Preferir la existencia de letras sincronizadas? (<code>has_synced_lyrics = 1</code>).</p></li>
-<li><p>¿Elegir el registro más reciente? (<code>updated_at</code> más alto. implica modificar ).</p></li>
-</ul></li>
 <li><p>La conexión a la base de datos podría estar en una función separada.</p></li>
 <li><p>Mejora en la visualización:</p>
 <ul>
@@ -159,10 +151,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>       dplyr,</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       rvest,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       DBI,</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       RSQLite</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       RSQLite,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       stringi</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -242,9 +235,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="tracks">Tracks</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 28%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
 <col style="width: 24%">
 </colgroup>
 <thead>
@@ -329,9 +322,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="lyrics">Lyrics</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 28%">
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 26%">
 <col style="width: 24%">
 </colgroup>
 <thead>
@@ -421,19 +414,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="normalizar-nombre-de-artista">Normalizar nombre de artista</h2>
 <p>Normalizar los nombres de los artistas es estandarizar su “formato” para que sean uniformes, independientemente de cómo estén registrados en la base de datos o ingresados por el usuario. Esto es útil para evitar problemas como registros duplicados o consultas fallidas debido a diferencias en mayúsculas, espacios, acentos, o caracteres especiales, como la ñ en “Niños del Cerro”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>normalizarNombre <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre_artista) {</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(stringi)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">tolower</span>(nombre_artista)                          <span class="co"># Minúsculas</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">trimws</span>(nombre_artista)                           <span class="co"># Espacios</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>, nombre_artista)                <span class="co"># Espacios</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">stri_trans_general</span>(nombre_artista, <span class="st">"Latin-ASCII"</span>) <span class="co"># Acentos</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[^a-z0-9 ]"</span>, <span class="st">""</span>, nombre_artista)           <span class="co"># Puntuación</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(nombre_artista)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalizar Texto</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nrmlztxt <span class="ot">&lt;-</span> <span class="cf">function</span>(texto) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">tolower</span>(texto)                          <span class="co"># Minúsculas</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">trimws</span>(texto)                           <span class="co"># Espacios</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>, texto)                <span class="co"># Espacios</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">stri_trans_general</span>(texto, <span class="st">"Latin-ASCII"</span>) <span class="co"># Acentos</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[^a-z0-9 ]"</span>, <span class="st">""</span>, texto)           <span class="co"># Puntuación</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(texto)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lo probamos</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>artista_ej_normalizado <span class="ot">&lt;-</span> <span class="fu">normalizarNombre</span>(artista_ej)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(artista_ej_normalizado)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>artista_ej_nrm <span class="ot">&lt;-</span> <span class="fu">nrmlztxt</span>(artista_ej)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(artista_ej_nrm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ninos del cerro"</code></pre>
 </div>
@@ -443,103 +436,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="obtener-canciones-de-un-artista-con-las-letras" class="level2">
 <h2 class="anchored" data-anchor-id="obtener-canciones-de-un-artista-con-las-letras">Obtener canciones de un artista con las letras</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para buscar canciones de un artista y agregar información de letras</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>buscarPorArtista <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre_artista_normalizado, conexion) {</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 1: Buscar las canciones del artista en la tabla tracks</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  tracks_query <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT name, artist_name, album_name, duration, last_lyrics_id </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM tracks </span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE artist_name_lower = '%s'</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span>, <span class="fu">tolower</span>(nombre_artista_normalizado))</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Obtener las canciones del artista</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  tracks_data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conexion, tracks_query)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar si se encontraron canciones</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(tracks_data) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No se encontraron canciones para este artista.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 2: Recorrer la tabla lyrics y obtener información adicional</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear una consulta para obtener las letras correspondientes a last_lyrics_id</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  lyrics_ids <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">na.omit</span>(tracks_data<span class="sc">$</span>last_lyrics_id))  <span class="co"># Eliminar NA y duplicados</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(lyrics_ids) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"Ninguna canción tiene letras asociadas.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(tracks_data)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  lyrics_query <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT id AS last_lyrics_id, plain_lyrics, synced_lyrics, </span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="st">           has_plain_lyrics, has_synced_lyrics, instrumental</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM lyrics </span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE id IN (%s)</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span>, <span class="fu">paste</span>(lyrics_ids, <span class="at">collapse =</span> <span class="st">", "</span>))</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Obtener los datos de letras</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  lyrics_data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conexion, lyrics_query)</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 3: Unir los datos de tracks con los de letras</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Usamos un merge para unir los datos basados en last_lyrics_id</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">merge</span>(tracks_data, lyrics_data, <span class="at">by =</span> <span class="st">"last_lyrics_id"</span>, <span class="at">all.x =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retornar el dataframe final</span></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso de la función con nombre normalizado</span></span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>df_artista_ej <span class="ot">&lt;-</span> <span class="fu">buscarPorArtista</span>(artista_ej_normalizado, conn)</span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe final</span></span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_artista_ej)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>buscarPorArtista <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre_artista, conexion) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 0: Normalizar y proteger el nombre del artista</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">nrmlztxt</span>(nombre_artista)            <span class="co"># Normalizar texto</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a> nombre_artista <span class="ot">&lt;-</span> <span class="fu">dbQuoteString</span>(conexion, nombre_artista) <span class="co"># Proteger para consultas SQL</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 1: Consulta SQL con nombre del artista protegido</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT </span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">      t.id AS track_id, t.name,t.name_lower, t.artist_name, t.artist_name_lower, t.album_name, t.album_name_lower, t.duration, t.updated_at,l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, l.has_synced_lyrics, l.instrumental</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM tracks t</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN lyrics l ON t.last_lyrics_id = l.id</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE t.artist_name_lower = "</span>, nombre_artista</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ejecutar la consulta</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conexion, query)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar si se encontraron canciones</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(data) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No se encontraron canciones para este artista.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 2: Resolver duplicados</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(track_id) <span class="sc">%&gt;%</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>      has_synced_lyrics <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> <span class="co"># Priorizar letras sincronizadas</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>      updated_at <span class="sc">==</span> <span class="fu">max</span>(updated_at, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Priorizar registros más recientes</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retornar el dataframe final</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso de la función con nombre normalizado</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>df_artista_ej <span class="ot">&lt;-</span> <span class="fu">buscarPorArtista</span>(artista_ej_nrm, conn)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe final</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_artista_ej)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  last_lyrics_id                   name     artist_name
-1        1318298                Capital Niños Del Cerro
-2        1318517                Contigo Niños Del Cerro
-3        1318593             Cuauhtémoc Niños Del Cerro
-4        1318667                 Daniel Niños Del Cerro
-5        1318876 Durmiendo en el Parque Niños Del Cerro
-6        1318885 Días Frescos (En Vivo) Niños Del Cerro
-                                 album_name duration
-1                                Nonato Coo      276
-2                                     Lance      224
-3                                Cuauhtémoc      219
-4                           Suave Pendiente      457
-5                                Cuauhtémoc      239
-6 No Va a Pasar el Tiempo en Vano (En Vivo)      310
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                plain_lyrics
-1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Tuve que buscar, tan lejos,\nTan lejos, allá en otro lugar,\nNos quisieron, nos quisieron tanto.\n\nTuve que viajar, tan lejos,\nTan lejos, allá en otra ciudad,\nNos quisieron, me quisieron tanto.\n\nY sin pensarlo caigo\nY creo que estoy volviendo a empezar,\nLas melodías que inventamos estando en la capital,\nNos llevaron de vuelta a casa.\n\nTuve que buscar, tan lejos,\nTan lejos, de nuestra enfermedad,\nNos quisimos, nos quisimos tanto.\n\nY te salí a buscar, de noche,\nCon el miedo, no me hicieron daño,\nMe quisieron, me quisieron tanto.\n\nY sin pensarlo caigo\nY creo que estoy volviendo a empezar,\nLas melodías que inventamos estando en la capital,\nNos llevaron de vuelta a casa.
-2                                                                                                                   No se conocen, no saben de dónde\nSalió, quien se esconde, detrás de sus ojos\nEsta noche, bailemos entonces\nMmm\n\nNo se conocen, son nueve de doce\nLos que corresponden, para que esto sea una buena idea\nDime lo que quieras\nYo solo quiero avanzar\n\nAtravesando la pared, viajando al sur en bus\nSe oyen tantas voces, voces que no reconoces\nAtravesando la pared, viajando al sur en bus\nSe oyen tantas voces, oh, yo nunca he ido a Conce\n\nContigo me siento menos mal\nContigo ya puedo empezar\n\nNo se conocen, son nueve de doce\nLos que corresponden, para que esto sea una buena idea\nDime lo que quieras, yo solo quiero mejorarme\n\nAtravesando la pared, viajando al sur en bus\nSe oyen tantas voces, voces que no reconoces\nAtravesando la pared, viajando al sur en bus\nSe oyen tantas voces, oh, yo nunca he ido a Conce\n\nContigo me siento menos mal\nContigo ya puedo empezar\n\nA planear mi escape al fin\nMás allá de todo lo que te pedí\nA sacar desde dentro lo que hoy pretendo\nHacer, a sacar desde dentro canciones sin temer a perder
-3                                                                                                                                                                                                                                            Hijo mío\nHoy te escribo\nMalherido, desnutrido\nMe quemaron, pies y manos\nY no entiendo si sirvió de algo o no\n\n¿Qué pasó? ¿Te rompió el corazón?\n¿Qué pasó? ¿Te dolió mi dolor?\n¿Qué cambió? Si perdimos igual\nVen que nos volvemos por Cuauhtémoc\n\nDime si esperar\nPor lo menos dime si estarás\nQue no quiero verte más llorar\nPor lo menos dime algo\n\nMe contento con los restos\nDe mi cuerpo hoy enfermo\nMe quemaron, pies y manos\nY no entiendo nada nada de esto\n\n¿Qué pasó? ¿Te rompió el corazón?\n¿Qué pasó? ¿Te dolió mi dolor?\n¿Qué cambió? Si perdimos todo igual\nVen que nos volvemos por Cuauhtémoc\n\nDime si esperar\nPor lo menos dime si estarás\nQue no quiero verte más llorar\nPor lo menos dime algo más\n\nQue no estés tan triste\nY dónde es que te fuiste\nSi sobreviviste hasta primavera\nDudo que lo sepa, antes que me muera\nPor lo menos dime algo\n\nMe contento con los restos\nDe mi cuerpo hoy enfermo
-4 No me hace ni una gracia\nNo me hace ni una gracia\nNi un favor\nEsta pobre intervención\n\nEn mi mano un arma blanca\nEn mi mano un proyectil\nUna bengala\nMe ilumina el corazón\n\nY no me hace ni una gracia\nNo me hace ni una gracia\nNi un favor\nEsta pobre intervención\n\nEn mi mano un arma blanca\nEn mi mano un arma blanca del color\nDel color de este dolor\n\nNada que perder\nNada que creer\nDel dolor vivo, diente de niño\n\nUn dos tres por mí y por nadie más\nMi único amigo\nEl deseo de ahogarme lento\n\nNo me hace ni una gracia\nNi una gracia ni un favor que no he pedido\nEsta pobre intervención\n\nEn mi mano un arma blanca\nEn mi mano un proyectil\nUna bengala\nMe ilumina el corazón\n\nY en la jaula, los leones que\nY en la jaula los leones me entregué\nY encontré algo mejor\n\nY en la jaula, los leones que\nY en la jaula los leones me entegué\nMe trataron con amor\n\nNada que perder\nNada que creer\nDel dolor vivo, diente de niño\n\nUn dos tres por mí y por nadie más\nMi único amigo\n\nFiesta en el jardín\nUn lugar feliz\nDonde yo vivo, polvo y olvido\n\nUn dos tres por mí y por nadie más\nMi único amigo\nEl deseo de ahogarme lento hoy
-5                                                                                                                                                                                                                                     'Toy durmiendo en el parque\nPorfa vuelve a buscarme\n'Toy durmiendo en el parque\nPorfa vuelve a taparme\n\nAmor, soy yo o nuestros ritmos son muy distintos\nTienes la razón\n\nHoy prefiero quedarme viendo un pasaje libre de intervenciones\nDonde poder detenerme un rato a llorar\n\n'Toy durmiendo en el parque\nPorfa vuelve a buscarme\n'Toy durmiendo en el parque\nPorfa vuelve a taparme\n\nAmor, soy yo o nuestros ritmos son muy distintos\nTienes la razón\n\nHoy prefiero quedarme viendo un pasaje libre de intervenciones\nDonde poder detenerme un rato a llorar\nPor todas mis perverciones\nHoy prefiero quedarme viendo un pasaje libre de intervenciones\nDonde poder detenerme un rato a llorar\n\nHoy prefiero quedarme viendo un pasaje libre de intervenciones\nDonde poder detenerme un rato a llorar\nPor todas mis perverciones\nHoy prefiero quedarme viendo un pasaje libre de intervenciones\nDonde poder detenerme un rato a llorar
-6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Este sol no me lo merezco\nNi el amor de los días frescos\nNi los árboles que cortan la luz que me viene a castigar\nEstas nubes que te estuve pidiendo\nNunca me llegaron a tiempo\nMe atraparon, me abrazaron, me violaron\nY me hicieron volver a creer\nSon los ruidos que me encontré\nMelodías que te robé\nEs la mierda que me hace tan bien\nEste calor no me lo merezco\nNi menos la sombra de los días frescos\nNi todos los árboles que se abalanzan sobre mí
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           synced_lyrics
-1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 [00:24.94] Tuve que buscar, tan lejos,\n[00:30.85] Tan lejos, allá en otro lugar,\n[00:37.17] Nos quisieron, nos quisieron tanto.\n[00:51.76] Tuve que viajar, tan lejos,\n[00:57.90] Tan lejos, allá en otra ciudad,\n[01:04.38] Nos quisieron, me quisieron tanto.\n[01:11.94] Y sin pensarlo caigo\n[01:15.86] Y creo que estoy volviendo a empezar,\n[01:21.01] Las melodías que inventamos estando en la capital,\n[01:30.07] Nos llevaron de vuelta a casa.\n[01:56.59] Tuve que buscar, tan lejos,\n[02:03.11] Tan lejos, de nuestra enfermedad,\n[02:09.47] Nos quisimos, nos quisimos tanto.\n[02:14.50] Y te salí a buscar, de noche,\n[02:20.35] Con el miedo, no me hicieron daño,\n[02:27.15] Me quisieron, me quisieron tanto.\n[02:41.65] Y sin pensarlo caigo\n[02:45.57] Y creo que estoy volviendo a empezar,\n[02:50.78] Las melodías que inventamos estando en la capital,\n[02:59.74] Nos llevaron de vuelta a casa.\n[03:08.27] 
-2                                                                                                                                                                                                                                                                                                                                       [00:29.49] No se conocen, no saben de dónde\n[00:32.96] Salió, quien se esconde, detrás de sus ojos\n[00:36.72] Esta noche, bailemos entonces\n[00:40.63] Mmm\n[00:44.65] No se conocen, son nueve de doce\n[00:47.90] Los que corresponden, para que esto sea una buena idea\n[00:53.21] Dime lo que quieras\n[00:55.84] Yo solo quiero avanzar\n[01:00.10] Atravesando la pared, viajando al sur en bus\n[01:03.64] Se oyen tantas voces, voces que no reconoces\n[01:08.03] Atravesando la pared, viajando al sur en bus\n[01:11.27] Se oyen tantas voces, oh, yo nunca he ido a Conce\n[01:15.01] Contigo me siento menos mal\n[01:22.63] Contigo ya puedo empezar\n[01:41.92] No se conocen, son nueve de doce\n[01:45.53] Los que corresponden, para que esto sea una buena idea\n[01:50.51] Dime lo que quieras, yo solo quiero mejorarme\n[01:57.24] Atravesando la pared, viajando al sur en bus\n[02:00.98] Se oyen tantas voces, voces que no reconoces\n[02:05.30] Atravesando la pared, viajando al sur en bus\n[02:08.78] Se oyen tantas voces, oh, yo nunca he ido a Conce\n[02:12.78] Contigo me siento menos mal\n[02:19.16] Contigo ya puedo empezar\n[02:27.54] A planear mi escape al fin\n[02:31.19] Más allá de todo lo que te pedí\n[02:35.45] A sacar desde dentro lo que hoy pretendo\n[02:39.31] Hacer, a sacar desde dentro canciones sin temer a perder\n[02:55.69] 
-3                                                                                                                                                                                                                                                                                                                                                                                            [00:00.67] Hijo mío\n[00:03.39] Hoy te escribo\n[00:06.39] Malherido, desnutrido\n[00:12.40] Me quemaron, pies y manos\n[00:18.19] Y no entiendo si sirvió de algo o no\n[00:25.47] ¿Qué pasó? ¿Te rompió el corazón?\n[00:31.64] ¿Qué pasó? ¿Te dolió mi dolor?\n[00:37.70] ¿Qué cambió? Si perdimos igual\n[00:43.59] Ven que nos volvemos por Cuauhtémoc\n[01:02.04] Dime si esperar\n[01:06.30] Por lo menos dime si estarás\n[01:11.86] Que no quiero verte más llorar\n[01:17.29] Por lo menos dime algo\n[01:24.47] Me contento con los restos\n[01:29.79] De mi cuerpo hoy enfermo\n[01:35.45] Me quemaron, pies y manos\n[01:41.00] Y no entiendo nada nada de esto\n[01:48.11] ¿Qué pasó? ¿Te rompió el corazón?\n[01:53.69] ¿Qué pasó? ¿Te dolió mi dolor?\n[01:59.11] ¿Qué cambió? Si perdimos todo igual\n[02:04.92] Ven que nos volvemos por Cuauhtémoc\n[02:12.44] \n[02:34.20] Dime si esperar\n[02:38.43] Por lo menos dime si estarás\n[02:43.75] Que no quiero verte más llorar\n[02:49.51] Por lo menos dime algo más\n[02:54.82] Que no estés tan triste\n[02:57.82] Y dónde es que te fuiste\n[03:00.65] Si sobreviviste hasta primavera\n[03:06.53] Dudo que lo sepa, antes que me muera\n[03:11.87] Por lo menos dime algo\n[03:26.80] Me contento con los restos\n[03:32.50] De mi cuerpo hoy enfermo\n[03:38.06] 
-4 [00:08.63] No me hace ni una gracia\n[00:12.73] No me hace ni una gracia\n[00:14.99] Ni un favor\n[00:17.45] Esta pobre intervención\n[00:20.99] En mi mano un arma blanca\n[00:25.15] En mi mano un proyectil\n[00:27.09] Una bengala\n[00:29.77] Me ilumina el corazón\n[00:33.59] Y no me hace ni una gracia\n[00:37.89] No me hace ni una gracia\n[00:39.60] Ni un favor\n[00:42.33] Esta pobre intervención\n[00:45.67] En mi mano un arma blanca\n[00:49.96] En mi mano un arma blanca del color\n[00:54.17] Del color de este dolor\n[00:57.86] \n[01:14.41] Nada que perder\n[01:16.55] Nada que creer\n[01:18.53] Del dolor vivo, diente de niño\n[01:22.47] Un dos tres por mí y por nadie más\n[01:26.71] Mi único amigo\n[01:28.76] El deseo de ahogarme lento\n[01:34.69] No me hace ni una gracia\n[01:38.83] Ni una gracia ni un favor que no he pedido\n[01:43.70] Esta pobre intervención\n[01:47.25] En mi mano un arma blanca\n[01:51.27] En mi mano un proyectil\n[01:53.31] Una bengala\n[01:55.98] Me ilumina el corazón\n[01:59.57] Y en la jaula, los leones que\n[02:03.80] Y en la jaula los leones me entregué\n[02:08.02] Y encontré algo mejor\n[02:11.81] Y en la jaula, los leones que\n[02:16.02] Y en la jaula los leones me entegué\n[02:20.39] Me trataron con amor\n[02:24.47] \n[03:21.66] Nada que perder\n[03:23.52] Nada que creer\n[03:25.84] Del dolor vivo, diente de niño\n[03:29.56] Un dos tres por mí y por nadie más\n[03:33.70] Mi único amigo\n[03:37.71] Fiesta en el jardín\n[03:40.05] Un lugar feliz\n[03:41.81] Donde yo vivo, polvo y olvido\n[03:46.05] Un dos tres por mí y por nadie más\n[03:50.43] Mi único amigo\n[03:52.37] El deseo de ahogarme lento hoy\n[03:59.72] 
-5                                                                                                                                                                                                                                                                                                                                                                                                                                                 [00:00.24] 'Toy durmiendo en el parque\n[00:04.51] Porfa vuelve a buscarme\n[00:08.23] 'Toy durmiendo en el parque\n[00:12.14] Porfa vuelve a taparme\n[00:15.74] Amor, soy yo o nuestros ritmos son muy distintos\n[00:23.74] Tienes la razón\n[00:31.32] Hoy prefiero quedarme viendo un pasaje libre de intervenciones\n[00:38.66] Donde poder detenerme un rato a llorar\n[00:43.16] \n[00:50.39] 'Toy durmiendo en el parque\n[00:54.06] Porfa vuelve a buscarme\n[00:57.99] 'Toy durmiendo en el parque\n[01:01.67] Porfa vuelve a taparme\n[01:05.06] Amor, soy yo o nuestros ritmos son muy distintos\n[01:13.18] Tienes la razón\n[01:16.77] \n[01:20.84] Hoy prefiero quedarme viendo un pasaje libre de intervenciones\n[01:28.33] Donde poder detenerme un rato a llorar\n[01:32.92] Por todas mis perverciones\n[01:36.08] Hoy prefiero quedarme viendo un pasaje libre de intervenciones\n[01:43.68] Donde poder detenerme un rato a llorar\n[01:47.92] \n[03:03.14] Hoy prefiero quedarme viendo un pasaje libre de intervenciones\n[03:11.27] Donde poder detenerme un rato a llorar\n[03:15.95] Por todas mis perverciones\n[03:18.84] Hoy prefiero quedarme viendo un pasaje libre de intervenciones\n[03:26.50] Donde poder detenerme un rato a llorar\n[03:30.47] 
-6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   &lt;NA&gt;
-  has_plain_lyrics has_synced_lyrics instrumental
-1                1                 1            0
-2                1                 1            0
-3                1                 1            0
-4                1                 1            0
-5                1                 1            0
-6                1                 0            0</code></pre>
+<pre><code># A tibble: 6 × 15
+  track_id name              name_lower artist_name artist_name_lower album_name
+     &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;     
+1  2960111 Capital           capital    Niños Del … ninos del cerro   Nonato Coo
+2  2960527 Contigo           contigo    Niños Del … ninos del cerro   Lance     
+3  2960675 Cuauhtémoc        cuauhtemoc Niños Del … ninos del cerro   Cuauhtémoc
+4  2960799 Daniel            daniel     Niños Del … ninos del cerro   Suave Pen…
+5  2961183 Durmiendo en el … durmiendo… Niños Del … ninos del cerro   Cuauhtémoc
+6  2961201 Días Frescos (En… dias fres… Niños Del … ninos del cerro   No Va a P…
+# ℹ 9 more variables: album_name_lower &lt;chr&gt;, duration &lt;dbl&gt;, updated_at &lt;chr&gt;,
+#   lyrics_id &lt;int&gt;, plain_lyrics &lt;chr&gt;, synced_lyrics &lt;chr&gt;,
+#   has_plain_lyrics &lt;int&gt;, has_synced_lyrics &lt;int&gt;, instrumental &lt;int&gt;</code></pre>
 </div>
 </div>
-<p>Arroja 47 filas con 10 variables. Hay sumar los campos de actualizado y subido (fechas).</p>
-</section>
-<section id="resolver-casos-duplicados" class="level2">
-<h2 class="anchored" data-anchor-id="resolver-casos-duplicados">Resolver casos duplicados</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#resolverDuplicados &lt;- function(data) {</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  }</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#df_filtrado &lt;- resolverDuplicados(df_artista_ejemplo)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Arroja 47 filas con 15 variables: <strong>track_id</strong> (&lt;int&gt;), <strong>name</strong> (&lt;chr&gt;), <strong>name_lower</strong> (&lt;chr&gt;), <strong>artist_name</strong> (&lt;chr&gt;), <strong>artist_name_lower</strong> (&lt;chr&gt;), <strong>album_name</strong> (&lt;chr&gt;), <strong>album_name_lower</strong> (&lt;chr&gt;), <strong>duration</strong> (&lt;dbl&gt;), <strong>updated_at</strong> (&lt;chr&gt;), <strong>lyrics_id</strong> (&lt;int&gt;), <strong>plain_lyrics</strong> (&lt;chr&gt;), <strong>synced_lyrics</strong> (&lt;chr&gt;), <strong>has_plain_lyrics</strong> (&lt;int&gt;), <strong>has_synced_lyrics</strong> (&lt;int&gt;) e <strong>instrumental</strong> (&lt;int&gt;).</p>
 </section>
 </section>
 

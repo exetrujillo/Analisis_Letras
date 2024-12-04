@@ -18,18 +18,6 @@ Este proyecto utiliza R para realizar análisis de letras de canciones. Se usar�
 
 -   **Validación de entradas:**
 
-    -   Asegurarse de manejar caracteres especiales en el nombre del artista para evitar errores en la consulta SQL. Por ejemplo, usando `dbQuoteString`:
-
-        `nombre_artista <- dbQuoteString(conexion, tolower(nombre_artista))`
-
-    -   Revisar si es necesario consultar lyrics después de filtrar los lyrics_ids, en lugar de usar un JOIN simplemente en la consulta SQL inicial. Esto lo hice inicialmente porque el número de filas en la tabla tracks y la tabla lyrics no coincidían y la de lyrics tenía más.
-
-    -   Manejo de duplicados:
-
-        -   ¿Preferir la existencia de letras sincronizadas? (`has_synced_lyrics = 1`).
-
-        -   ¿Elegir el registro más reciente? (`updated_at` más alto. implica modificar ).
-
     -   La conexión a la base de datos podría estar en una función separada.
 
     -   Mejora en la visualización:
@@ -59,7 +47,8 @@ p_load(httr,
        dplyr,
        rvest,
        DBI,
-       RSQLite
+       RSQLite,
+       stringi
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
@@ -109,7 +98,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics
 ### Tracks
 
 | Columna | Tipo | Descripción | Ejemplo |
-|-----------------|-----------------|---------------------|------------------|
+|------------------|------------------|-------------------|------------------|
 | `id` | INT | Clave primaria de la tabla. Usada para identificar de manera única cada canción o pista. | 3 |
 | `name` | TEXT | Nombre de la canción o pista. Es sensible a mayúsculas y minúsculas. | Wildest Dreams |
 | `name_lower` | TEXT | Versión en minúsculas del nombre de la pista (`name`). | wildest dreams |
@@ -125,7 +114,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics
 ### Lyrics
 
 | Columna | Tipo | Descripción | Ejemplo |
-|-----------------|-----------------|---------------------|------------------|
+|------------------|------------------|-------------------|------------------|
 | `id` | INT | Clave primaria de la tabla, única para cada registro de letras. | 3 |
 | `plain_lyrics` | TEXT | Letras de la canción en formato simple (sin sincronización con la música). | Not tryna be indie\\nNot tryna be cool\\nJust tryna be in this\\nTell me, are you too?\\n\\nCan \[...\] |
 | `synced_lyrics` | TEXT | Letras sincronizadas, con marcas de tiempo para seguir la canción mientras se reproduce. | \[00:09.66\] Not tryna be indie\\n\[00:12.30\] Not tryna be cool\\n\[00:14.99\] Just tryna be in \[...\] |
@@ -154,19 +143,19 @@ Normalizar los nombres de los artistas es estandarizar su "formato" para que sea
 
 ```{r}
 
-normalizarNombre <- function(nombre_artista) {
-  library(stringi)
-  nombre_artista <- tolower(nombre_artista)                          # Minúsculas
-  nombre_artista <- trimws(nombre_artista)                           # Espacios
-  nombre_artista <- gsub("\\s+", " ", nombre_artista)                # Espacios
-  nombre_artista <- stri_trans_general(nombre_artista, "Latin-ASCII") # Acentos
-  nombre_artista <- gsub("[^a-z0-9 ]", "", nombre_artista)           # Puntuación
-  return(nombre_artista)
+# Normalizar Texto
+nrmlztxt <- function(texto) {
+  texto <- tolower(texto)                          # Minúsculas
+  texto <- trimws(texto)                           # Espacios
+  texto <- gsub("\\s+", " ", texto)                # Espacios
+  texto <- stri_trans_general(texto, "Latin-ASCII") # Acentos
+  texto <- gsub("[^a-z0-9 ]", "", texto)           # Puntuación
+  return(texto)
 }
 
 # Lo probamos
-artista_ej_normalizado <- normalizarNombre(artista_ej)
-print(artista_ej_normalizado)
+artista_ej_nrm <- nrmlztxt(artista_ej)
+print(artista_ej_nrm)
 ```
 
 Se ve que el resultado es "ninos del cerro", sin espacios, ni ñ, ni mayúsculas.
@@ -174,65 +163,48 @@ Se ve que el resultado es "ninos del cerro", sin espacios, ni ñ, ni mayúsculas
 ## Obtener canciones de un artista con las letras
 
 ```{r}
-# Función para buscar canciones de un artista y agregar información de letras
-buscarPorArtista <- function(nombre_artista_normalizado, conexion) {
-  # Paso 1: Buscar las canciones del artista en la tabla tracks
-  tracks_query <- sprintf("
-    SELECT name, artist_name, album_name, duration, last_lyrics_id 
-    FROM tracks 
-    WHERE artist_name_lower = '%s'
-  ", tolower(nombre_artista_normalizado))
+buscarPorArtista <- function(nombre_artista, conexion) {
+  # Paso 0: Normalizar y proteger el nombre del artista
+  nombre_artista <- nrmlztxt(nombre_artista)            # Normalizar texto
+ nombre_artista <- dbQuoteString(conexion, nombre_artista) # Proteger para consultas SQL
   
-  # Obtener las canciones del artista
-  tracks_data <- dbGetQuery(conexion, tracks_query)
+  # Paso 1: Consulta SQL con nombre del artista protegido
+  query <- paste0("
+    SELECT 
+      t.id AS track_id, t.name,t.name_lower, t.artist_name, t.artist_name_lower, t.album_name, t.album_name_lower, t.duration, t.updated_at,l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, l.has_synced_lyrics, l.instrumental
+    FROM tracks t
+    LEFT JOIN lyrics l ON t.last_lyrics_id = l.id
+    WHERE t.artist_name_lower = ", nombre_artista
+  )
+  
+  # Ejecutar la consulta
+  data <- dbGetQuery(conexion, query)
   
   # Verificar si se encontraron canciones
-  if (nrow(tracks_data) == 0) {
+  if (nrow(data) == 0) {
     cat("No se encontraron canciones para este artista.\n")
     return(NULL)
   }
   
-  # Paso 2: Recorrer la tabla lyrics y obtener información adicional
-  # Crear una consulta para obtener las letras correspondientes a last_lyrics_id
-  lyrics_ids <- unique(na.omit(tracks_data$last_lyrics_id))  # Eliminar NA y duplicados
-  if (length(lyrics_ids) == 0) {
-    cat("Ninguna canción tiene letras asociadas.\n")
-    return(tracks_data)
-  }
-  
-  lyrics_query <- sprintf("
-    SELECT id AS last_lyrics_id, plain_lyrics, synced_lyrics, 
-           has_plain_lyrics, has_synced_lyrics, instrumental
-    FROM lyrics 
-    WHERE id IN (%s)
-  ", paste(lyrics_ids, collapse = ", "))
-  
-  # Obtener los datos de letras
-  lyrics_data <- dbGetQuery(conexion, lyrics_query)
-  
-  # Paso 3: Unir los datos de tracks con los de letras
-  # Usamos un merge para unir los datos basados en last_lyrics_id
-  result <- merge(tracks_data, lyrics_data, by = "last_lyrics_id", all.x = TRUE)
+  # Paso 2: Resolver duplicados
+  data <- data %>%
+    group_by(track_id) %>%
+    filter(
+      has_synced_lyrics == 1 | # Priorizar letras sincronizadas
+      updated_at == max(updated_at, na.rm = TRUE) # Priorizar registros más recientes
+    ) %>%
+    ungroup()
   
   # Retornar el dataframe final
-  return(result)
+  return(data)
 }
 
+
 # Ejemplo de uso de la función con nombre normalizado
-df_artista_ej <- buscarPorArtista(artista_ej_normalizado, conn)
+df_artista_ej <- buscarPorArtista(artista_ej_nrm, conn)
 
 # Mostrar las primeras filas del dataframe final
 head(df_artista_ej)
 ```
 
-Arroja 47 filas con 10 variables. Hay sumar los campos de actualizado y subido (fechas).
-
-## Resolver casos duplicados
-
-```{r}
-
-#resolverDuplicados <- function(data) {
-
-#  }
-#df_filtrado <- resolverDuplicados(df_artista_ejemplo)
-```
+Arroja 47 filas con 15 variables: **track_id** (\<int\>), **name** (\<chr\>), **name_lower** (\<chr\>), **artist_name** (\<chr\>), **artist_name_lower** (\<chr\>), **album_name** (\<chr\>), **album_name_lower** (\<chr\>), **duration** (\<dbl\>), **updated_at** (\<chr\>), **lyrics_id** (\<int\>), **plain_lyrics** (\<chr\>), **synced_lyrics** (\<chr\>), **has_plain_lyrics** (\<int\>), **has_synced_lyrics** (\<int\>) e **instrumental** (\<int\>).
