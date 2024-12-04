@@ -119,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introducción" class="level1">
 <h1>Introducción</h1>
-<p>Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de [LRCLIB](<a href="https://lrclib.net/db-dumps" class="uri">https://lrclib.net/db-dumps</a>)</p>
+<p>Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de [LRCLIB](<a href="https://lrclib.net/db-dumps" class="uri">https://lrclib.net/db-dumps</a>).</p>
+<p>A lo largo de todo el código se irá ejemplificando el desarrollo de una investigación sobre las letras de un conjunto de bandas. basado en algún grupo social, estilo, . El ejemplo seráel <strong><em>indie chileno</em></strong> actual, por tanto se van a ejemplificar todas las funciones dentro de este contexto. Esto incluye creación de corpus de texto, análisis de frecuencia de palabras en ciertas bandas o en conjuntos de bandas, etc.</p>
+<p>En resumen se tiene que definir una lista de artistas para analizar múltiples bandas. Crear un corpus unificado que combine las letras de todas las bandas seleccionadas. Realizar análisis lingüísticos básicos (frecuencia de palabras, longitud promedio, etc.). Incluir ejemplos de visualizaciones para explorar patrones.</p>
 <section id="tareas-por-hacer-todo" class="level4">
 <h4 class="anchored" data-anchor-id="tareas-por-hacer-todo">Tareas por hacer (ToDo):</h4>
 <ul>
@@ -152,10 +154,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       rvest,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>       DBI,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       RSQLite,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       stringi</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       stringi,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Your package installed</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in p_load(httr, jsonlite, dplyr, rvest, DBI, RSQLite, stringi, ): Failed to install/load:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -165,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="importar-base-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="importar-base-de-datos">Importar base de datos</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conectar a la base de datos</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>db_file <span class="ot">&lt;-</span> <span class="st">"db.sqlite3"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">dbname =</span> db_file)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar tablas</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tables &lt;- dbListTables(conn)</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conectar a la base de datos</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>db_file <span class="ot">&lt;-</span> <span class="st">"db.sqlite3"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="at">dbname =</span> db_file)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar tablas</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># tables &lt;- dbListTables(conn)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># print(tables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>El resultado son las siguientes tablas:</p>
 <table class="caption-top table">
@@ -206,31 +214,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="exploramos-las-tablas" class="level2">
 <h2 class="anchored" data-anchor-id="exploramos-las-tablas">Exploramos las tablas</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Leer los primeros registros de una tabla</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data &lt;- dbGetQuery(conn, "SELECT * FROM lyrics LIMIT 10")</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(data)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consultar la estructura de la tabla</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>columns <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"PRAGMA table_info(lyrics)"</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   cid              name     type notnull dflt_value pk
-1    0                id  INTEGER       0         NA  1
-2    1      plain_lyrics     TEXT       0         NA  0
-3    2     synced_lyrics     TEXT       0         NA  0
-4    3          track_id  INTEGER       0         NA  0
-5    4  has_plain_lyrics  BOOLEAN       0         NA  0
-6    5 has_synced_lyrics  BOOLEAN       0         NA  0
-7    6      instrumental  BOOLEAN       0         NA  0
-8    7            source     TEXT       0         NA  0
-9    8        created_at DATETIME       0         NA  0
-10   9        updated_at DATETIME       0         NA  0</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Leer los primeros registros de tracks</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dataTracks <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM tracks LIMIT 10"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(dataTracks)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consultar la estructura de tracks</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>columnsTracks <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"PRAGMA table_info(tracks)"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#print(columnsTracks)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Leer los primeros registros de lyrics</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>dataLyrics <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"SELECT * FROM lyrics LIMIT 10"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># print(dataLyrics)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Consultar la estructura de lyrics</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>columnsLyrics <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">"PRAGMA table_info(lyrics)"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#print(columnsLyrics)</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Oros Test (dejar comentado):</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Leer los primeros registros de una tabla</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># dataX &lt;- dbGetQuery(conn, "SELECT * FROM tracks_fts LIMIT 10")</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># print(dataX)</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Consultar la estructura de la tabla</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#columnsLyrics &lt;- dbGetQuery(conn, "PRAGMA table_info(tracks_fts)")</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#print(columnsX)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="estructura-de-las-tablas-de-interés" class="level2">
 <h2 class="anchored" data-anchor-id="estructura-de-las-tablas-de-interés">Estructura de las tablas de interés</h2>
-<p>Nos interesa particularmente la tabla tracks y la tabla lyrics</p>
+<p>Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_fts parece útil para búsquedas rápidas, tiene solo el nombre, el artista y el album de las canciones con texto normalizado.</p>
 <section id="tracks" class="level3">
 <h3 class="anchored" data-anchor-id="tracks">Tracks</h3>
 <table class="caption-top table">
@@ -401,32 +413,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="definición-de-funciones" class="level1">
-<h1>Definición de funciones</h1>
-<p>Ya teniendo claridad de la estructura de las tablas que nos interesan, comenzaremos a crear las funciones que nos permitan crear nuestros propios data frames y analizar las canciones que nos interesen.</p>
+<section id="definición-de-funciones-de-extracción" class="level1">
+<h1>Definición de funciones de extracción</h1>
+<p>Ya teniendo claridad de la estructura de las tablas que nos interesan, comenzaremos a crear las funciones que nos permitan crear nuestros propios data frames extrayendo las columnas que nos interesan.</p>
+<section id="el-ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="el-ejemplo">El ejemplo</h2>
+<p>Partiremos con una sola banda</p>
+</section>
 <section id="variables-iniciales-de-ejemplo" class="level2">
 <h2 class="anchored" data-anchor-id="variables-iniciales-de-ejemplo">Variables iniciales de ejemplo</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>artista_ej <span class="ot">&lt;-</span> <span class="st">"Niños del Cerro"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>artista_ej <span class="ot">&lt;-</span> <span class="st">"Niños del Cerro"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="normalizar-nombre-de-artista" class="level2">
 <h2 class="anchored" data-anchor-id="normalizar-nombre-de-artista">Normalizar nombre de artista</h2>
 <p>Normalizar los nombres de los artistas es estandarizar su “formato” para que sean uniformes, independientemente de cómo estén registrados en la base de datos o ingresados por el usuario. Esto es útil para evitar problemas como registros duplicados o consultas fallidas debido a diferencias en mayúsculas, espacios, acentos, o caracteres especiales, como la ñ en “Niños del Cerro”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalizar Texto</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nrmlztxt <span class="ot">&lt;-</span> <span class="cf">function</span>(texto) {</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">tolower</span>(texto)                          <span class="co"># Minúsculas</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">trimws</span>(texto)                           <span class="co"># Espacios</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>, texto)                <span class="co"># Espacios</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">stri_trans_general</span>(texto, <span class="st">"Latin-ASCII"</span>) <span class="co"># Acentos</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[^a-z0-9 ]"</span>, <span class="st">""</span>, texto)           <span class="co"># Puntuación</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(texto)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lo probamos</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>artista_ej_nrm <span class="ot">&lt;-</span> <span class="fu">nrmlztxt</span>(artista_ej)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(artista_ej_nrm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función de normalización sin eliminar el punto</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>nrmlztxt <span class="ot">&lt;-</span> <span class="cf">function</span>(texto) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">tolower</span>(texto)                          <span class="co"># Minúsculas</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">trimws</span>(texto)                           <span class="co"># Eliminar espacios</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">s+"</span>, <span class="st">" "</span>, texto)                <span class="co"># Reemplazar múltiples espacios por uno solo</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">stri_trans_general</span>(texto, <span class="st">"Latin-ASCII"</span>) <span class="co"># Eliminar acentos</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  texto <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[^a-z0-9 .]"</span>, <span class="st">""</span>, texto)           <span class="co"># Permitir puntos (.) en los nombres</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(texto)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lo probamos</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>artista_ej_nrm <span class="ot">&lt;-</span> <span class="fu">nrmlztxt</span>(artista_ej)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(artista_ej_nrm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ninos del cerro"</code></pre>
 </div>
@@ -436,64 +452,198 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="obtener-canciones-de-un-artista-con-las-letras" class="level2">
 <h2 class="anchored" data-anchor-id="obtener-canciones-de-un-artista-con-las-letras">Obtener canciones de un artista con las letras</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>buscarPorArtista <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre_artista, conexion) {</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 0: Normalizar y proteger el nombre del artista</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">nrmlztxt</span>(nombre_artista)            <span class="co"># Normalizar texto</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a> nombre_artista <span class="ot">&lt;-</span> <span class="fu">dbQuoteString</span>(conexion, nombre_artista) <span class="co"># Proteger para consultas SQL</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 1: Consulta SQL con nombre del artista protegido</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT </span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">      t.id AS track_id, t.name,t.name_lower, t.artist_name, t.artist_name_lower, t.album_name, t.album_name_lower, t.duration, t.updated_at,l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, l.has_synced_lyrics, l.instrumental</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM tracks t</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN lyrics l ON t.last_lyrics_id = l.id</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE t.artist_name_lower = "</span>, nombre_artista</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ejecutar la consulta</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conexion, query)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar si se encontraron canciones</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(data) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No se encontraron canciones para este artista.</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 2: Resolver duplicados</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(track_id) <span class="sc">%&gt;%</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>      has_synced_lyrics <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> <span class="co"># Priorizar letras sincronizadas</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>      updated_at <span class="sc">==</span> <span class="fu">max</span>(updated_at, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Priorizar registros más recientes</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retornar el dataframe final</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso de la función con nombre normalizado</span></span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>df_artista_ej <span class="ot">&lt;-</span> <span class="fu">buscarPorArtista</span>(artista_ej_nrm, conn)</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe final</span></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_artista_ej)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 15
-  track_id name              name_lower artist_name artist_name_lower album_name
-     &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;     
-1  2960111 Capital           capital    Niños Del … ninos del cerro   Nonato Coo
-2  2960527 Contigo           contigo    Niños Del … ninos del cerro   Lance     
-3  2960675 Cuauhtémoc        cuauhtemoc Niños Del … ninos del cerro   Cuauhtémoc
-4  2960799 Daniel            daniel     Niños Del … ninos del cerro   Suave Pen…
-5  2961183 Durmiendo en el … durmiendo… Niños Del … ninos del cerro   Cuauhtémoc
-6  2961201 Días Frescos (En… dias fres… Niños Del … ninos del cerro   No Va a P…
-# ℹ 9 more variables: album_name_lower &lt;chr&gt;, duration &lt;dbl&gt;, updated_at &lt;chr&gt;,
-#   lyrics_id &lt;int&gt;, plain_lyrics &lt;chr&gt;, synced_lyrics &lt;chr&gt;,
-#   has_plain_lyrics &lt;int&gt;, has_synced_lyrics &lt;int&gt;, instrumental &lt;int&gt;</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>buscarPorArtista <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre_artista, conexion) {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 0: Proteger el nombre del artista para evitar inyecciones SQL</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  nombre_artista <span class="ot">&lt;-</span> <span class="fu">dbQuoteString</span>(conexion, nombre_artista)  <span class="co"># Proteger para consultas SQL</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 1: Consulta SQL con nombre del artista usando LIKE</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">      t.id AS track_id, t.name, t.name_lower, t.artist_name, t.artist_name_lower, t.album_name, t.album_name_lower, t.duration, t.updated_at, </span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="st">      l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, l.has_synced_lyrics, l.instrumental</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM tracks t</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN lyrics l ON t.last_lyrics_id = l.id</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE t.artist_name LIKE "</span>, nombre_artista</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ejecutar la consulta</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(conexion, query)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar si se encontraron canciones</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(data) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No se encontraron canciones para este artista.</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Paso 2: Resolver duplicados (priorizando letras sincronizadas y registros más recientes)</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(track_id) <span class="sc">%&gt;%</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>      has_synced_lyrics <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> <span class="co"># Priorizar letras sincronizadas</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>      updated_at <span class="sc">==</span> <span class="fu">max</span>(updated_at, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="co"># Priorizar registros más recientes</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retornar el dataframe final</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso de la función con nombre sin normalizar</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>df_artista_ej <span class="ot">&lt;-</span> <span class="fu">buscarPorArtista</span>(artista_ej, conn)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe final</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co"># head(df_artista_ej)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Arroja 47 filas con 15 variables: <strong>track_id</strong> (&lt;int&gt;), <strong>name</strong> (&lt;chr&gt;), <strong>name_lower</strong> (&lt;chr&gt;), <strong>artist_name</strong> (&lt;chr&gt;), <strong>artist_name_lower</strong> (&lt;chr&gt;), <strong>album_name</strong> (&lt;chr&gt;), <strong>album_name_lower</strong> (&lt;chr&gt;), <strong>duration</strong> (&lt;dbl&gt;), <strong>updated_at</strong> (&lt;chr&gt;), <strong>lyrics_id</strong> (&lt;int&gt;), <strong>plain_lyrics</strong> (&lt;chr&gt;), <strong>synced_lyrics</strong> (&lt;chr&gt;), <strong>has_plain_lyrics</strong> (&lt;int&gt;), <strong>has_synced_lyrics</strong> (&lt;int&gt;) e <strong>instrumental</strong> (&lt;int&gt;).</p>
+</section>
+</section>
+<section id="el-indie-chileno" class="level1">
+<h1>El indie chileno</h1>
+<p>Ciertamente una banda no constituye un estilo artístico por completo. El indie de por sí es una categoría bastante amplia que refiere a artistas (solistas o bandas) que en general se encuentran por fuera del espacio de grandes discográficas y de estructuras comerciales importantes. Viene más de una producción independiente del arte, relativamente independiente al capital comparando con la música más comercial.</p>
+<p>Lo amplio del indie también refiere a la diversidad de estilos que se entremezclan, desde el rock, el pop, el folk, música más electrónica, elementos de rap, etc. Con un sello bastante experimental en muchos casos, sonidos más difusos, cierto grado de sensación de letargo en algunas sonoridades extendidas en la escena.</p>
+<section id="definición-de-grupos-artísticos" class="level3">
+<h3 class="anchored" data-anchor-id="definición-de-grupos-artísticos">Definición de grupos artísticos</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bandas_indie <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Adelaida"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Amarga Marga"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Árbol Lunar"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Asia menor"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Asamblea Internacional del Fuego"</span>, <span class="co">#Poshardcore</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Cabro"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Candelabro"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Chini and the technicians"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Chini.png"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Columpios al Suelo"</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Confío en tus amigos"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Cuando el problema no existe"</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Cepa Funk"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Daniela Gatica y el fruto del ruido"</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"De Perder sus Pétalos"</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Déjenme Dormir"</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Dolorio &amp; los Tunantes"</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"El cómodo silencio de los que hablan poco"</span>,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Etéreos"</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Fin del Mundo"</span>,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Flores"</span>,</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Floresalegría"</span>,</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Frucola Frappé"</span>,</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Gangrena Surf"</span>,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Helices"</span>,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hemisferio Sur"</span>,</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hesse Kassel"</span>,</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"iiii"</span>, <span class="co"># Sí, es el nombre de la banda</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Las Olas (NoisPop)"</span>,</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Lejania"</span>,</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Los animales también se suicidan"</span>,</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Los repuestos superpuestos"</span>,</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Los Santos Dumont"</span>,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Los Valentina"</span>,</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Mark 62"</span>, <span class="co"># Pop punk</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="st">"María Tyrana"</span>,</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MonoAzul"</span>,</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Niños del Cerro"</span>,</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Novio"</span>,</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Paracaidistas"</span>,</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Parálisis del Sueño"</span>,</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Patio Solar"</span>,</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Phuyu y la Fantasma"</span>,</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Perrogato"</span>,</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Protistas"</span>,</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Rock N' Chile"</span>,</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Rosario Alfonso"</span>,</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Samsara"</span>,</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Siniestra Pandora"</span>,</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Silabario"</span>,</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Super Especial"</span>,</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Supertriste"</span>,</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Saturnday"</span>,</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Tus amigos nuevos"</span>,</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Violentistas de Siempre"</span>,</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>  <span class="st">"99 Payasos"</span> <span class="co"># Pop punk</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="crear-corpus" class="level2">
+<h2 class="anchored" data-anchor-id="crear-corpus">Crear corpus</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para crear un corpus de canciones con todas las columnas especificadas</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>crearCorpusDeBandas <span class="ot">&lt;-</span> <span class="cf">function</span>(lista_bandas, conexion) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inicializar un dataframe vacío con las columnas necesarias</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  corpus_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">track_id =</span> <span class="fu">integer</span>(),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name_lower =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">artist_name =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">artist_name_lower =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">album_name =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">album_name_lower =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">duration =</span> <span class="fu">double</span>(),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">updated_at =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">lyrics_id =</span> <span class="fu">integer</span>(),</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plain_lyrics =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">synced_lyrics =</span> <span class="fu">character</span>(),</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">has_plain_lyrics =</span> <span class="fu">integer</span>(),</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">has_synced_lyrics =</span> <span class="fu">integer</span>(),</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">instrumental =</span> <span class="fu">integer</span>(),</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Recorrer la lista de bandas</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (artista <span class="cf">in</span> lista_bandas) {</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Llamar a la función buscarPorArtista para obtener las canciones de cada banda</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    df_artista <span class="ot">&lt;-</span> <span class="fu">buscarPorArtista</span>(artista, conexion)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Verificar si se encontró alguna canción</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(df_artista)) {</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Añadir las canciones del artista al corpus</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>      corpus_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(corpus_data, df_artista <span class="sc">%&gt;%</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">select</span>(</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>                                 track_id, </span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>                                 name, </span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>                                 name_lower, </span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>                                 artist_name, </span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>                                 artist_name_lower, </span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>                                 album_name, </span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>                                 album_name_lower, </span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>                                 duration, </span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>                                 updated_at, </span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>                                 lyrics_id, </span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>                                 plain_lyrics, </span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>                                 synced_lyrics, </span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>                                 has_plain_lyrics, </span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>                                 has_synced_lyrics, </span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>                                 instrumental</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>                               ))</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Devolver el dataframe con todas las letras de las canciones y las columnas necesarias</span></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(corpus_data)</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el corpus con todas las bandas</span></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>corpus_df <span class="ot">&lt;-</span> <span class="fu">crearCorpusDeBandas</span>(bandas_indie, conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.
+No se encontraron canciones para este artista.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe resultante</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#head(corpus_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 

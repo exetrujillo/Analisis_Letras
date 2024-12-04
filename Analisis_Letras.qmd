@@ -12,7 +12,11 @@ editor: visual
 
 # Introducción
 
-Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de \[LRCLIB\](<https://lrclib.net/db-dumps>)
+Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de \[LRCLIB\](<https://lrclib.net/db-dumps>).
+
+A lo largo de todo el código se irá ejemplificando el desarrollo de una investigación sobre las letras de un conjunto de bandas. basado en algún grupo social, estilo, . El ejemplo seráel ***indie chileno*** actual, por tanto se van a ejemplificar todas las funciones dentro de este contexto. Esto incluye creación de corpus de texto, análisis de frecuencia de palabras en ciertas bandas o en conjuntos de bandas, etc.
+
+En resumen se tiene que definir una lista de artistas para analizar múltiples bandas. Crear un corpus unificado que combine las letras de todas las bandas seleccionadas. Realizar análisis lingüísticos básicos (frecuencia de palabras, longitud promedio, etc.). Incluir ejemplos de visualizaciones para explorar patrones.
 
 #### Tareas por hacer (ToDo):
 
@@ -48,7 +52,7 @@ p_load(httr,
        rvest,
        DBI,
        RSQLite,
-       stringi
+       stringi,
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
@@ -81,19 +85,35 @@ El resultado son las siguientes tablas:
 ## Exploramos las tablas
 
 ```{r}
+# Leer los primeros registros de tracks
+dataTracks <- dbGetQuery(conn, "SELECT * FROM tracks LIMIT 10")
+# print(dataTracks)
 
+# Consultar la estructura de tracks
+columnsTracks <- dbGetQuery(conn, "PRAGMA table_info(tracks)")
+#print(columnsTracks)
+
+# Leer los primeros registros de lyrics
+dataLyrics <- dbGetQuery(conn, "SELECT * FROM lyrics LIMIT 10")
+# print(dataLyrics)
+
+# Consultar la estructura de lyrics
+columnsLyrics <- dbGetQuery(conn, "PRAGMA table_info(lyrics)")
+#print(columnsLyrics)
+
+# Oros Test (dejar comentado):
 # Leer los primeros registros de una tabla
-# data <- dbGetQuery(conn, "SELECT * FROM lyrics LIMIT 10")
-# print(data)
+# dataX <- dbGetQuery(conn, "SELECT * FROM tracks_fts LIMIT 10")
+# print(dataX)
 
 # Consultar la estructura de la tabla
-columns <- dbGetQuery(conn, "PRAGMA table_info(lyrics)")
-print(columns)
+#columnsLyrics <- dbGetQuery(conn, "PRAGMA table_info(tracks_fts)")
+#print(columnsX)
 ```
 
 ## Estructura de las tablas de interés
 
-Nos interesa particularmente la tabla tracks y la tabla lyrics
+Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_fts parece útil para búsquedas rápidas, tiene solo el nombre, el artista y el album de las canciones con texto normalizado.
 
 ### Tracks
 
@@ -126,9 +146,13 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics
 | `created_at` | DATE | Fecha y hora de creación del registro. | 2022-11-14 11:46:45.978+00:00 |
 | `updated_at` | DATE | Fecha y hora de la última actualización del registro. | 2022-11-14 11:46:45.978+00:00 |
 
-# Definición de funciones
+# Definición de funciones de extracción
 
-Ya teniendo claridad de la estructura de las tablas que nos interesan, comenzaremos a crear las funciones que nos permitan crear nuestros propios data frames y analizar las canciones que nos interesen.
+Ya teniendo claridad de la estructura de las tablas que nos interesan, comenzaremos a crear las funciones que nos permitan crear nuestros propios data frames extrayendo las columnas que nos interesan.
+
+## El ejemplo
+
+Partiremos con una sola banda
 
 ## Variables iniciales de ejemplo
 
@@ -143,13 +167,13 @@ Normalizar los nombres de los artistas es estandarizar su "formato" para que sea
 
 ```{r}
 
-# Normalizar Texto
+# Función de normalización sin eliminar el punto
 nrmlztxt <- function(texto) {
   texto <- tolower(texto)                          # Minúsculas
-  texto <- trimws(texto)                           # Espacios
-  texto <- gsub("\\s+", " ", texto)                # Espacios
-  texto <- stri_trans_general(texto, "Latin-ASCII") # Acentos
-  texto <- gsub("[^a-z0-9 ]", "", texto)           # Puntuación
+  texto <- trimws(texto)                           # Eliminar espacios
+  texto <- gsub("\\s+", " ", texto)                # Reemplazar múltiples espacios por uno solo
+  texto <- stri_trans_general(texto, "Latin-ASCII") # Eliminar acentos
+  texto <- gsub("[^a-z0-9 .]", "", texto)           # Permitir puntos (.) en los nombres
   return(texto)
 }
 
@@ -163,18 +187,19 @@ Se ve que el resultado es "ninos del cerro", sin espacios, ni ñ, ni mayúsculas
 ## Obtener canciones de un artista con las letras
 
 ```{r}
+
 buscarPorArtista <- function(nombre_artista, conexion) {
-  # Paso 0: Normalizar y proteger el nombre del artista
-  nombre_artista <- nrmlztxt(nombre_artista)            # Normalizar texto
- nombre_artista <- dbQuoteString(conexion, nombre_artista) # Proteger para consultas SQL
+  # Paso 0: Proteger el nombre del artista para evitar inyecciones SQL
+  nombre_artista <- dbQuoteString(conexion, nombre_artista)  # Proteger para consultas SQL
   
-  # Paso 1: Consulta SQL con nombre del artista protegido
+  # Paso 1: Consulta SQL con nombre del artista usando LIKE
   query <- paste0("
     SELECT 
-      t.id AS track_id, t.name,t.name_lower, t.artist_name, t.artist_name_lower, t.album_name, t.album_name_lower, t.duration, t.updated_at,l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, l.has_synced_lyrics, l.instrumental
+      t.id AS track_id, t.name, t.name_lower, t.artist_name, t.artist_name_lower, t.album_name, t.album_name_lower, t.duration, t.updated_at, 
+      l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, l.has_synced_lyrics, l.instrumental
     FROM tracks t
     LEFT JOIN lyrics l ON t.last_lyrics_id = l.id
-    WHERE t.artist_name_lower = ", nombre_artista
+    WHERE t.artist_name LIKE ", nombre_artista
   )
   
   # Ejecutar la consulta
@@ -186,7 +211,7 @@ buscarPorArtista <- function(nombre_artista, conexion) {
     return(NULL)
   }
   
-  # Paso 2: Resolver duplicados
+  # Paso 2: Resolver duplicados (priorizando letras sincronizadas y registros más recientes)
   data <- data %>%
     group_by(track_id) %>%
     filter(
@@ -200,11 +225,146 @@ buscarPorArtista <- function(nombre_artista, conexion) {
 }
 
 
-# Ejemplo de uso de la función con nombre normalizado
-df_artista_ej <- buscarPorArtista(artista_ej_nrm, conn)
+# Ejemplo de uso de la función con nombre sin normalizar
+df_artista_ej <- buscarPorArtista(artista_ej, conn)
 
 # Mostrar las primeras filas del dataframe final
-head(df_artista_ej)
+# head(df_artista_ej)
 ```
 
 Arroja 47 filas con 15 variables: **track_id** (\<int\>), **name** (\<chr\>), **name_lower** (\<chr\>), **artist_name** (\<chr\>), **artist_name_lower** (\<chr\>), **album_name** (\<chr\>), **album_name_lower** (\<chr\>), **duration** (\<dbl\>), **updated_at** (\<chr\>), **lyrics_id** (\<int\>), **plain_lyrics** (\<chr\>), **synced_lyrics** (\<chr\>), **has_plain_lyrics** (\<int\>), **has_synced_lyrics** (\<int\>) e **instrumental** (\<int\>).
+
+# El indie chileno
+
+Ciertamente una banda no constituye un estilo artístico por completo. El indie de por sí es una categoría bastante amplia que refiere a artistas (solistas o bandas) que en general se encuentran por fuera del espacio de grandes discográficas y de estructuras comerciales importantes. Viene más de una producción independiente del arte, relativamente independiente al capital comparando con la música más comercial.
+
+Lo amplio del indie también refiere a la diversidad de estilos que se entremezclan, desde el rock, el pop, el folk, música más electrónica, elementos de rap, etc. Con un sello bastante experimental en muchos casos, sonidos más difusos, cierto grado de sensación de letargo en algunas sonoridades extendidas en la escena.
+
+### Definición de grupos artísticos
+
+```{r}
+
+bandas_indie <- c(
+  "Adelaida",
+  "Amarga Marga",
+  "Árbol Lunar",
+  "Asia menor",
+  "Asamblea Internacional del Fuego", #Poshardcore
+  "Cabro",
+  "Candelabro",
+  "Chini and the technicians",
+  "Chini.png",
+  "Columpios al Suelo",
+  "Confío en tus amigos",
+  "Cuando el problema no existe",
+  "Cepa Funk",
+  "Daniela Gatica y el fruto del ruido",
+  "De Perder sus Pétalos",
+  "Déjenme Dormir",
+  "Dolorio & los Tunantes",
+  "El cómodo silencio de los que hablan poco",
+  "Etéreos",
+  "Fin del Mundo",
+  "Flores",
+  "Floresalegría",
+  "Frucola Frappé",
+  "Gangrena Surf",
+  "Helices",
+  "Hemisferio Sur",
+  "Hesse Kassel",
+  "iiii", # Sí, es el nombre de la banda
+  "Las Olas (NoisPop)",
+  "Lejania",
+  "Los animales también se suicidan",
+  "Los repuestos superpuestos",
+  "Los Santos Dumont",
+  "Los Valentina",
+  "Mark 62", # Pop punk
+  "María Tyrana",
+  "MonoAzul",
+  "Niños del Cerro",
+  "Novio",
+  "Paracaidistas",
+  "Parálisis del Sueño",
+  "Patio Solar",
+  "Phuyu y la Fantasma",
+  "Perrogato",
+  "Protistas",
+  "Rock N' Chile",
+  "Rosario Alfonso",
+  "Samsara",
+  "Siniestra Pandora",
+  "Silabario",
+  "Super Especial",
+  "Supertriste",
+  "Saturnday",
+  "Tus amigos nuevos",
+  "Violentistas de Siempre",
+  "99 Payasos" # Pop punk
+)
+```
+
+## Crear corpus
+
+```{r}
+# Función para crear un corpus de canciones con todas las columnas especificadas
+crearCorpusDeBandas <- function(lista_bandas, conexion) {
+  # Inicializar un dataframe vacío con las columnas necesarias
+  corpus_data <- data.frame(
+    track_id = integer(),
+    name = character(),
+    name_lower = character(),
+    artist_name = character(),
+    artist_name_lower = character(),
+    album_name = character(),
+    album_name_lower = character(),
+    duration = double(),
+    updated_at = character(),
+    lyrics_id = integer(),
+    plain_lyrics = character(),
+    synced_lyrics = character(),
+    has_plain_lyrics = integer(),
+    has_synced_lyrics = integer(),
+    instrumental = integer(),
+    stringsAsFactors = FALSE
+  )
+  
+  # Recorrer la lista de bandas
+  for (artista in lista_bandas) {
+    # Llamar a la función buscarPorArtista para obtener las canciones de cada banda
+    df_artista <- buscarPorArtista(artista, conexion)
+    
+    # Verificar si se encontró alguna canción
+    if (!is.null(df_artista)) {
+      # Añadir las canciones del artista al corpus
+      corpus_data <- bind_rows(corpus_data, df_artista %>%
+                               select(
+                                 track_id, 
+                                 name, 
+                                 name_lower, 
+                                 artist_name, 
+                                 artist_name_lower, 
+                                 album_name, 
+                                 album_name_lower, 
+                                 duration, 
+                                 updated_at, 
+                                 lyrics_id, 
+                                 plain_lyrics, 
+                                 synced_lyrics, 
+                                 has_plain_lyrics, 
+                                 has_synced_lyrics, 
+                                 instrumental
+                               ))
+    }
+  }
+  
+  # Devolver el dataframe con todas las letras de las canciones y las columnas necesarias
+  return(corpus_data)
+}
+
+# Crear el corpus con todas las bandas
+corpus_df <- crearCorpusDeBandas(bandas_indie, conn)
+
+# Mostrar las primeras filas del dataframe resultante
+#head(corpus_df)
+```
