@@ -204,12 +204,12 @@ buscarPorArtista <- function(nombre_artista, conexion) {
   
   # Ejecutar la consulta
   data <- dbGetQuery(conexion, query)
-  
+
   # Verificar si se encontraron canciones
-  if (nrow(data) == 0) {
-    cat("No se encontraron canciones para este artista.\n")
-    return(NULL)
-  }
+if (nrow(data) == 0) {
+  cat("No se encontraron canciones para el artista:", nombre_artista, "\n")
+  return(NULL)
+}
   
   # Paso 2: Resolver duplicados (priorizando letras sincronizadas y registros más recientes)
   data <- data %>%
@@ -297,7 +297,6 @@ bandas_indie <- c(
   "Silabario",
   "Super Especial",
   "Supertriste",
-  "Saturnday",
   "Tus amigos nuevos",
   "Violentistas de Siempre",
   "99 Payasos" # Pop punk
