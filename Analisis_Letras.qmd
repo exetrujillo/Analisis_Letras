@@ -2,7 +2,7 @@
 title: "Análisis de Letras"
 author: "Exequiel Trujillo Escobar"
 date: "`r Sys.Date()`"
-description: "Exploración y análisis de letras de canciones utilizando la API de LRC Lib."
+description: "Extracción y análisis de letras de canciones"
 format: 
   html:
     css: styles.css
@@ -12,7 +12,7 @@ editor: visual
 
 # Introducción
 
-Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de \[LRCLIB\](<https://lrclib.net/db-dumps>).
+Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de \[LRCLIB\](<https://lrclib.net/db-dumps>) y a partir de ella se crearán data frames para cada caso de estudio.
 
 A lo largo de todo el código se irá ejemplificando el desarrollo de una investigación sobre las letras de un conjunto de bandas. basado en algún grupo social, estilo, . El ejemplo seráel ***indie chileno*** actual, por tanto se van a ejemplificar todas las funciones dentro de este contexto. Esto incluye creación de corpus de texto, análisis de frecuencia de palabras en ciertas bandas o en conjuntos de bandas, etc.
 
