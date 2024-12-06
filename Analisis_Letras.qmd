@@ -20,17 +20,21 @@ En resumen se tiene que definir una lista de artistas para analizar múltiples b
 
 #### Tareas por hacer (ToDo):
 
--   Función para eliminar casos duplicados
-
 -   Análisis:
 
-    -   Frecuencias de palabras
+    -   Análisis de frecuencia léxica
 
-    -   ¿Sentimientos? ¿Emociones?
+    -   Análisis de sentimientos
 
-    -   Gráficos ggplot
+    -   Análisis de complejidad textual
 
-    -   Explorar la existencia de paquetes para estudios lingüísticos y literarios con reconocimiento de pátrones de lenguaje por gramática en español.
+    -   Reconocimiento de patrones gramaticales
+
+    -   Visualización de tendencias
+
+    -   Análisis literario
+
+        -   Explorar la existencia de paquetes para estudios lingüísticos y literarios con reconocimiento de pátrones de lenguaje por gramática en español.
 
 ## Instalación de librerías
 
@@ -415,6 +419,38 @@ corpus_df <- crearCorpusDeBandas(bandas_indie, conn)
 # Mostrar las primeras filas del dataframe resultante
 #head(corpus_df)
 ```
+
+Obtenemos una muestra de 321 canciones.
+
+# Análisis de datos
+
+## Análisis de frecuencia léxica
+
+## Análisis de sentimientos
+
+## Análisis de complejidad textual
+
+## Reconocimiento de patrones gramaticales
+
+## Visualización de tendencias
+
+## Análisis literario
+
+## Consideraciones especiales respecto a la prosa
+
+En las canciones, a diferencia de casos como las novelas o las noticias, el análisis debe considerar algunas cuestiones como:
+
+-   La posibilidad de sesgo por repetición de frases en coros o en otras partes de las canciones.
+
+-   Elementos no textuales, como onomatopeyas.
+
+-   Lenguaje poético puede no ser tan facilmente entendible para los algoritmos de sentimiento. Hay que buscar uno que funciones bien en español.
+
+-   Dialecto en el indie chileno puede afectar el análisis de sentimiento.
+
+-   Resolver el problema de que el corpus para cada canción pueda ser muy pequeño, tal vez se tendran que hacer agrupamientos de canciones por album o por artista,
+
+-   La música tiene un elemento emocional o performativo que no puede captarse solo a través del texto. Por lo que habría que complementar con datos que se puedan sacar de apis como la de spotify o Essentia.
 
 # Exportación de data frames
 
