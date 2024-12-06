@@ -20,21 +20,15 @@ En resumen se tiene que definir una lista de artistas para analizar múltiples b
 
 #### Tareas por hacer (ToDo):
 
--   **Validación de entradas:**
+-   Función para eliminar casos duplicados
 
-    -   La conexión a la base de datos podría estar en una función separada.
+-   Análisis:
 
-    -   Mejora en la visualización:
+    -   Frecuencias de palabras
 
-        -   Para inspeccionar el `dataframe` resultante, usar librerías como `DT` o `kableExtra`
+    -   ¿Sentimientos? ¿Emociones?
 
-    -   Análisis:
-
-        -   Frecuencias de palabras
-
-        -   ¿Sentimientos? ¿Emociones?
-
-        -   Gráficos ggplot
+    -   Gráficos ggplot
 
     -   Explorar la existencia de paquetes para estudios lingüísticos y literarios con reconocimiento de pátrones de lenguaje por gramática en español.
 
@@ -53,6 +47,7 @@ p_load(httr,
        DBI,
        RSQLite,
        stringi,
+       writexl
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
@@ -177,7 +172,7 @@ nrmlztxt <- function(texto) {
   return(texto)
 }
 
-# Lo probamos
+# Lo probamos, pero esta función al parecer es innecesaria
 artista_ej_nrm <- nrmlztxt(artista_ej)
 print(artista_ej_nrm)
 ```
@@ -189,41 +184,31 @@ Se ve que el resultado es "ninos del cerro", sin espacios, ni ñ, ni mayúsculas
 ```{r}
 
 buscarPorArtista <- function(nombre_artista, conexion) {
-  # Paso 0: Proteger el nombre del artista para evitar inyecciones SQL
-  nombre_artista <- dbQuoteString(conexion, nombre_artista)  # Proteger para consultas SQL
+  # Normalizar el nombre del artista
+  nombre_artista <- tolower(nombre_artista)                       # Convertir a minúsculas
+  nombre_artista <- stri_trans_general(nombre_artista, "Latin-ASCII") # Eliminar acentos y caracteres especiales
+  nombre_artista <- trimws(nombre_artista)                         # Eliminar espacios adicionales
   
-  # Paso 1: Consulta SQL con nombre del artista usando LIKE
+  # Proteger el nombre para consultas SQL
+  nombre_artista_quoted <- dbQuoteString(conexion, nombre_artista)
+  
+  # Consulta SQL con LIKE (búsqueda flexible) y campo normalizado en la base de datos
   query <- paste0("
     SELECT 
-      t.id AS track_id, t.name, t.name_lower, t.artist_name, t.artist_name_lower, t.album_name, t.album_name_lower, t.duration, t.updated_at, 
-      l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, l.has_synced_lyrics, l.instrumental
+      t.id AS track_id, t.name, t.name_lower, t.artist_name, t.artist_name_lower, 
+      t.album_name, t.album_name_lower, t.duration, t.updated_at, 
+      l.id AS lyrics_id, l.plain_lyrics, l.synced_lyrics, l.has_plain_lyrics, 
+      l.has_synced_lyrics, l.instrumental
     FROM tracks t
     LEFT JOIN lyrics l ON t.last_lyrics_id = l.id
-    WHERE t.artist_name LIKE ", nombre_artista
+    WHERE t.artist_name_lower LIKE ", nombre_artista_quoted
   )
   
   # Ejecutar la consulta
   data <- dbGetQuery(conexion, query)
-
-  # Verificar si se encontraron canciones
-if (nrow(data) == 0) {
-  cat("No se encontraron canciones para el artista:", nombre_artista, "\n")
-  return(NULL)
-}
   
-  # Paso 2: Resolver duplicados (priorizando letras sincronizadas y registros más recientes)
-  data <- data %>%
-    group_by(track_id) %>%
-    filter(
-      has_synced_lyrics == 1 | # Priorizar letras sincronizadas
-      updated_at == max(updated_at, na.rm = TRUE) # Priorizar registros más recientes
-    ) %>%
-    ungroup()
-  
-  # Retornar el dataframe final
   return(data)
 }
-
 
 # Ejemplo de uso de la función con nombre sin normalizar
 df_artista_ej <- buscarPorArtista(artista_ej, conn)
@@ -233,6 +218,55 @@ df_artista_ej <- buscarPorArtista(artista_ej, conn)
 ```
 
 Arroja 47 filas con 15 variables: **track_id** (\<int\>), **name** (\<chr\>), **name_lower** (\<chr\>), **artist_name** (\<chr\>), **artist_name_lower** (\<chr\>), **album_name** (\<chr\>), **album_name_lower** (\<chr\>), **duration** (\<dbl\>), **updated_at** (\<chr\>), **lyrics_id** (\<int\>), **plain_lyrics** (\<chr\>), **synced_lyrics** (\<chr\>), **has_plain_lyrics** (\<int\>), **has_synced_lyrics** (\<int\>) e **instrumental** (\<int\>).
+
+## Limpieza de duplicados
+
+Supongamos que tenemos un pequeño subconjunto de datos:
+
+| name_lower | artist_name_lower | has_synced_lyrics | updated_at | has_plain_lyrics |
+|---------------|---------------|---------------|---------------|---------------|
+| doce | asia menor | 0 | 2023-01-01 12:00:00 | 1 |
+| doce | asia menor | 1 | 2023-01-02 12:00:00 | 1 |
+| doce | asia menor | 1 | 2022-12-31 12:00:00 | 1 |
+
+```{r}
+
+limpiarDuplicadosU <- function(data) {
+  # Paso 1: Ordenar para establecer prioridades
+  data <- data %>%
+    arrange(
+      name_lower,
+      desc(has_synced_lyrics),  # Priorizar sincronizadas
+      desc(has_plain_lyrics)    # Si no sincronizadas, preferir letras planas
+    )
+  
+  # Paso 2: Detectar canciones duplicadas
+  data_unicos <- data %>%
+    group_by(name_lower) %>%
+    filter(
+      # Mantener la primera versión en orden de prioridad
+      row_number() == 1
+    ) %>%
+    ungroup()
+  
+  # Paso 3: Marcar versiones diferentes del mismo nombre
+  data_unicos <- data_unicos %>%
+    mutate(
+      es_version_diferente = ifelse(
+        duplicated(name_lower) & !duplicated(album_name_lower),
+        TRUE,
+        FALSE
+      )
+    )
+  
+  return(data_unicos)
+}
+
+# Ejemplo
+df_artista_ej <- limpiarDuplicadosU(df_artista_ej)
+```
+
+Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat.
 
 # El indie chileno
 
@@ -247,15 +281,17 @@ Lo amplio del indie también refiere a la diversidad de estilos que se entremezc
 bandas_indie <- c(
   "Adelaida",
   "Amarga Marga",
+  "Anttonias",
   "Árbol Lunar",
   "Asia menor",
   "Asamblea Internacional del Fuego", #Poshardcore
   "Cabro",
   "Candelabro",
   "Chini and the technicians",
-  "Chini.png",
+  "Chini png",
   "Columpios al Suelo",
   "Confío en tus amigos",
+  "Cristóbal Gacitúa",
   "Cuando el problema no existe",
   "Cepa Funk",
   "Daniela Gatica y el fruto del ruido",
@@ -284,6 +320,7 @@ bandas_indie <- c(
   "MonoAzul",
   "Niños del Cerro",
   "Novio",
+  "Palacio Verde",
   "Paracaidistas",
   "Parálisis del Sueño",
   "Patio Solar",
@@ -297,6 +334,7 @@ bandas_indie <- c(
   "Silabario",
   "Super Especial",
   "Supertriste",
+  "Teoría de Maicol", # Pop alternativo
   "Tus amigos nuevos",
   "Violentistas de Siempre",
   "99 Payasos" # Pop punk
@@ -306,7 +344,7 @@ bandas_indie <- c(
 ## Crear corpus
 
 ```{r}
-# Función para crear un corpus de canciones con todas las columnas especificadas
+
 crearCorpusDeBandas <- function(lista_bandas, conexion) {
   # Inicializar un dataframe vacío con las columnas necesarias
   corpus_data <- data.frame(
@@ -333,10 +371,21 @@ crearCorpusDeBandas <- function(lista_bandas, conexion) {
     # Llamar a la función buscarPorArtista para obtener las canciones de cada banda
     df_artista <- buscarPorArtista(artista, conexion)
     
-    # Verificar si se encontró alguna canción
-    if (!is.null(df_artista)) {
-      # Añadir las canciones del artista al corpus
-      corpus_data <- bind_rows(corpus_data, df_artista %>%
+    # Si no se encontraron canciones, continuar con el siguiente artista
+    if (is.null(df_artista)) {
+      cat("No se encontraron canciones para el artista:", artista, "\n")
+      next
+    }
+    
+    # Convertir updated_at a texto
+    df_artista <- df_artista %>%
+      mutate(updated_at = as.character(updated_at))
+    
+    # Limpiar duplicados
+    df_artista <- limpiarDuplicadosU(df_artista)
+    
+    # Añadir las canciones al corpus
+    corpus_data <- bind_rows(corpus_data, df_artista %>%
                                select(
                                  track_id, 
                                  name, 
@@ -354,7 +403,6 @@ crearCorpusDeBandas <- function(lista_bandas, conexion) {
                                  has_synced_lyrics, 
                                  instrumental
                                ))
-    }
   }
   
   # Devolver el dataframe con todas las letras de las canciones y las columnas necesarias
@@ -366,4 +414,64 @@ corpus_df <- crearCorpusDeBandas(bandas_indie, conn)
 
 # Mostrar las primeras filas del dataframe resultante
 #head(corpus_df)
+```
+
+# Exportación de data frames
+
+### En excel
+
+```{r}
+
+exportar_excel <- function(dataframe, file_path) {
+  # Verificar que el dataframe no esté vacío
+  if (nrow(dataframe) == 0) {
+    stop("El dataframe está vacío y no se puede exportar.")
+  }
+  
+  # Verificar que el paquete writexl esté instalado
+  if (!requireNamespace("writexl", quietly = TRUE)) {
+    stop("El paquete 'writexl' no está instalado. Usa install.packages('writexl') para instalarlo.")
+  }
+  
+  # Exportar el dataframe como archivo Excel
+  writexl::write_xlsx(dataframe, file_path)
+  
+  # Mensaje de confirmación
+  message("El archivo Excel se ha guardado correctamente en: ", file_path)
+}
+
+# Ejemplo de uso:
+# exportar_excel(corpus_df, "corpus_bandas.xlsx")
+```
+
+### En texto
+
+```{r}
+exportar_texto <- function(data, nombre_archivo, separador = "\t", incluir_nombres_filas = FALSE, entrecomillar = FALSE) {
+  # Validar que data sea un data.frame
+  if (!is.data.frame(data)) {
+    stop("El objeto proporcionado no es un data.frame.")
+  }
+  
+  # Exportar el data.frame a un archivo de texto
+  write.table(
+    data,
+    file = nombre_archivo,
+    sep = separador,
+    row.names = incluir_nombres_filas,
+    quote = entrecomillar
+  )
+  
+  # Mensaje de confirmación
+  cat("Archivo exportado exitosamente en:", nombre_archivo, "\n")
+}
+
+# Llamar a la función para exportar tu data.frame
+exportar_texto(
+  data = corpus_df,               # DataFrame a exportar
+  nombre_archivo = "corpus_df_to_text.txt", # Nombre del archivo
+  separador = "\t",                  # Separador de columnas (tabulación)
+  incluir_nombres_filas = TRUE,     # No incluir índices de las filas
+  entrecomillar = FALSE              # No entrecomillar valores
+)
 ```
