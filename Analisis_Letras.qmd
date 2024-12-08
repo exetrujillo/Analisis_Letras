@@ -51,7 +51,9 @@ p_load(httr,
        DBI,
        RSQLite,
        stringi,
-       writexl
+       writexl,
+       readxl,
+       quanteda
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
@@ -117,7 +119,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_
 ### Tracks
 
 | Columna | Tipo | Descripción | Ejemplo |
-|------------------|------------------|-------------------|------------------|
+|------------------|------------------|------------------|------------------|
 | `id` | INT | Clave primaria de la tabla. Usada para identificar de manera única cada canción o pista. | 3 |
 | `name` | TEXT | Nombre de la canción o pista. Es sensible a mayúsculas y minúsculas. | Wildest Dreams |
 | `name_lower` | TEXT | Versión en minúsculas del nombre de la pista (`name`). | wildest dreams |
@@ -133,7 +135,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_
 ### Lyrics
 
 | Columna | Tipo | Descripción | Ejemplo |
-|------------------|------------------|-------------------|------------------|
+|------------------|------------------|------------------|------------------|
 | `id` | INT | Clave primaria de la tabla, única para cada registro de letras. | 3 |
 | `plain_lyrics` | TEXT | Letras de la canción en formato simple (sin sincronización con la música). | Not tryna be indie\\nNot tryna be cool\\nJust tryna be in this\\nTell me, are you too?\\n\\nCan \[...\] |
 | `synced_lyrics` | TEXT | Letras sincronizadas, con marcas de tiempo para seguir la canción mientras se reproduce. | \[00:09.66\] Not tryna be indie\\n\[00:12.30\] Not tryna be cool\\n\[00:14.99\] Just tryna be in \[...\] |
@@ -166,17 +168,14 @@ Normalizar los nombres de los artistas es estandarizar su "formato" para que sea
 
 ```{r}
 
-# Función de normalización sin eliminar el punto
+# Función de normalización
 nrmlztxt <- function(texto) {
   texto <- tolower(texto)                          # Minúsculas
-  texto <- trimws(texto)                           # Eliminar espacios
-  texto <- gsub("\\s+", " ", texto)                # Reemplazar múltiples espacios por uno solo
-  texto <- stri_trans_general(texto, "Latin-ASCII") # Eliminar acentos
-  texto <- gsub("[^a-z0-9 .]", "", texto)           # Permitir puntos (.) en los nombres
+  texto <- stri_trans_general(texto, "Latin-ASCII") # Eliminar acentos y especiales
+  texto <- trimws(texto)                           # Eliminar espacios adicionales
   return(texto)
 }
 
-# Lo probamos, pero esta función al parecer es innecesaria
 artista_ej_nrm <- nrmlztxt(artista_ej)
 print(artista_ej_nrm)
 ```
@@ -188,13 +187,10 @@ Se ve que el resultado es "ninos del cerro", sin espacios, ni ñ, ni mayúsculas
 ```{r}
 
 buscarPorArtista <- function(nombre_artista, conexion) {
-  # Normalizar el nombre del artista
-  nombre_artista <- tolower(nombre_artista)                       # Convertir a minúsculas
-  nombre_artista <- stri_trans_general(nombre_artista, "Latin-ASCII") # Eliminar acentos y caracteres especiales
-  nombre_artista <- trimws(nombre_artista)                         # Eliminar espacios adicionales
+  nombre_artista_nrm <- nrmlztxt(nombre_artista)
   
   # Proteger el nombre para consultas SQL
-  nombre_artista_quoted <- dbQuoteString(conexion, nombre_artista)
+  nombre_artista_quoted <- dbQuoteString(conexion, nombre_artista_nrm)
   
   # Consulta SQL con LIKE (búsqueda flexible) y campo normalizado en la base de datos
   query <- paste0("
@@ -236,7 +232,7 @@ Supongamos que tenemos un pequeño subconjunto de datos:
 ```{r}
 
 limpiarDuplicadosU <- function(data) {
-  # Paso 1: Ordenar para establecer prioridades
+  # Ordenamos para establecer prioridades
   data <- data %>%
     arrange(
       name_lower,
@@ -244,24 +240,19 @@ limpiarDuplicadosU <- function(data) {
       desc(has_plain_lyrics)    # Si no sincronizadas, preferir letras planas
     )
   
-  # Paso 2: Detectar canciones duplicadas
+  # Detectamos canciones duplicadas
   data_unicos <- data %>%
     group_by(name_lower) %>%
     filter(
-      # Mantener la primera versión en orden de prioridad
+      # Mantenemos la primera versión en orden de prioridad
       row_number() == 1
     ) %>%
     ungroup()
-  
-  # Paso 3: Marcar versiones diferentes del mismo nombre
-  data_unicos <- data_unicos %>%
-    mutate(
-      es_version_diferente = ifelse(
-        duplicated(name_lower) & !duplicated(album_name_lower),
-        TRUE,
-        FALSE
-      )
-    )
+
+   # Validación final para asegurar que el resultado es un dataframe
+  if (!is.data.frame(data_unicos)) {
+    stop("Error: 'data_unicos' no es un dataframe.")
+  }
   
   return(data_unicos)
 }
@@ -270,7 +261,7 @@ limpiarDuplicadosU <- function(data) {
 df_artista_ej <- limpiarDuplicadosU(df_artista_ej)
 ```
 
-Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat.
+Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat. En este caso, la tabla disminuyó de 47 casos con 15 variables a 43 casos con 15 variables.
 
 # El indie chileno
 
@@ -350,7 +341,7 @@ bandas_indie <- c(
 ```{r}
 
 crearCorpusDeBandas <- function(lista_bandas, conexion) {
-  # Inicializar un dataframe vacío con las columnas necesarias
+  # Inicializar un dataframe vacío
   corpus_data <- data.frame(
     track_id = integer(),
     name = character(),
@@ -372,23 +363,23 @@ crearCorpusDeBandas <- function(lista_bandas, conexion) {
   
   # Recorrer la lista de bandas
   for (artista in lista_bandas) {
-    # Llamar a la función buscarPorArtista para obtener las canciones de cada banda
+    cat("\nProcesando artista:", artista, "\n")  # Log de progreso
+    
+    # Obtener canciones del artista
     df_artista <- buscarPorArtista(artista, conexion)
     
-    # Si no se encontraron canciones, continuar con el siguiente artista
-    if (is.null(df_artista)) {
-      cat("No se encontraron canciones para el artista:", artista, "\n")
+    if (is.null(df_artista) || nrow(df_artista) == 0) {
+      cat("No se encontraron datos para el artista:", artista, "\n")
       next
     }
     
-    # Convertir updated_at a texto
-    df_artista <- df_artista %>%
-      mutate(updated_at = as.character(updated_at))
+    cat("Se encontraron", nrow(df_artista), "canciones para el artista:", artista, "\n")
     
     # Limpiar duplicados
     df_artista <- limpiarDuplicadosU(df_artista)
+    cat("Canciones únicas después de limpiar duplicados:", nrow(df_artista), "\n")
     
-    # Añadir las canciones al corpus
+    # Añadir al corpus
     corpus_data <- bind_rows(corpus_data, df_artista %>%
                                select(
                                  track_id, 
@@ -409,7 +400,6 @@ crearCorpusDeBandas <- function(lista_bandas, conexion) {
                                ))
   }
   
-  # Devolver el dataframe con todas las letras de las canciones y las columnas necesarias
   return(corpus_data)
 }
 
@@ -424,7 +414,69 @@ Obtenemos una muestra de 321 canciones.
 
 # Análisis de datos
 
+Ya que limpiamos nuestra base de datos, si la exportamos la tendremos sin tener que procesar toda la base de datos inicial cada vez que queramos realizar algún análisis. Por ello, la exportamos con la función exportar_excel que definimos al final del documento. Ahora podemos importarlo.
+
+```{r}
+# Si no se necesita importar el archivo, saltar este paso o comentar
+archivo <- "corpus_bandas.xlsx" #Cambiar si la ruta o el archivo es otro
+corpus_df <- importar_excel(archivo)
+```
+
+```{r}
+# Función para quitarle filas NA o con instrumentales
+sinInstrumentales <- function(datos, lyrics_col = "lyrics_id", inst_col = "instrumental"){
+  # all() es para saber si son todos TRUE dentro del paréntesis
+  if (!all(c(lyrics_col, inst_col) %in% colnames(datos))) {
+    stop("La/s columna/s especificada/s no existe/n en el dataset.")
+  }
+  
+  # Filtramos el dataset
+  datos_limpios <- datos %>%
+    filter(!is.na(.data[[lyrics_col]]), .data[[inst_col]] != 1)
+  
+  datos_limpios$instrumental <- NULL
+  
+  return(datos_limpios)
+}
+
+# Ej
+sin_instrumentales <- sinInstrumentales(corpus_df)
+```
+
+```{r}
+# Útiles de quanteda
+corpus_letras <- quanteda::corpus(sin_instrumentales$plain_lyrics)
+summary(corpus_letras)
+stopwords_adhok <- c()
+  
+stopwords_adhok <- union(stopwords("es"), stopwords_adhok)
+ 
+
+# Tokenización
+tokens_letras <- tokens(corpus_letras, 
+                        remove_punct = TRUE,  # Eliminar puntuación
+                        remove_symbols = TRUE,  # Eliminar símbolos especiales
+                        remove_numbers = TRUE,  # Eliminar números
+                        remove_url = TRUE,  # Eliminar URLs
+                        what = "word"  # Solo tomar palabras
+                        )
+```
+
+## Análisis de frecuencia de términos
+
+```{r}
+# Crear matriz de documentos término (DTM)
+dtm_letras <- dfm(tokens_letras)
+
+#Eliminamos stopwords 
+dtm_letras <- dfm_remove(dtm_letras, stopwords_adhok)
+```
+
 ## Análisis de frecuencia léxica
+
+```{r}
+
+```
 
 ## Análisis de sentimientos
 
@@ -510,4 +562,29 @@ exportar_texto(
   incluir_nombres_filas = TRUE,     # No incluir índices de las filas
   entrecomillar = FALSE              # No entrecomillar valores
 )
+```
+
+# Importación de datos
+
+```{r}
+# Función para importar un archivo Excel
+importar_excel <- function(ruta_archivo) {
+  # Verificar si el archivo existe
+  if (!file.exists(ruta_archivo)) {
+    stop("El archivo no existe en la ruta proporcionada.")
+  }
+  
+  # Leer el archivo Excel
+  dataframe <- read_excel(ruta_archivo)
+  
+  # Mensaje de confirmación
+  cat("El archivo se ha importado correctamente.\n")
+  
+  # Devolver el dataframe
+  return(dataframe)
+}
+
+# Ejemplo de uso
+#archivo <- "corpus_bandas.xlsx"  # Cambiar si la ruta es diferente
+#corpus_df <- importar_excel(archivo)
 ```
