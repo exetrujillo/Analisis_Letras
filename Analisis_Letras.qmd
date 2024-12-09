@@ -416,6 +416,24 @@ Obtenemos una muestra de 321 canciones.
 
 Ya que limpiamos nuestra base de datos, si la exportamos la tendremos sin tener que procesar toda la base de datos inicial cada vez que queramos realizar algún análisis. Por ello, la exportamos con la función exportar_excel que definimos al final del documento. Ahora podemos importarlo.
 
+## Importación de datos
+
+```{r}
+# Función para importar un archivo Excel
+importar_excel <- function(ruta_archivo) {   
+  # Verificar si el archivo existe
+  if (!file.exists(ruta_archivo)) {
+    stop("El archivo no existe en la ruta proporcionada.")
+    }      
+# Leer el archivo Excel 
+  dataframe <- read_excel(ruta_archivo)
+  # Mensaje de confirmación
+  cat("El archivo se ha importado correctamente.\n")
+  # Devolver el dataframe
+  return(dataframe)
+  } 
+```
+
 ```{r}
 # Si no se necesita importar el archivo, saltar este paso o comentar
 archivo <- "corpus_bandas.xlsx" #Cambiar si la ruta o el archivo es otro
@@ -442,6 +460,8 @@ sinInstrumentales <- function(datos, lyrics_col = "lyrics_id", inst_col = "instr
 # Ej
 sin_instrumentales <- sinInstrumentales(corpus_df)
 ```
+
+Se disminuyen de 321 a 312 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.
 
 ```{r}
 # Útiles de quanteda
@@ -562,29 +582,4 @@ exportar_texto(
   incluir_nombres_filas = TRUE,     # No incluir índices de las filas
   entrecomillar = FALSE              # No entrecomillar valores
 )
-```
-
-# Importación de datos
-
-```{r}
-# Función para importar un archivo Excel
-importar_excel <- function(ruta_archivo) {
-  # Verificar si el archivo existe
-  if (!file.exists(ruta_archivo)) {
-    stop("El archivo no existe en la ruta proporcionada.")
-  }
-  
-  # Leer el archivo Excel
-  dataframe <- read_excel(ruta_archivo)
-  
-  # Mensaje de confirmación
-  cat("El archivo se ha importado correctamente.\n")
-  
-  # Devolver el dataframe
-  return(dataframe)
-}
-
-# Ejemplo de uso
-#archivo <- "corpus_bandas.xlsx"  # Cambiar si la ruta es diferente
-#corpus_df <- importar_excel(archivo)
 ```
