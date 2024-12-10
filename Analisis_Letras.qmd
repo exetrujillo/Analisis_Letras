@@ -53,7 +53,9 @@ p_load(httr,
        stringi,
        writexl,
        readxl,
-       quanteda
+       quanteda,
+       quanteda.textstats,
+       wordcloud
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
@@ -217,7 +219,7 @@ df_artista_ej <- buscarPorArtista(artista_ej, conn)
 # head(df_artista_ej)
 ```
 
-Arroja 47 filas con 15 variables: **track_id** (\<int\>), **name** (\<chr\>), **name_lower** (\<chr\>), **artist_name** (\<chr\>), **artist_name_lower** (\<chr\>), **album_name** (\<chr\>), **album_name_lower** (\<chr\>), **duration** (\<dbl\>), **updated_at** (\<chr\>), **lyrics_id** (\<int\>), **plain_lyrics** (\<chr\>), **synced_lyrics** (\<chr\>), **has_plain_lyrics** (\<int\>), **has_synced_lyrics** (\<int\>) e **instrumental** (\<int\>).
+Arroja 51 filas con 15 variables: **track_id** (\<int\>), **name** (\<chr\>), **name_lower** (\<chr\>), **artist_name** (\<chr\>), **artist_name_lower** (\<chr\>), **album_name** (\<chr\>), **album_name_lower** (\<chr\>), **duration** (\<dbl\>), **updated_at** (\<chr\>), **lyrics_id** (\<int\>), **plain_lyrics** (\<chr\>), **synced_lyrics** (\<chr\>), **has_plain_lyrics** (\<int\>), **has_synced_lyrics** (\<int\>) e **instrumental** (\<int\>).
 
 ## Limpieza de duplicados
 
@@ -261,7 +263,7 @@ limpiarDuplicadosU <- function(data) {
 df_artista_ej <- limpiarDuplicadosU(df_artista_ej)
 ```
 
-Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat. En este caso, la tabla disminuyó de 47 casos con 15 variables a 43 casos con 15 variables.
+Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat. En este caso, la tabla disminuyó de 47 casos con 15 variables a 44 casos con 15 variables.
 
 # El indie chileno
 
@@ -304,7 +306,7 @@ bandas_indie <- c(
   "Hemisferio Sur",
   "Hesse Kassel",
   "iiii", # Sí, es el nombre de la banda
-  "Las Olas (NoisPop)",
+  "Las Olas NoisPop",
   "Lejania",
   "Los animales también se suicidan",
   "Los repuestos superpuestos",
@@ -322,9 +324,9 @@ bandas_indie <- c(
   "Phuyu y la Fantasma",
   "Perrogato",
   "Protistas",
-  "Rock N' Chile",
+  "Rock N Chile",
   "Rosario Alfonso",
-  "Samsara",
+  # "Samsara", # Sale otra banda en inglés
   "Siniestra Pandora",
   "Silabario",
   "Super Especial",
@@ -410,7 +412,7 @@ corpus_df <- crearCorpusDeBandas(bandas_indie, conn)
 #head(corpus_df)
 ```
 
-Obtenemos una muestra de 321 canciones.
+Obtenemos una muestra de 367 canciones.
 
 # Análisis de datos
 
@@ -461,13 +463,13 @@ sinInstrumentales <- function(datos, lyrics_col = "lyrics_id", inst_col = "instr
 sin_instrumentales <- sinInstrumentales(corpus_df)
 ```
 
-Se disminuyen de 321 a 312 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.
+Se disminuyen de 367 a 358 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.
 
 ```{r}
 # Útiles de quanteda
 corpus_letras <- quanteda::corpus(sin_instrumentales$plain_lyrics)
 summary(corpus_letras)
-stopwords_adhok <- c()
+stopwords_adhok <- c("you", "i", "the", "to", "go", "my", "in", "this", "and", "oh", "ah", "ay", "uh")
   
 stopwords_adhok <- union(stopwords("es"), stopwords_adhok)
  
@@ -490,12 +492,48 @@ dtm_letras <- dfm(tokens_letras)
 
 #Eliminamos stopwords 
 dtm_letras <- dfm_remove(dtm_letras, stopwords_adhok)
+
+frecuencias <- topfeatures(dtm_letras, n = 100)   # Cambia n para más términos
+# print(frecuencias)
+
+frecuencias_totales <- textstat_frequency(dtm_letras)
+
+# Convertir frecuencias en un dataframe
+frecuencias_df <- data.frame(term = names(frecuencias), freq = frecuencias)
+
+# Crear la nube de palabras
+wordcloud(words = frecuencias_df$term, 
+          freq = frecuencias_df$freq, 
+          min.freq = 3,  # Palabras con frecuencia mínima
+          max.words = 200,  # Número máximo de palabras
+          scale = c(3, 0.5),  # Tamaño de las palabras
+          colors = brewer.pal(8, "Dark2"),  # Paleta de colores
+          random.order = FALSE)  # Las palabras más frecuentes en el centro
+
+
 ```
 
-## Análisis de frecuencia léxica
+## Análisis de bi-gramas
 
 ```{r}
 
+# Eliminar stopwords antes de la tokenización
+tokens_limpios <- tokens_remove(tokens_letras, stopwords_adhok)
+
+# Generar bigramas (combinación de 2 palabras) sin stopwords
+tokens_bigrams <- tokens_ngrams(tokens_limpios, n = 2)
+
+# Crear la matriz de documentos-término (DTM) para los bigramas
+dtm_bigrams <- dfm(tokens_bigrams)
+
+# Calcular la frecuencia de los bigramas
+frecuencia_bigrams <- textstat_frequency(dtm_bigrams)
+
+# Eliminar bigramas con docfreq == 1 (que salen en una sola canción)
+frecuencia_bigrams_filtrada <- frecuencia_bigrams[frecuencia_bigrams$docfreq > 1, ]
+
+# Ver los bigramas filtrados
+head(frecuencia_bigrams_filtrada, 50)
 ```
 
 ## Análisis de sentimientos
@@ -549,7 +587,7 @@ exportar_excel <- function(dataframe, file_path) {
 }
 
 # Ejemplo de uso:
-# exportar_excel(corpus_df, "corpus_bandas.xlsx")
+exportar_excel(corpus_df, "corpus_bandas.xlsx")
 ```
 
 ### En texto

@@ -154,10 +154,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       stringi,</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>       writexl,</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>       readxl,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       quanteda</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       quanteda,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       quanteda.textstats,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>       wordcloud</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -473,7 +475,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe final</span></span>
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># head(df_artista_ej)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Arroja 47 filas con 15 variables: <strong>track_id</strong> (&lt;int&gt;), <strong>name</strong> (&lt;chr&gt;), <strong>name_lower</strong> (&lt;chr&gt;), <strong>artist_name</strong> (&lt;chr&gt;), <strong>artist_name_lower</strong> (&lt;chr&gt;), <strong>album_name</strong> (&lt;chr&gt;), <strong>album_name_lower</strong> (&lt;chr&gt;), <strong>duration</strong> (&lt;dbl&gt;), <strong>updated_at</strong> (&lt;chr&gt;), <strong>lyrics_id</strong> (&lt;int&gt;), <strong>plain_lyrics</strong> (&lt;chr&gt;), <strong>synced_lyrics</strong> (&lt;chr&gt;), <strong>has_plain_lyrics</strong> (&lt;int&gt;), <strong>has_synced_lyrics</strong> (&lt;int&gt;) e <strong>instrumental</strong> (&lt;int&gt;).</p>
+<p>Arroja 51 filas con 15 variables: <strong>track_id</strong> (&lt;int&gt;), <strong>name</strong> (&lt;chr&gt;), <strong>name_lower</strong> (&lt;chr&gt;), <strong>artist_name</strong> (&lt;chr&gt;), <strong>artist_name_lower</strong> (&lt;chr&gt;), <strong>album_name</strong> (&lt;chr&gt;), <strong>album_name_lower</strong> (&lt;chr&gt;), <strong>duration</strong> (&lt;dbl&gt;), <strong>updated_at</strong> (&lt;chr&gt;), <strong>lyrics_id</strong> (&lt;int&gt;), <strong>plain_lyrics</strong> (&lt;chr&gt;), <strong>synced_lyrics</strong> (&lt;chr&gt;), <strong>has_plain_lyrics</strong> (&lt;int&gt;), <strong>has_synced_lyrics</strong> (&lt;int&gt;) e <strong>instrumental</strong> (&lt;int&gt;).</p>
 </section>
 <section id="limpieza-de-duplicados" class="level2">
 <h2 class="anchored" data-anchor-id="limpieza-de-duplicados">Limpieza de duplicados</h2>
@@ -549,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo</span></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>df_artista_ej <span class="ot">&lt;-</span> <span class="fu">limpiarDuplicadosU</span>(df_artista_ej)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat. En este caso, la tabla disminuyó de 47 casos con 15 variables a 43 casos con 15 variables.</p>
+<p>Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat. En este caso, la tabla disminuyó de 47 casos con 15 variables a 44 casos con 15 variables.</p>
 </section>
 </section>
 <section id="el-indie-chileno" class="level1">
@@ -590,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hemisferio Sur"</span>,</span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Hesse Kassel"</span>,</span>
 <span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"iiii"</span>, <span class="co"># Sí, es el nombre de la banda</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Las Olas (NoisPop)"</span>,</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Las Olas NoisPop"</span>,</span>
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Lejania"</span>,</span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Los animales también se suicidan"</span>,</span>
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Los repuestos superpuestos"</span>,</span>
@@ -608,9 +610,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Phuyu y la Fantasma"</span>,</span>
 <span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Perrogato"</span>,</span>
 <span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Protistas"</span>,</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Rock N' Chile"</span>,</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Rock N Chile"</span>,</span>
 <span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Rosario Alfonso"</span>,</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Samsara"</span>,</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="co"># "Samsara", # Sale otra banda en inglés</span></span>
 <span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Siniestra Pandora"</span>,</span>
 <span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Silabario"</span>,</span>
 <span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Super Especial"</span>,</span>
@@ -697,8 +699,8 @@ Se encontraron 10 canciones para el artista: Adelaida
 Canciones únicas después de limpiar duplicados: 10 
 
 Procesando artista: Amarga Marga 
-Se encontraron 8 canciones para el artista: Amarga Marga 
-Canciones únicas después de limpiar duplicados: 7 
+Se encontraron 9 canciones para el artista: Amarga Marga 
+Canciones únicas después de limpiar duplicados: 8 
 
 Procesando artista: Anttonias 
 No se encontraron datos para el artista: Anttonias 
@@ -711,37 +713,38 @@ Se encontraron 14 canciones para el artista: Asia menor
 Canciones únicas después de limpiar duplicados: 12 
 
 Procesando artista: Asamblea Internacional del Fuego 
-Se encontraron 7 canciones para el artista: Asamblea Internacional del Fuego 
-Canciones únicas después de limpiar duplicados: 7 
+Se encontraron 8 canciones para el artista: Asamblea Internacional del Fuego 
+Canciones únicas después de limpiar duplicados: 8 
 
 Procesando artista: Cabro 
 No se encontraron datos para el artista: Cabro 
 
 Procesando artista: Candelabro 
-Se encontraron 12 canciones para el artista: Candelabro 
-Canciones únicas después de limpiar duplicados: 12 
+Se encontraron 13 canciones para el artista: Candelabro 
+Canciones únicas después de limpiar duplicados: 13 
 
 Procesando artista: Chini and the technicians 
-Se encontraron 7 canciones para el artista: Chini and the technicians 
-Canciones únicas después de limpiar duplicados: 7 
+Se encontraron 12 canciones para el artista: Chini and the technicians 
+Canciones únicas después de limpiar duplicados: 11 
 
 Procesando artista: Chini png 
 Se encontraron 4 canciones para el artista: Chini png 
 Canciones únicas después de limpiar duplicados: 3 
 
 Procesando artista: Columpios al Suelo 
-No se encontraron datos para el artista: Columpios al Suelo 
+Se encontraron 2 canciones para el artista: Columpios al Suelo 
+Canciones únicas después de limpiar duplicados: 2 
 
 Procesando artista: Confío en tus amigos 
-Se encontraron 6 canciones para el artista: Confío en tus amigos 
-Canciones únicas después de limpiar duplicados: 6 
+Se encontraron 7 canciones para el artista: Confío en tus amigos 
+Canciones únicas después de limpiar duplicados: 7 
 
 Procesando artista: Cristóbal Gacitúa 
 No se encontraron datos para el artista: Cristóbal Gacitúa 
 
 Procesando artista: Cuando el problema no existe 
-Se encontraron 4 canciones para el artista: Cuando el problema no existe 
-Canciones únicas después de limpiar duplicados: 4 
+Se encontraron 5 canciones para el artista: Cuando el problema no existe 
+Canciones únicas después de limpiar duplicados: 5 
 
 Procesando artista: Cepa Funk 
 Se encontraron 1 canciones para el artista: Cepa Funk 
@@ -751,38 +754,39 @@ Procesando artista: Daniela Gatica y el fruto del ruido
 No se encontraron datos para el artista: Daniela Gatica y el fruto del ruido 
 
 Procesando artista: De Perder sus Pétalos 
-No se encontraron datos para el artista: De Perder sus Pétalos 
+Se encontraron 1 canciones para el artista: De Perder sus Pétalos 
+Canciones únicas después de limpiar duplicados: 1 
 
 Procesando artista: Déjenme Dormir 
-Se encontraron 7 canciones para el artista: Déjenme Dormir 
-Canciones únicas después de limpiar duplicados: 7 
+Se encontraron 11 canciones para el artista: Déjenme Dormir 
+Canciones únicas después de limpiar duplicados: 10 
 
 Procesando artista: Dolorio &amp; los Tunantes 
 No se encontraron datos para el artista: Dolorio &amp; los Tunantes 
 
 Procesando artista: El cómodo silencio de los que hablan poco 
-Se encontraron 14 canciones para el artista: El cómodo silencio de los que hablan poco 
-Canciones únicas después de limpiar duplicados: 14 
+Se encontraron 16 canciones para el artista: El cómodo silencio de los que hablan poco 
+Canciones únicas después de limpiar duplicados: 15 
 
 Procesando artista: Etéreos 
-Se encontraron 5 canciones para el artista: Etéreos 
-Canciones únicas después de limpiar duplicados: 4 
+Se encontraron 7 canciones para el artista: Etéreos 
+Canciones únicas después de limpiar duplicados: 5 
 
 Procesando artista: Fin del Mundo 
-Se encontraron 18 canciones para el artista: Fin del Mundo 
+Se encontraron 21 canciones para el artista: Fin del Mundo 
 Canciones únicas después de limpiar duplicados: 16 
 
 Procesando artista: Flores 
-Se encontraron 4 canciones para el artista: Flores 
-Canciones únicas después de limpiar duplicados: 3 
+Se encontraron 5 canciones para el artista: Flores 
+Canciones únicas después de limpiar duplicados: 4 
 
 Procesando artista: Floresalegría 
 Se encontraron 2 canciones para el artista: Floresalegría 
 Canciones únicas después de limpiar duplicados: 2 
 
 Procesando artista: Frucola Frappé 
-Se encontraron 1 canciones para el artista: Frucola Frappé 
-Canciones únicas después de limpiar duplicados: 1 
+Se encontraron 2 canciones para el artista: Frucola Frappé 
+Canciones únicas después de limpiar duplicados: 2 
 
 Procesando artista: Gangrena Surf 
 No se encontraron datos para el artista: Gangrena Surf 
@@ -801,27 +805,28 @@ Canciones únicas después de limpiar duplicados: 3
 Procesando artista: iiii 
 No se encontraron datos para el artista: iiii 
 
-Procesando artista: Las Olas (NoisPop) 
-No se encontraron datos para el artista: Las Olas (NoisPop) 
+Procesando artista: Las Olas NoisPop 
+Se encontraron 6 canciones para el artista: Las Olas NoisPop 
+Canciones únicas después de limpiar duplicados: 6 
 
 Procesando artista: Lejania 
 No se encontraron datos para el artista: Lejania 
 
 Procesando artista: Los animales también se suicidan 
-Se encontraron 13 canciones para el artista: Los animales también se suicidan 
-Canciones únicas después de limpiar duplicados: 13 
+Se encontraron 16 canciones para el artista: Los animales también se suicidan 
+Canciones únicas después de limpiar duplicados: 14 
 
 Procesando artista: Los repuestos superpuestos 
 Se encontraron 3 canciones para el artista: Los repuestos superpuestos 
 Canciones únicas después de limpiar duplicados: 3 
 
 Procesando artista: Los Santos Dumont 
-Se encontraron 2 canciones para el artista: Los Santos Dumont 
+Se encontraron 3 canciones para el artista: Los Santos Dumont 
 Canciones únicas después de limpiar duplicados: 2 
 
 Procesando artista: Los Valentina 
-Se encontraron 5 canciones para el artista: Los Valentina 
-Canciones únicas después de limpiar duplicados: 5 
+Se encontraron 6 canciones para el artista: Los Valentina 
+Canciones únicas después de limpiar duplicados: 6 
 
 Procesando artista: Mark 62 
 Se encontraron 2 canciones para el artista: Mark 62 
@@ -835,8 +840,8 @@ Se encontraron 4 canciones para el artista: MonoAzul
 Canciones únicas después de limpiar duplicados: 4 
 
 Procesando artista: Niños del Cerro 
-Se encontraron 47 canciones para el artista: Niños del Cerro 
-Canciones únicas después de limpiar duplicados: 43 
+Se encontraron 51 canciones para el artista: Niños del Cerro 
+Canciones únicas después de limpiar duplicados: 44 
 
 Procesando artista: Novio 
 Se encontraron 4 canciones para el artista: Novio 
@@ -846,38 +851,35 @@ Procesando artista: Palacio Verde
 No se encontraron datos para el artista: Palacio Verde 
 
 Procesando artista: Paracaidistas 
-Se encontraron 1 canciones para el artista: Paracaidistas 
-Canciones únicas después de limpiar duplicados: 1 
+Se encontraron 3 canciones para el artista: Paracaidistas 
+Canciones únicas después de limpiar duplicados: 2 
 
 Procesando artista: Parálisis del Sueño 
-Se encontraron 4 canciones para el artista: Parálisis del Sueño 
-Canciones únicas después de limpiar duplicados: 4 
+Se encontraron 5 canciones para el artista: Parálisis del Sueño 
+Canciones únicas después de limpiar duplicados: 5 
 
 Procesando artista: Patio Solar 
-Se encontraron 25 canciones para el artista: Patio Solar 
-Canciones únicas después de limpiar duplicados: 23 
+Se encontraron 31 canciones para el artista: Patio Solar 
+Canciones únicas después de limpiar duplicados: 29 
 
 Procesando artista: Phuyu y la Fantasma 
-Se encontraron 12 canciones para el artista: Phuyu y la Fantasma 
-Canciones únicas después de limpiar duplicados: 12 
+Se encontraron 13 canciones para el artista: Phuyu y la Fantasma 
+Canciones únicas después de limpiar duplicados: 13 
 
 Procesando artista: Perrogato 
 No se encontraron datos para el artista: Perrogato 
 
 Procesando artista: Protistas 
-Se encontraron 11 canciones para el artista: Protistas 
+Se encontraron 12 canciones para el artista: Protistas 
 Canciones únicas después de limpiar duplicados: 11 
 
-Procesando artista: Rock N' Chile 
-No se encontraron datos para el artista: Rock N' Chile 
+Procesando artista: Rock N Chile 
+Se encontraron 6 canciones para el artista: Rock N Chile 
+Canciones únicas después de limpiar duplicados: 6 
 
 Procesando artista: Rosario Alfonso 
-Se encontraron 19 canciones para el artista: Rosario Alfonso 
-Canciones únicas después de limpiar duplicados: 18 
-
-Procesando artista: Samsara 
-Se encontraron 8 canciones para el artista: Samsara 
-Canciones únicas después de limpiar duplicados: 8 
+Se encontraron 20 canciones para el artista: Rosario Alfonso 
+Canciones únicas después de limpiar duplicados: 19 
 
 Procesando artista: Siniestra Pandora 
 Se encontraron 7 canciones para el artista: Siniestra Pandora 
@@ -888,8 +890,8 @@ Se encontraron 4 canciones para el artista: Silabario
 Canciones únicas después de limpiar duplicados: 4 
 
 Procesando artista: Super Especial 
-Se encontraron 12 canciones para el artista: Super Especial 
-Canciones únicas después de limpiar duplicados: 12 
+Se encontraron 13 canciones para el artista: Super Especial 
+Canciones únicas después de limpiar duplicados: 13 
 
 Procesando artista: Supertriste 
 No se encontraron datos para el artista: Supertriste 
@@ -905,13 +907,13 @@ Procesando artista: Violentistas de Siempre
 No se encontraron datos para el artista: Violentistas de Siempre 
 
 Procesando artista: 99 Payasos 
-Se encontraron 5 canciones para el artista: 99 Payasos 
-Canciones únicas después de limpiar duplicados: 5 </code></pre>
+Se encontraron 6 canciones para el artista: 99 Payasos 
+Canciones únicas después de limpiar duplicados: 6 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar las primeras filas del dataframe resultante</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#head(corpus_df)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Obtenemos una muestra de 321 canciones.</p>
+<p>Obtenemos una muestra de 367 canciones.</p>
 </section>
 </section>
 <section id="análisis-de-datos" class="level1">
@@ -962,13 +964,13 @@ Canciones únicas después de limpiar duplicados: 5 </code></pre>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Ej</span></span>
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>sin_instrumentales <span class="ot">&lt;-</span> <span class="fu">sinInstrumentales</span>(corpus_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Se disminuyen de 321 a 312 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.</p>
+<p>Se disminuyen de 367 a 358 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Útiles de quanteda</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>corpus_letras <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">corpus</span>(sin_instrumentales<span class="sc">$</span>plain_lyrics)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(corpus_letras)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Corpus consisting of 312 documents, showing 100 documents:
+<pre><code>Corpus consisting of 358 documents, showing 100 documents:
 
     Text Types Tokens Sentences
    text1    59     83         3
@@ -982,97 +984,97 @@ Canciones únicas después de limpiar duplicados: 5 </code></pre>
    text9    43     66         1
   text10    44     70         1
   text11    62     72         2
-  text12    71    179         1
-  text13   106    151         3
-  text14    53    116         1
-  text15    83    130         6
-  text16    13     41         1
-  text17    53    160         2
-  text18    67     84         1
-  text19    70    115         1
-  text20    56    158         1
+  text12    42    160         1
+  text13    71    179         1
+  text14   106    151         3
+  text15    53    116         1
+  text16    83    130         6
+  text17    13     41         1
+  text18    53    160         2
+  text19    67     84         1
+  text20    70    115         1
   text21    56    158         1
-  text22    79    211         1
-  text23    39     66         1
-  text24    77    128         1
-  text25    77    227         1
-  text26    64    157         1
-  text27    86    132         1
-  text28    70    150         1
-  text29   114    196         1
-  text30    90    174         7
-  text31   238    486        11
-  text32    70    207         1
-  text33    86    167         1
-  text34    85    159         7
-  text35   126    181         1
-  text36    53    198         1
-  text37    87    154         1
-  text38    45    112         3
-  text39    52    168         1
-  text40    64    132         1
-  text41    62    113         1
-  text42    65     79         1
-  text43    13     44         1
-  text44    63    172         1
-  text45    42     71         1
-  text46    37     57         1
-  text47    31     47         1
-  text48    71    193         2
-  text49    57    149         3
-  text50    35    250         1
-  text51    72    312         1
-  text52   107    392        10
-  text53    48    143         1
-  text54    50    208        13
-  text55   102    388         2
-  text56    72    190         8
-  text57    90    396         2
-  text58    54    112         6
-  text59    60     92         1
-  text60    62    148         2
-  text61    42    105         1
-  text62    64    204         1
-  text63    42    103         1
-  text64    70     95         2
-  text65    36     43         1
-  text66    45     68         1
-  text67    64     98         1
-  text68    54    135         1
-  text69    95    145         1
-  text70    66    105         1
-  text71   109    198         1
-  text72    53    108         1
-  text73    74    126         1
-  text74    43     50         1
-  text75    66    111         1
-  text76    44     97         2
-  text77    50     91         1
-  text78    31     39         1
-  text79    22     53         1
-  text80    44     98         1
-  text81    44    114         1
-  text82    24     64         1
-  text83    56     77         2
-  text84    64     89         1
-  text85    41    118         5
-  text86    59    172         2
-  text87    91    179         1
-  text88    92    140         1
-  text89   130    222         1
-  text90    75    117         1
-  text91    30     31         1
-  text92    22     25         1
-  text93    27     32         1
-  text94    75     94         2
-  text95    20     20         1
-  text96    36     62         1
-  text97    59     75         1
-  text98    21     22         1
-  text99    42     47         1
- text100    19     38         1</code></pre>
+  text22    56    158         1
+  text23    79    211         1
+  text24    39     66         1
+  text25    77    128         1
+  text26    77    227         1
+  text27    64    157         1
+  text28    86    132         1
+  text29    70    150         1
+  text30   114    196         1
+  text31    90    174         7
+  text32   238    486        11
+  text33   107    298        14
+  text34    70    207         1
+  text35    86    167         1
+  text36    85    159         7
+  text37   126    181         1
+  text38    53    198         1
+  text39    87    154         1
+  text40    45    112         3
+  text41    52    168         1
+  text42    78    132         1
+  text43    64    132         1
+  text44    62    113         1
+  text45    65     79         1
+  text46    13     44         1
+  text47    63    172         1
+  text48    42     71         1
+  text49    37     57         1
+  text50    31     47         1
+  text51    71    193         2
+  text52    95    190         9
+  text53    57    149         3
+  text54    66    216         1
+  text55    35    250         1
+  text56    72    312         1
+  text57    62    194         1
+  text58   107    392        10
+  text59    48    143         1
+  text60    50    208        13
+  text61    96    273         9
+  text62   102    388         2
+  text63    72    190         8
+  text64    90    396         2
+  text65    69     99         1
+  text66    90    143         3
+  text67    54    112         6
+  text68    60     92         1
+  text69    62    148         2
+  text70    12     28         1
+  text71    42    105         1
+  text72    64    204         1
+  text73    42    103         1
+  text74    70     95         2
+  text75    36     43         1
+  text76    45     68         1
+  text77    64     98         1
+  text78    43     67         1
+  text79    54    135         1
+  text80    38    101         2
+  text81    95    145         1
+  text82    66    105         1
+  text83   109    198         1
+  text84    79    146         1
+  text85   111    214         2
+  text86    56     95         1
+  text87    53    108         1
+  text88    74    126         1
+  text89    43     50         1
+  text90    66    111         1
+  text91    44     97         2
+  text92    44     48         1
+  text93    50     91         1
+  text94    31     39         1
+  text95    22     53         1
+  text96    44     98         1
+  text97    44    114         1
+  text98    24     64         1
+  text99    56     77         2
+ text100    64     89         1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>stopwords_adhok <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>stopwords_adhok <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"you"</span>, <span class="st">"i"</span>, <span class="st">"the"</span>, <span class="st">"to"</span>, <span class="st">"go"</span>, <span class="st">"my"</span>, <span class="st">"in"</span>, <span class="st">"this"</span>, <span class="st">"and"</span>, <span class="st">"oh"</span>, <span class="st">"ah"</span>, <span class="st">"ay"</span>, <span class="st">"uh"</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>stopwords_adhok <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">stopwords</span>(<span class="st">"es"</span>), stopwords_adhok)</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a> </span>
@@ -1094,11 +1096,107 @@ Canciones únicas después de limpiar duplicados: 5 </code></pre>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dtm_letras <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokens_letras)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Eliminamos stopwords </span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>dtm_letras <span class="ot">&lt;-</span> <span class="fu">dfm_remove</span>(dtm_letras, stopwords_adhok)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>dtm_letras <span class="ot">&lt;-</span> <span class="fu">dfm_remove</span>(dtm_letras, stopwords_adhok)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>frecuencias <span class="ot">&lt;-</span> <span class="fu">topfeatures</span>(dtm_letras, <span class="at">n =</span> <span class="dv">100</span>)   <span class="co"># Cambia n para más términos</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(frecuencias)</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>frecuencias_totales <span class="ot">&lt;-</span> <span class="fu">textstat_frequency</span>(dtm_letras)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir frecuencias en un dataframe</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>frecuencias_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">term =</span> <span class="fu">names</span>(frecuencias), <span class="at">freq =</span> frecuencias)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la nube de palabras</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">words =</span> frecuencias_df<span class="sc">$</span>term, </span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">freq =</span> frecuencias_df<span class="sc">$</span>freq, </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">min.freq =</span> <span class="dv">3</span>,  <span class="co"># Palabras con frecuencia mínima</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">max.words =</span> <span class="dv">200</span>,  <span class="co"># Número máximo de palabras</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">scale =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">0.5</span>),  <span class="co"># Tamaño de las palabras</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"Dark2"</span>),  <span class="co"># Paleta de colores</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">random.order =</span> <span class="cn">FALSE</span>)  <span class="co"># Las palabras más frecuentes en el centro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Analisis_Letras_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
-<section id="análisis-de-frecuencia-léxica" class="level2">
-<h2 class="anchored" data-anchor-id="análisis-de-frecuencia-léxica">Análisis de frecuencia léxica</h2>
+<section id="análisis-de-bi-gramas" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-de-bi-gramas">Análisis de bi-gramas</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar stopwords antes de la tokenización</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tokens_limpios <span class="ot">&lt;-</span> <span class="fu">tokens_remove</span>(tokens_letras, stopwords_adhok)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar bigramas (combinación de 2 palabras) sin stopwords</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>tokens_bigrams <span class="ot">&lt;-</span> <span class="fu">tokens_ngrams</span>(tokens_limpios, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la matriz de documentos-término (DTM) para los bigramas</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>dtm_bigrams <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokens_bigrams)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la frecuencia de los bigramas</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>frecuencia_bigrams <span class="ot">&lt;-</span> <span class="fu">textstat_frequency</span>(dtm_bigrams)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar bigramas con docfreq == 1 (que salen en una sola canción)</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>frecuencia_bigrams_filtrada <span class="ot">&lt;-</span> frecuencia_bigrams[frecuencia_bigrams<span class="sc">$</span>docfreq <span class="sc">&gt;</span> <span class="dv">1</span>, ]</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver los bigramas filtrados</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(frecuencia_bigrams_filtrada, <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                feature frequency rank docfreq group
+2            alguna_vez        35    2      10   all
+3            si_quieres        30    3      12   all
+4               tal_vez        29    4      16   all
+5                rock_n        24    5       4   all
+8          haber_sabido        22    7       3   all
+9               n_chile        22    7       4   all
+14             cada_vez        18   14       8   all
+15              dime_si        18   14       6   all
+16        ninguna_forma        17   16       3   all
+17               si_día        17   16       2   all
+18            puede_ser        17   16       9   all
+19         nombre_llama        16   19       2   all
+20        llama_ninguna        16   19       2   all
+22          solo_quiero        16   19       6   all
+24       sabido_resultó        16   19       2   all
+25    resultó_intentado        16   19       2   all
+26 intentado_arreglarlo        16   19       2   all
+29              tan_mal        15   29       9   all
+30                sé_si        15   29       8   all
+33           quiero_ser        14   33       9   all
+34            cada_paso        14   33       3   all
+37            tan_fácil        14   33       4   all
+39           quiero_ver        13   39       7   all
+43        siento_siento        13   39       3   all
+47         you'll_never        13   39       2   all
+52         forma_nombre        12   51       2   all
+54         ahora_quiero        12   51       7   all
+57        quiero_bailar        12   51       2   all
+58             va_pasar        12   51       4   all
+60            tan_lejos        12   51       4   all
+61            menos_mal        12   51       3   all
+62            va_quedar        12   51       3   all
+64         día_encontré        12   51       3   all
+65            dime_dime        12   51       2   all
+70          mejor_creer        12   51       2   all
+71              vez_vez        11   71       4   all
+72              bien_si        11   71       7   all
+75            si_quiero        11   71       4   all
+78       sometimes_feel        11   71       2   all
+79          baila_baila        10   79       2   all
+82           hoy_quiero        10   79       2   all
+83            quise_ser        10   79       3   all
+85          verme_verme        10   79       2   all
+87             quién_va        10   79       3   all
+89           ser_verdad        10   79       3   all
+90         pasar_tiempo        10   79       2   all
+91          tiempo_vano        10   79       2   all
+94    encontré_compartí        10   79       2   all
+95        compartí_solo        10   79       2   all
+96           solo_perdí        10   79       2   all</code></pre>
+</div>
+</div>
 </section>
 <section id="análisis-de-sentimientos" class="level2">
 <h2 class="anchored" data-anchor-id="análisis-de-sentimientos">Análisis de sentimientos</h2>
@@ -1133,58 +1231,61 @@ Canciones únicas después de limpiar duplicados: 5 </code></pre>
 <section id="en-excel" class="level3">
 <h3 class="anchored" data-anchor-id="en-excel">En excel</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>exportar_excel <span class="ot">&lt;-</span> <span class="cf">function</span>(dataframe, file_path) {</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar que el dataframe no esté vacío</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(dataframe) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"El dataframe está vacío y no se puede exportar."</span>)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar que el paquete writexl esté instalado</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"writexl"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"El paquete 'writexl' no está instalado. Usa install.packages('writexl') para instalarlo."</span>)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Exportar el dataframe como archivo Excel</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(dataframe, file_path)</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mensaje de confirmación</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"El archivo Excel se ha guardado correctamente en: "</span>, file_path)</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso:</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># exportar_excel(corpus_df, "corpus_bandas.xlsx")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>exportar_excel <span class="ot">&lt;-</span> <span class="cf">function</span>(dataframe, file_path) {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar que el dataframe no esté vacío</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(dataframe) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"El dataframe está vacío y no se puede exportar."</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar que el paquete writexl esté instalado</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"writexl"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"El paquete 'writexl' no está instalado. Usa install.packages('writexl') para instalarlo."</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Exportar el dataframe como archivo Excel</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  writexl<span class="sc">::</span><span class="fu">write_xlsx</span>(dataframe, file_path)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mensaje de confirmación</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"El archivo Excel se ha guardado correctamente en: "</span>, file_path)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso:</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="fu">exportar_excel</span>(corpus_df, <span class="st">"corpus_bandas.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>El archivo Excel se ha guardado correctamente en: corpus_bandas.xlsx</code></pre>
+</div>
 </div>
 </section>
 <section id="en-texto" class="level3">
 <h3 class="anchored" data-anchor-id="en-texto">En texto</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>exportar_texto <span class="ot">&lt;-</span> <span class="cf">function</span>(data, nombre_archivo, <span class="at">separador =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">incluir_nombres_filas =</span> <span class="cn">FALSE</span>, <span class="at">entrecomillar =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Validar que data sea un data.frame</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.data.frame</span>(data)) {</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"El objeto proporcionado no es un data.frame."</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Exportar el data.frame a un archivo de texto</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.table</span>(</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    data,</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> nombre_archivo,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> separador,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> incluir_nombres_filas,</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">quote =</span> entrecomillar</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mensaje de confirmación</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Archivo exportado exitosamente en:"</span>, nombre_archivo, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamar a la función para exportar tu data.frame</span></span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="fu">exportar_texto</span>(</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> corpus_df,               <span class="co"># DataFrame a exportar</span></span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombre_archivo =</span> <span class="st">"corpus_df_to_text.txt"</span>, <span class="co"># Nombre del archivo</span></span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">separador =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,                  <span class="co"># Separador de columnas (tabulación)</span></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">incluir_nombres_filas =</span> <span class="cn">TRUE</span>,     <span class="co"># No incluir índices de las filas</span></span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">entrecomillar =</span> <span class="cn">FALSE</span>              <span class="co"># No entrecomillar valores</span></span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>exportar_texto <span class="ot">&lt;-</span> <span class="cf">function</span>(data, nombre_archivo, <span class="at">separador =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">incluir_nombres_filas =</span> <span class="cn">FALSE</span>, <span class="at">entrecomillar =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Validar que data sea un data.frame</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.data.frame</span>(data)) {</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"El objeto proporcionado no es un data.frame."</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Exportar el data.frame a un archivo de texto</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.table</span>(</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    data,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> nombre_archivo,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> separador,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> incluir_nombres_filas,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">quote =</span> entrecomillar</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mensaje de confirmación</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Archivo exportado exitosamente en:"</span>, nombre_archivo, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Llamar a la función para exportar tu data.frame</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="fu">exportar_texto</span>(</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> corpus_df,               <span class="co"># DataFrame a exportar</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombre_archivo =</span> <span class="st">"corpus_df_to_text.txt"</span>, <span class="co"># Nombre del archivo</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">separador =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>,                  <span class="co"># Separador de columnas (tabulación)</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">incluir_nombres_filas =</span> <span class="cn">TRUE</span>,     <span class="co"># No incluir índices de las filas</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">entrecomillar =</span> <span class="cn">FALSE</span>              <span class="co"># No entrecomillar valores</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Archivo exportado exitosamente en: corpus_df_to_text.txt </code></pre>
 </div>
