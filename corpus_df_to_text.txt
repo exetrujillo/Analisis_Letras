@@ -45,7 +45,7 @@ la noche en vela	[00:24.13] Hace tanto tiempo que
 [02:33.68] (uoh uoh uoh uoh)
 [02:42.21] No pasarás
 [02:48.48] la noche en vela
-[02:54.65]	1	1	0
+[02:54.65] 	1	1	0
 2	13533967	Adormidera	adormidera	Adelaida	adelaida	Madre Culebra	madre culebra	196	2024-10-19 20:01:14.720224286+00:00	8203542	Y caigo más al fondo en el vacío natural
 ahí sabré lo verdadero, lo real
 
@@ -101,7 +101,7 @@ Decir que no, decir que no	[00:32.16] ¿Cuántas estrellas se irán por la maña
 [02:43.67] Contengo la respiración
 [02:51.77] No siento ya ningún dolor
 [02:59.54] Decir que no, decir que no
-[03:04.84]	1	1	0
+[03:04.84] 	1	1	0
 4	13868333	Columpio	columpio	Adelaida	adelaida	Paraiso	paraiso	243	2024-10-29 00:09:48.560411763+00:00	8538283	No, preguntar su nombre y diles la razón
 Puedes olvidarte de quedar así
 En algún lugar que no sentimos más
@@ -134,7 +134,7 @@ De tu pobre corazón
 [01:44.78] ¡Ya no soy, ya no soy!
 [01:50.57] ¡Sin mirar hacia atrás!
 [01:56.02] ¡Ya no soy, ya no soy!
-[01:58.92]	1	1	0
+[01:58.92] 	1	1	0
 5	13534510	El Bosque	el bosque	Adelaida	adelaida	Madre Culebra	madre culebra	296	2024-10-19 20:27:09.898391580+00:00	8204085	en el rió se va
 desemboca la cordura
 dame alguna razón y dime
@@ -178,7 +178,7 @@ en la oscuridad, puedo verte más.	[00:23.09] Sobrenadando
 [01:24.36] El sabor ya lo olvidé
 [01:32.99] Mas de alguna vez, corrí, caí, perdí fragilidad
 [01:41.18] en la oscuridad, puedo verte más.
-[01:48.00]	1	1	0
+[01:48.00] 	1	1	0
 7	13039857	Kraken	kraken	Adelaida	adelaida	Animita	animita	190	2024-10-09 11:10:02.387869151+00:00	7709061	Te devolveré
 Mis pecados con amor
 Y la libertad
@@ -240,7 +240,7 @@ Ojos con arena	[00:14.82] Te devolveré
 [02:10.98] Una nube negra
 [02:16.18] Confundimos tantos nudos
 [02:21.60] Ojos con arena
-[02:26.07]	1	1	0
+[02:26.07] 	1	1	0
 8	13533874	La Velocidad	la velocidad	Adelaida	adelaida	Paraiso	paraiso	214	2024-10-19 19:59:32.120996314+00:00	8203449	Estoy buscando más que la orilla de una flor
 Desde años atrás que sangro igual que tú
 
@@ -327,7 +327,7 @@ Parapente.	[00:12.73] Veinte Veinte
 [01:19.01] ...
 [02:15.63] Veinte Veinte
 [02:59.37] Parapente.
-[03:03.65]	1	1	0
+[03:03.65] 	1	1	0
 12	15137829	Cerro Cerro	cerro cerro	Amarga Marga	amarga marga	Mi Arma Blanca	mi arma blanca	217	2024-11-28 15:25:10.338265593+00:00	9809095	no te conozco, menos tú a mí
 pero sé que de nuestros planes algo va a salir
 quiero que sea martes por la tarde
@@ -378,7 +378,7 @@ baila baila baila Macarena	[00:17.10] no te conozco, menos tú a mí
 [02:31.15] baila Macarena
 [02:32.87] baila Macarena
 [02:34.77] baila baila baila Macarena
-[02:39.64]	1	1	0
+[02:39.64] 	1	1	0
 13	11346289	Dimensiones Paralelas	dimensiones paralelas	Amarga Marga	amarga marga	Dimensiones Paralelas	dimensiones paralelas	206	2024-08-07 01:42:36.153434916+00:00	6013376	Sueño que me llega
 Enviada desde el cielo
 La brisa de ese día
@@ -450,7 +450,7 @@ Si bajas la escalera en dimensiones paralelas	[00:29.36] Sueño que me llega
 [02:43.35] Donde sea que vayas, si doblas por la esquina
 [02:46.70] Si entras por la puerta o si saltas la ventana
 [02:50.03] Si bajas la escalera en dimensiones paralelas
-[02:54.94]	1	1	0
+[02:54.94] 	1	1	0
 14	11750242	Hazte el Favor	hazte el favor	Amarga Marga	amarga marga	Dimensiones	dimensiones	287	2024-08-22 18:21:46.824243234+00:00	6417804	¿Qué pasa si hoy te das cuenta de todo lo que nos violenta?
 El crimen ya se cometió, pero la sangre nunca se secó
 Trabajo forzado, nunca voluntario
@@ -502,7 +502,7 @@ Por favor	[00:42.11] ¿Qué pasa si hoy te das cuenta de todo lo que nos violent
 [02:45.29] Por favor
 [02:52.87] Por favor
 [02:59.59] Por favor
-[03:16.64]	1	1	0
+[03:16.64] 	1	1	0
 15	14198273	Lávate el Pelo	lávate el pelo	Amarga Marga	amarga marga	Mi Arma Blanca	mi arma blanca	147	2024-11-08 01:20:30.793862344+00:00	8868729	Lávate el pelo
 Con agua caliente
 Deja que la ducha mate
@@ -552,7 +552,7 @@ Lávate el pelo hoy	[00:18.51] Lávate el pelo
 [02:04.76] Lávate el pelo hoy y nada más
 [02:07.65] Escucho, me ducho y no me rehuso
 [02:11.43] Lávate el pelo hoy
-[02:17.86]	1	1	0
+[02:17.86] 	1	1	0
 16	11346713	Mochi Cora	mochi cora	Amarga Marga	amarga marga	Compilado Algorecords 2017	compilado algorecords 2017	248	2024-08-07 02:19:51.545182762+00:00	6013800	Mi mochila me tiene cansado
 Tiene recuerdos amontonados
 Los paisajes que coleccionamos
@@ -615,7 +615,7 @@ Oh oh oh oh	[00:13.79] Es un hombre
 [01:32.28] Paparapapapapapa
 [01:35.28] En un sabotaje
 [01:54.36] Oh oh oh oh
-[02:13.23]	1	1	0
+[02:13.23] 	1	1	0
 18	12756595	Tan Tuya	tan tuya	Amarga Marga	amarga marga	Mi Arma Blanca	mi arma blanca	142	2024-10-02 10:56:14.722989046+00:00	7425483	No es por ensuciar lo que siempre tan limpio tú me das
 Y aunque estemos tan enamorados
 Un tanto conectados, un poco encandilados
@@ -691,7 +691,7 @@ Como tuya	[00:00.96] No es por ensuciar lo que siempre tan limpio tú me das
 [02:02.76] Como mío
 [02:05.68] No eres tan mía
 [02:08.70] Como tuya
-[02:14.27]	1	1	0
+[02:14.27] 	1	1	0
 19	8699927	1920	1920	Asia Menor	asia menor	Enola Gay	enola gay	375	2022-11-14 11:46:45.978+00:00	3547152	Huesos
 Que se parten
 Besos
@@ -749,7 +749,7 @@ Que está muriendo en mí	[00:15.61] Huesos
 [02:46.88] Comparto cuerpo
 [02:51.95] Con el desecho que arroja el mar
 [02:58.62] Que está muriendo en mí
-[03:05.87]	1	1	0
+[03:05.87] 	1	1	0
 20	9530483	Buenos noches	buenos noches	Asia Menor	asia menor	Enola Gay	enola gay	354	2024-05-27 18:12:02.471203959+00:00	4194708	Tengo el cuello tenso
 Apuntando al lado opuesto que quiero ver
 Se desplaza por el canto de mis ojos
@@ -811,7 +811,7 @@ De nuevo	[01:18.06] Tengo el cuello tenso
 [04:19.32] De nuevo
 [04:26.24] De nuevo
 [04:33.51] De nuevo
-[05:53.62]	1	1	0
+[05:53.62] 	1	1	0
 21	8701970	Defensa/Cortar	defensa cortar	Asia Menor	asia menor	Enola Gay	enola gay	253	2022-11-14 11:46:45.978+00:00	3547390	Nada, nada ni nadie
 Lo provoca
 Nada ni nadie
@@ -869,7 +869,7 @@ Querer rearmar	[00:05.91] Nada, nada ni nadie
 [03:48.54] Querer rearmar
 [03:52.10] Una nueva defensa
 [03:55.74] Querer rearmar
-[03:58.82]	1	1	0
+[03:58.82] 	1	1	0
 22	10479847	defensacortar	defensacortar	asia menor	asia menor	enola gay	enola gay	253	2024-07-06 19:00:39.372141159+00:00	5145956	Nada, nada ni nadie
 Lo provoca
 Nada ni nadie
@@ -926,7 +926,7 @@ Querer rearmar	[00:06.07] Nada, nada ni nadie
 [03:49.36] Querer rearmar
 [03:52.25] Una nueva defensa
 [03:55.36] Querer rearmar
-[03:55.52]	1	1	0
+[03:55.52] 	1	1	0
 23	8702230	Doce	doce	Asia Menor	asia menor	Doce - Single	doce single	258	2022-11-14 11:46:45.978+00:00	3547424	Se me ocurren
 Tantas ideas
 La mayoría son cosas que saldrían mal
@@ -1002,7 +1002,7 @@ Como tierra en los pies, como tierra en los pies	[00:15.28] Se me ocurren
 [02:12.86] Después de comer, después de comer
 [02:15.26] Se queda pegado en las paredes
 [02:17.33] Como tierra en los pies, como tierra en los pies
-[02:20.50]	1	1	0
+[02:20.50] 	1	1	0
 24	8702679	Estrés	estres	Asia Menor	asia menor	Enola Gay	enola gay	260	2022-11-14 11:46:45.978+00:00	3547467	El nivel de estrés en el cuerpo
 Me hace ver el mundo de otra forma
 Siento el calor del combustible quemado dentro mío
@@ -1035,7 +1035,7 @@ No pienso en nada	[00:17.54] El nivel de estrés en el cuerpo
 [02:21.87] Sabe que hacer
 [02:26.38] Ya, ya no siento nada
 [02:35.34] No pienso en nada
-[02:39.61]	1	1	0
+[02:39.61] 	1	1	0
 25	9530745	Flores del naranjo	flores del naranjo	Asia Menor	asia menor	Enola Gay	enola gay	278	2024-05-27 18:20:48.410823932+00:00	4194970	Hay tanto que no entiendo sobre lo improbable
 Un error de código
 Que oigo como flores blancas
@@ -1093,7 +1093,7 @@ Por las preguntas que nunca podré responder	[00:18.04] Hay tanto que no entiend
 [02:35.54] Debería escuchar solo la intención
 [02:40.85] Para no cambiar el sentimiento
 [02:46.17] Por las preguntas que nunca podré responder
-[02:56.74]	1	1	0
+[02:56.74] 	1	1	0
 26	8704186	Instrumental	instrumental	Asia Menor	asia menor	Enola Gay	enola gay	109	2022-11-14 11:46:45.978+00:00	3547639	NA	NA	0	0	1
 27	8704780	La Naturaleza	la naturaleza	Asia Menor	asia menor	Enola Gay	enola gay	276	2022-11-14 11:46:45.978+00:00	3547715	Es violento
 El ruido en la calle, el corte de pelo
@@ -1180,7 +1180,7 @@ Te quiero tanto	[00:16.23] Es violento
 [03:29.66] Te quiero tanto
 [03:32.45] Te quiero tanto
 [03:35.61] Te quiero tanto
-[03:38.87]	1	1	0
+[03:38.87] 	1	1	0
 28	8704864	Lento	lento	Asia Menor	asia menor	Enola Gay	enola gay	359	2022-11-14 11:46:45.978+00:00	3547725	Lento, lento, lento
 Lento, lento, lento
 Lento, lento, lento
@@ -1234,7 +1234,7 @@ Deja de transpirar, no creo saber qué hora es	[00:06.49] Lento, lento, lento
 [04:30.28] Duele tanto el cuerpo, somatizarlo todo
 [04:35.48] Deja de transpirar, deja de transpirar
 [04:39.70] Deja de transpirar, no creo saber qué hora es
-[04:45.51]	1	1	0
+[04:45.51] 	1	1	0
 29	9531246	Patio	patio	Asia Menor	asia menor	Enola Gay	enola gay	291	2024-05-27 18:38:22.100805813+00:00	4195471	Vivo en una casa
 Con número impar y sin ventanal
 Todo es hermético
@@ -1290,7 +1290,7 @@ Es darle libertad a remodelar	[00:22.74] Vivo en una casa
 [03:25.39] O más bien lo voy a intentar tapar
 [03:28.57] Dejar que apague sola
 [03:32.55] Es darle libertad a remodelar
-[03:34.83]	1	1	0
+[03:34.83] 	1	1	0
 30	9531411	Tesela	tesela	Asia Menor	asia menor	Enola Gay	enola gay	252	2024-05-27 18:49:09.728221448+00:00	4195636	Se pudo hacer mejor
 Se pudo hacer mejor
 Se pudo hacer mejor
@@ -1374,7 +1374,7 @@ Es un buen lugar para comer	[00:18.68] Se pudo hacer mejor
 [03:23.93] Ohh
 [03:26.03] Es un buen lugar para tomar agua
 [03:29.08] Es un buen lugar para comer
-[03:30.91]	1	1	0
+[03:30.91] 	1	1	0
 31	10401709	Cúbito Radio	cubito radio	Asamblea Internacional Del Fuego	asamblea internacional del fuego	Dialéctica Negativa	dialectica negativa	318	2024-07-04 04:24:02.669834860+00:00	5067615	La casa vacía, la risa, la ausencia
 La mierda hasta el cuello y esa indiferencia
 Atrás se quedo la Torre Gálata
@@ -1420,7 +1420,7 @@ Que la rabia se vaya, que el tiempo se pare	[01:11.14] La casa vacía, la risa, 
 [04:42.57] Que se acabe el vacío, se borre tu nombre y comience de nuevo
 [04:47.98] Que me coman los ojos los pájaros negros para no verte nunca
 [04:53.86] Que la rabia se vaya, que el tiempo se pare
-[05:05.45]	1	1	0
+[05:05.45] 	1	1	0
 32	13296992	Devastados (La Suerte de Roma)	devastados la suerte de roma	Asamblea Internacional Del Fuego	asamblea internacional del fuego	Columnas	columnas	339	2024-10-14 05:18:03.601577310+00:00	7966391	Esta es la historia
 de mil historias
 almas estallan
@@ -1490,7 +1490,7 @@ Nada queda!! (bis)	[00:17.88] Esta es la historia
 [03:06.62] Como roma caera todo caera (bis)
 [03:08.65] Todo cae!! (bis)
 [03:23.62] Nada queda!! (bis)
-[03:31.66]	1	1	0
+[03:31.66] 	1	1	0
 33	10401713	El sonido de los helicópteros	el sonido de los helicopteros	Asamblea Internacional Del Fuego	asamblea internacional del fuego	Dialéctica Negativa	dialectica negativa	308	2024-07-04 04:24:13.003748632+00:00	5067619	Hablan que hubo un tiempo que hizo parte de otro tiempo
 En una ciudad de piedra con una memoria negra
 Hombres, manos gruesas que levantaban banderas
@@ -1613,7 +1613,7 @@ Se mantiene en el tiempo, en la memoria y se propaga"	[00:13.53] Hablan que hubo
 [04:55.01] Porque el horror que pasa por los ojos se queda en el cuerpo
 [04:58.76] En las vísceras, en las entrañas
 [05:00.46] Se mantiene en el tiempo, en la memoria y se propaga"
-[05:06.05]	1	1	0
+[05:06.05] 	1	1	0
 34	14762361	Escaleras	escaleras	Asamblea Internacional Del Fuego	asamblea internacional del fuego	La Marcha de la Desesperanza	la marcha de la desesperanza	208	2024-11-19 23:00:51.639238320+00:00	9433417	Mírame,
 Mirame lo que soy,
 Miedo y rabia en el mismo cuerpo.
@@ -1726,7 +1726,7 @@ Silencio...	[00:01.40] Mírame,
 [03:19.28] Falta de calma
 [03:21.65] Y silencio y silencio, silencio
 [03:26.22] Silencio...
-[03:27.51]	1	1	0
+[03:27.51] 	1	1	0
 35	13909011	Icaro, apología al vuelo	icaro apologia al vuelo	Asamblea Internacional Del Fuego	asamblea internacional del fuego	La Marcha de la Desesperanza	la marcha de la desesperanza	215	2024-10-30 04:56:17.428175548+00:00	8579042	A nosotros la limitación
 A nosotros el condicionamiento
 A nosotros la ortopedia
@@ -1877,7 +1877,7 @@ Con tus ojos como bandera	[01:12.10] Comprender la derrota
 [04:06.66] Tocando el tambor de guerra
 [04:13.55] Porque acá estamos de nuevo
 [04:24.17] Con tus ojos como bandera
-[04:44.82]	1	1	0
+[04:44.82] 	1	1	0
 39	12438508	Dedo chico	dedo chico	CandelaBRO	candelabro	Ahora o Nunca	ahora o nunca	180	2024-09-24 22:54:54.195574827+00:00	7107157	Me pegué en el dedo chico del pie
 Quedé inmolado en la cama
 Sin saber nada, nada, nada, nada, nada, nada
@@ -1938,7 +1938,7 @@ Descansar	[00:27.58] Me pegué en el dedo chico del pie
 [02:31.81] Solo quiero descansar (descansar)
 [02:38.31] Solo quiero descansar (descansar)
 [02:44.75] Descansar
-[02:51.66]	1	1	0
+[02:51.66] 	1	1	0
 40	13039376	Familia Garfield	familia garfield	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	163	2024-10-09 10:46:27.700122819+00:00	7708579	¡Ah!, es lunes
 Detesto a los lunes, habrá alguien en el mundo
 Lo suficientemente estúpido para que de veras le guste los lunes
@@ -1984,7 +1984,7 @@ Para ver, para verte	[00:00.15] ¡Ah!, es lunes
 [02:13.15] Para ver tu cara linda sonriendo por el campo
 [02:19.08] Me pregunto cuánto tiempo seguiré esperando
 [02:25.12] Para ver, para verte
-[02:29.43]	1	1	0
+[02:29.43] 	1	1	0
 41	13724072	Madre	madre	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	240	2024-10-25 20:41:07.519823911+00:00	8393879	Entibiemos tiempo
 Que hoy las flores van creciendo
 Y hay un algo que no puedo hablar
@@ -2037,7 +2037,7 @@ Madre, hoy quiero saltar	[00:22.47] Entibiemos tiempo
 [02:54.11] Hoy quiero saltar
 [03:03.35] Hoy quiero saltar
 [03:11.94] Madre, hoy quiero saltar
-[03:24.98]	1	1	0
+[03:24.98] 	1	1	0
 42	13368911	Me acerca otro más	me acerca otro mas	CandelaBRO	candelabro	Ahora o Nunca	ahora o nunca	165	2024-10-15 16:17:49.400327650+00:00	8038338	Cuando encuentre mi final
 Con todos mis esfuerzos en vano
 Me quedaré a mirar
@@ -2087,7 +2087,7 @@ Cada paso que yo doy, me acerca otro más a	[00:40.91] Cuando encuentre mi final
 [02:03.40] Cada paso que yo doy, me acerca otro más a ti
 [02:06.61] Cada paso que yo doy, me acerca otro más a ti
 [02:10.24] Cada paso que yo doy, me acerca otro más a
-[02:17.40]	1	1	0
+[02:17.40] 	1	1	0
 43	14708989	Pared abajo	pared abajo	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	165	2024-11-18 22:10:13.761518445+00:00	9380011	Tenemos una canción que aprender
 Se cayó tu pared
 Nos mirábamos bien sin saber qué hacer
@@ -2129,7 +2129,7 @@ A ti	[00:05.45] Tenemos una canción que aprender
 [01:45.67] Yo te elijo a ti (ra-ra-ra, ra-ra-ra)
 [01:51.02] A ti
 [01:56.43] A ti
-[01:59.53]	1	1	0
+[01:59.53] 	1	1	0
 44	13898719	Piano a piano	piano a piano	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	399	2024-10-29 20:45:56.797250486+00:00	8568708	Las luces son destellos de autos
 Que se encienden en el cielo
 Y ya no sé dónde tengo la cabeza ni los pies
@@ -2179,7 +2179,7 @@ Piano a piano y respirar	[00:35.33] Las luces son destellos de autos
 [02:56.90] La tormenta pasará
 [03:06.53] Solo es cosa de esperar
 [03:16.06] Piano a piano y respirar
-[03:26.26]	1	1	0
+[03:26.26] 	1	1	0
 45	13697744	Pucha que ha costado	pucha que ha costado	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	146	2024-10-25 12:42:21.827048510+00:00	8367534	Hoy, como ayer y tal vez como mañana
 Me quedaré
 En un rincón pensándote
@@ -2228,7 +2228,7 @@ Alejándose de mí	[00:00.59] Hoy, como ayer y tal vez como mañana
 [01:57.88] Y es que, pucha, que ha costado
 [02:06.88] Tener que ver tu espalda
 [02:13.50] Alejándose de mí
-[02:17.20]	1	1	0
+[02:17.20] 	1	1	0
 46	9985614	Refugio I	refugio i	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	149	2024-06-18 02:35:12.492518265+00:00	4650914	Hoy quiero esconderme en mi refugio
 Al que voy cuando todo sale mal
 Sentarme un rato y poder divagar
@@ -2259,7 +2259,7 @@ Lejos del sol	[00:33.44] Hoy quiero esconderme en mi refugio
 [01:44.16] Que se camufló
 [01:48.76] Con sus maletas
 [01:55.55] Lejos del sol
-[02:00.01]	1	1	0
+[02:00.01] 	1	1	0
 47	13933552	Refugio II	refugio ii	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	164	2024-10-30 21:53:12.682654012+00:00	8603604	Este es nuestro refugio en la oscuridad
 Nuestro refugio en la oscuridad
 Un lugar donde poder escapar
@@ -2276,7 +2276,7 @@ Un lugar donde poder escapar	[00:31.89] Este es nuestro refugio en la oscuridad
 [00:48.90] Nuestro refugio en la oscuridad
 [00:52.11] Un lugar donde poder escapar
 [00:55.44] Un lugar donde poder escapar
-[01:01.90]	1	1	0
+[01:01.90] 	1	1	0
 48	13522958	Señales	senales	Candelabro	candelabro	Ahora o Nunca	ahora o nunca	161	2024-10-19 12:54:05.728566901+00:00	8192510	Tus señales son tan difusas
 Que no logro conectar
 Acaso todo está en mi mente
@@ -2334,7 +2334,7 @@ Son tus señales, son tus señales	[00:39.45] Tus señales son tan difusas
 [02:20.82] Son tus señales, son tus señales
 [02:24.02] Son tus señales, son tus señales (oh, tus promesas morirán)
 [02:27.08] Son tus señales, son tus señales
-[02:35.67]	1	1	0
+[02:35.67] 	1	1	0
 49	13369096	Tengo que saltar	tengo que saltar	CandelaBRO	candelabro	Ahora o Nunca	ahora o nunca	114	2024-10-15 16:27:38.601120528+00:00	8038523	No, no hay otro lugar
 Donde la luz de la luna
 Se pueda ver así
@@ -2369,7 +2369,7 @@ Algo más que esto	[00:16.66] No, no hay otro lugar
 [01:28.78] Algo más que todo esto
 [01:32.75] Algo más que todo esto
 [01:36.99] Algo más que esto
-[01:45.42]	1	1	0
+[01:45.42] 	1	1	0
 50	12146739	Todas las fiestas	todas las fiestas	CandelaBRO	candelabro	Ahora o Nunca	ahora o nunca	227	2024-09-11 09:19:09.127246074+00:00	6814822	Más temprano que tarde, tendremos
 Nuestro propio hogar
 Donde pasar todas las fiestas
@@ -2395,7 +2395,7 @@ Podremos respirar	[00:31.56] Más temprano que tarde, tendremos
 [01:52.87] Podremos respirarf
 [02:00.14] Más allá de todo este bostezo, todo este bostezo
 [02:07.56] Podremos respirar
-[02:15.16]	1	1	0
+[02:15.16] 	1	1	0
 51	13369728	Tomas mis manos	tomas mis manos	CandelaBRO	candelabro	Ahora o Nunca	ahora o nunca	91	2024-10-15 16:58:15.191999952+00:00	8039155	Tomas mis manos y me haces girar
 Se parece a estar
 Viviendo en un sueño
@@ -2415,7 +2415,7 @@ Viviendo en un sueño	[00:03.18] Tomas mis manos y me haces girar
 [00:21.27] Tomas mis manos y me haces girar
 [00:25.57] Se parece a estar
 [00:28.84] Viviendo en un sueño
-[00:34.20]	1	1	0
+[00:34.20] 	1	1	0
 52	13781070	2x3	2x3	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	229	2024-10-27 02:28:10.032598118+00:00	8450917	Hechen paja manden fruta este viaje me va a salir mal
 Si me conocen tan bien como lo hago yo
 Hechen paja manden fruta este viaje lo voy a arruinar
@@ -2455,7 +2455,7 @@ Yaaa	[00:28.46] Hechen paja manden fruta este viaje me va a salir mal
 [02:53.11] Puedes tratar de mentirme, puedes arrepentirte, puedes tratar de irte, pero si un día yo, te viera aquí
 [03:16.86] Puedes tratar de mentirme, poder arrepentirte, puedes tratar de salirte pero si un día...
 [03:46.38] Yaaa
-[03:46.41]	1	1	0
+[03:46.41] 	1	1	0
 53	15122296	Abajo	abajo	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	306	2024-11-28 08:47:31.099856234+00:00	9793561	Abre la puerta si es que quieres ver
 ¿Es falta de decisión o voluntad?
 No escuchar
@@ -2577,7 +2577,7 @@ Y ahora todos pueden	[00:33.17] Hablo mucho, no digo ná'
 [03:24.46] Y ahora todos pueden tocarte
 [03:28.51] Ahora todos pueden tocarte
 [03:32.07] Y ahora todos pueden
-[03:36.53]	1	1	0
+[03:36.53] 	1	1	0
 55	15122950	Ctlqhl	ctlqhl	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	197	2024-11-28 08:56:32.532378291+00:00	9794215	No me esperaba esto
 Nunca lo vi venir así
 Me entiendes tan perfecto
@@ -2655,7 +2655,7 @@ Y si un día no puedo entrar	[00:32.39] No me esperaba esto
 [02:57.87] Y si un día no puedo entrar
 [03:01.31] Y si un día no puedo entrar
 [03:04.85] Y si un día no puedo entrar
-[03:16.69]	1	1	0
+[03:16.69] 	1	1	0
 56	14148049	El Otro	el otro	Chini and The Technicians	chini and the technicians	El Otro	el otro	155	2024-11-06 01:42:43.542826730+00:00	8818403	Quise ser
 Quise estar
 Vine, ví y vencí
@@ -2751,7 +2751,7 @@ Vine, ví, vencí	[00:00.50] Quise ser
 [02:22.59] Vine, ví, vencí
 [02:27.36] Y quise estar
 [02:29.58] Vine, ví, vencí
-[02:34.87]	1	1	0
+[02:34.87] 	1	1	0
 57	14087751	Fibra	fibra	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	265	2024-11-04 01:18:37.117382732+00:00	8757985	En el centro
 De la marea
 Hay una cueva
@@ -2858,7 +2858,7 @@ Me corté el dedo cuando la quise tocar	[00:35.52] En el centro
 [04:12.01] Me corté el dedo cuando la quise tocar
 [04:15.13] Pero yo tengo esa fibra que es de metal
 [04:18.31] Me corté el dedo cuando la quise tocar
-[04:22.32]	1	1	0
+[04:22.32] 	1	1	0
 58	15120498	Fiesta de Despedida	fiesta de despedida	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	287	2024-11-28 08:21:41.492143352+00:00	9791763	Ya no quiero retarte más
 Tú no tienes marcas del mal, en sí
 Y no pretendo
@@ -2953,7 +2953,7 @@ No quiero ni puedo amar a quien no quiera ser	[00:20.83] Ya no quiero retarte m�
 [03:58.42] No quiero ni puedo amar a quien no quiera ser
 [04:07.95] No quiero ni puedo amar a quien no quiera ser amado
 [04:17.52] No quiero ni puedo amar a quien no quiera ser
-[04:46.55]	1	1	0
+[04:46.55] 	1	1	0
 59	12798338	Imagen	imagen	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	258	2024-10-03 10:29:14.449631455+00:00	7467239	No hay intención de molestar
 A menos que ellos lo pidan
 (A menos que ellos lo pidan)
@@ -3172,7 +3172,7 @@ Ya no ve	[00:18.32] No hay intención de molestar
 [04:05.63] Ya no
 [04:06.22] Ya no
 [04:06.84] Ya no ve
-[04:08.10]	1	1	0
+[04:08.10] 	1	1	0
 60	13184747	Niña Glaciar	nina glaciar	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	220	2024-10-12 02:43:10.837473223+00:00	7854057	Niña glaciar
 Niña glaciar, te espero
 Niña glaciar, te quiero
@@ -3240,7 +3240,7 @@ Sé	[00:22.34] Niña glaciar
 [03:13.46] Sé
 [03:20.07] Sé
 [03:27.16] Sé
-[03:39.82]	1	1	0
+[03:39.82] 	1	1	0
 61	13778178	Porque Yo No	porque yo no	Chini and The Technicians	chini and the technicians	En el Fondo Todo Va Bien	en el fondo todo va bien	258	2024-10-27 00:05:48.131524342+00:00	8448025	Me
 Me
 Me da vergüenza estar
@@ -3318,7 +3318,7 @@ Hey!!	[00:31.99] Me
 [03:50.74] Hey!?
 [03:54.38] 
 [03:58.88] Hey!!
-[04:00.24]	1	1	0
+[04:00.24] 	1	1	0
 62	15120638	Siempreviva	siempreviva	Chini and The Technicians	chini and the technicians	Arriba Es Abajo	arriba es abajo	157	2024-11-28 08:24:32.951194196+00:00	9791903	Es que ya nadie fiscaliza esta casa
 Siempre hay tierra sobre la mesa
 Encontré la plancha en el congelador
@@ -3407,7 +3407,7 @@ Después	[00:20.92] Es que ya nadie fiscaliza esta casa
 [02:29.43] No vale regar, regar, regar, regar
 [02:33.85] Regar, regar, regar, regar, regar
 [02:34.04] Después
-[02:34.07]	1	1	0
+[02:34.07] 	1	1	0
 63	12777072	Arboles y pasarelas	arboles y pasarelas	Chini.png	chini png	El día libre de Polux	el dia libre de polux	332	2024-10-02 23:36:13.927027178+00:00	7445968	Hasta esta noche
 Nadie había pedido mi opinión
 Hasta esta noche fuimos dos dobles de acción
@@ -3544,7 +3544,7 @@ Ah	[00:28.45] Hasta esta noche
 [05:11.85] Hoy cántale a esta noche
 [05:16.87] ¿Ya es esta nuestra...?
 [05:22.11] Ah
-[05:22.44]	1	1	0
+[05:22.44] 	1	1	0
 64	12455371	Fricativa Velar Sorda	fricativa velar sorda	Chini.png	chini png	Fricativa Velar Sorda	fricativa velar sorda	137	2024-09-25 12:28:33.886805236+00:00	7124035	¿Será posible que sintamos lo mismo ahora?
 Si hace tres minutos que
 No somos la misma persona
@@ -3646,7 +3646,7 @@ Que deslomarme y que otro se coma el lomo	[00:02.56] Cuando el fuego avisa ya es
 [02:55.08] Rompe la fila por una vez, porque solo una vez sabrás que hacer
 [02:59.58] Prefiero desplomarme a la cima del plomo
 [03:02.26] Que deslomarme y que otro se coma el lomo
-[03:08.53]	1	1	0
+[03:08.53] 	1	1	0
 66	15119709	Fin de Primavera	fin de primavera	Columpios Al Suelo	columpios al suelo	Colores	colores	235	2024-11-28 08:05:51.134629612+00:00	9790974	La luna nos adelantó
 De un sueño de otro tiempo hasta hoy
 Nave espacial nos lleva a viajar
@@ -3682,7 +3682,7 @@ El final de la primavera	[00:37.02] La luna nos adelantó
 [02:47.36] El final de la primavera
 [02:55.42] El final de la primavera
 [03:03.15] El final de la primavera
-[03:09.05]	1	1	0
+[03:09.05] 	1	1	0
 67	15106334	Hiroshima & Nagasaki	hiroshima nagasaki	Columpios Al Suelo	columpios al suelo	Colores	colores	473	2024-11-27 09:34:27.240493084+00:00	9777584	Compré este paraíso para todos
 El único problema ayuda poco
 Aquí se pasa bien, lo dicen todos
@@ -3745,7 +3745,7 @@ Mordiste la manzana...	[00:01.98] Compré este paraíso para todos
 [06:10.20] Tú abajo y yo arriba
 [06:16.84] Ya no más la otra mejilla
 [06:24.80] Mordiste la manzana...
-[06:28.77]	1	1	0
+[06:28.77] 	1	1	0
 68	11920479	Bomba	bomba	Confío en tus amigos	confio en tus amigos	Rápida Comida	rapida comida	107	2024-08-29 17:20:38.639177114+00:00	6588235	¿Por qué en el mundo todavía hay gente que ama a un dictador?
 ¿Por qué en el mundo todavía hay hambre, muerte y violación?
 Somos un problema serio
@@ -3823,7 +3823,7 @@ Nos engaña, engaña, engaña todo el año
 [01:15.68] Nos trata, nos trata, nos tratan mal
 [01:18.58] Nos engaña, engaña, engaña todo el año
 [01:46.30] ¡Van a ver sus sesos caer!
-[01:47.70]	1	1	0
+[01:47.70] 	1	1	0
 71	15242211	Monopoly	monopoly	Confío en tus amigos	confio en tus amigos	Ruidoso y Barato	ruidoso y barato	66	2024-12-01 14:39:44.293919541+00:00	9913553	No se
 Tal vez
 Podamos
@@ -3871,7 +3871,7 @@ Que ya es mejor (que ya es mejor)
 [01:10.50] Que ya es mejor (que ya es mejor)
 [01:34.82] (Buenos días alegría)
 [01:38.92] (Buenos días señor sol)
-[01:42.16]	1	1	0
+[01:42.16] 	1	1	0
 73	12982183	TKM imbecil	tkm imbecil	Confío en tus amigos	confio en tus amigos	Rápida Comida	rapida comida	67	2024-10-08 04:40:49.959223377+00:00	7651340	Estoy aburrido de intentar
 Agradarte a tí
 No quiero caerte bien
@@ -3965,7 +3965,7 @@ Mi estupidez, to-to-to-tón	[00:03.01] (Woo)
 [01:13.60] Con lo único
 [01:17.98] Que me hace sonreír
 [01:21.04] Mi estupidez, to-to-to-tón
-[01:26.29]	1	1	0
+[01:26.29] 	1	1	0
 75	13364777	Hoy valgo mierda...y mañana también (A MIDWEST EMO MIXTAPE)	hoy valgo mierda y manana tambien a midwest emo mixtape	Cuando el problema no existe	cuando el problema no existe	Violencia y derrota	violencia y derrota	117	2024-10-15 14:09:46.951477818+00:00	8034204	BUSCANDO LAS PALABRAS
 (Será mejor que digas perdón)
 ROMPIENDO LA BALANZA
@@ -3997,7 +3997,7 @@ La playa está vacía
 [01:17.69] (SIEMPRE YO TE QUISE)
 [01:21.61] La playa está vacía
 [01:26.48] (DEBERÍA PODER ODIARTE... MÁS)
-[01:48.61]	1	1	0
+[01:48.61] 	1	1	0
 76	14165217	La ultima noche que hablamos	la ultima noche que hablamos	Cuando el problema no existe	cuando el problema no existe	Violencia y derrota	violencia y derrota	123	2024-11-06 17:23:18.044840432+00:00	8835585	Weon, eso fue lo-fi a, a la vena
 
 Ayer pensé que comprender
@@ -4034,7 +4034,7 @@ Sin dudar	[00:00.06] Weon, eso fue lo-fi a, a la vena
 [01:27.83] Que yo
 [01:30.22] Ame
 [01:32.68] Sin dudar
-[01:44.42]	1	1	0
+[01:44.42] 	1	1	0
 77	11337098	la voz al lado de tu oido (Maguitrix)	la voz al lado de tu oido maguitrix	Cuando el problema no existe	cuando el problema no existe	Violencia y derrota	violencia y derrota	185	2024-08-06 15:29:56.580238341+00:00	6004174	Me negué al anuncio que soñé sobre ti
 Tu decisión y tu lúgubre final
 Por mentirte, rojo negro en el piso, mira
@@ -4060,7 +4060,7 @@ Paz	[00:33.82] Me negué al anuncio que soñé sobre ti
 [01:55.77] Y tú dices que ya nunca sera igual
 [02:07.90] Y entiendes que el final siempre será paz
 [02:23.91] Paz
-[02:54.31]	1	1	0
+[02:54.31] 	1	1	0
 78	12871027	laspalabrasnocometensuicidio	laspalabrasnocometensuicidio	Cuando el problema no existe	cuando el problema no existe	Violencia y derrota	violencia y derrota	122	2024-10-05 05:35:10.047671440+00:00	7540017	Hey tú, mira, ya puedo ya recordar
 Si fuiste tú quien me enseñó a nadar
 Tú podrias hacerte un mundo aún mejor que yo
@@ -4084,7 +4084,7 @@ Perdón... no sé como entender la vida	[00:01.68] Hey tú, mira, ya puedo ya re
 [01:12.23] Pero las acciones siempre se van a recordar por lo que son
 [01:16.77] Y en verdad nunca por la conveniencia que tuvieron estas
 [01:23.41] Perdón... no sé como entender la vida
-[02:01.97]	1	1	0
+[02:01.97] 	1	1	0
 79	14762260	TSUNAMI	tsunami	Cuando el problema no existe	cuando el problema no existe	Violencia y derrota	violencia y derrota	102	2024-11-19 22:55:20.605187136+00:00	9433316	El tiempo no pasa si
 Te quedas y me miras tanto
 El tiempo no pasa si
@@ -4106,7 +4106,7 @@ Tu dijiste que no sabes odiar	[00:31.13] El tiempo no pasa si
 [01:09.78] Sin embargo no me deja, yo quiero poder fallar
 [01:16.88] Tu dijiste que te odio
 [01:24.22] Tu dijiste que no sabes odiar
-[01:40.83]	1	1	0
+[01:40.83] 	1	1	0
 80	14339766	Bailemos	bailemos	Cepa Funk	cepa funk	Bailemos	bailemos	214	2024-11-10 23:28:53.608976668+00:00	9010382	Camino escuchando una canción
 Botando todo lo que no quiero ser
 Imagina una aventura con ritmo
@@ -4165,7 +4165,7 @@ Podrías sentir la sensación	[00:14.58] Camino escuchando una canción
 [03:09.94] Podrías sentir la sensación
 [03:17.37] Y si tal vez quisieras tú bailar
 [03:24.97] Podrías sentir la sensación
-[03:30.28]	1	1	0
+[03:30.28] 	1	1	0
 81	15098491	tabaco sabor mora	tabaco sabor mora	De Perder Sus Pétalos	de perder sus petalos	tabaco sabor mora	tabaco sabor mora	296	2024-11-27 05:20:20.826808440+00:00	9769735	No te conocía
 Suficiente
 Para saber
@@ -4211,7 +4211,7 @@ Mas de lo que imaginé)	[00:32.19] No te conocía
 [03:34.66] En ese lugar
 [03:35.61] (este invierno, va a durar
 [03:43.64] Mas de lo que imaginé)
-[03:51.34]	1	1	0
+[03:51.34] 	1	1	0
 82	12148842	Akira	akira	Déjenme Dormir	dejenme dormir	Neumonía	neumonia	246	2024-09-11 14:49:57.692285552+00:00	6816948	Hoy despierto decidido
 Tengo que encontrar
 Dicen que solo es un mito
@@ -4290,7 +4290,7 @@ Una vez más	[00:30.50] Hoy despierto decidido
 [03:39.72] Y hacerlo explotar
 [03:39.93] Y hacerlo explotar
 [03:40.21] Una vez más
-[03:52.75]	1	1	0
+[03:52.75] 	1	1	0
 83	14169858	BRONCE	bronce	Déjenme Dormir	dejenme dormir	BRONCE	bronce	211	2024-11-06 20:22:25.972121204+00:00	8840236	Si este bronce, pesa mal
 No te angusties, es normal
 Otro año, sin ganar
@@ -4323,7 +4323,7 @@ Antes que caiga el sol	[00:00.56] Si este bronce, pesa mal
 [02:58.25] El centro ya cerró, y lo escucho en la distancia
 [03:06.75] Desde esta diagonal, voy corriendo hacia tu casa
 [03:15.28] Antes que caiga el sol
-[03:22.22]	1	1	0
+[03:22.22] 	1	1	0
 84	12127890	Cara de Pena	cara de pena	Déjenme Dormir	dejenme dormir	Neumonía	neumonia	253	2024-09-10 12:56:37.100353438+00:00	6795955	Tanta certeza ya no pareces llevar
 Tanta cerveza, ya ni te puedo mirar
 Quizás tu duelo nunca aprendió a lidiar
@@ -4390,7 +4390,7 @@ Y puedes ser tan cruel	[00:13.17] Tanta certeza ya no pareces llevar
 [02:38.90] Es violencia tu caminar
 [02:45.06] Y puedes ser tan cruel
 [02:50.71] Y puedes ser tan cruel
-[02:57.77]	1	1	0
+[02:57.77] 	1	1	0
 85	15432477	Dime Que No Vas a Olvidar	dime que no vas a olvidar	Déjenme Dormir	dejenme dormir	Mirador	mirador	320	2024-12-04 06:36:45.116630897+00:00	10103893	Ansiedad de ser ante la muerte de tu inocencia
 Rejas que quedaran sin cuidar
 Velaré tu risa frágil como funeral
@@ -4467,7 +4467,7 @@ Todo lo que es y fue y va a ser	[00:27.87] Ansiedad de ser ante la muerte de tu 
 [04:15.30] Ser
 [04:18.68] Lo que tú quieres ser
 [04:31.28] Todo lo que es y fue y va a ser
-[04:38.21]	1	1	0
+[04:38.21] 	1	1	0
 86	14772649	El Último Cortaviento	el ultimo cortaviento	Déjenme Dormir	dejenme dormir	Neumonía	neumonia	305	2024-11-20 04:22:20.054228667+00:00	9443713	Tu cara de vidrio
 No puede ocultar lo que hay atrás
 Quien es el tipo
@@ -4560,7 +4560,7 @@ Es el tiempo que los va a separar	[00:00.35] Tu cara de vidrio
 [03:19.16] Y una niña que no sabe esperar
 [03:24.41] Como el cemento que no quiere secar
 [03:30.68] Es el tiempo que los va a separar
-[03:53.39]	1	1	0
+[03:53.39] 	1	1	0
 87	14869187	EN TU VOZ	en tu voz	Déjenme Dormir	dejenme dormir	BRONCE	bronce	207	2024-11-21 20:16:44.472931335+00:00	9540288	Lo escucho en tu voz
 Y lo siento en tu pecho
 Latir del corazón
@@ -4591,7 +4591,7 @@ Yo jamás pude entregarte lo que tu te merecías amor	[00:17.56] Lo escucho en t
 [02:31.64] Yo jamás pude entregarte lo que tu te merecias
 [02:38.72] Y quizás, sea mejor así
 [02:47.38] Yo jamás pude entregarte lo que tu te merecías amor
-[03:05.30]	1	1	0
+[03:05.30] 	1	1	0
 88	12956824	Florecer	florecer	Déjenme Dormir	dejenme dormir	Neumonía	neumonia	183	2024-10-07 12:33:55.769527045+00:00	7625963	Nunca fue tan fácil
 Bailar sin pudor
 Esta fuera de tu alcance
@@ -4645,7 +4645,7 @@ Fue siempre mi error	[00:01.70] Nunca fue tan fácil
 [02:25.69] Tu alergia me hará saber
 [02:31.46] Que el polen de tu padecer
 [02:36.95] Fue siempre mi error
-[03:02.81]	1	1	0
+[03:02.81] 	1	1	0
 89	12208127	Mirador	mirador	Déjenme Dormir	dejenme dormir	Mirador	mirador	210	2024-09-14 10:15:13.102886399+00:00	6876300	Cual va a ser tu marca acá cuando
 No estés para respirar
 El otro dia te vi con tanto brillo
@@ -4695,7 +4695,7 @@ No te va a esperar	[00:30.15] Cual va a ser tu marca acá cuando
 [02:39.50] No te va a esperar
 [02:45.45] No te va a esperar
 [02:51.66] No te va a esperar
-[02:53.42]	1	1	0
+[02:53.42] 	1	1	0
 90	14119194	RITUAL	ritual	Déjenme Dormir	dejenme dormir	BRONCE	bronce	297	2024-11-05 02:34:27.528088831+00:00	8789496	Rascar la herida otra vez
 Hoy creo que hay algo de placer en el ritual
 Sacar la costra y dejarla correr
@@ -4712,7 +4712,7 @@ Para que un dia las sigas hacia mi	[00:57.90] Rascar la herida otra vez
 [02:05.40] Desgarro pequeñas piezas de mi
 [02:12.14] Las dejo siempre fácil de encontrar
 [02:18.26] Para que un dia las sigas hacia mi
-[02:28.31]	1	1	0
+[02:28.31] 	1	1	0
 91	11840076	ROMA	roma	Déjenme Dormir	dejenme dormir	ROMA	roma	170	2024-08-25 12:48:18.956801580+00:00	6507713	Un cuarto de este año, cariño
 Aguantando mi aliento, espero oír de ti
 Me queda poco aire, cariño
@@ -4745,7 +4745,7 @@ Porque a veces pienso solamente en ti	[00:00.03] Un cuarto de este año, cariño
 [01:57.48] Nunca me perdonaría si te dejo ir
 [02:31.59] Porque a veces pienso solamente en mi
 [02:39.70] Porque a veces pienso solamente en ti
-[02:49.24]	1	1	0
+[02:49.24] 	1	1	0
 92	11839909	5	5	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	204	2024-08-25 12:44:00.959286465+00:00	6507546	NA	NA	0	0	1
 93	14181927	Caroline	caroline	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	308	2024-11-07 10:34:55.043359283+00:00	8852326	NA	NA	0	0	1
 94	12791801	Chiripa	chiripa	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Amanda	amanda	170	2024-10-03 05:10:02.640018752+00:00	7460701	Aunque los dos sintamos que esto se está
@@ -4786,7 +4786,7 @@ Más, oh-oh, oh-oh	[00:22.23] Aunque los dos sintamos que esto se está
 [02:08.96] Y muero si no puedo verte
 [02:14.24] Más, ah, ah
 [02:19.64] Más, oh-oh, oh-oh
-[02:25.64]	1	1	0
+[02:25.64] 	1	1	0
 95	12989249	Cigarro en la Pieza	cigarro en la pieza	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	289	2024-10-08 09:43:04.239062349+00:00	7658412	NA	NA	0	0	1
 96	14578431	Despedida	despedida	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	303	2024-11-15 10:49:19.269771664+00:00	9249257	No quiero hacerte ningún daño
 Pero no puedo, si este amor llegó
@@ -4809,7 +4809,7 @@ Para ninguno	[02:32.62] No quiero hacerte ningún daño
 [04:09.51] 
 [04:11.58] No haya sido un desperdicio
 [04:19.25] Para ninguno
-[04:21.62]	1	1	0
+[04:21.62] 	1	1	0
 97	12791192	El Fuego	el fuego	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Volver a empezar	volver a empezar	189	2024-10-03 04:39:27.646510161+00:00	7460092	Armemos el fuego
 Quiero saber si esto es honesto
 Bailemos a tiempo
@@ -4849,7 +4849,7 @@ Y ayayai corazón me duele tanto tu voz	[00:20.16] Armemos el fuego
 [02:13.82] Quiero empezar todo de cero
 [02:39.63] Y ayayai corazón extraño tanto tu amor
 [02:49.94] Y ayayai corazón me duele tanto tu voz
-[03:09.03]	1	1	0
+[03:09.03] 	1	1	0
 98	14181870	El Viento en la Cortina	el viento en la cortina	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	154	2024-11-07 10:31:21.986171682+00:00	8852269	Hazme saber
 si quieres emprender el viaje
 otra vez
@@ -4869,7 +4869,7 @@ el viento en la cortina.	[00:15.81] Hazme saber
 [00:48.73] el paso de los días
 [00:56.05] me la paso mirando
 [01:03.50] el viento en la cortina.
-[02:30.82]	1	1	0
+[02:30.82] 	1	1	0
 99	14181847	Enetra	enetra	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Amanda	amanda	207	2024-11-07 10:30:10.198073470+00:00	8852246	Sabes, entérate de mi
 Ya no quiero hablar de ti
 
@@ -4889,7 +4889,7 @@ Hablo de mirar el cielo infinito que mirábamos, mirábamos los dos	[00:56.88] S
 [02:23.81] A poder mirar el cielo infinito que mirábamos, mirábamos los dos
 [02:39.08] 
 [02:55.29] Hablo de mirar el cielo infinito que mirábamos, mirábamos los dos
-[03:14.25]	1	1	0
+[03:14.25] 	1	1	0
 100	13821633	Jardines	jardines	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	316	2024-10-27 19:32:28.098971888+00:00	8491556	Mira, mira
 Estamos solos acá
 Escondidos los dos
@@ -4943,7 +4943,7 @@ Perdernos, perdernos, perdernos	[00:56.51] Mira, mira
 [04:06.63] Si yo quisiera vernos
 [04:10.54] Debería ir a tu jardín
 [04:14.77] Perdernos, perdernos, perdernos
-[05:16.46]	1	1	0
+[05:16.46] 	1	1	0
 101	12908200	Nota024.M4A	nota024 m4a	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Amanda	amanda	235	2024-10-06 01:26:18.558341875+00:00	7577259	Esta vez me voy a olvidar
 Olvidar del mar y de tus ojos
 
@@ -4990,7 +4990,7 @@ Lo recuperaré	[00:13.99] Esta vez me voy a olvidar
 [02:21.00] Lo recuperaré
 [02:24.42] Lo recuperaré
 [02:27.33] Lo recuperaré
-[02:32.38]	1	1	0
+[02:32.38] 	1	1	0
 102	13100176	Nuestro Tiempo	nuestro tiempo	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Amanda	amanda	215	2024-10-10 22:01:53.889510105+00:00	7769442	Antes que el movimiento se termine
 Quiero decirte lo que nunca dije tan simple
 Nunca antes fui tan feliz como el tiempo contigo
@@ -5008,7 +5008,7 @@ Nunca antes pude ser tan real como nuestro tiempo	[01:06.07] Antes que el movimi
 [02:39.06] Quiero decirte lo que nunca dije tan simple
 [02:49.02] Nunca antes fui tan feliz como el tiempo contigo
 [02:59.12] Nunca antes pude ser tan real como nuestro tiempo
-[03:09.73]	1	1	0
+[03:09.73] 	1	1	0
 103	13119273	Quiero Estar a la Mierda Mirando el Cielo/Suelo	quiero estar a la mierda mirando el cielo suelo	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	286	2024-10-11 09:28:23.322828756+00:00	7788563	Para que tú me miras
 Si yo siento tanto miedo
 De tus ojos...
@@ -5037,7 +5037,7 @@ Por favor, vámonos	[00:16.27] Para que tú me miras
 [02:00.28] Y poder decir aquí ya estoy feliz
 [02:40.78] Vámonos, allá es más claro
 [02:48.50] Por favor, vámonos
-[04:46.13]	1	1	0
+[04:46.13] 	1	1	0
 104	14182241	Tarot	tarot	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Amanda	amanda	253	2024-11-07 10:59:27.148189224+00:00	8852640	Recuerdo la muerte de antes
 Cuando el caos cubrió con un manto
 Todo lo que creía seguro
@@ -5077,7 +5077,7 @@ Ahí el vacío	[00:22.30] Recuerdo la muerte de antes
 [03:18.26] Qué queda después de todo
 [03:22.21] Qué queda después de todo
 [03:26.58] Ahí el vacío
-[04:07.27]	1	1	0
+[04:07.27] 	1	1	0
 105	12219458	Tiempos Bajo el Sol	tiempos bajo el sol	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Run Run	run run	197	2024-09-15 01:58:27.882024755+00:00	6887671	¿Y qué si ya no hay tiempo para averiguar?
 Si esto podría funcionar
 ¿Qué importa? vamos ya
@@ -5112,7 +5112,7 @@ Y si quieres nos fumamos todas las primaveras	[00:17.64] ¿Y qué si ya no hay t
 [01:46.09] A pasear por el parque y las playas de otros planetas
 [01:52.19] Y después nos regufiamos en el azul de mi cuarto
 [01:59.59] Y si quieres nos fumamos todas las primaveras
-[02:58.32]	1	1	0
+[02:58.32] 	1	1	0
 106	13119933	Volver a empezar	volver a empezar	El Cómodo Silencio De Los Que Hablan Poco	el comodo silencio de los que hablan poco	Volver a empezar	volver a empezar	224	2024-10-11 09:45:06.489817165+00:00	7789224	Siempre pido lo que no puedo ver
 Ay ¿quién puede ayudarme a entender?
 (La la la la la, la la la la la, la la la la la)
@@ -5168,7 +5168,7 @@ Quizás mañana vuelva a intentar	[00:16.01] Siempre pido lo que no puedo ver
 [03:19.34] Quizás mañana vuelva a intentar
 [03:26.90] Quizás mañana vuelva a intentar
 [03:34.27] Quizás mañana vuelva a intentar
-[03:44.32]	1	1	0
+[03:44.32] 	1	1	0
 107	14659153	Caraluna	caraluna	Etéreos	etereos	Etéreos	etereos	178	2024-11-17 19:08:29.194808863+00:00	9330120	Apareciste como una estrella
 Para saciar mi curiosidad
 Brillamos para el mundo
@@ -5220,7 +5220,7 @@ Y poder darte mi amor	[00:02.69] Apareciste como una estrella
 [02:19.33] Y yo recorro la montaña buscandote
 [02:28.15] Sigo tu aroma y vuelo para llegar
 [02:36.43] Y poder darte mi amor
-[02:47.49]	1	1	0
+[02:47.49] 	1	1	0
 108	14414157	Desequilibrio Emocional	desequilibrio emocional	Etéreos	etereos	Desequilibrio Emocional	desequilibrio emocional	211	2024-11-12 01:49:28.718584347+00:00	9084823	Precisamente bastante me perdí
 Por vivir en base a ti
 Basta verte solo una vez
@@ -5292,7 +5292,7 @@ Porque al final no me amaste igual	[00:10.25] Precisamente bastante me perdí
 [03:03.67] Porque al final no me amaste igual
 [03:08.26] Porque al final no me amaste igual
 [03:12.73] Porque al final no me amaste igual
-[03:20.32]	1	1	0
+[03:20.32] 	1	1	0
 109	13926913	Destruiste Un Corazón	destruiste un corazon	Etéreos	etereos	Etéreos	etereos	180	2024-10-30 17:33:50.871139039+00:00	8596953	De verdad que yo no puedo entender
 Porque decidiste ser tan cruel
 Si antes decidimos estar bien
@@ -5349,7 +5349,7 @@ Y termino destrozándome	[00:23.34] De verdad que yo no puedo entender
 [02:25.46] Solo esperaba a ver
 [02:28.32] A aquella chica que tanto ame
 [02:33.25] Y termino destrozándome
-[02:40.16]	1	1	0
+[02:40.16] 	1	1	0
 110	13837650	Tu Compañía Y Un Café	tu compania y un cafe	Etéreos	etereos	Etéreos	etereos	265	2024-10-28 06:29:06.034814952+00:00	8507587	Hay muchas cosas que decir no puedo mentir
 son varios los sentimientos que se comienzan a repartir
 De seguro al mirarme ema te vas a reír
@@ -5418,7 +5418,7 @@ Lograste que me volviera a enamorar	[00:21.30] Hay muchas cosas que decir no pue
 [03:47.59] Aunque me dé miedo esta loca forma de amar
 [03:52.41] Con aquel beso me pudiste embriagar
 [03:57.25] Lograste que me volviera a enamorar
-[04:12.63]	1	1	0
+[04:12.63] 	1	1	0
 111	13926905	¿Me Estas Amando?	¿me estas amando	Etéreos	etereos	Etéreos	etereos	178	2024-10-30 17:33:41.806178948+00:00	8596945	Que saco ya con contar
 Como realmente llego a estar
 Que rara forma la de amar
@@ -5470,7 +5470,7 @@ Mientras a mi me están botando	[00:19.42] Que saco ya con contar
 [02:12.58] No entiendo ese afán
 [02:14.64] Por no alejar lo que hace mal
 [02:17.65] Mientras a mi me están botando
-[02:28.10]	1	1	0
+[02:28.10] 	1	1	0
 112	13894508	Cuando todo termine	cuando todo termine	Fin del Mundo	fin del mundo	Hicimos crecer un bosque	hicimos crecer un bosque	234	2024-10-29 18:24:53.897852113+00:00	8564484	Después de tanto esperar
 Por fin aprendimos algo
 Juntá tus cosas y vámonos
@@ -5496,7 +5496,7 @@ La ciudad dormida	[00:59.77] Es imposible frenar la mutación
 [03:14.58] La ciudad oculta
 [03:18.85] Desarmando
 [03:22.69] La ciudad dormida
-[03:25.83]	1	1	0
+[03:25.83] 	1	1	0
 114	13893888	Devenir Paisaje	devenir paisaje	Fin del Mundo	fin del mundo	Hicimos crecer un bosque	hicimos crecer un bosque	217	2024-10-29 17:58:47.475409700+00:00	8563864	Si lo viví no lo recuerdo
 No te encontré en el invierno
 
@@ -5530,7 +5530,7 @@ El verano atrás quedó	[03:14.04] Reina del desierto
 [03:24.68] La playa no es lo mismo sin vos
 [03:35.23] Afuera hace frío y llueve
 [03:46.82] El verano atrás quedó
-[05:23.51]	1	1	0
+[05:23.51] 	1	1	0
 117	10767240	El Incendio	el incendio	Fin del Mundo	fin del mundo	Todo Va Hacia el Mar	todo va hacia el mar	311	2024-07-15 18:25:26.013751043+00:00	5433628	Sin dudar
 Emprendo ese viaje
 Me alejo de la playa y tu oscuridad
@@ -5557,7 +5557,7 @@ Todo va hacia el mar	[02:37.38] Sin dudar
 [03:19.68] Me dejo llevar, me dejo llevar
 [03:26.85] Si todo va hacia el mar
 [03:30.59] Todo va hacia el mar
-[03:35.92]	1	1	0
+[03:35.92] 	1	1	0
 118	10818464	El Próximo Verano	el proximo verano	Fin del Mundo	fin del mundo	Todo Va Hacia el Mar	todo va hacia el mar	270	2024-07-16 17:45:28.644981790+00:00	5484863	Espero no sea tarde
 Porque estoy decidida
 A contarte todo esta vez
@@ -5590,7 +5590,7 @@ Ya no me da miedo perder	[00:38.79] Espero no sea tarde
 [03:18.62] (Y me acerco a lo que hace bien)
 [03:22.93] (Y te espero en la laguna)
 [03:26.84] Ya no me da miedo perder
-[03:30.26]	1	1	0
+[03:30.26] 	1	1	0
 119	10936169	Hacia los Bosques	hacia los bosques	Fin del Mundo	fin del mundo	Todo Va Hacia el Mar	todo va hacia el mar	245	2024-07-20 08:42:44.223675486+00:00	5602713	Es que abrí la ventana hace un momento
 
 Y en las alas finísimas del viento
@@ -5598,7 +5598,7 @@ Me ha traído su sol la primavera	[02:09.93] Es que abrí la ventana hace un mom
 [02:16.68] 
 [02:23.54] Y en las alas finísimas del viento
 [02:32.15] Me ha traído su sol la primavera
-[02:37.21]	1	1	0
+[02:37.21] 	1	1	0
 120	10840521	La Distancia	la distancia	Fin del Mundo	fin del mundo	Todo Va Hacia el Mar	todo va hacia el mar	198	2024-07-17 07:03:53.895318701+00:00	5506949	Cansada de estar viajando
 Quiero descansar
 
@@ -5623,7 +5623,7 @@ Mi soledad	[00:49.76] Cansada de estar viajando
 [02:14.31] 
 [02:17.01] Azul cielo, mi soledad
 [02:25.05] Mi soledad
-[03:17.78]	1	1	0
+[03:17.78] 	1	1	0
 121	10840448	La Noche	la noche	Fin del Mundo	fin del mundo	Todo Va Hacia el Mar	todo va hacia el mar	214	2024-07-17 07:00:29.833291178+00:00	5506876	Cuando el palacio de la noche
 Encienda
 Su hermosura
@@ -5650,7 +5650,7 @@ Canten como ídolos	[00:41.76] Cuando el palacio de la noche
 [03:11.56] 
 [03:13.76] Hasta que nuestros rostros
 [03:18.08] Canten como ídolos
-[03:19.31]	1	1	0
+[03:19.31] 	1	1	0
 122	12929196	Las flores	las flores	Fin del Mundo	fin del mundo	Fin del Mundo	fin del mundo	246	2024-10-06 21:49:09.616843192+00:00	7598301	Despierto de ese sueño
 No todo es malo acá
 Las flores también crecen en el desierto
@@ -5675,7 +5675,7 @@ Espero que pronto	[02:37.85] Despierto de ese sueño
 [03:40.13] Las luces se olvidaron
 [03:45.10] Quien un día fui
 [03:48.12] Espero que pronto
-[04:06.26]	1	1	0
+[04:06.26] 	1	1	0
 123	13810502	Microclima	microclima	Fin del Mundo	fin del mundo	Hicimos Crecer un Bosque	hicimos crecer un bosque	167	2024-10-27 16:15:52.130708597+00:00	8480403	Esperar
 Mirando sola por la ventana
 No hay más
@@ -5715,7 +5715,7 @@ Nos extrañamos	[00:56.88] Todos buscan su lugar
 [02:13.99] Los extrañamos
 [02:20.60] Nuestros amigos lo saben
 [02:27.66] Nos extrañamos
-[02:33.14]	1	1	0
+[02:33.14] 	1	1	0
 128	8314286	Afterglow	afterglow	Flores	flores	Afterglow - Single	afterglow single	223	2022-11-14 11:46:45.978+00:00	3416756	Fingers to my toes
 You know how to touch me
 I won't let you go
@@ -5805,7 +5805,7 @@ Baby, let me know what you're tasting	[00:21.04] Fingers to my toes
 [02:44.03] I'm about to have a heart attack
 [02:47.07] Now our hearts are racing
 [02:49.07] Baby, let me know what you're tasting
-[02:51.15]	1	1	0
+[02:51.15] 	1	1	0
 129	12829936	estar solo	estar solo	Flôres	flores	alma	alma	216	2024-10-04 07:58:36.213388974+00:00	7498875	Sé que no fue en vano
 Porque salí y me quedé con algo
 No estaba enamorado
@@ -6037,7 +6037,7 @@ El crecimiento que habré mutilado	[00:15.36] Sé que no fue en vano
 [03:00.35] Y me es extraño
 [03:01.43] Toda la paz que habré abandonado
 [03:03.37] El crecimiento que habré mutilado
-[03:05.14]	1	1	0
+[03:05.14] 	1	1	0
 130	14749337	Sintomatología	sintomatologia	Flores	flores	Sintomatología	sintomatologia	290	2024-11-19 13:27:42.171750641+00:00	9420367	Tristes son mis mañanas
 Siempre contra el reloj
 Petrificada en la cama
@@ -6109,7 +6109,7 @@ Demasiado	[00:26.27] Tristes son mis mañanas
 [02:59.44] Demasiado
 [03:05.31] Demasiado
 [03:11.21] Demasiado
-[03:15.79]	1	1	0
+[03:15.79] 	1	1	0
 131	11814081	Wings	wings	Flores	flores	Wings	wings	264	2024-08-24 16:13:45.088550350+00:00	6481686	Lover to slave
 Burning this page
 I will cut out my tongue
@@ -6298,7 +6298,7 @@ Vuelve pronto	[00:05.93] Trabajando en cualquier cosa hasta morir
 [02:19.65] Amigo Klapaucius
 [02:23.16] Una bendición
 [02:25.30] Vuelve pronto
-[02:43.40]	1	1	0
+[02:43.40] 	1	1	0
 135	14018082	Yingo	yingo	Frucola Frappé	frucola frappe	Yingo	yingo	245	2024-11-02 05:54:12.987660512+00:00	8688200	Quiero pensarte todos los días
 Aunque la vida se sienta vacía
 Y nada de nada nos coincida
@@ -6377,7 +6377,7 @@ El Internet lo puede juntar	[00:37.86] Quiero pensarte todos los días
 [03:37.73] El Internet lo puede juntar
 [03:47.25] El Internet lo puede juntar
 [03:56.17] El Internet lo puede juntar
-[04:01.09]	1	1	0
+[04:01.09] 	1	1	0
 136	13983767	Brittany Murphy	brittany murphy	Helices	helices	Puentes	puentes	97	2024-11-01 07:31:28.291357664+00:00	8653845	NA	NA	0	0	1
 137	13983791	Remolinos de Papel, Pt. 1	remolinos de papel pt 1	Helices	helices	Propulsor	propulsor	215	2024-11-01 07:31:39.785281157+00:00	8653869	NA	NA	0	0	1
 138	10476198	Una Historia para Acabar Con Todas las Historias	una historia para acabar con todas las historias	Helices	helices	Propulsor	propulsor	381	2024-07-06 15:48:55.047902491+00:00	5142302	NA	NA	0	0	1
@@ -6492,7 +6492,7 @@ Oh si solo mato el tiempo.	[02:42.38] Yo compro cada rastro
 [08:43.28] Si solo mato el tiempo
 [08:49.11] Si solo mato el tiempo
 [08:57.88] Oh si solo mato el tiempo.
-[09:07.88]	1	1	0
+[09:07.88] 	1	1	0
 140	13726130	Postparto	postparto	Hesse Kassel	hesse kassel	Postparto	postparto	607	2024-10-25 21:11:35.739138666+00:00	8395937	Ser, matar
 Crear un plan
 Habladuría sobre ingeniería en salud mental
@@ -6629,7 +6629,7 @@ Para querer amar	[00:00.81] Ser, matar
 [03:42.37] Que se te adhiere como moco vaginal
 [03:43.95] Lleno de vida y néctar
 [03:45.27] Para querer amar
-[03:47.02]	1	1	0
+[03:47.02] 	1	1	0
 141	12563818	Vida en Terranova	vida en terranova	Hesse Kassel	hesse kassel	Vida en Terranova	vida en terranova	354	2024-09-28 11:31:19.789636298+00:00	7232574	En mi vida de Terranova
 En mi vida de Terranova
 En mi vida de Terranova
@@ -6697,7 +6697,7 @@ En mi vida de Terranova	[01:28.37] En mi vida de Terranova
 [05:07.84] En mi vida de Terranova
 [05:11.05] En mi vida de Terranova
 [05:47.45] En mi vida de Terranova
-[05:53.15]	1	1	0
+[05:53.15] 	1	1	0
 142	11846598	Brilla Lo Que Tenemos	brilla lo que tenemos	Las Olas (Noispop)	las olas noispop	Canciones para Mis Amigxs	canciones para mis amigxs	127	2024-08-25 16:55:22.237928355+00:00	6514248	Puedo desobedecer
 sin intentarlo tanto
 si es que aún sigo de pie
@@ -6735,7 +6735,7 @@ brilla lo que tenemos.	[00:08.13] Puedo desobedecer
 [01:37.74] brilla lo que tenemos
 [01:51.64] allá entre medio
 [01:52.42] brilla lo que tenemos.
-[01:59.86]	1	1	0
+[01:59.86] 	1	1	0
 143	12697679	Canción del Mal	cancion del mal	Las Olas (Noispop)	las olas noispop	Perdidxs en el Ruido	perdidxs en el ruido	184	2024-10-01 07:26:28.335431920+00:00	7366534	Y me rompo la mente
 Tratando de arreglar
 El desastre que dejó en mi
@@ -6818,7 +6818,7 @@ en nuestras vidas.	[00:08.55] No nos interesan sus soluciones
 [01:08.31] con la violencia necesaria para que brillen
 [01:10.43] todos los infinitos que dejaron su promesa
 [01:13.06] en nuestras vidas.
-[01:18.05]	1	1	0
+[01:18.05] 	1	1	0
 146	14221088	Para no irme lejos	para no irme lejos	Las Olas (Noispop)	las olas noispop	Canciones para mis amigxs	canciones para mis amigxs	98	2024-11-08 23:29:21.981716006+00:00	8891609	Encuentras todas las flaquezas
 en lo que pienso
 y eso está bien, te lo concedo.
@@ -6842,7 +6842,7 @@ para no irme lejos.	[00:17.97] Encuentras todas las flaquezas
 [01:00.17] y en mi boca hay sólo sabor a veneno,
 [01:04.72] me amarras a la tierra
 [01:12.03] para no irme lejos.
-[01:13.32]	1	1	0
+[01:13.32] 	1	1	0
 147	11774996	Para qué vivir sin saber lo que significa	para que vivir sin saber lo que significa	Las Olas (Noispop)	las olas noispop	Perdidxs en el Ruido	perdidxs en el ruido	198	2024-08-23 13:18:27.054556271+00:00	6442571	Y tan lejos que me encontraba
 Tan cercana a cada punzada que me daba
 Me vi atrapada
@@ -6923,7 +6923,7 @@ Si ya hace tanto frío
 [02:08.99] ¿Quién me va a venir a encontrar si no me encuentro yo?
 [02:16.74] ¿Quién me va a venir a encontrar si no me encuentro yo?
 [02:24.84] ¿Quién me va a venir a encontrar si no me encuentro yo?
-[02:33.09]	1	1	0
+[02:33.09] 	1	1	0
 150	13069354	Anarella	anarella	Los Animales También Se Suicidan	los animales tambien se suicidan	Balneario	balneario	178	2024-10-10 02:06:27.476051117+00:00	7738593	Estás sentada frente a mí
 La luna se pone a tu favor
 No sientas miedo, corazón
@@ -6945,7 +6945,7 @@ Oh, no te vayas	[00:37.98] Estás sentada frente a mí
 [01:30.53] De todo lo que pueda pasar entre tú y yo
 [01:41.87] No te vayas
 [01:45.85] Oh, no te vayas
-[01:47.12]	1	1	0
+[01:47.12] 	1	1	0
 151	13434642	Antofagasta	antofagasta	Los Animales También Se Suicidan	los animales tambien se suicidan	Balneario	balneario	217	2024-10-17 14:53:01.449958360+00:00	8104114	Dentro del bosque
 Vengo de la tierra donde
 Los cerros desnudos
@@ -7020,7 +7020,7 @@ Ni tampoco espacio	[00:00.23] Soy un atormentado
 [01:35.27] Que me pierda
 [01:38.80] Que no haya tiempo
 [01:42.75] Ni tampoco espacio
-[01:49.14]	1	1	0
+[01:49.14] 	1	1	0
 153	11940079	Balneario	balneario	Los Animales También Se Suicidan	los animales tambien se suicidan	Balneario	balneario	195	2024-08-30 18:21:03.182840741+00:00	6607850	La nostalgia de
 No tener el brazo adormecido
 Porque no lo usaste
@@ -7067,7 +7067,7 @@ Por si quieres venir a nadar	[00:17.15] La nostalgia de
 [02:27.35] Por si quieres venir a nadar
 [02:34.66] Por si quieres venir a nadar
 [02:42.09] Por si quieres venir a nadar
-[02:45.38]	1	1	0
+[02:45.38] 	1	1	0
 154	13907954	Inmigrante	inmigrante	Los Animales También Se Suicidan	los animales tambien se suicidan	Balneario	balneario	198	2024-10-30 03:45:47.799515378+00:00	8577984	Cuando suelo naufragar en una isla nueva
 Me suelo levantar queriendo ir nadando hacia tus tierras
 Aunque sé que ni siquiera estoy seguro
@@ -7103,7 +7103,7 @@ En tus tierras	[00:40.07] Cuando suelo naufragar en una isla nueva
 [02:48.42] Siempre termino igual
 [02:54.74] Tratando de pasarme de ilegal
 [02:55.80] En tus tierras
-[02:59.88]	1	1	0
+[02:59.88] 	1	1	0
 155	12967914	Lagrimal	lagrimal	Los Animales También Se Suicidan	los animales tambien se suicidan	Lagrimal	lagrimal	191	2024-10-07 18:40:08.770163652+00:00	7637058	Yo, ay, no sé si pueda lograr esta vez
 Volver a encontrarme después de perderme
 Por décima vez
@@ -7169,7 +7169,7 @@ Inmensa soledad	[00:16.51] Yo, ay, no sé si pueda lograr esta vez
 [02:52.81] Inmensa soledad
 [02:57.56] En esta soledad
 [03:01.25] Inmensa soledad
-[03:04.56]	1	1	0
+[03:04.56] 	1	1	0
 156	10469133	No Pude	no pude	Los Animales También Se Suicidan	los animales tambien se suicidan	Balneario	balneario	197	2024-07-06 10:27:46.639498246+00:00	5135235	Me... me dijiste que no sabías
 Lo que sentías tú por mí
 Y yo sentado
@@ -7214,7 +7214,7 @@ Así que yo me alegro por ti	[00:42.36] Me... me dijiste que no sabías
 [02:58.77] Sería tan solo sentarme a esperar
 [03:03.13] Si yo pudiera también me hubiese dejado
 [03:06.38] Así que yo me alegro por ti
-[03:14.21]	1	1	0
+[03:14.21] 	1	1	0
 157	12560616	Si es de morir	si es de morir	Los Animales También Se Suicidan	los animales tambien se suicidan	Hastío	hastio	224	2024-09-28 10:22:57.158423182+00:00	7229371	No vengas a volar como si tuvieras el ala rota
 No vengas a decir que vienes de una derrota
 Estuve en tu casa y lo pude hasta oler
@@ -7285,7 +7285,7 @@ La noche se hace perfecta	[00:15.01] Cuento mis pasos
 [02:41.07] Todos tenemos algo
 [02:48.51] La pista de baile es inmensa
 [02:56.02] La noche se hace perfecta
-[03:04.04]	1	1	0
+[03:04.04] 	1	1	0
 159	11599161	Tormenta	tormenta	Los Animales También Se Suicidan	los animales tambien se suicidan	Al Norte	al norte	157	2024-08-17 09:17:18.173640786+00:00	6266534	Voy corriendo, me desvelo y me alcanzo
 Qué me importa si es normal o está bien
 Cada uno a su tiempo, con cuidado
@@ -7330,7 +7330,7 @@ Esa fórmula que solíamos tener	[00:10.95] Voy corriendo, me desvelo y me alcan
 [01:46.38] Que parece que esta vez
 [01:50.06] Yo pueda encontrar
 [01:54.05] Esa fórmula que solíamos tener
-[01:58.13]	1	1	0
+[01:58.13] 	1	1	0
 160	12131585	Traicionarse	traicionarse	Los Animales También Se Suicidan	los animales tambien se suicidan	Traicionarse	traicionarse	193	2024-09-10 18:10:01.253976040+00:00	6799653	Si al final es solo suerte
 Nadie eligió estar
 Aunque, la vida ya me ha dicho
@@ -7492,7 +7492,7 @@ Hohoho.	[00:01.82] Y seguimos en radio karabineros de $hile,
 [02:43.40] Hoooooo, huo-ooooo.
 [02:48.56] Hoooo, hooooo.
 [02:51.91] Hohoho.
-[02:54.37]	1	1	0
+[02:54.37] 	1	1	0
 163	10262935	Luchita	luchita	Los Repuestos Superpuestos	los repuestos superpuestos	Lo Peor de las Sobras	lo peor de las sobras	109	2024-06-28 21:14:16.880172008+00:00	4928674	A la Luchita se la raptaron
 A la Luchita se la llevaron
 No se si entel o movistar se la llevaron a
@@ -7556,7 +7556,7 @@ Moo	[00:00.77] Quedan invitados
 [01:00.04] ¡Zoofilia o muerte!
 [01:04.04] ¡Sexo con las vacas!
 [01:06.92] Moo
-[01:08.26]	1	1	0
+[01:08.26] 	1	1	0
 165	12063377	Ayer	ayer	Los Santos Dumont	los santos dumont	Similia Similibus	similia similibus	267	2024-09-05 15:49:11.910510445+00:00	6731332	Quisiera empezar
 Volver a cruzar despacio
 La imagen de un silencio que se va
@@ -7632,7 +7632,7 @@ Atrás	[00:20.17] Quisiera empezar
 [03:50.05] Hacia esas luces que
 [03:53.65] Sin saber te dejaron atrás
 [04:03.70] Atrás
-[04:27.81]	1	1	0
+[04:27.81] 	1	1	0
 166	11346631	Llueve	llueve	Los Santos Dumont	los santos dumont	Punta de Lobos	punta de lobos	156	2024-08-07 02:13:10.704712052+00:00	6013718	Llueve
 Sobre tus ojos
 Vivos como la luz del sol
@@ -7750,7 +7750,7 @@ Pero no me voy a esconder en ti	[00:32.84] Alguna solución
 [03:22.73] En calma
 [03:26.37] De nuevo (oh)
 [03:31.06] Pero no me voy a esconder en ti
-[03:37.76]	1	1	0
+[03:37.76] 	1	1	0
 168	14543808	Antes de Dormir	antes de dormir	Los Valentina	los valentina	Señoras	senoras	262	2024-11-14 22:37:24.934925136+00:00	9214598	Tú estas ahí
 Reclamando cada derecho que te pertenece
 Sin antes preguntarle al otro lo que piensa
@@ -7881,7 +7881,7 @@ En el lóbulo frontal	[00:19.92] Ella está siempre en su casa
 [02:58.76] Porque si ella lo hace
 [03:03.59] Algo se le pegará
 [03:05.12] En el lóbulo frontal
-[03:10.25]	1	1	0
+[03:10.25] 	1	1	0
 171	14108427	Señora Civilizada	senora civilizada	Los Valentina	los valentina	Señoras	senoras	223	2024-11-04 16:59:34.357136829+00:00	8778701	Señora civilizada
 Si te miro me revuelco
 Entre la conciencia amarga
@@ -7942,7 +7942,7 @@ No lo intento	[00:17.87] Señora civilizada
 [02:31.24] Por limpiar la calzada ajena
 [02:48.54] No lo intento
 [02:53.12] No lo intento
-[03:01.27]	1	1	0
+[03:01.27] 	1	1	0
 172	14108421	Serpientes	serpientes	Los Valentina	los valentina	Señoras	senoras	242	2024-11-04 16:59:24.092103834+00:00	8778695	Hay una serpiente en mi boca
 No me dejes sola
 Ven, dame ayuda
@@ -8009,7 +8009,7 @@ Y así, ganar el reto	[00:30.21] Hay una serpiente en mi boca
 [02:52.43] Quizás será mejor
 [03:00.23] Mentir respecto a esto
 [03:01.88] Y así, ganar el reto
-[03:08.55]	1	1	0
+[03:08.55] 	1	1	0
 173	12883455	Follador de Milf	follador de milf	Mark 62	mark 62	Todo En Contra	todo en contra	130	2024-10-05 10:10:14.340194924+00:00	7552453	Yo estaba acostado
 Y el estaba justo ahí
 El estaba acostado
@@ -8081,7 +8081,7 @@ Un depredador sexual	[00:02.04] Yo estaba acostado
 [01:36.09] Y lavarme los dientes afuera
 [01:39.38] Por que es
 [01:40.70] Un depredador sexual
-[01:45.59]	1	1	0
+[01:45.59] 	1	1	0
 174	13932922	Soledad	soledad	Mark 62	mark 62	Soledad Ansiedad Depresión	soledad ansiedad depresion	129	2024-10-30 21:26:32.594626381+00:00	8602972	He cumplido un año más
 No lo quiero celebrar
 No tengo motivo para
@@ -8134,7 +8134,7 @@ Pensando en si volverás	[00:06.06] He cumplido un año más
 [01:31.44] Sentado en la soledad
 [01:36.00] De este maldito lugar
 [01:40.89] Pensando en si volverás
-[01:46.02]	1	1	0
+[01:46.02] 	1	1	0
 175	14027643	Cielo Gigante	cielo gigante	MonoAzul	monoazul	Regalo	regalo	184	2024-11-02 14:44:13.072623655+00:00	8697770	Llegaste y estaban durmiendo
 Quería decirte cuanto te quiero
 Llegaste y estaban muriendo
@@ -8169,7 +8169,7 @@ Tú podés hacer el cielo más grande!	[00:13.94] Llegaste y estaban durmiendo
 [02:40.77] Tú podés hacer el cielo más grande
 [02:47.56] Tú podés traer todos los soles
 [02:54.15] Tú podés hacer el cielo más grande!
-[03:04.06]	1	1	0
+[03:04.06] 	1	1	0
 176	12702357	Como Mis Zapatillas Viejas	como mis zapatillas viejas	MonoAzul	monoazul	Tarro de Lata	tarro de lata	146	2024-10-01 09:17:35.063521659+00:00	7371212	Me gustai tanto como el otoño entero,
 me gustai caleta como correr en mi cleta,
 tanto como mis zapatillas más viejas.
@@ -8185,7 +8185,7 @@ masomenos eres el sol.	[00:20.10] Me gustai tanto como el otoño entero,
 [01:10.83] masomenos eres el sol
 [01:20.95] masomenos eres el sol
 [01:30.90] masomenos eres el sol.
-[01:40.81]	1	1	0
+[01:40.81] 	1	1	0
 177	12216599	Eres la Reina de Todo el Lugar	eres la reina de todo el lugar	MonoAzul	monoazul	Tarro de Lata	tarro de lata	180	2024-09-14 23:27:51.142616033+00:00	6884811	Eres la reina de este lugar
 Los muertos me enseñaron a bailar
 Y eres la reina de todo el lugar
@@ -8239,7 +8239,7 @@ Que nos quedan pocas horas en el sitio	[00:23.84] Eres la reina de este lugar
 [02:08.22] Que nos quedan pocas horas de abrigo
 [02:11.61] Baila, baila conmigo
 [02:14.43] Que nos quedan pocas horas en el sitio
-[02:21.05]	1	1	0
+[02:21.05] 	1	1	0
 178	11115057	Nota 024	nota 024	MonoAzul	monoazul	Nota 024	nota 024	212	2024-07-27 09:24:49.607042328+00:00	5781810	Esta vez
 Me voy a olvidar
 Olvidar del mar
@@ -8313,7 +8313,7 @@ Lo recupararé (lloraré, lloraré)	[00:18.61] Esta vez
 [02:40.02] Lo recuperaré
 [02:43.35] Lo recuperaré
 [02:46.56] Lo recupararé (lloraré, lloraré)
-[02:54.42]	1	1	0
+[02:54.42] 	1	1	0
 179	2960111	Capital	capital	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	276	2022-11-14 11:46:45.978+00:00	1318298	Tuve que buscar, tan lejos,
 Tan lejos, allá en otro lugar,
 Nos quisieron, nos quisieron tanto.
@@ -8358,7 +8358,7 @@ Nos llevaron de vuelta a casa.	[00:24.94] Tuve que buscar, tan lejos,
 [02:45.57] Y creo que estoy volviendo a empezar,
 [02:50.78] Las melodías que inventamos estando en la capital,
 [02:59.74] Nos llevaron de vuelta a casa.
-[03:08.27]	1	1	0
+[03:08.27] 	1	1	0
 180	2960527	Contigo	contigo	Niños Del Cerro	ninos del cerro	Lance	lance	224	2022-11-14 11:46:45.978+00:00	1318517	No se conocen, no saben de dónde
 Salió, quien se esconde, detrás de sus ojos
 Esta noche, bailemos entonces
@@ -8419,7 +8419,7 @@ Hacer, a sacar desde dentro canciones sin temer a perder	[00:29.49] No se conoce
 [02:31.19] Más allá de todo lo que te pedí
 [02:35.45] A sacar desde dentro lo que hoy pretendo
 [02:39.31] Hacer, a sacar desde dentro canciones sin temer a perder
-[02:55.69]	1	1	0
+[02:55.69] 	1	1	0
 181	2960675	Cuauhtémoc	cuauhtemoc	Niños Del Cerro	ninos del cerro	Cuauhtémoc	cuauhtemoc	219	2022-11-14 11:46:45.978+00:00	1318593	Hijo mío
 Hoy te escribo
 Malherido, desnutrido
@@ -8491,7 +8491,7 @@ De mi cuerpo hoy enfermo	[00:00.67] Hijo mío
 [03:11.87] Por lo menos dime algo
 [03:26.80] Me contento con los restos
 [03:32.50] De mi cuerpo hoy enfermo
-[03:38.06]	1	1	0
+[03:38.06] 	1	1	0
 182	2960799	Daniel	daniel	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	457	2022-11-14 11:46:45.978+00:00	1318667	No me hace ni una gracia
 No me hace ni una gracia
 Ni un favor
@@ -8596,7 +8596,7 @@ El deseo de ahogarme lento hoy	[00:08.63] No me hace ni una gracia
 [03:46.05] Un dos tres por mí y por nadie más
 [03:50.43] Mi único amigo
 [03:52.37] El deseo de ahogarme lento hoy
-[03:59.72]	1	1	0
+[03:59.72] 	1	1	0
 183	12209561	Días Frescos	dias frescos	Niños Del Cerro	ninos del cerro	La Pajarería	la pajareria	200	2024-09-14 12:46:30.443441143+00:00	6877738	este sol no me lo merezco
 ni el amor de los días frescos
 ni los árboles que cortan la luz que me viene a castigar
@@ -8682,7 +8682,7 @@ Donde poder detenerme un rato a llorar	[00:00.24] 'Toy durmiendo en el parque
 [03:15.95] Por todas mis perverciones
 [03:18.84] Hoy prefiero quedarme viendo un pasaje libre de intervenciones
 [03:26.50] Donde poder detenerme un rato a llorar
-[03:30.47]	1	1	0
+[03:30.47] 	1	1	0
 186	2961279	El Dulce en la Piel de Tu Nombre	el dulce en la piel de tu nombre	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	333	2022-11-14 11:46:45.978+00:00	1318921	¿Quién?, dime quién
 Perturbó el edén, triste edén
 De este amor untado en la miel
@@ -8736,7 +8736,7 @@ Y un tercio de esta mierda	[01:09.94] ¿Quién?, dime quién
 [03:15.62] Mitad del año que se nos va
 [03:20.67] Un cuarto de existencia
 [03:25.51] Y un tercio de esta mierda
-[03:31.63]	1	1	0
+[03:31.63] 	1	1	0
 187	2961321	El Sol en los Ojos	el sol en los ojos	Niños Del Cerro	ninos del cerro	Cuauhtémoc	cuauhtemoc	117	2022-11-14 11:46:45.978+00:00	1318950	Y el sol en los ojos
 No me deja ver lo que quiero creer
 Y tu rostro tan ciego nunca va a entender
@@ -8768,7 +8768,7 @@ Ooh ouh ouh ouh ouh	[00:00.95] Y el sol en los ojos
 [01:19.67] Ooh ouh ouh ouh ouh
 [01:24.05] Ooh ouh ouh ouh ouh
 [01:28.51] Ooh ouh ouh ouh ouh
-[01:55.83]	1	1	0
+[01:55.83] 	1	1	0
 188	10544470	El Sueño Pesa	el sueño pesa	Niños Del Cerro	ninos del cerro	Lance	lance	364	2024-07-08 18:42:14.511146895+00:00	5210612	No quiero culparte, pero no quiero excusarme
 Pero pienso que ya es tarde
 Pa pasar a saludar
@@ -8818,7 +8818,7 @@ Tanto como la muerte	[00:33.68] No quiero culparte, pero no quiero excusarme
 [03:09.32] Que este sueño pesa tanto como la muerte
 [03:15.91] 
 [04:08.92] Tanto como la muerte
-[04:11.02]	1	1	0
+[04:11.02] 	1	1	0
 189	12640035	El Sueño Pesa (feat. Chini Ayarza)	el sueño pesa feat chini ayarza	Niños Del Cerro	ninos del cerro	Lance	lance	364.214512	2024-09-30 07:54:53.427540793+00:00	7308858	No quiero culparte, pero no quiero excusarme
 Pero pienso que ya es tarde
 Pa pasar a saludar
@@ -8868,7 +8868,7 @@ Tanto como la muerte	[00:33.68] No quiero culparte, pero no quiero excusarme
 [03:09.32] Que este sueño pesa tanto como la muerte
 [03:15.91] 
 [04:08.92] Tanto como la muerte
-[04:11.02]	1	1	0
+[04:11.02] 	1	1	0
 190	3160638	El Susto y el Miedo	el susto y el miedo	Niños Del Cerro	ninos del cerro	Lance	lance	326	2022-11-14 11:46:45.978+00:00	1411096	Piensa que queda poco
 Dime si me equivoco
 Siento romper tus ojos
@@ -8953,7 +8953,7 @@ Vuelvo a la-la-la-la-la-la-la-la	[00:00.24] Piensa que queda poco
 [02:50.70] Dime si me equivoco
 [02:53.27] Siento romper tus ojos
 [02:55.48] Vuelvo a la-la-la-la-la-la-la-la
-[02:57.81]	1	1	0
+[02:57.81] 	1	1	0
 191	12640063	Esta Enorme Distancia	esta enorme distancia	Niños del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	343.76	2024-09-30 07:55:22.966042536+00:00	7308886	Vuelvo herido, corazón dormido
 Mi cuerpo abatido, y el recuerdo en mí
 Vuelvo herido, corazón dormido
@@ -9031,7 +9031,7 @@ Y me atrapo y te vas	[00:18.16] Entendiendo la belleza de las flores lentas
 [03:00.55] Me atrapo y te vas corriendo por donde te ví
 [03:04.42] Me vuelvo a quemar los labios y los dedos
 [03:09.23] Y me atrapo y te vas
-[03:14.29]	1	1	0
+[03:14.29] 	1	1	0
 193	2961923	Frío Frío	frio frio	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	306	2022-11-14 11:46:45.978+00:00	1319292	La noche quieta suspendida
 Tiene abierto el ventanal
 La nieve que no he conocido
@@ -9125,7 +9125,7 @@ Ven, hagamos algo bueno de una vez	[00:09.38] La noche quieta suspendida
 [04:23.80] Si este es tu dolor
 [04:26.54] Cuídalo mejor
 [04:29.51] Ven, hagamos algo bueno de una vez
-[04:37.33]	1	1	0
+[04:37.33] 	1	1	0
 194	2963202	Javier y los Vientos	javier y los vientos	Niños Del Cerro	ninos del cerro	Lance	lance	314	2022-11-14 11:46:45.978+00:00	1319928	Intencionar mientras me entrego
 Al mismo viento
 Vuelvo a pensar
@@ -9150,7 +9150,7 @@ Voy a quemar mi voluntad e iluminar	[00:30.49] Intencionar mientras me entrego
 [03:31.28] Voy a quemar mi voluntad para avanzar
 [03:37.47] Voy a quemar mi voluntad e iluminar
 [04:55.02] Voy a quemar mi voluntad e iluminar
-[04:56.04]	1	1	0
+[04:56.04] 	1	1	0
 195	2963232	José de los Rayos	jose de los rayos	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	277	2022-11-14 11:46:45.978+00:00	1319944	Buscando una razón
 José de los Rayos se devuelve a casa
 Después de trabajar
@@ -9215,7 +9215,7 @@ No vamos a entender los colores de su piel	[01:22.44] Buscando una razón
 [04:09.70] No vamos a entender por qué no deja ver
 [04:12.49] Oh oh oh
 [04:13.35] No vamos a entender los colores de su piel
-[04:17.88]	1	1	0
+[04:17.88] 	1	1	0
 196	2963458	La Pajarería	la pajareria	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	215	2022-11-14 11:46:45.978+00:00	1320056	Tiempo de esperar
 Te vas, con mis pájaros
 Cruzando el río
@@ -9229,7 +9229,7 @@ Pensando que, la última vez	[00:55.87] Tiempo de esperar
 [01:11.57] Y de tanto cantar
 [01:16.37] Nunca te hablé, nunca te hablé
 [01:20.15] Pensando que, la última vez
-[01:33.23]	1	1	0
+[01:33.23] 	1	1	0
 197	15487517	La Pajarería (En Vivo) (En Vivo)	la pajareria en vivo en vivo	Niños Del Cerro	ninos del cerro	No Va a Pasar el Tiempo en Vano (En Vivo)	no va a pasar el tiempo en vano en vivo	258	2024-12-05 05:29:26.451550968+00:00	10159045	Tiempo de esperar
 Te vas, con mis pájaros
 Cruzando el río
@@ -9293,7 +9293,7 @@ Tu-ru-ru-ru-ru	[00:08.08] Quiero viento de enero
 [02:13.92] Tu-ru-ru-ru-ru
 [02:17.03] Tu-ru-ru-ru-ru
 [02:20.23] Tu-ru-ru-ru-ru
-[02:23.11]	1	1	0
+[02:23.11] 	1	1	0
 199	2963489	Lance	lance	Niños Del Cerro	ninos del cerro	Lance	lance	492	2022-11-14 11:46:45.978+00:00	1320078	Inventar de a poco un color
 Que sea tan claro como tus pies
 Intentar de nuevo pintar
@@ -9344,7 +9344,7 @@ Nadando en lo mismo, nadando en lo mismo	[00:16.12] Inventar de a poco un color
 [01:41.72] Sí, sabes bien que me quiero morir
 [01:45.68] Sí sabes que me he perdido
 [01:47.92] Nadando en lo mismo, nadando en lo mismo
-[02:07.09]	1	1	0
+[02:07.09] 	1	1	0
 200	3161189	Las Distancias	las distancias	Niños Del Cerro	ninos del cerro	Lance	lance	262	2022-11-14 11:46:45.978+00:00	1411364	Tarde me senté a ver
 La diferencia entre
 El antes y el después
@@ -9383,7 +9383,7 @@ Ahora que todo parece distinto
 [02:13.17] Que va a quedar de nosotros, ay
 [02:18.13] Ahora que todo parece distinto
 [02:23.10] ¿Qué va a quedar de nosotros? Ay, ay
-[02:29.10]	1	1	0
+[02:29.10] 	1	1	0
 201	3161191	Las Distancias (En Vivo)	las distancias en vivo	Niños Del Cerro	ninos del cerro	No Va a Pasar el Tiempo en Vano (En Vivo)	no va a pasar el tiempo en vano en vivo	285	2022-11-14 11:46:45.978+00:00	1411366	Tarde me senté a ver
 La diferencia entre
 El antes y el después
@@ -9440,7 +9440,7 @@ Ahora que todo parece distinto
 [02:13.42] Que va a quedar de nosotros, ay
 [02:18.33] Ahora que todo parece distinto
 [02:22.93] ¿Qué va a quedar de nosotros? Ay, ay
-[02:32.72]	1	1	0
+[02:32.72] 	1	1	0
 203	3161193	Las Palmeras	las palmeras	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	493	2022-11-14 11:46:45.978+00:00	1411367	Las palmeras que veo desde mi ventana
 Las plantaron recién esta mañana
 
@@ -9531,7 +9531,7 @@ No hay nada como estar mal	[00:09.95] Las palmeras que veo desde mi ventana
 [07:25.97] Porque no hay nada como estar mal
 [07:29.35] No hay nada como estar mal
 [07:32.19] No hay nada como estar mal
-[07:41.88]	1	1	0
+[07:41.88] 	1	1	0
 204	2963532	Le Entrego Mi Alma al Vacío Como una Ofrenda de Amor	le entrego mi alma al vacio como una ofrenda de amor	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	305	2022-11-14 11:46:45.978+00:00	1320105	Mientras preparo mi último intento
 Mientras recojo mis cosas del suelo
 Procuro no despertarte
@@ -9616,7 +9616,7 @@ Ya es muy grande para esto (pateo en vano los mil versos que estudié)	[00:16.92
 [04:11.16] No castigues tanto al tiempo (sacudo el polvo y sigo sin entender)
 [04:17.32] El desierto en mi pecho (mientras recojo mis cosas del suelo)
 [04:22.75] Ya es muy grande para esto (pateo en vano los mil versos que estudié)
-[04:28.95]	1	1	0
+[04:28.95] 	1	1	0
 205	2963910	Mamire	mamire	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	317	2022-11-14 11:46:45.978+00:00	1320307	En tanto tiempo, tiempo enfermo
 Enfermo hasta los huesos
 En tanto trato de entender
@@ -9671,7 +9671,7 @@ Dime qué pasa conmigo, después de esto	[00:16.08] En tanto tiempo, tiempo enfe
 [02:31.05] Llévate todo contigo, te lo pido
 [02:40.91] Viento, viento que me habla al oído
 [02:46.73] Dime qué pasa conmigo, después de esto
-[02:53.01]	1	1	0
+[02:53.01] 	1	1	0
 206	2964033	Melisa/Toronjil	melisa toronjil	Niños Del Cerro	ninos del cerro	Lance	lance	429	2022-11-14 11:46:45.978+00:00	1320383	Me hiciste acostar temprano
 Y me abrigaste con mi gato
 Y me quedé dormido, al tiro
@@ -9722,7 +9722,7 @@ Vamos a sanarnos de verdad si dejamos pasar días infinitos de abrazar melisa to
 [02:49.85] 
 [05:47.76] Vamos a sanarnos de verdad si dejamos pasar días infinitos de abrazar la pena que nos da
 [05:57.64] Vamos a sanarnos de verdad si dejamos pasar días infinitos de abrazar melisa toronjil
-[06:09.63]	1	1	0
+[06:09.63] 	1	1	0
 207	2964068	Mi Modesta Ceguera Personal	mi modesta ceguera personal	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	146	2022-11-14 11:46:45.978+00:00	1320404	De cada rincón perdido
 Que aún mis ojos pueden distinguir
 Tan solo me queda el oro, el tigre y el sol
@@ -9763,7 +9763,7 @@ Es así como quiero morir	[00:16.29] De cada rincón perdido
 [01:38.65] Y en la Cassia me acompaña
 [01:42.44] Sonriente y valeroso
 [01:46.31] Es así como quiero morir
-[01:51.93]	1	1	0
+[01:51.93] 	1	1	0
 208	2964073	Miel	miel	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	163	2022-11-14 11:46:45.978+00:00	1320407	¿Quién? Dime, ¿quién
 Perturbó el Edén?
 Triste Edén
@@ -9806,7 +9806,7 @@ El vivir más cerca de ti en tu nombre	[01:32.33] ¿Quién? Dime, ¿quién
 [02:28.13] Hasta lo más profundo de mí
 [02:32.69] La dulce luz que encandila el sentir
 [02:36.75] El vivir más cerca de ti en tu nombre
-[02:41.54]	1	1	0
+[02:41.54] 	1	1	0
 209	2964486	Noche Oscura	noche oscura	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	317	2022-11-14 11:46:45.978+00:00	1320605	Cuando en silencio quede quieto el corazón dormido
 Cuando se me revele el misterio y lo divino
 
@@ -9850,7 +9850,7 @@ Que yo ya voy partiendo	[00:03.73] Cuando en silencio quede quieto el corazón d
 [03:12.43] Es perder el miedo a morir en este sueño
 [03:21.89] Tápame los ojos y cántame algo lindo
 [03:27.38] Que yo ya voy partiendo
-[03:35.77]	1	1	0
+[03:35.77] 	1	1	0
 210	2964501	Nonato Coo	nonato coo	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	262	2022-11-14 11:46:45.978+00:00	1320617	Vengo pedaleando desde el 26
 Hasta tu casa perdiendo el frío
 De malos momentos y querer contarte cómo fue mi día
@@ -9900,7 +9900,7 @@ Nada de lo que digas va a cambiarlo, no me voy a amanecer perdiendo tanto	[01:03
 [03:24.12] Las nubes no te van a hablar, si te tropiezas con lo que te queda
 [03:34.62] Nada de lo que digas va a cambiarlo, no me voy a amanecer perdiendo tanto
 [03:44.37] Nada de lo que digas va a cambiarlo, no me voy a amanecer perdiendo tanto
-[04:16.27]	1	1	0
+[04:16.27] 	1	1	0
 211	2964511	Nos Vemos Cómodos en Este Frío	nos vemos comodos en este frio	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	248	2022-11-14 11:46:45.978+00:00	1320622	Hoy, estamos aquí reunidos
 Hoy, nos vemos cómodos en este frío
 Oh, no va a pasar el tiempo en vano
@@ -9926,7 +9926,7 @@ Oh, no va a pasar el tiempo en vano	[00:42.72] Hoy, estamos aquí reunidos
 [02:49.44] 
 [03:33.03] Oh, no va a pasar el tiempo en vano
 [03:43.58] Oh, no va a pasar el tiempo en vano
-[03:53.79]	1	1	0
+[03:53.79] 	1	1	0
 212	13677010	Nos Vemos Cómodos en Este Frío (En Vivo)	nos vemos comodos en este frio en vivo	Niños Del Cerro	ninos del cerro	No Va a Pasar el Tiempo en Vano (En Vivo)	no va a pasar el tiempo en vano en vivo	251	2024-10-24 18:15:10.238622856+00:00	8346782	Hoy, estamos aquí reunidos
 Hoy, nos vemos cómodos en este frío
 Oh, no va a pasar el tiempo en vano
@@ -9949,7 +9949,7 @@ Oh, no va a pasar el tiempo en vano	[00:00.06] Hoy, estamos aquí reunidos
 [02:24.90] Oh, no va a pasar el tiempo en vano
 [02:45.47] 
 [03:25.17] Oh, no va a pasar el tiempo en vano
-[03:38.25]	1	1	0
+[03:38.25] 	1	1	0
 213	2965122	Povidona	povidona	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	237	2022-11-14 11:46:45.978+00:00	1320925	Ven y mira
 Apaguemos esta herida
 La sangre, agua tibia
@@ -10018,7 +10018,7 @@ Déjame hasta acá	[00:38.67] Ven y mira
 [03:08.25] 
 [03:40.71] Calma, si nada te falta
 [03:44.68] Déjame hasta acá
-[03:48.77]	1	1	0
+[03:48.77] 	1	1	0
 214	2965420	Ropa de Verano	ropa de verano	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	204	2022-11-14 11:46:45.978+00:00	1321093	Hoy te vas a despertar cansada
 Hoy te vas a despertar cansada
 Con el peso de la luz que te pega en la cara
@@ -10065,7 +10065,7 @@ De no aprovechar estos años bien	[00:22.06] Hoy te vas a despertar cansada
 [02:28.13] Y si después nos morimos, todos van a echarnos de menos
 [02:35.22] Tendremos la culpa
 [02:39.21] De no aprovechar estos años bien
-[02:44.19]	1	1	0
+[02:44.19] 	1	1	0
 215	2966194	Sísifo	sisifo	Niños Del Cerro	ninos del cerro	Cuauhtémoc	cuauhtemoc	344	2022-11-14 11:46:45.978+00:00	1321513	Me vine a acostar
 Al lado de mi sombra
 Quisiera ordenar lo demás
@@ -10136,7 +10136,7 @@ Un desierto aquí en mi boca	[00:47.07] Me vine a acostar
 [05:28.64] Otra vez, y otra vez para siempre
 [05:33.70] Cultivo en mí mismo
 [05:36.41] Un desierto aquí en mi boca
-[05:40.11]	1	1	0
+[05:40.11] 	1	1	0
 216	2966114	Sufre	sufre	Niños Del Cerro	ninos del cerro	Lance	lance	315	2022-11-14 11:46:45.978+00:00	1321468	Sufre de la espalda
 De arrastrar los días que le hacen tan mal
 Debería irse nadando
@@ -10187,7 +10187,7 @@ Que yo no pienso madrugar, en vano	[00:54.80] Sufre de la espalda
 [04:04.27] Vas a ver, si aquí nadie me trata bien
 [04:09.36] Si aquí nadie puede entender
 [04:11.95] Que yo no pienso madrugar, en vano
-[04:27.83]	1	1	0
+[04:27.83] 	1	1	0
 217	2966117	Sulamita	sulamita	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	267	2022-11-14 11:46:45.978+00:00	1321470	Déjame decirte, Sulamita
 Tantas intenciones se marchitan
 Culpa del desierto
@@ -10284,7 +10284,7 @@ La más hermosa canción	[00:09.02] Déjame decirte, Sulamita
 [04:02.29] Fin a nuestra espera
 [04:07.14] Al entonar
 [04:12.82] La más hermosa canción
-[04:17.39]	1	1	0
+[04:17.39] 	1	1	0
 218	2966237	Tamarugal	tamarugal	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	268	2022-11-14 11:46:45.978+00:00	1321529	Vasta soledad
 Peregrino en busca de algo más
 Noche sin dormir
@@ -10347,7 +10347,7 @@ La pampa en fiesta	[00:20.66] Vasta soledad
 [02:50.63] Remedio para desentristecer
 [02:55.23] El único lugar
 [02:57.68] La pampa en fiesta
-[02:59.46]	1	1	0
+[02:59.46] 	1	1	0
 219	2966297	Tentempié	tentempie	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	225	2022-11-14 11:46:45.978+00:00	1321557	Jardín en sol al fin
 Tranquilo, espero que me toque a mí
 Un poco de calor no puede ser peor que el año anterior
@@ -10416,7 +10416,7 @@ Todavía no aprendo nada y	[00:23.22] Jardín en sol al fin
 [03:25.97] Todavía no aprendo nada y
 [03:28.18] Todavía me duele todo y
 [03:30.53] Todavía no aprendo nada y
-[03:32.33]	1	1	0
+[03:32.33] 	1	1	0
 220	2968838	Vía Contemplativa	via contemplativa	Niños Del Cerro	ninos del cerro	Suave Pendiente	suave pendiente	236	2022-11-14 11:46:45.978+00:00	1322897	Ven a ver de cerca
 Como crece lento la maleza
 Ven a ver de cerca
@@ -10483,7 +10483,7 @@ Como crece la azucena en mí	[00:13.14] Ven a ver de cerca
 [03:02.84] Concédeme tu paz (nada te pido más)
 [03:08.41] Tibio sol de primavera, llévame a ver de cerca
 [03:18.17] Como crece la azucena en mí
-[03:29.22]	1	1	0
+[03:29.22] 	1	1	0
 221	2968629	Videojuego	videojuego	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	345	2022-11-14 11:46:45.978+00:00	1322776	Cuando me senté a jugar no pude creer
 Lo difícil que eran los niveles
 Lo dificil que eran los niveles, ay
@@ -10511,7 +10511,7 @@ Jugando juegos de Play	[02:11.85] Cuando me senté a jugar no pude creer
 [03:01.22] De los días en que no salíamos
 [03:04.02] De cuando los dos nos divertíamos
 [03:06.46] Jugando juegos de Play
-[03:09.72]	1	1	0
+[03:09.72] 	1	1	0
 222	2968728	Viste las Palabras	viste las palabras	Niños Del Cerro	ninos del cerro	Nonato Coo	nonato coo	184	2022-11-14 11:46:45.978+00:00	1322828	Viste las palabras
 Se escondieron de repente
 Se perdieron tantas veces
@@ -10561,7 +10561,7 @@ Siempre será lindo pasear por aquí, abrazar la vuelta larga y perdernos.	[00:2
 [02:03.53] ...
 [02:38.73] Siempre será lindo pasear por aquí, abrazar la vuelta larga y perderse
 [02:46.08] Siempre será lindo pasear por aquí, abrazar la vuelta larga y perdernos.
-[02:53.15]	1	1	0
+[02:53.15] 	1	1	0
 223	10358153	El amor de tu vida tiene derecho a encontrar el amor de su vida	el amor de tu vida tiene derecho a encontrar el amor de su vida	Novio	novio	El amor de tu vida tiene derecho a encontrar el amor de su vida	el amor de tu vida tiene derecho a encontrar el amor de su vida	194	2024-07-02 03:36:33.617948509+00:00	5023996	El amor de tu vida
 Tiene derecho a encontrar
 El amor de su vida
@@ -10661,7 +10661,7 @@ Wuooh wuooh ooh	[00:23.88] El amor de tu vida
 [02:59.90] Tiene derecho a encontrar
 [03:01.48] El amor de su vida
 [03:02.86] Wuooh wuooh ooh
-[03:10.18]	1	1	0
+[03:10.18] 	1	1	0
 224	13927177	Escaparme contigo	escaparme contigo	Novio	novio	Tristeza Feliz	tristeza feliz	261	2024-10-30 17:42:45.943148848+00:00	8597217	A tu vida loca le falta mi boca mi boca bb
 Besarnos entre copas y quitarnos la ropa la ropa, ayer lo soñé
 A tu vida loca le vendría bien
@@ -10713,7 +10713,7 @@ Sin tu amor, pero escuchando a NO VIO	[00:04.05] Estoy tan obsesionado
 [02:48.11] Y si dijeras que sí, aceptaras salir, yo sería tan feliz
 [02:59.73] Desde niño crecí con tristeza feliz, mi destino es así
 [03:08.66] Sin tu amor, pero escuchando a NO VIO
-[03:20.15]	1	1	0
+[03:20.15] 	1	1	0
 226	15247777	Arrayán	arrayan	Paracaidistas	paracaidistas	Arrayán	arrayan	201	2024-12-01 16:39:26.823333156+00:00	9919119	Mi sol es tan sagrado yo quisiera besarlo a mi lado
 Los días se aburren tanto con la luz que rebota, días nublados
 Hay días que estoy aquí
@@ -10774,7 +10774,7 @@ Arrayán quiero estar a tu lado, Arrayán todos los días nublados	[00:10.45] Mi
 [02:53.98] Arrayán quiero estar a tu lado, Arrayán todos los días nublados
 [03:00.46] Arrayán mi sueño es conocerte, Arrayán ser parte de tu vientre
 [03:07.81] Arrayán quiero estar a tu lado, Arrayán todos los días nublados
-[03:20.23]	1	1	0
+[03:20.23] 	1	1	0
 227	12477399	Jardinería del Mar	jardineria del mar	Paracaidistas	paracaidistas	Jardinería del Mar	jardineria del mar	339	2024-09-26 01:22:49.803528905+00:00	7146078	Si estoy solo, igual
 Mirándote caminar
 Comienzo a imaginar
@@ -10814,7 +10814,7 @@ Y no me mires así si estoy sonriendo antes de morir
 [03:09.09] Me estoy dirigiendo a un sitio más lento
 [03:17.16] Y no me mires así si estoy sonriendo antes de morir
 [03:28.08] ¿Y qué piensas de mí si un policía muerto en mi jardín?
-[03:33.47]	1	1	0
+[03:33.47] 	1	1	0
 228	13028377	Algo Saldrá	algo saldra	Parálisis del Sueño	paralisis del sueno	Algo Saldrá	algo saldra	181	2024-10-09 01:21:25.909836623+00:00	7697572	Estuviste esquiva toda la tarde
 Y cuando te asomaste me encontraste exhausto
 Necesitaba contarte cómo me siento
@@ -10883,7 +10883,7 @@ Que ya me arranco contigo de nuevo	[00:13.29] Estuviste esquiva toda la tarde
 [02:30.90] Que algo saldrá, cariño, que algo saldrá
 [02:34.53] Guachita, te pido paciencia que ya me arranco contigo de nuevo
 [02:46.11] Que ya me arranco contigo de nuevo
-[02:52.76]	1	1	0
+[02:52.76] 	1	1	0
 229	14340978	Destructor de Soles	destructor de soles	Parálisis del Sueño	paralisis del sueno	IV	iv	284	2024-11-11 00:00:55.377331195+00:00	9011595	Sabía que quemabas
 Varias veces lo vi
 Pero qué peor forma de aprender
@@ -11024,7 +11024,7 @@ Y ya estás de regreso	[00:18.55] Perdí la conexión con mi trayecto habitual
 [02:44.54] Y llegaste bien esta noche
 [02:54.19] Y llegaste bien esta noche
 [03:04.56] Y ya estás de regreso
-[03:13.47]	1	1	0
+[03:13.47] 	1	1	0
 231	12197117	Platos Rotos	platos rotos	Parálisis del Sueño	paralisis del sueno	IV	iv	205	2024-09-13 22:07:01.278803428+00:00	6865278	Faltan heridas por abrir
 Algo que aniquila la alegría ha de venir
 Y eso nos acerca tanto
@@ -11124,7 +11124,7 @@ Que no hay nada que no valga la pena vivir	[00:27.03] Encontré la excusa mirand
 [03:22.54] Que no hay nada que no valga la pena vivir
 [03:28.47] No esperemos otra noche ni al zodiaco, amiga
 [03:33.16] Que no hay nada que no valga la pena vivir
-[03:44.36]	1	1	0
+[03:44.36] 	1	1	0
 233	13889617	100 Bosques	100 bosques	Patio Solar	patio solar	Piruetas y Viñetas	piruetas y vinetas	204	2024-10-29 15:27:41.175841435+00:00	8559590	Hola
 nos estamos declarando en la cocina
 quiero
@@ -11185,7 +11185,7 @@ Más contigo	[00:32.39] Yo no pude ser
 [02:24.62] Dibujando en la mesa
 [02:27.07] El abismo que significa no estar
 [02:37.96] Más contigo
-[02:41.95]	1	1	0
+[02:41.95] 	1	1	0
 236	12989344	Actuaciones Románticas	actuaciones romanticas	Patio Solar	patio solar	Migración	migracion	123	2024-10-08 09:44:50.784847279+00:00	7658507	Sabiendo cómo actuar,
 subiendo el mar,
 ¿Cómo has estado? ¿Cómo va este año?
@@ -11214,7 +11214,7 @@ y yo creo que hemos actuado correctamente.	[00:13.85] Sabiendo cómo actuar,
 [01:49.76] lo que ha pasado y lo que pasará,
 [01:52.01] seguirá estando en su lugar,
 [01:53.14] y yo creo que hemos actuado correctamente.
-[01:55.39]	1	1	0
+[01:55.39] 	1	1	0
 237	11055995	Al Sur	al sur	Patio Solar	patio solar	Temporada	temporada	218	2024-07-24 22:11:26.653122605+00:00	5722707	Si tu quieres
 Ir a todos lados conmigo
 Debes tener en cuenta
@@ -11280,7 +11280,7 @@ Invita a la calma	[00:29.61] Si tu quieres
 [02:07.02] Rebosante de agua
 [02:12.97] Verde y azul
 [02:18.31] Invita a la calma
-[02:21.88]	1	1	0
+[02:21.88] 	1	1	0
 238	12972267	Aves del Carnaval	aves del carnaval	Patio Solar	patio solar	La Fuente	la fuente	229	2024-10-07 20:14:15.736530357+00:00	7641413	Vas a ver lo que se acerca,
 Un montón de luces sobre marionetas,
 Y se pueden tocar,
@@ -11334,7 +11334,7 @@ a mitad de la noche	[00:28.77] Quiero construirte un sitio
 [02:08.42] creo que tal vez deberíamos dejar
 [02:11.58] alguna nota en caso de irnos a nadar
 [02:14.86] a mitad de la noche
-[02:19.66]	1	1	0
+[02:19.66] 	1	1	0
 240	14152393	Club de Magia	club de magia	Patio Solar	patio solar	La Fuente (Deluxe Edition)	la fuente deluxe edition	237	2024-11-06 06:34:23.352091872+00:00	8822752	Voy a dejar
 que me lleves al final
 pensándolo bien
@@ -11387,7 +11387,7 @@ la gente dice que ya no quiere moverse de esta calma	[00:52.20] Ven a mí
 [02:32.95] las aves vienen y van a su manera,
 [02:37.85] el viento no deja prender este porro,
 [02:44.51] la gente dice que ya no quiere moverse de esta calma
-[05:33.02]	1	1	0
+[05:33.02] 	1	1	0
 242	10817246	Destellos de Algo	destellos de algo	Patio Solar	patio solar	Temporada	temporada	289	2024-07-16 17:05:42.442129712+00:00	5483644	Comenzamos a hablar,
 no quiero sonar sin ritmo
 y ya no se a quien citar
@@ -11415,7 +11415,7 @@ es la verdad.	[00:23.41] Comenzamos a hablar,
 [03:21.79] con liviandad
 [03:26.49] y no esperar mas que el recíproco cariño,
 [03:53.56] es la verdad.
-[04:07.24]	1	1	0
+[04:07.24] 	1	1	0
 243	15349237	Dubai	dubai	Patio Solar	patio solar	La Fuente	la fuente	185	2024-12-03 03:36:57.429008108+00:00	10020612	Una casa en el mar con un perro submarino
 Una casa en el mar así como lo hacen en Dubai
 Parece que no tuviéramos a nadie a quien amar
@@ -11456,7 +11456,7 @@ Lo que nunca sobra es sombra, lo que nunca sobra.	[00:10.96] Cómo se nos va lo 
 [01:25.68] Lo que nunca sobra es sombra, lo que nunca sobra
 [01:32.33] Lo que nunca sobra es sombra, lo que a ti te gusta es moda
 [01:36.72] Lo que nunca sobra es sombra, lo que nunca sobra.
-[01:42.06]	1	1	0
+[01:42.06] 	1	1	0
 245	11982280	El Vértigo	el vertigo	Patio Solar	patio solar	Temporada	temporada	206	2024-09-02 00:31:02.842190482+00:00	6650120	Comenzamos bebiendo,
 seguimos riendo,
 tuvimos cuidado de no pasar por alto
@@ -11509,7 +11509,7 @@ y la voy a cuidar, tanto.	[00:25.05] Comenzamos bebiendo,
 [02:17.95] y la quiero para dormirme
 [02:18.94] y la quiero para asfixiarme
 [02:23.50] y la voy a cuidar, tanto.
-[02:34.39]	1	1	0
+[02:34.39] 	1	1	0
 246	12972616	En Mis Ojos	en mis ojos	Patio Solar	patio solar	La Fuente (Deluxe Edition)	la fuente deluxe edition	172	2024-10-07 20:25:51.093411197+00:00	7641764	Voy dando vueltas sobre ti
 Mira lo que he hecho
 Cuadros sin boceto
@@ -11545,7 +11545,7 @@ En mis ojos	[00:23.97] Voy dando vueltas sobre ti
 [02:14.41] Puedes verlo
 [02:18.95] En mis ojos (En mis ojos)
 [02:26.85] En mis ojos
-[02:29.33]	1	1	0
+[02:29.33] 	1	1	0
 247	14418063	Hace 10 Años	hace 10 anos	Patio Solar	patio solar	Hace 10 Años	hace 10 anos	184	2024-11-12 05:54:01.701022700+00:00	9088734	Hay misterios que golpean todo el tiempo mi cuerpo
 Considera que tú fuiste el primero
 En mostrarle todo lo que me falta
@@ -11593,7 +11593,7 @@ Y suavemente te entendí	[00:27.63] Hay misterios que golpean todo el tiempo mi 
 [02:30.65] Elegimos esta noche
 [02:34.04] Para sentirnos de cerca
 [02:37.41] Y suavemente te entendí
-[02:45.25]	1	1	0
+[02:45.25] 	1	1	0
 248	14317917	Las Vueltas a Seguir	las vueltas a seguir	Patio Solar	patio solar	Los Movimientos	los movimientos	180	2024-11-10 18:06:37.948358710+00:00	8988517	Y luego me formas las vías a escapar,
 te llamo,
 no escucho,
@@ -11611,7 +11611,7 @@ ya voy.	[02:32.95] Y luego me formas las vías a escapar,
 [02:54.39] te juro que no!
 [02:55.99] que no!
 [02:56.75] ya voy.
-[03:00.04]	1	1	0
+[03:00.04] 	1	1	0
 249	10417594	Lo Bien Que Se Ven	lo bien que se ven	Patio Solar	patio solar	Temporada	temporada	159	2024-07-04 17:22:48.963477590+00:00	5083585	No sé qué pasa que no miras
 Hacia ella cuando te guiña
 Esos ojos se ven de lejos
@@ -11662,7 +11662,7 @@ Lo bonito que se ve	[00:12.32] No sé qué pasa que no miras
 [01:29.77] De todo para que te fijes
 [01:32.97] Y vas a notar
 [01:35.52] Lo bonito que se ve
-[01:38.78]	1	1	0
+[01:38.78] 	1	1	0
 250	15201611	Loca María Parlanchina	loca maria parlanchina	Patio Solar	patio solar	La Fuente	la fuente	147	2024-12-01 05:16:30.201356740+00:00	9872944	Las siestas allá afuera que creímos eternas
 Se destiñeron al mudarnos de nuestras mentes
 Viejas mentes que volaban bajo
@@ -11737,7 +11737,7 @@ Todo sería perfecto sentirnos en silencio hasta la noche...	[00:20.99] Puedes d
 [02:12.28] 
 [02:50.38] Todo sería perfecto sentirnos en silencio hasta la noche
 [03:01.23] Todo sería perfecto sentirnos en silencio hasta la noche...
-[03:12.32]	1	1	0
+[03:12.32] 	1	1	0
 254	14530908	Pociones Alrededor - Versión Rana	pociones alrededor version rana	Patio Solar	patio solar	Actuaciones Románticas	actuaciones romanticas	142	2024-11-14 18:00:00.733857817+00:00	9201692	Fuera de esta casa habrá calles infinitas llenas de poesía
 la arboleda está abierta a la inspiración
 de las diversas experiencias ocurridas en el día de hoy.
@@ -11773,7 +11773,7 @@ te digo que de verdad no creo que exista otra oportunidad de ponerse a cantar.	[
 [01:52.44] el sol mirado desde acá
 [02:00.88] el sol mirado desde acá,
 [02:03.74] te digo que de verdad no creo que exista otra oportunidad de ponerse a cantar.
-[02:12.56]	1	1	0
+[02:12.56] 	1	1	0
 255	11174058	Porco	porco	Patio Solar	patio solar	Absurda Tendencia Humana	absurda tendencia humana	101	2024-07-29 21:55:09.304050601+00:00	5840922	Dejando atrás el encierro no vuelvo
 A las cercas de la granja
 Un corral enfermo
@@ -11791,7 +11791,7 @@ UH UH OH	[00:46.36] Dejando atrás el encierro no vuelvo
 [01:21.52] UH UH OH
 [01:25.23] UHH
 [01:27.94] UH UH OH
-[01:42.03]	1	1	0
+[01:42.03] 	1	1	0
 256	13301128	Retazos de Diciembre	retazos de diciembre	Patio Solar	patio solar	Retazos de Diciembre	retazos de diciembre	180	2024-10-14 08:23:19.985124805+00:00	7970534	Y así me fui volviendo viejo
 Y así dejé que se reparen
 Todos mis desastres
@@ -11847,7 +11847,7 @@ Que mañana lo arreglaré	[00:19.93] Y así me fui volviendo viejo
 [02:26.30] Que algún día espero hacer pedazos
 [02:30.16] Ser inerte y volarme
 [02:32.71] Que mañana lo arreglaré
-[02:37.37]	1	1	0
+[02:37.37] 	1	1	0
 257	15365543	Rompehielo	rompehielo	Patio Solar	patio solar	Rompehielo	rompehielo	148	2024-12-03 06:21:31.613369091+00:00	10036925	Cuando es cariño
 Siempre espero adentro de mis sentimientos
 De nombre solamente conozco ese juego
@@ -11878,7 +11878,7 @@ Se destemplan los bordes	[00:13.48] Cuando es cariño
 [01:36.55] Se destemplan los bordes
 [01:43.10] Se me aferran las ganas de besarte afuera
 [01:49.61] Se destemplan los bordes
-[01:53.44]	1	1	0
+[01:53.44] 	1	1	0
 258	11714796	Todo Trasciende Aquí	todo trasciende aqui	Patio Solar	patio solar	Temporada	temporada	171	2024-08-21 09:27:11.766328369+00:00	6382264	Ey escucha bien, quiero formar lazos para toda la vida
 quiero irte a visitar y no tener que preguntar
 quiero también ser parte de tus planes del verano y coleccionar los recuerdos en fotos o en canciones
@@ -11888,7 +11888,7 @@ Y así habrá un espacio en este mundo compuesto por nosotros dos.	[00:16.03] Ey
 [00:37.66] Quiero también ser parte de tus planes del verano y coleccionar los recuerdos en fotos o en canciones
 [00:53.96] Igualmente quedarán inexorables.
 [01:09.56] Y así habrá un espacio en este mundo compuesto por nosotros dos.
-[02:00.61]	1	1	0
+[02:00.61] 	1	1	0
 259	14591813	Tu Velocidad	tu velocidad	Patio Solar	patio solar	Los Movimientos	los movimientos	222	2024-11-15 15:57:22.746077487+00:00	9262641	En cuanto sepas como sigue el plan,
 serán los días los que te digan que hacer con el bus,
 fue un perfecto asalto, nos llevamos nuestras cosas, hay que decir que sin ti un gran vacío habría que suplir, y yo te prefiero al volante.
@@ -11896,7 +11896,7 @@ Tu vas a mucha más velocidad, tu vas a más velocidad.	[00:21.12] En cuanto sep
 [00:28.62] serán los días los que te digan que hacer con el bus,
 [00:39.54] fue un perfecto asalto, nos llevamos nuestras cosas, hay que decir que sin ti un gran vacío habría que suplir, y yo te prefiero al volante.
 [00:57.88] Tu vas a mucha más velocidad, tu vas a más velocidad.
-[01:38.94]	1	1	0
+[01:38.94] 	1	1	0
 260	11055996	Viajar en Metro	viajar en metro	Patio Solar	patio solar	Los Movimientos	los movimientos	303	2024-07-24 22:11:27.581102569+00:00	5722708	Nos hemos encontrado más de una vez
 Viajando en el mismo tren
 Digamos que fue azar
@@ -11957,7 +11957,7 @@ Débiles con ilusiones	[00:11.92] Nos hemos encontrado más de una vez
 [02:52.02] Crecemos como larvas tiradas en las calles, tomando el metro
 [02:55.14] Exponiendo lo que somos
 [02:56.98] Débiles con ilusiones
-[03:00.55]	1	1	0
+[03:00.55] 	1	1	0
 261	15272471	Viejos Cuentos	viejos cuentos	Patio Solar	patio solar	La Fuente (Deluxe Edition)	la fuente deluxe edition	118	2024-12-02 05:25:08.851222564+00:00	9943821	No te vayas lejos mi amor
 Es lo que siento, es un embrujo bello
 De lo que formas en las vías de tu vida
@@ -11983,7 +11983,7 @@ Dejaste ayer	[00:09.33] No te vayas lejos mi amor
 [01:02.72] Dejaste ayer un regalo en mis manos
 [01:07.61] Fotos del campo y una serpiente que se mueve
 [01:11.62] Dejaste ayer
-[01:15.79]	1	1	0
+[01:15.79] 	1	1	0
 262	14272413	Bailar no Sé - Remastered	bailar no se remastered	Phuyu y la Fantasma	phuyu y la fantasma	El Patio de los Calla'os (Remastered)	el patio de los callaos remastered	230	2024-11-10 01:49:42.063887839+00:00	8942980	Me lleva la marea
 de la vergüenza porque no sé bailar
 y no puedo aprender la
@@ -12089,7 +12089,7 @@ Solos como erizos acorazados	[00:19.81] Yo era amigo del Diego Herrera
 [02:20.89] Inmenso cual baobab
 [02:25.55] Así somos los humanos
 [02:31.72] Solos como erizos acorazados
-[02:33.88]	1	1	0
+[02:33.88] 	1	1	0
 265	14198054	Es Difícil Ser una Estatua - Remastered	es dificil ser una estatua remastered	Phuyu y la Fantasma	phuyu y la fantasma	El Patio de los Calla'os (Remastered)	el patio de los callaos remastered	168	2024-11-08 00:57:51.483845848+00:00	8868510	Es difícil ser una estatua
 de piedra me vuelvo encerrada
 la muerte extiende la guadaña
@@ -12143,7 +12143,7 @@ no me siento yo	[00:30.06] Es difícil ser una estatua
 [02:26.95] No me siento yo
 [02:30.74] No me siento yo
 [02:34.32] No me siento yo
-[02:40.04]	1	1	0
+[02:40.04] 	1	1	0
 266	14176621	giro argumental/spoiler	giro argumental spoiler	Phuyu y la Fantasma	phuyu y la fantasma	Anticuecas Subterráneas	anticuecas subterraneas	229	2024-11-07 03:40:50.860059516+00:00	8847011	Ay, no puedo creer
 Que mi vida fue
 Grabada para el cine
@@ -12212,7 +12212,7 @@ La vida será una tragedia	[00:41.35] Ay, no puedo creer
 [03:08.32] La vida será una tragedia
 [03:23.36] Cuándo se dará el giro argumental
 [03:24.80] La vida será una tragedia
-[03:30.17]	1	1	0
+[03:30.17] 	1	1	0
 267	14198263	Herida Insidiosa - Remastered	herida insidiosa remastered	Phuyu y la Fantasma	phuyu y la fantasma	El Patio de los Calla'os (Remastered)	el patio de los callaos remastered	136	2024-11-08 01:18:32.338639119+00:00	8868719	La vida, la vida me ha dado un tormento
 ay de mí que me acecha en todo momento
 qué peca- qué pecado he cometido
@@ -12276,7 +12276,7 @@ Como en Ucrania y Taiwán	[00:00.30] Selección de la cultura, el orden a punta 
 [01:54.25] A la colonia
 [01:57.72] Nuevos frentes abrirán
 [02:00.45] Como en Ucrania y Taiwán
-[02:05.50]	1	1	0
+[02:05.50] 	1	1	0
 269	15361504	La Displicencia - Remastered	la displicencia remastered	Phuyu y la Fantasma	phuyu y la fantasma	El Patio de los Calla'os (Remastered)	el patio de los callaos remastered	208	2024-12-03 05:45:32.760494810+00:00	10032885	A veces en el invierno
 con la humadera de afuera
 dejo la ventana abierta
@@ -12390,7 +12390,7 @@ Que me lleve-lleve-lleve-lleve	[00:20.96] La vida, no sé quién soy
 [03:20.30] Tiki-tiki-ti, ki-ti
 [03:22.29] Que me llevaré, que me llevará
 [03:23.85] Que me lleve-lleve-lleve-lleve
-[03:25.68]	1	1	0
+[03:25.68] 	1	1	0
 271	13547681	recuerdo mi infancia, cuando era viejo	recuerdo mi infancia cuando era viejo	Phuyu y la Fantasma	phuyu y la fantasma	El Pacífico Albergará Nuestros Huesos	el pacifico albergara nuestros huesos	371	2024-10-20 06:46:43.554926143+00:00	8217265	Recuerdo mi infancia, cuando era viejo
 Recuerdo mi infancia, cuando era sabio
 El tiempo llovía y no me preocupaba
@@ -12484,7 +12484,7 @@ Frir por lo que se siente
 [03:06.52] ¡Muero de arte!
 [03:10.46] ¡Muero de arte!
 [03:14.90] ¡Muero de arte!
-[03:17.57]	1	1	0
+[03:17.57] 	1	1	0
 273	13079231	Una Mentira se Escapó - Remastered	una mentira se escapo remastered	Phuyu y la Fantasma	phuyu y la fantasma	El Patio de los Calla'os (Remastered)	el patio de los callaos remastered	193	2024-10-10 11:14:47.157098968+00:00	7748485	Una mentira se escapó
 de mi boca sin cuidado
 en pillarla he fracasado
@@ -12528,7 +12528,7 @@ y por la boca muere el pez	[00:24.23] Una mentira se escapó
 [02:07.11] si era tan chica antes
 [02:10.05] se ha multiplicado en un mes
 [02:13.45] y por la boca muere el pez
-[02:17.69]	1	1	0
+[02:17.69] 	1	1	0
 274	12087344	vale la pena, intentar	vale la pena intentar	Phuyu y la Fantasma	phuyu y la fantasma	El Pacífico Albergará Nuestros Huesos	el pacifico albergara nuestros huesos	367	2024-09-06 23:13:52.127314548+00:00	6755332	¿Qué soy si no
 Culpa y miedo?
 
@@ -12647,7 +12647,7 @@ Huracán que es la humanidad	[00:54.59] ¿Qué soy si no
 [04:08.95] 
 [04:11.43] Formar parte de este huracán
 [04:14.44] Huracán que es la humanidad
-[06:07.93]	1	1	0
+[06:07.93] 	1	1	0
 275	13070985	En Mis Genes	en mis genes	Protistas	protistas	Nefertiti	nefertiti	243	2024-10-10 04:01:31.483877215+00:00	7740233	¿Qué es lo que está pasando?
 Me voy cansando en el último tiempo
 Tan pronto me levanto
@@ -12714,7 +12714,7 @@ Un, dos, tres y...	[00:21.03] ¿Qué es lo que está pasando?
 [03:07.29] A estar bien
 [03:12.01] O morir de un infarto
 [03:19.13] Un, dos, tres y...
-[03:21.37]	1	1	0
+[03:21.37] 	1	1	0
 276	13526492	Entre los Dos No Sumamos Uno	entre los dos no sumamos uno	protistas	protistas	Microonda	microonda	189	2024-10-19 15:30:58.201203455+00:00	8196057	Ya está acá
 Febrero me pilló una vez más
 En la ciudad
@@ -12807,7 +12807,7 @@ Y saludemos a lo lejos	[00:11.41] Ya está acá
 [02:41.85] Cada uno tiene su camino
 [02:45.49] Tal vez nos encontremos cuando viejos
 [02:48.13] Y saludemos a lo lejos
-[03:03.44]	1	1	0
+[03:03.44] 	1	1	0
 277	12447741	Granada	granada	protistas	protistas	Las Cruces	las cruces	247	2024-09-25 06:21:53.825037324+00:00	7116399	Tenemos que romper desde la piel
 Abrir un poco más
 Para ver bien
@@ -12886,7 +12886,7 @@ De lo que hicimos mal	[00:28.55] Tenemos que romper desde la piel
 [03:48.91] Y el sol no va estar más más
 [03:52.75] Ya lo dijeron los mayas, hay que ir hacia atrás
 [03:58.48] De lo que hicimos mal
-[04:03.43]	1	1	0
+[04:03.43] 	1	1	0
 278	13229132	Hospital Salvador	hospital salvador	protistas	protistas	Hospital Salvador	hospital salvador	177	2024-10-12 18:54:39.805313341+00:00	7898490	Caí enfermo, yo no sé por qué
 Me fui corriendo hasta el Hospital Salvador
 Y nunca pensé que no iba a salir otra vez
@@ -12922,7 +12922,7 @@ Mi obsesión con la muerte me llama	[00:32.31] Caí enfermo, yo no sé por qué
 [02:26.18] Toda la historia que llevo hasta el momento hoy explota en mi cara
 [02:33.85] No tengo razonamiento
 [02:36.86] Mi obsesión con la muerte me llama
-[02:42.36]	1	1	0
+[02:42.36] 	1	1	0
 279	13790823	Huesos de Cristal	huesos de cristal	Protistas	protistas	Las Cruces	las cruces	223	2024-10-27 09:05:41.234821914+00:00	8460689	Chico huesos de cristal
 Ponte la capa y sal afuera
 El viento te rompió un pie
@@ -12977,7 +12977,7 @@ Mientras el sol hace brillar tu capa	[00:11.68] Chico huesos de cristal
 [03:01.52] Que ya no le sirve de nada
 [03:06.98] Arrastrándote al medio día
 [03:13.33] Mientras el sol hace brillar tu capa
-[03:22.38]	1	1	0
+[03:22.38] 	1	1	0
 280	12202326	Mi Pieza	mi pieza	protistas	protistas	Las Cruces	las cruces	230	2024-09-14 04:33:28.125922654+00:00	6870495	Mi pieza ya no es lo que era antes
 Me pena un niño como Casper
 Me pone agujas en mi almohada
@@ -13020,7 +13020,7 @@ Te va a encantar	[00:27.86] Mi pieza ya no es lo que era antes
 [02:36.36] Quiero que mi amor
 [02:41.65] Te encontrare al final
 [02:45.96] Te va a encantar
-[02:59.09]	1	1	0
+[02:59.09] 	1	1	0
 281	9076818	Nortinas War	nortinas war	Protistas	protistas	SXSW 2011 Showcasing Artists	sxsw 2011 showcasing artists	226	2024-05-08 15:09:42.519523700+00:00	3740246	Son los lobos que van
 hacía el mar
 porque la sal
@@ -13045,7 +13045,7 @@ morir en paz	[02:54.24] Son los lobos que van
 [03:32.36] nos hace flotar
 [03:35.91] déjanos,
 [03:38.38] morir en paz
-[03:40.47]	1	1	0
+[03:40.47] 	1	1	0
 282	11857182	Ojos Favoritos	ojos favoritos	protistas	protistas	Nefertiti	nefertiti	267	2024-08-26 01:02:27.770783897+00:00	6524840	Me encontré mis ojos favoritos
 Son los dos planetas más adormecidos
 Me sentí tan hipnotizado
@@ -13091,7 +13091,7 @@ Tengo que entender, tú no eres de verdad	[01:02.76] Me encontré mis ojos favor
 [03:21.67] Hallar la forma de escapar y volver a mi tierra
 [03:30.82] Dejar de alucinar
 [03:36.51] Tengo que entender, tú no eres de verdad
-[03:41.01]	1	1	0
+[03:41.01] 	1	1	0
 283	12884004	Princesa del Tarapacá	princesa del tarapaca	protistas	protistas	Nortinas War	nortinas war	187	2024-10-05 10:27:22.170125616+00:00	7553002	Mi princesa
 del Tarapacá
 no llores que el dolor se va
@@ -13176,7 +13176,7 @@ Un, dos, tres para avanzar	[00:42.88] Me voy, ya basta
 [03:19.11] 
 [04:18.52] Me voy, ya basta
 [04:22.51] Un, dos, tres para avanzar
-[04:28.21]	1	1	0
+[04:28.21] 	1	1	0
 285	9069104	Videocámara	videocamara	Protistas	protistas	SXSW 2017 Showcasing Artists	sxsw 2017 showcasing artists	207	2024-05-07 14:26:37.138773751+00:00	3732507	Me regalaron una videocámara
 Todos los amigos han salido de la ciudad
 Y yo lo intenté
@@ -13262,7 +13262,7 @@ Un cubrecama que no me deja ver	[00:16.89] Me regalaron una videocámara
 [02:57.98] Pero me equivoqué
 [02:59.13] Yo me equivoqué, hoy
 [03:04.09] Un cubrecama que no me deja ver
-[03:06.95]	1	1	0
+[03:06.95] 	1	1	0
 286	12503286	Gallo verde	gallo verde	Rock n' chile	rock n chile	Gallo verde	gallo verde	163	2024-09-26 21:49:36.788759210+00:00	7171991	Llevo mil días
 Intentando volver a mi hogar
 Porque el lugar donde estuve estos años
@@ -13378,7 +13378,7 @@ Al gallinero	[00:20.98] Llevo mil días
 [02:20.45] A ese gallinero
 [02:22.20] Antes de volver
 [02:23.60] Al gallinero
-[02:27.06]	1	1	0
+[02:27.06] 	1	1	0
 287	12695938	Hoy me he mentido otra vez	hoy me he mentido otra vez	Rock n' chile	rock n chile	Hoy me he mentido otra vez	hoy me he mentido otra vez	155	2024-10-01 06:45:54.214980969+00:00	7364793	Hoy me he mentido
 Otra vez
 Como cada noche
@@ -13475,7 +13475,7 @@ Ella lo escondió en un cajón	[00:15.68] Hoy me he mentido
 [01:52.05] Si alguien me ha visto
 [01:53.43] Que avise después
 [01:55.38] Ella lo escondió en un cajón
-[02:00.92]	1	1	0
+[02:00.92] 	1	1	0
 288	11928548	Quien soy vo?	quien soy vo	Rock n' chile	rock n chile	Picao' a shoro mode on	picao a shoro mode on	69	2024-08-30 02:06:12.815248404+00:00	6596311	Flaco somos Rock n' chile me importa una raja quien soy vo'
 Cantamos desafinado y a tu polola le encantó
 Te dejé temblando y te rompo todos los huesos a palos
@@ -13525,7 +13525,7 @@ Somos Rock n' Chile me importa una raja quien soy vo!	[00:18.81] Flaco somos Roc
 [00:59.88] Somos Rock n' Chile me importa una raja quien soy vo!
 [01:01.87] Somos Rock n' Chile me importa una raja quien soy vo!
 [01:04.56] Somos Rock n' Chile me importa una raja quien soy vo!
-[01:07.14]	1	1	0
+[01:07.14] 	1	1	0
 289	12029026	R.N.C.	r n c	Rock n' chile	rock n chile	Picao' a shoro mode on	picao a shoro mode on	128	2024-09-03 13:56:59.528777550+00:00	6696897	¿Estamos de la que? ¿de la que? de la R.N.C
 ¿Estamos que? ¿de la que? de la R.N.C
 ¿Estamos que? ¿de la que? de la R.N.C
@@ -13626,7 +13626,7 @@ De la Rock, de la rock, de la R.N.C	[00:09.35] ¿Estamos de la que? ¿de la que?
 [01:55.61] ¿De la que?
 [01:56.67] Estamos de la Rock n' Chile
 [01:57.93] De la Rock, de la rock, de la R.N.C
-[02:08.06]	1	1	0
+[02:08.06] 	1	1	0
 290	13425530	Te vas con él	te vas con el	Rock n' chile	rock n chile	Te vas con él	te vas con el	189	2024-10-17 05:39:01.054863604+00:00	8095000	Siempre vuelves
 A decirlo otra vez
 Que a ti no te trata bien
@@ -13752,7 +13752,7 @@ Me acompaña aquí	[00:16.42] Siempre vuelves
 [02:16.68] En copas me acuerdo de ti
 [02:18.74] La soledad
 [02:20.12] Me acompaña aquí
-[02:23.27]	1	1	0
+[02:23.27] 	1	1	0
 291	12417957	Todos Saltando	todos saltando	Rock n' chile	rock n chile	Todos Saltando	todos saltando	151	2024-09-24 05:18:53.627362375+00:00	7086589	"Yo te creo, pero mi metralleta no"
 
 "Contéstame una pregunta
@@ -13921,7 +13921,7 @@ El que no salta es paco!	[00:00.00] "Yo te creo, pero mi metralleta no"
 [02:18.66] Todos saltando
 [02:19.70] El que no salta es paco!
 [02:21.67] El que no salta es paco!
-[02:24.43]	1	1	0
+[02:24.43] 	1	1	0
 292	3903154	A la Primera	a la primera	Rosario Alfonso	rosario alfonso	De Canciones Tristes y Otras Sutilezas	de canciones tristes y otras sutilezas	161	2022-11-14 11:46:45.978+00:00	1720449	Si tú supieras cómo yo te quiero a ti
 No lo pensarías dos veces
 Pero no te preocupes piénsatelo bien
@@ -13983,7 +13983,7 @@ No sé qué hacer si no resulta a la tercera	[00:11.20] Si tú supieras cómo yo
 [02:25.94] Y aún espero que tú ya llegues
 [02:27.86] Y si no llegas yo desespero
 [02:30.48] No sé qué hacer si no resulta a la tercera
-[02:35.67]	1	1	0
+[02:35.67] 	1	1	0
 293	14655511	Alcohuaz	alcohuaz	Rosario Alfonso	rosario alfonso	De Canciones Tristes y Otras Sutilezas	de canciones tristes y otras sutilezas	214	2024-11-17 16:22:35.368807502+00:00	9326477	A 2000 metros
 Vamos cruzando
 A 2000 metros
@@ -14038,7 +14038,7 @@ Vueltas, me marean	[00:14.34] A 2000 metros
 [02:38.93] Pendientes por donde quiera
 [02:45.48] Barro y estrellas
 [02:51.95] Vueltas, me marean
-[02:56.59]	1	1	0
+[02:56.59] 	1	1	0
 294	12173580	Amado Mío (Acústica)	amado mio acustica	Rosario Alfonso	rosario alfonso	Amado Mío (Acústica)	amado mio acustica	144	2024-09-12 23:40:18.920504162+00:00	6841716	Amado mío
 Tenme por siempre
 Y que por siempre
@@ -14095,7 +14095,7 @@ Comience hoy	[00:07.27] Amado mío
 [01:57.88] Tenme por siempre
 [02:02.90] Y que por siempre
 [02:08.05] Comience hoy
-[02:22.96]	1	1	0
+[02:22.96] 	1	1	0
 295	3906961	Canción para Acunar	cancion para acunar	Rosario Alfonso	rosario alfonso	De Canciones Tristes y Otras Sutilezas	de canciones tristes y otras sutilezas	204	2022-11-14 11:46:45.978+00:00	1722244	Está todo bien
 No te preocupes
 Porque está todo bien
@@ -14166,7 +14166,7 @@ Todo bien	[00:06.95] Está todo bien
 [03:00.40] Porque está todo
 [03:03.68] Todo, todo
 [03:07.48] Todo bien
-[03:11.85]	1	1	0
+[03:11.85] 	1	1	0
 296	12446261	Chamullento	chamullento	Rosario Alfonso	rosario alfonso	De Canciones Tristes y Otras Sutilezas	de canciones tristes y otras sutilezas	249	2024-09-25 05:02:52.224913756+00:00	7114918	No seas chamullento, no digas mentiras
 No seas chamullento, no digas mentiras
 No seas chamullento, no digas mentiras
@@ -14313,7 +14313,7 @@ Prohibido (prohibido amurrarse)	[00:01.72] No seas chamullento, no digas mentira
 [03:45.66] No me voy a engañar (mmm-mmm)
 [03:48.57] No te voy a decir que te quiero más y más (mmm)
 [03:56.49] Prohibido (prohibido amurrarse)
-[04:09.07]	1	1	0
+[04:09.07] 	1	1	0
 297	9585976	De Haber Sabido	de haber sabido	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	188.928	2024-05-29 23:34:43.852347350+00:00	4250314	De haber sabido como resultó
 No habría intentado arreglarlo más
 De haber sabido como resultó
@@ -14396,7 +14396,7 @@ No habría salido tan re trasquilá	[00:00.08] De haber sabido como resultó
 [02:41.73] No me esforzaba ni un poquito más
 [02:49.41] No le apostaba ni un poroto más
 [02:53.67] No habría salido tan re trasquilá
-[02:55.69]	1	1	0
+[02:55.69] 	1	1	0
 298	3909214	De Haber Sabido (Feat. Diego Lorenzini)	de haber sabido feat diego lorenzini	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	189	2022-11-14 11:46:45.978+00:00	1723258	De haber sabido como resultó
 No habría intentado arreglarlo más
 De haber sabido como resultó
@@ -14475,7 +14475,7 @@ No habría salido tan re trasquilá	[00:02.21] De haber sabido como resultó
 [02:41.99] No me esforzaba ni un poquito más
 [02:48.13] No le apostaba ni un poroto más
 [02:53.92] No habría salido tan re trasquilá
-[02:58.07]	1	1	0
+[02:58.07] 	1	1	0
 299	3916491	Inseguro, Pero Honesto	inseguro pero honesto	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	183	2022-11-14 11:46:45.978+00:00	1726232	Si supieras cuán henchido tengo el corazón por ti
 Si supieras cuán henchido tengo el corazón por ti
 No andarías preguntando mil leseras porque si
@@ -14702,7 +14702,7 @@ No cambio por nada lo que hemos vivido	[00:07.44] Ya no nos resulta más
 [04:04.55] Cuando no nos resulta
 [04:07.86] Y cuando no sucedió es peor
 [04:11.42] No cambio por nada lo que hemos vivido
-[04:16.89]	1	1	0
+[04:16.89] 	1	1	0
 302	3929265	Qué Más Quieres de Mí	que mas quieres de mi	Rosario Alfonso	rosario alfonso	De Canciones Tristes y Otras Sutilezas	de canciones tristes y otras sutilezas	310	2022-11-14 11:46:45.978+00:00	1731930	No, no puede
 Ser el miedo la razón
 No, no quiero
@@ -14816,7 +14816,7 @@ En mí, en mí, en mí, en mí	[00:26.55] No, no puede
 [04:44.31] Y no puedo seguir así
 [04:49.60] Y ahora tengo que pensar en mí
 [04:53.93] En mí, en mí, en mí, en mí
-[04:59.59]	1	1	0
+[04:59.59] 	1	1	0
 303	13964117	Que no te haga falta nada	que no te haga falta nada	Rosario Alfonso	rosario alfonso	Sesiones 050: Rosario Alfonso	sesiones 050 rosario alfonso	357	2024-10-31 18:02:53.815366152+00:00	8634178	Que los días sean tibios
 Que las noches sean cortas
 Que esos ojos sean todo
@@ -14962,7 +14962,7 @@ Sácate las ganas	[00:21.16] Mírame a los ojos corazón
 [03:04.95] Ven aprovecha es la oportunidad
 [03:10.73] Agarra fuerte
 [03:15.12] Sácate las ganas
-[03:30.24]	1	1	0
+[03:30.24] 	1	1	0
 305	3929992	Siento Miedo de Pensar	siento miedo de pensar	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	221	2022-11-14 11:46:45.978+00:00	1732176	Siento miedo de pensar
 Que te estoy empezando
 A querer, a querer
@@ -15010,7 +15010,7 @@ A querer	[00:27.06] Siento miedo de pensar
 [03:11.76] Que te estoy empezando
 [03:16.49] A querer, a querer
 [03:22.78] A querer
-[03:32.10]	1	1	0
+[03:32.10] 	1	1	0
 306	13950298	Tranquila	tranquila	Rosario Alfonso	rosario alfonso	Tranquila	tranquila	268	2024-10-31 10:29:02.256390655+00:00	8620355	Tu violencia
 Me asombra
 Tu ignorancia
@@ -15089,7 +15089,7 @@ Tranquila	[00:00.35] Tu violencia
 [03:51.48] Tranquila
 [03:58.25] Tranquila
 [04:04.99] Tranquila
-[04:10.98]	1	1	0
+[04:10.98] 	1	1	0
 307	12600379	Tus Ojos Claros	tus ojos claros	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	264	2024-09-29 15:51:04.397102791+00:00	7269195	Tus ojos claros son tan sinceros
 Tus ojos claros son tan honestos
 No esperan nada de mí
@@ -15152,7 +15152,7 @@ Yo quise ser y no fui	[00:38.43] Tus ojos claros son tan sinceros
 [04:02.28] Son tan claros, tan honestos (tus ojos claro son)
 [04:06.86] Son tan claros, tan
 [04:10.72] Yo quise ser y no fui
-[04:16.57]	1	1	0
+[04:16.57] 	1	1	0
 308	12173759	Un Día Lo Encontré	un dia lo encontre	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	180	2024-09-13 00:45:23.380939322+00:00	6841895	Cuando encuentres tiempo, no lo dejes ir
 Cuando encuentres tiempo, no lo dejes ir
 Que no es tan fácil encontrarlo
@@ -15209,7 +15209,7 @@ Se fue	[00:21.93] Cuando encuentres tiempo, no lo dejes ir
 [02:46.59] Se fue
 [02:48.57] Ya no está
 [02:51.18] Se fue
-[02:56.18]	1	1	0
+[02:56.18] 	1	1	0
 309	3946597	Un Día lo Encontré (Feat. Niña Tormenta)	un dia lo encontre feat nina tormenta	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	181	2022-11-14 11:46:45.978+00:00	1739223	Cuando encuentres tiempo, no lo dejes ir
 Cuando encuentres tiempo, no lo dejes ir
 Que no es tan fácil encontrarlo
@@ -15266,7 +15266,7 @@ Se fue	[00:21.93] Cuando encuentres tiempo, no lo dejes ir
 [02:46.59] Se fue
 [02:48.57] Ya no está
 [02:51.18] Se fue
-[02:56.18]	1	1	0
+[02:56.18] 	1	1	0
 310	3946646	Un Pasito Despacito	un pasito despacito	Rosario Alfonso	rosario alfonso	Lo Primero	lo primero	251	2022-11-14 11:46:45.978+00:00	1739259	Caminando voy donde tú vayas
 Caminando voy donde tú vayas
 
@@ -15294,715 +15294,7 @@ Un pasito despacito voy pal frente
 Un pasito despacito voy pa' allá
 
 Voy pa' allá, voy pa' allá	NA	1	0	0
-311	14449656	AWAKE	awake	SAMSARA.	samsara	AWAKE	awake	277	2024-11-12 21:39:32.899049721+00:00	9120333	Maybe It's time
-We take a little break
-I know your mind
-And you are not awake
-And I can't
-Go on without you
-But you know
-I'll always need it
-Oohh Oooh Oooh
-I'll hit your phone
-If I ever need to
-But you know I'll miss you
-And I know this can't go on
-But you want more from this little bond
-I can't anymore
-I'll walk out the door
-And I know this can't go on
-Some time has passed
-And you hit me up
-It says you've changed
-And you wanna meet up
-I know your little games
-And you'll never be the same
-I'll hit your phone
-If I ever need to
-But you know I'll miss you
-And I know this can't go on
-But I want more from this little bond
-And I know this can't go on
-But I want more from this little bond
-I can't anymore
-I'll walk out the door
-And I know this can't go on
-This can't go on
-And I know this can't go on
-But you want more from this little bond	NA	1	0	0
-312	12363029	BY YOUR SIDE	by your side	SAMSARA.	samsara	PARALYZED IN PARADISE	paralyzed in paradise	212	2024-09-22 09:51:50.010426316+00:00	7031573	I tell myself
-That you are just a friend
-And I am just a fool
-But then I realize
-That I can't pretend
-But I act as if it's a rule
-
-I've told you once before
-I'm not your man anymore
-
-Baby if the worlds collide
-I'll still be standing
-By your side
-And I've been told that
-We'll grow old
-And I'll see your name in the sky
-
-I tell myself that I can go away
-And you wouldn't notice
-All day
-
-But then I see your precious smile
-And suddenly I
-I wanna stay
-
-I told you once before
-I'm not your man anymore
-
-Baby if the worlds collide
-I'll still be standing
-By your side
-And I've been told that
-We'll grow old
-And I'll see your name in the sky
-
-Ah ah ah
-Ah ah ah
-Ohh ohh
-
-Ah ah ah
-Ah ah ah
-Ohh ohh
-
-I told you once before
-I'm not your man
-Anymore
-
-Baby if the worlds collide
-I'll still be standing by your side
-And I've been told that
-We'll grow old
-And I'll see your name in the sky
-
-Baby if the worlds collide
-I'll still be standing by your side
-And I've been told that
-We'll grow old
-And I'll see your name in the sky	[00:29.31] I tell myself
-[00:32.36] That you are just a friend
-[00:35.66] And I am just a fool
-[00:41.45] But then I realize
-[00:44.51] That I can't pretend
-[00:47.77] But I act as if it's a rule
-[00:53.92] I've told you once before
-[00:57.89] I'm not your man anymore
-[01:00.23] Baby if the worlds collide
-[01:03.02] I'll still be standing
-[01:04.87] By your side
-[01:06.79] And I've been told that
-[01:08.20] We'll grow old
-[01:09.52] And I'll see your name in the sky
-[01:18.92] I tell myself that I can go away
-[01:25.42] And you wouldn't notice
-[01:27.90] All day
-[01:31.79] But then I see your precious smile
-[01:37.46] And suddenly I
-[01:40.56] I wanna stay
-[01:44.54] I told you once before
-[01:47.21] I'm not your man anymore
-[01:50.07] Baby if the worlds collide
-[01:52.81] I'll still be standing
-[01:54.52] By your side
-[01:56.34] And I've been told that
-[01:58.04] We'll grow old
-[01:59.41] And I'll see your name in the sky
-[02:14.25] Ah ah ah
-[02:15.88] Ah ah ah
-[02:17.44] Ohh ohh
-[02:20.46] Ah ah ah
-[02:21.95] Ah ah ah
-[02:23.59] Ohh ohh
-[02:40.63] I told you once before
-[02:43.76] I'm not your man
-[02:44.97] Anymore
-[02:52.45] Baby if the worlds collide
-[02:55.16] I'll still be standing by your side
-[02:58.40] And I've been told that
-[03:00.37] We'll grow old
-[03:01.83] And I'll see your name in the sky
-[03:04.80] Baby if the worlds collide
-[03:07.77] I'll still be standing by your side
-[03:11.05] And I've been told that
-[03:12.92] We'll grow old
-[03:14.40] And I'll see your name in the sky
-[03:18.15]	1	1	0
-313	14449742	Deathwish	deathwish	Samsara	samsara	Deathwish	deathwish	224	2024-11-12 21:43:56.292724950+00:00	9120419	Sink your fangs in deep
-Allow toxins to take over me
-Am I going into shock?
-Am I still breathing?
-
-Swallow my pride
-Left me blurry eyed
-Moral compass now conflicted
-Priorities have shifted
-
-Lifeless
-I don't want to feel
-I don't care to heal
-Mindless
-I don't wish to heal
-I don't wish to feel
-
-Take what you want you'll never console me
-Say what you will you'll never control me
-Take what you want you'll never console me
-Say what you will you'll never control me
-
-I cant help this crawling to my death bed
-I cant stop this falling to a death wish
-
-These nights have left me
-Tattered and torn
-I'm on the thread of life
-That feels so worn
-
-Why is it feeling colder?
-My body's shivering
-Am I detoxing from the damage done?
-My hands are shaking
-Why am I trembling?
-Is this the ending I was begging for?
-
-Take what you want you'll never console me
-Say what you will you'll never control me
-Take what you want you'll never console me
-Say what you will you'll never control me
-
-I cant help this crawling to my death bed
-I cant stop this falling to a death wish
-I cant help this crawling to my death bed
-I cant stop this falling to a death wish
-
-You cant heal me numb is all I'm feeling
-You cant heal me numb is all I'm feeling
-
-You can't heal me
-I don't want your pity
-You cant fix my love for spiraling to the ground
-You cant heal me
-I don't need your charity
-Tried to fix me but I can't ditch this feeling
-
-Take what you want you'll never console me
-Say what you will you'll never control me
-Take what you want you'll never console me
-Say what you will you'll never control me
-
-I cant help this crawling to my death bed
-I cant stop this falling to a death wish
-I cant help this crawling to my death bed
-I cant stop this falling to a death wish	[00:28.02] Sink your fangs in deep
-[00:31.74] Allow toxins to take over me
-[00:33.00] Am I going into shock?
-[00:35.08] Am I still breathing?
-[00:38.67] Swallow my pride
-[00:40.02] Left me blurry eyed
-[00:43.73] Moral compass now conflicted
-[00:45.02] Priorities have shifted
-[00:48.21] Lifeless
-[00:49.09] I don't want to feel
-[00:50.01] I don't care to heal
-[00:53.03] Mindless
-[00:53.77] I don't wish to heal
-[00:55.05] I don't wish to feel
-[00:57.02] Take what you want you'll never console me
-[00:59.02] Say what you will you'll never control me
-[01:02.68] Take what you want you'll never console me
-[01:04.99] Say what you will you'll never control me
-[01:07.71] I cant help this crawling to my death bed
-[01:11.03] I cant stop this falling to a death wish
-[01:16.07] These nights have left me
-[01:19.77] Tattered and torn
-[01:21.09] I'm on the thread of life
-[01:24.92] That feels so worn
-[01:26.98] Why is it feeling colder?
-[01:28.08] My body's shivering
-[01:31.76] Am I detoxing from the damage done?
-[01:35.03] My hands are shaking
-[01:38.93] Why am I trembling?
-[01:40.04] Is this the ending I was begging for?
-[01:45.87] Take what you want you'll never console me
-[01:47.05] Say what you will you'll never control me
-[01:50.69] Take what you want you'll never console me
-[01:53.08] Say what you will you'll never control me
-[01:55.73] I cant help this crawling to my death bed
-[01:59.06] I cant stop this falling to a death wish
-[02:04.00] I cant help this crawling to my death bed
-[02:09.07] I cant stop this falling to a death wish
-[02:24.08] You cant heal me numb is all I'm feeling
-[02:28.01] You cant heal me numb is all I'm feeling
-[02:42.07] You can't heal me
-[02:45.30] I don't want your pity
-[02:47.05] You cant fix my love for spiraling to the ground
-[02:53.64] You cant heal me
-[02:54.05] I don't need your charity
-[02:57.07] Tried to fix me but I can't ditch this feeling
-[03:02.67] Take what you want you'll never console me
-[03:04.94] Say what you will you'll never control me
-[03:07.47] Take what you want you'll never console me
-[03:09.77] Say what you will you'll never control me
-[03:11.08] I cant help this crawling to my death bed
-[03:16.03] I cant stop this falling to a death wish
-[03:21.03] I cant help this crawling to my death bed
-[03:26.98] I cant stop this falling to a death wish
-[03:31.54]	1	1	0
-314	12222107	how do you say my name?	how do you say my name	SAMSARA.	samsara	how do you say my name?	how do you say my name	231	2024-09-15 04:42:45.714917908+00:00	6890321	Ooooooh
-Ooooh ooooh
-
-Ooooooh
-Ooooh ooooh
-
-How come
-You talk about everything I do
-After what I've done to you
-After What I've done to you
-
-Feels like
-I am falling into something new
-I don't know what I should do
-Why do I keep on
-Hurting you
-
-What can you do
-When there is no one left for you
-And you want something new
-
-How do you know
-If it is time to move on
-Or if it's a ticking time bomb
-Waiting for you
-
-How nice
-Never miss calling in the night
-Almost answered
-But I am not in the mood to fight
-
-How do
-You still always say my name
-And its never been in vain
-
-How do you always say my name
-
-What can you do
-When there is no one left for you
-And you want something new
-
-How do you know
-If it's time to move on
-or if it's a ticking time bomb
-
-Waiting for you
-
-Waiting for you
-
-Feed me to the dogs
-Right where I belong
-
-Oh Julie won't you teach me
-
-For a moment there
-
-Caught up in life and despair
-
-Oh no no no no
-
-Julie won't you teach me
-
-How to fight my mind
-
-Every fucking night
-
-Tears fall down my eyes
-
-Julie won't you teach me
-
-Julie won't you teach me
-
-Oh no
-
-Julie won't you teach me
-
-How do you say my name
-
-How do you say my name	[00:17.76] Ooooooh
-[00:20.71] Ooooh ooooh
-[00:23.74] Ooooooh
-[00:26.32] Ooooh ooooh
-[00:30.47] How come
-[00:32.01] You talk about everything I do
-[00:35.35] After what I've done to you
-[00:38.49] After What I've done to you
-[00:42.83] Feels like
-[00:44.79] I am falling into something new
-[00:47.85] I don't know what I should do
-[00:50.86] Why do I keep on
-[00:52.31] Hurting you
-[00:55.58] What can you do
-[00:58.97] When there is no one left for you
-[01:02.09] And you want something new
-[01:07.61] How do you know
-[01:11.30] If it is time to move on
-[01:14.22] Or if it's a ticking time bomb
-[01:17.39] Waiting for you
-[01:20.66] How nice
-[01:21.92] Never miss calling in the night
-[01:24.93] Almost answered
-[01:27.05] But I am not in the mood to fight
-[01:32.30] How do
-[01:34.31] You still always say my name
-[01:37.64] And its never been in vain
-[01:40.60] How do you always say my name
-[01:45.14] What can you do
-[01:48.72] When there is no one left for you
-[01:51.77] And you want something new
-[01:57.41] How do you know
-[02:00.93] If it's time to move on
-[02:03.92] or if it's a ticking time bomb
-[02:07.03] Waiting for you
-[02:14.61] Waiting for you
-[02:50.24] Feed me to the dogs
-[02:53.88] Right where I belong
-[02:56.90] Oh Julie won't you teach me
-[03:00.18] For a moment there
-[03:02.88] Caught up in life and despair
-[03:06.05] Oh no no no no
-[03:09.04] Julie won't you teach me
-[03:12.89] How to fight my mind
-[03:15.44] Every fucking night
-[03:18.71] Tears fall down my eyes
-[03:21.79] Julie won't you teach me
-[03:28.25] Julie won't you teach me
-[03:32.52] Oh no
-[03:34.72] Julie won't you teach me
-[03:42.64] How do you say my name
-[03:45.28] How do you say my name
-[03:48.24]	1	1	0
-315	11305437	Illusions	illusions	Samsara	samsara	Illusions	illusions	236	2024-08-05 05:10:39.807119105+00:00	5972451	Tell me I'm fine
-Tell me I'm alright
-Yet never cared
-To peak inside
-Listen!
-
-I can see your wicked smile
-As you wait perched on my shoulder
-You're telling me
-It's game over
-I slowly began to listen
-Allowed your words to creep in
-Maybe this time I'll give in
-Unsure if I will win
-
-(Lost) With every step I take I'm reminded I'm a failure
-Here's to the beast we've locked within
-
-I hear their voices
-They feel like home
-The twisted smile becomes my own
-
-Can you hear the cries within laughter?
-See the tears behind a smile?
-Do you choose to wear the mask?
-Then hide from the world
-Then hide from the world
-
-Is this my curse
-Day after day it's getting worse
-Picked my poison
-Why won't it help me?
-Buried within a cask
-No one sees beyond the mask
-We all have a face to hide
-Inner demons we despise
-It's hard to look in a mirror
-I'm no longer the same
-We all have a face to hide
-Inner demons we despise
-
-I hear their voices
-They feel like home
-The twisted smile becomes my own
-
-Can you hear the cries within laughter?
-See the tears behind a smile?
-Do you choose to wear the mask?
-Then hide from the world
-Then hide from the world
-
-I hear their voices, they feel like home
-The twisted smile becomes my own
-I hear their voices, they feel like home
-Empty shell of a smile
-Why can't I feel whole?
-
-I may have strayed from my path
-As you reside a part of me
-No longer in control
-
-I hear their voices
-They feel like home
-The twisted smile becomes my own!
-
-Can you hear the cries within laughter?
-See the tears behind a smile?
-Do you choose to wear the mask?
-Then hide from the world
-Then hide from the world	NA	1	0	0
-316	11304830	OUT OF SIGHT	out of sight	SAMSARA.	samsara	OUT OF SIGHT	out of sight	185	2024-08-05 03:50:54.972099968+00:00	5971830	Everyone's laughing, looking at me
-How can I stop this, I can't breathe
-I feel so touched everywhere
-I'm at a point where I just don't care
-Sometimes I feel like I'm always in my head
-Some things I can't get myself out of bed
-It's just that life would be alright
-Without a breach in our love's size
-
-Everything I'm doing
-I'm doing it for me
-From my head to my eyes, that's my last old desire
-I can't be alone tonight
-Sometimes I feel like I'm always in my head
-Some things I can't get myself out of bed
-It's just that life would be alright
-Without a breach in our love's size
-
-Sometimes I feel like I'm always in my head
-Some things I can't get myself out of bed
-It's just that life would be alright
-Without a breach in our love's size	NA	1	0	0
-317	14449671	PIECE OF ME	piece of me	SAMSARA.	samsara	PIECE OF ME	piece of me	224	2024-11-12 21:40:23.067137782+00:00	9120348	Can you show me something that I haven't seen
-A part of you and not a piece of me
-You're always on my mind but I can't tell If it's just you or this living hell
-Then you'll tell me not to worry at all
-Then I'll start to wonder if this will fall
-
-Tell me something that I already know oh oh
-You say you love me more than just you go with the flow
-
-You fill me up now
-You fill me in now, wow, wow
-Then you spin me around
-Then you spin me around
-
-I'm feeling used
-I'm feeling broken
-Nothing to lose
-And I haven't spoken
-
-Spoken out on all the times you've made me feel useless
-Then cause me pain
-You show me that you love me
-I know that's a lie
-Then I go and see you with another guy
-
-I can't imagine a life without you
-You make me feel so hopeless there is nothing that I can do
-Tell me something that I already know oh oh
-You say you love me more than just you go with the flow
-
-You fill me up now
-You fill me in now, wow, wow
-Then you spin me around
-Then you spin me around
-
-Tell me something that I already know oh oh
-You say you love me more than just you go with the flow
-
-You fill me up now
-You fill me in now, wow, wow
-Then you spin me around
-Then you spin me around
-
-Tell me something that I already know oh oh
-You say you love me more than just you go with the flow
-
-You fill me up now
-You fill me in now, wow, wow
-Then you spin me around
-Then you spin me around
-
-Tell me something that I already know oh oh
-You say you love me more than just you go with the flow
-
-You fill me up now
-You fill me in now, wow, wow
-Then you spin me around
-Then you spin me around	[00:15.60] Can you show me something that I haven't seen
-[00:19.66] A part of you and not a piece of me
-[00:23.27] You're always on my mind but I can't tell If it's just you or this living hell
-[00:32.31] Then you'll tell me not to worry at all
-[00:37.78] Then I'll start to wonder if this will fall
-[00:44.85] Tell me something that I already know oh oh
-[00:48.41] You say you love me more than just you go with the flow
-[00:52.23] You fill me up now
-[00:53.51] You fill me in now, wow, wow
-[00:56.07] Then you spin me around
-[00:57.69] Then you spin me around
-[01:00.09] I'm feeling used
-[01:01.59] I'm feeling broken
-[01:03.22] Nothing to lose
-[01:04.73] And I haven't spoken
-[01:06.88] Spoken out on all the times you've made me feel useless
-[01:12.05] Then cause me pain
-[01:14.54] You show me that you love me
-[01:16.40] I know that's a lie
-[01:18.09] Then I go and see you with another guy
-[01:22.22] I can't imagine a life without you
-[01:25.58] You make me feel so hopeless there is nothing that I can do
-[01:29.35] Tell me something that I already know oh oh
-[01:32.72] You say you love me more than just you go with the flow
-[01:36.61] You fill me up now
-[01:37.82] You fill me in now, wow, wow
-[01:40.29] Then you spin me around
-[01:41.97] Then you spin me around
-[01:44.25] Tell me something that I already know oh oh
-[01:47.54] You say you love me more than just you go with the flow
-[01:51.21] You fill me up now
-[01:52.65] You fill me in now, wow, wow
-[01:54.90] Then you spin me around
-[01:56.88] Then you spin me around
-[02:58.06] Tell me something that I already know oh oh
-[03:01.48] You say you love me more than just you go with the flow
-[03:05.14] You fill me up now
-[03:06.38] You fill me in now, wow, wow
-[03:08.72] Then you spin me around
-[03:10.55] Then you spin me around
-[03:12.66] Tell me something that I already know oh oh
-[03:16.11] You say you love me more than just you go with the flow
-[03:19.85] You fill me up now
-[03:21.65] You fill me in now, wow, wow
-[03:23.63] Then you spin me around
-[03:25.48] Then you spin me around
-[03:27.84]	1	1	0
-318	13444121	SHADOW	shadow	SAMSARA.	samsara	SHADOW	shadow	203	2024-10-17 22:57:14.276905936+00:00	8113610	You stabbed me twice
-Three times
-For every goddamn night
-And all I'm worth
-For all its worth
-
-Well nevermind I've realized
-That I've been right
-For all its worth
-
-For all it ever was
-I'll leave you in the dust
-And see you in the next life
-Gotta change again
-
-Pick a brand-new fight
-
-I see you in the shadows
-Every time I close my eyes
-And I wonder if ill ever see you in the same light
-But sometimes I feel ok
-Sometimes I feel alright
-But then I just think back
-To that
-God-forsaken night
-
-This can't go on
-I feel it deep inside
-You make me feel lost
-Tears fall from my eyes
-I'll walk out that door
-As I wish you goodbye
-
-I see you in the shadows
-Every time I close my eyes
-And I wonder if ill ever see you in the same light
-But sometimes I feel ok
-Sometimes I feel alright
-But then I just think back
-To that
-Godforsaken night
-
-Oh oh oh
-
-THIS DOESN'T FEEL
-RIGHT
-
-Ah
-I see you in the shadows
-Every time I close my eyes
-And I wonder if ill ever see you in the same light
-But sometimes I feel ok
-Sometimes I feel alright
-But then I just think back
-To that
-God-forsaken night
-
-I see you in the shadows
-Every time I close my eyes
-And I wonder if ill ever see you in the same light
-But sometimes I feel ok
-Sometimes I feel alright
-But then I just think back
-To that
-God-forsaken night	[00:10.13] You stabbed me twice
-[00:11.57] Three times
-[00:12.85] For every goddamn night
-[00:15.62] And all I'm worth
-[00:18.12] For all its worth
-[00:21.08] Well nevermind I've realized
-[00:23.89] That I've been right
-[00:26.50] For all its worth
-[00:29.13] For all it ever was
-[00:32.26] I'll leave you in the dust
-[00:34.96] And see you in the next life
-[00:38.09] Gotta change again
-[00:40.22] Pick a brand-new fight
-[00:43.38] I see you in the shadows
-[00:46.28] Every time I close my eyes
-[00:49.06] And I wonder if ill ever see you in the same light
-[00:54.53] But sometimes I feel ok
-[00:57.03] Sometimes I feel alright
-[01:00.24] But then I just think back
-[01:02.27] To that
-[01:03.15] God-forsaken night
-[01:06.59] This can't go on
-[01:09.08] I feel it deep inside
-[01:11.63] You make me feel lost
-[01:13.96] Tears fall from my eyes
-[01:17.51] I'll walk out that door
-[01:19.47] As I wish you goodbye
-[01:22.78] I see you in the shadows
-[01:25.51] Every time I close my eyes
-[01:28.37] And I wonder if ill ever see you in the same light
-[01:33.80] But sometimes I feel ok
-[01:36.25] Sometimes I feel alright
-[01:39.24] But then I just think back
-[01:41.55] To that
-[01:42.57] Godforsaken night
-[01:55.37] Oh oh oh
-[02:08.54] THIS DOESN'T FEEL
-[02:10.67] RIGHT
-[02:15.17] Ah
-[02:35.88] I see you in the shadows
-[02:38.43] Every time I close my eyes
-[02:41.33] And I wonder if ill ever see you in the same light
-[02:46.88] But sometimes I feel ok
-[02:49.26] Sometimes I feel alright
-[02:52.32] But then I just think back
-[02:54.57] To that
-[02:55.52] God-forsaken night
-[02:58.46] I see you in the shadows
-[03:01.10] Every time I close my eyes
-[03:03.87] And I wonder if ill ever see you in the same light
-[03:09.23] But sometimes I feel ok
-[03:11.76] Sometimes I feel alright
-[03:14.76] But then I just think back
-[03:16.81] To that
-[03:17.99] God-forsaken night
-[03:21.33]	1	1	0
-319	13440614	En el jardín	en el jardin	Siniestra Pandora	siniestra pandora	Elegía	elegia	226	2024-10-17 20:14:48.100309566+00:00	8110093	Me quedé mirando tus flores
+311	13440614	En el jardín	en el jardin	Siniestra Pandora	siniestra pandora	Elegía	elegia	226	2024-10-17 20:14:48.100309566+00:00	8110093	Me quedé mirando tus flores
 Favoritas
 
 Blancas calas, lirios y rosas
@@ -16042,8 +15334,8 @@ En el jardín	[00:14.68] Me quedé mirando tus flores
 [02:36.78] En el jardín
 [02:43.83] En el jardín
 [02:50.82] En el jardín
-[02:56.95]	1	1	0
-320	13440125	En la ciudad	en la ciudad	Siniestra Pandora	siniestra pandora	Elegía	elegia	294	2024-10-17 19:44:37.220455670+00:00	8109604	Todas las luces
+[02:56.95] 	1	1	0
+312	13440125	En la ciudad	en la ciudad	Siniestra Pandora	siniestra pandora	Elegía	elegia	294	2024-10-17 19:44:37.220455670+00:00	8109604	Todas las luces
 Muertas de esta ciudad
 Se apresuran
 Por dejarnos atrás
@@ -16092,8 +15384,8 @@ No mueren (Se apresuran por dejarnos atrás)	[00:36.17] Todas las luces
 [04:01.67] Las cosas que (Todas las luces muertas de esta ciudad)
 [04:05.03] Que me duelen (Se apresuran por dejarnos atrás)
 [04:15.55] No mueren (Se apresuran por dejarnos atrás)
-[04:27.74]	1	1	0
-321	12700117	Estrépito y Vacío	estrepito y vacio	Siniestra Pandora	siniestra pandora	Arquetipo	arquetipo	171	2024-10-01 08:29:44.510456380+00:00	7368972	Tantas palabras manoseadas
+[04:27.74] 	1	1	0
+313	12700117	Estrépito y Vacío	estrepito y vacio	Siniestra Pandora	siniestra pandora	Arquetipo	arquetipo	171	2024-10-01 08:29:44.510456380+00:00	7368972	Tantas palabras manoseadas
 Cantas, bailas al ritmo de nada
 
 Tantas hermosas falsas caras
@@ -16123,8 +15415,8 @@ NO	[00:18.96] Tantas palabras manoseadas
 [02:20.65] Porque no cabe el mundo
 [02:24.05] Frente a nuestros ojos
 [02:26.19] NO
-[02:50.05]	1	1	0
-322	13439907	Fisura	fisura	Siniestra Pandora	siniestra pandora	Fisura	fisura	259	2024-10-17 19:28:57.077224372+00:00	8109386	Algo en tus ojos
+[02:50.05] 	1	1	0
+314	13439907	Fisura	fisura	Siniestra Pandora	siniestra pandora	Fisura	fisura	259	2024-10-17 19:28:57.077224372+00:00	8109386	Algo en tus ojos
 Cielos de temor
 El mar que acecha
 Trémula mi voz
@@ -16163,8 +15455,8 @@ Que crecen en mí	[00:17.55] Algo en tus ojos
 [02:54.70] Odio las flores
 [03:01.28] Odio las flores
 [03:04.07] Que crecen en mí
-[03:17.68]	1	1	0
-323	11918607	Océanos	oceanos	Siniestra Pandora	siniestra pandora	Elegía	elegia	436	2024-08-29 13:17:28.858471244+00:00	6586361	Se abrió el cielo
+[03:17.68] 	1	1	0
+315	11918607	Océanos	oceanos	Siniestra Pandora	siniestra pandora	Elegía	elegia	436	2024-08-29 13:17:28.858471244+00:00	6586361	Se abrió el cielo
 En un ruido
 Ensordecedor
 
@@ -16186,8 +15478,8 @@ Se incendió	[01:15.15] Se abrió el cielo
 [03:23.22] Se incendió
 [03:29.45] El océano
 [03:35.67] Se incendió
-[03:40.91]	1	1	0
-324	12416768	Pagano	pagano	Siniestra Pandora	siniestra pandora	Elegía	elegia	227	2024-09-24 04:03:02.249870066+00:00	7085400	Paganismo inútil
+[03:40.91] 	1	1	0
+316	12416768	Pagano	pagano	Siniestra Pandora	siniestra pandora	Elegía	elegia	227	2024-09-24 04:03:02.249870066+00:00	7085400	Paganismo inútil
 Ignoras el placer
 Te invoco al amanecer
 
@@ -16213,8 +15505,8 @@ Tu beso y el mío	[00:18.27] Paganismo inútil
 [02:57.25] Peste deseada
 [03:05.31] Consuelo divino
 [03:13.17] Tu beso y el mío
-[03:23.48]	1	1	0
-325	12520609	Todos tan felices	todos tan felices	Siniestra Pandora	siniestra pandora	Todos tan felices	todos tan felices	239	2024-09-27 05:35:50.998729009+00:00	7189332	Todos tan felices
+[03:23.48] 	1	1	0
+317	12520609	Todos tan felices	todos tan felices	Siniestra Pandora	siniestra pandora	Todos tan felices	todos tan felices	239	2024-09-27 05:35:50.998729009+00:00	7189332	Todos tan felices
 Veo al caminar
 El sol no brilla igual
 Sombras de cristal
@@ -16259,8 +15551,8 @@ No vuelve	[00:17.70] Todos tan felices
 [03:25.65] No vuelve
 [03:32.54] No vuelve
 [03:39.59] No vuelve
-[03:46.64]	1	1	0
-326	11328939	Envejecer Aquí	envejecer aqui	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	139	2024-08-06 07:24:22.363860869+00:00	5996013	Tengo tanto miedo de envejecer aquí
+[03:46.64] 	1	1	0
+318	11328939	Envejecer Aquí	envejecer aqui	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	139	2024-08-06 07:24:22.363860869+00:00	5996013	Tengo tanto miedo de envejecer aquí
 Una pensión de mierda que no alcance pa' vivir
 Y me da tanta pena
 Ver como este sistema
@@ -16281,7 +15573,7 @@ Yo sé que todavía puedo cambiar
 Sé que no he sido bueno
 Pero he visto peores
 Yo sé que todavía puedo cambiar	NA	1	0	0
-327	12525990	Hacer Historia	hacer historia	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	168	2024-09-27 11:10:48.105841527+00:00	7194718	(no basta herirlo, hay que matarlo,
+319	12525990	Hacer Historia	hacer historia	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	168	2024-09-27 11:10:48.105841527+00:00	7194718	(no basta herirlo, hay que matarlo,
 no basta matarlo, hay que arrancarle la cabeza)
 
 No sé cómo llegué hasta acá
@@ -16329,8 +15621,8 @@ Aquí voy	[00:00.29] (no basta herirlo, hay que matarlo,
 [01:51.80] Pero hoy voy a hacer historia
 [01:54.62] Pero hoy voy a hacer historia
 [02:32.53] Aquí voy
-[02:32.62]	1	1	0
-328	12526181	La Gran Revolución	la gran revolucion	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	225	2024-09-27 11:41:40.982419134+00:00	7194909	Se advierte
+[02:32.62] 	1	1	0
+320	12526181	La Gran Revolución	la gran revolucion	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	225	2024-09-27 11:41:40.982419134+00:00	7194909	Se advierte
 Que a partir de este instante
 Está absolutamente prohibido
 La presencia de grupos de personas reunidas en las calles
@@ -16377,8 +15669,8 @@ Que el pueblo se devore al rey	[00:00.00] Se advierte
 [02:22.37] Que el pueblo se devore al rey
 [02:26.25] Quiero ver volar aviones de papel
 [02:30.98] Que el pueblo se devore al rey
-[02:35.14]	1	1	0
-329	12526288	Somos Explosiones	somos explosiones	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	169	2024-09-27 11:58:37.347625647+00:00	7195016	La alarma me despierta
+[02:35.14] 	1	1	0
+321	12526288	Somos Explosiones	somos explosiones	Silabario	silabario	Lo Malo Va a Pasar	lo malo va a pasar	169	2024-09-27 11:58:37.347625647+00:00	7195016	La alarma me despierta
 Y tu aroma ya no sigo
 Soñé que te abrazaba
 Soñé que eramos dos
@@ -16394,7 +15686,7 @@ Somos héroes, somos explosiones
 Somos héroes, somos ex-plo-siones
 Somos ex-plo o o o o o o o o o o o
 O o o o o o o o o...	NA	1	0	0
-330	12982168	Como Son las Personas	como son las personas	Super Especial	super especial	Dramático	dramatico	125	2024-10-08 04:40:17.402674284+00:00	7651325	Las personas son como cajetillas
+322	12982168	Como Son las Personas	como son las personas	Super Especial	super especial	Dramático	dramatico	125	2024-10-08 04:40:17.402674284+00:00	7651325	Las personas son como cajetillas
 O también como fundas de guitarra
 Se rellenan como paltas o dibujos animados
 
@@ -16440,8 +15732,8 @@ Deja de copiar al capitán si no quieres terminar en esa fragata	[00:15.85] Las 
 [01:39.31] La segunda vez que lo hagas, no será tan fácil
 [01:42.67] Deja de copiar al capitán si no quieres terminar en esa fragata
 [01:48.89] Deja de copiar al capitán si no quieres terminar en esa fragata
-[01:55.69]	1	1	0
-331	13391375	El Mal	el mal	Super Especial	super especial	El Mal	el mal	210	2024-10-16 07:22:36.323257592+00:00	8060823	Fui un imbécil solo para ti
+[01:55.69] 	1	1	0
+323	13391375	El Mal	el mal	Super Especial	super especial	El Mal	el mal	210	2024-10-16 07:22:36.323257592+00:00	8060823	Fui un imbécil solo para ti
 Esperaba llamar tu atención con mis inventos
 Tampoco fue fácil para mi
 Nunca, nunca
@@ -16496,8 +15788,8 @@ Y en ti, y en ti	[00:00.46] Fui un imbécil solo para ti
 [02:47.13] Deje crecer el mal en mi
 [03:00.10] Y en ti, y en ti
 [03:12.87] Y en ti, y en ti
-[03:27.65]	1	1	0
-332	10739727	Evasiva	evasiva	Super Especial	super especial	Super Especial	super especial	221	2024-07-15 00:51:22.692670429+00:00	5406072	Pensé una vez iba a saber como algo más que iba a cambiar
+[03:27.65] 	1	1	0
+324	10739727	Evasiva	evasiva	Super Especial	super especial	Super Especial	super especial	221	2024-07-15 00:51:22.692670429+00:00	5406072	Pensé una vez iba a saber como algo más que iba a cambiar
 Entre los dos la situación alguna vez
 
 Y fue peor porque al final no cambio na' y sigo igual
@@ -16567,8 +15859,8 @@ O al menos eso intentaría porque juro que no miento cuando digo que te quiero q
 [03:04.32] Te olvidaré
 [03:07.70] O al menos eso intentaría porque juro que no miento cuando digo que te quiero querer
 [03:18.35] O al menos eso intentaría porque juro que no miento cuando digo que te quiero querer
-[03:31.41]	1	1	0
-333	12210847	La Palabra	la palabra	Super Especial	super especial	Dramático	dramatico	221	2024-09-14 16:29:21.283518055+00:00	6879035	Muchos años después de
+[03:31.41] 	1	1	0
+325	12210847	La Palabra	la palabra	Super Especial	super especial	Dramático	dramatico	221	2024-09-14 16:29:21.283518055+00:00	6879035	Muchos años después de
 Comprendí
 Que se puede traicionar
 A la razón
@@ -16651,8 +15943,8 @@ Violador sin querer es violador igual	[00:13.98] Muchos años después de
 [02:26.43] Dijo que sí quería y se arrepintió?
 [02:30.75] Violador sin querer es violador igual
 [02:39.74] Violador sin querer es violador igual
-[03:21.58]	1	1	0
-334	13272758	Los Fantasmas	los fantasmas	Super Especial	super especial	Super Especial	super especial	254	2024-10-13 17:28:48.164574945+00:00	7942144	Supongo que es verdad
+[03:21.58] 	1	1	0
+326	13272758	Los Fantasmas	los fantasmas	Super Especial	super especial	Super Especial	super especial	254	2024-10-13 17:28:48.164574945+00:00	7942144	Supongo que es verdad
 eso de que la pena tiene fin
 que llega cuando las expectativas se ajustan
 a lo que debieron ajustarse mucho antes pero no encontro camino el intelecto para realizar aquella operación
@@ -16705,7 +15997,7 @@ miramos una foto
 y descubrimos algo que
 nunca quisimos descubrir
 aqui	NA	1	0	0
-335	12105374	Nada Nada	nada nada	Super Especial	super especial	Super Especial	super especial	224	2024-09-08 06:46:34.384233541+00:00	6773383	No sé que hacer ni que cantar
+327	12105374	Nada Nada	nada nada	Super Especial	super especial	Super Especial	super especial	224	2024-09-08 06:46:34.384233541+00:00	6773383	No sé que hacer ni que cantar
 
 me pregunto mucho si podemos andar
 Porque no sé, todo es raro
@@ -16778,8 +16070,8 @@ Lo mejor parece es no decir nada, nada, nada	[00:09.95] No sé que hacer ni que 
 [01:48.98] Sabe bien decir que estamos mal
 [01:52.12] Sabe mal decir que estamos bien
 [01:54.62] Lo mejor parece es no decir nada, nada, nada
-[01:59.69]	1	1	0
-336	14044049	Nadie Te Quiere	nadie te quiere	Super Especial	super especial	Dramático	dramatico	182	2024-11-03 01:06:42.566816393+00:00	8714200	Parece ser que la verdad
+[01:59.69] 	1	1	0
+328	14044049	Nadie Te Quiere	nadie te quiere	Super Especial	super especial	Dramático	dramatico	182	2024-11-03 01:06:42.566816393+00:00	8714200	Parece ser que la verdad
 Nadie te quiere ni nunca querrá
 ¿Por qué?, no sé, vaya a saber
 Puede que si tenga un poco que ver
@@ -16822,7 +16114,7 @@ No pasaste, no pasaste piola, no
 Serás rico, serás rico, sí
 Un gigante, un gigante no
 Serás rico, un gigante no	NA	1	0	0
-337	14449478	Ódiate Más	odiate mas	Super Especial	super especial	Super Especial	super especial	234	2024-11-12 21:29:21.473315421+00:00	9120154	No estés de acuerdo contigo
+329	14449478	Ódiate Más	odiate mas	Super Especial	super especial	Super Especial	super especial	234	2024-11-12 21:29:21.473315421+00:00	9120154	No estés de acuerdo contigo
 Recuerda que tú eres tu propio enemigo
 Escapa de esa historia que te contaste
 Para contarte todo con un nuevo contraste
@@ -16911,8 +16203,8 @@ Que te ames demasiado	[00:32.19] No estés de acuerdo contigo
 [03:09.54] De esa persona que quisiste inventar
 [03:12.84] Si no es suficiente puede ser
 [03:17.19] Que te ames demasiado
-[03:18.49]	1	1	0
-338	12364124	Pienso	pienso	Super Especial	super especial	Super Especial	super especial	301	2024-09-22 11:04:28.868441110+00:00	7032674	pienso
+[03:18.49] 	1	1	0
+330	12364124	Pienso	pienso	Super Especial	super especial	Super Especial	super especial	301	2024-09-22 11:04:28.868441110+00:00	7032674	pienso
 que no vale la pena sonreír
 cuando
 la hipocresia vive al rededor
@@ -17051,8 +16343,8 @@ sólo yo	[00:19.37] pienso
 [04:41.68] solo
 [04:51.75] solo
 [04:54.61] sólo yo
-[04:56.13]	1	1	0
-339	11791771	Sáquenme de la Pensión	saquenme de la pension	Super Especial	super especial	Super Especial	super especial	238	2024-08-23 23:30:42.519914149+00:00	6459365	Una señora a mi lado babea
+[04:56.13] 	1	1	0
+331	11791771	Sáquenme de la Pensión	saquenme de la pension	Super Especial	super especial	Super Especial	super especial	238	2024-08-23 23:30:42.519914149+00:00	6459365	Una señora a mi lado babea
 Un hombre menudo se intenta escapar
 Las enfermeras no hablan ni miran
 Y se limitan a darnos pastillas
@@ -17154,8 +16446,8 @@ Cual buitre, mi propia carne que se pudre	[00:29.70] Una señora a mi lado babea
 [03:20.38] Sá-sá-sá, sáquenme de la pensión
 [03:23.62] Que estoy muy aburrido de esperar
 [03:28.04] Cual buitre, mi propia carne que se pudre
-[03:37.84]	1	1	0
-340	12384438	Ser Tu Depresión	ser tu depresion	Super Especial	super especial	Dramático	dramatico	245	2024-09-23 07:52:20.169671970+00:00	7053013	Veo que estás triste
+[03:37.84] 	1	1	0
+332	12384438	Ser Tu Depresión	ser tu depresion	Super Especial	super especial	Dramático	dramatico	245	2024-09-23 07:52:20.169671970+00:00	7053013	Veo que estás triste
 Quiero verte sonreír aquí, otra vez
 Y decirte que te odio
 Pero en broma
@@ -17216,8 +16508,8 @@ Y volvamos a dormir	[00:42.36] Veo que estás triste
 [03:40.62] No quiero soñar sin ti
 [03:47.48] Despiértame cuando te despiertes
 [03:53.45] Y volvamos a dormir
-[03:59.12]	1	1	0
-341	10411030	Ser tu depresión - acústica	ser tu depresion acustica	Super Especial	super especial	Ser tu depresión (acústica)	ser tu depresion acustica	196	2024-07-04 12:13:27.789849636+00:00	5076967	Veo que estás triste
+[03:59.12] 	1	1	0
+333	10411030	Ser tu depresión - acústica	ser tu depresion acustica	Super Especial	super especial	Ser tu depresión (acústica)	ser tu depresion acustica	196	2024-07-04 12:13:27.789849636+00:00	5076967	Veo que estás triste
 Quiero verte sonreír aquí, otra vez
 Y decirte que te odio pero en broma
 Siempre es una broma cuando estoy contigo
@@ -17271,8 +16563,8 @@ Y volvamos a dormir	[00:39.17] Veo que estás triste
 [02:57.02] Quiero respirar así
 [03:02.37] Despiértame cuando te despiertes
 [03:07.62] Y volvamos a dormir
-[03:15.44]	1	1	0
-342	14626283	Sin Ofender	sin ofender	Super Especial	super especial	Sin Ofender	sin ofender	287	2024-11-16 14:37:01.109512815+00:00	9297157	¿Cómo decirte?
+[03:15.44] 	1	1	0
+334	14626283	Sin Ofender	sin ofender	Super Especial	super especial	Sin Ofender	sin ofender	287	2024-11-16 14:37:01.109512815+00:00	9297157	¿Cómo decirte?
 Sin ofender
 Que ya no quiero
 Volverte a ver
@@ -17433,8 +16725,8 @@ Alguna vez	[00:47.34] ¿Cómo decirte?
 [04:31.30] Todo se acaba
 [04:32.74] Todo se acaba
 [04:34.40] Alguna vez
-[04:37.96]	1	1	0
-343	9060294	Baby Boomers	baby boomers	Tus Amigos Nuevos	tus amigos nuevos	SXSW 2014 Showcasing Artists	sxsw 2014 showcasing artists	183	2024-05-07 03:30:32.296853581+00:00	3723696	Baby boomers
+[04:37.96] 	1	1	0
+335	9060294	Baby Boomers	baby boomers	Tus Amigos Nuevos	tus amigos nuevos	SXSW 2014 Showcasing Artists	sxsw 2014 showcasing artists	183	2024-05-07 03:30:32.296853581+00:00	3723696	Baby boomers
 Denme unos quince minutitos más
 Baby boomers
 También crecí jugando gran capital
@@ -17500,8 +16792,8 @@ Baby boomers
 [02:45.14] ¿Por qué trataron tan mal a Redolés?
 [02:49.68] Baby boomers
 [02:52.83] ¿No notan que está empezando a temblar?
-[02:56.62]	1	1	0
-344	11071324	Buena China	buena china	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	232	2024-07-25 22:42:10.794830145+00:00	5738051	Buena China y calabaza otra vez
+[02:56.62] 	1	1	0
+336	11071324	Buena China	buena china	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	232	2024-07-25 22:42:10.794830145+00:00	5738051	Buena China y calabaza otra vez
 Vuelve sola, arranca y te seguiré.
 Dime, dime, dime, dime, dime?
 Viejo chico, contigo jubilaré
@@ -17538,8 +16830,8 @@ end.	[00:32.00] Buena China y calabaza otra vez
 [03:34.88] (ignoralo)
 [03:37.56] Papelito, lueguito te archivaré
 [03:44.05] end.
-[03:44.93]	1	1	0
-345	10542926	Delfín	delfin	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	243	2024-07-08 17:21:41.640538925+00:00	5209067	Soy zalamero como un delfín
+[03:44.93] 	1	1	0
+337	10542926	Delfín	delfin	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	243	2024-07-08 17:21:41.640538925+00:00	5209067	Soy zalamero como un delfín
 Si estoy despierto es por tus instrucciones
 Ponme curcuncho y seguiré tus migas
 
@@ -17611,8 +16903,8 @@ Después de tanto perseguirte.
 [03:53.76] ¿Qué dirán?
 [03:54.35] ¿Qué dirán?
 [03:54.35] ¿Qué dirán del que dirán?
-[03:54.95]	1	1	0
-346	11071362	Edipo Rey	edipo rey	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	213	2024-07-25 22:44:15.793394894+00:00	5738089	mi mamá me mima
+[03:54.95] 	1	1	0
+338	11071362	Edipo Rey	edipo rey	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	213	2024-07-25 22:44:15.793394894+00:00	5738089	mi mamá me mima
 me compro un super 8
 me lleva a la plaza a mirar los pajaritos eh!
 me dice lo que tengo que hacer
@@ -17685,8 +16977,8 @@ yo solamente maloliente que no quiere mucha gente que quisiera ser gerente pero 
 [03:23.01] (Edipo edipo rey)
 [03:24.83] Edipo rey
 [03:25.87] Yo solamente maloliente que no quiere mucha gente que quisiera ser gerente pero no le da la mente!
-[03:30.85]	1	1	0
-347	11071368	El No Movimiento Chili Chili	el no movimiento chili chili	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	173	2024-07-25 22:44:25.402078792+00:00	5738095	Así, sola en tu casa
+[03:30.85] 	1	1	0
+339	11071368	El No Movimiento Chili Chili	el no movimiento chili chili	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	173	2024-07-25 22:44:25.402078792+00:00	5738095	Así, sola en tu casa
 Así, mirando el techo
 Así, pensando en tu vida
 Uhhhh!!!!!
@@ -17744,7 +17036,7 @@ Sigue
 Sigue
 
 Tan divino papi	NA	1	0	0
-348	11071402	Gato Negro	gato negro	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	199	2024-07-25 22:46:28.392893959+00:00	5738129	-¿Viste el gato negro en la entrada de la casa?
+340	11071402	Gato Negro	gato negro	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	199	2024-07-25 22:46:28.392893959+00:00	5738129	-¿Viste el gato negro en la entrada de la casa?
 Parece que murió
 
 -¡Yo se quien lo mató!
@@ -17783,7 +17075,7 @@ Díganme si alguien no lo ha hecho alguna vez
 
 Díganme si alguien no lo ha hecho alguna vez
 ¿O acaso estoy loco	NA	1	0	0
-349	10543046	Jaleo	jaleo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	207	2024-07-08 17:28:13.326395977+00:00	5209187	Esta noche habrá jaleo
+341	10543046	Jaleo	jaleo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	207	2024-07-08 17:28:13.326395977+00:00	5209187	Esta noche habrá jaleo
 En el cerro de la virgen
 Esta noche abra jaleo
 Debajito de la virgen
@@ -17815,7 +17107,7 @@ Me saqué
 La loteria contigo
 Me saqué
 La loteria contigo	NA	1	0	0
-350	10543059	La Novedad	la novedad	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	233	2024-07-08 17:28:54.294911017+00:00	5209200	¿Qué es lo peor...
+342	10543059	La Novedad	la novedad	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	233	2024-07-08 17:28:54.294911017+00:00	5209200	¿Qué es lo peor...
 (qué es lo peor que nos podría...)
 que nos podría pasar?
 (¡Revolución por revolución!)
@@ -17863,7 +17155,7 @@ Excelente, excelente
 ¿A caso no se han dado cuenta aún? (¡Vamos!)
 ¿A caso no se han dado cuenta aún? (¡Vamos!)
 ¿A caso no se han dado cuenta aún? (¡Vamos!)	NA	1	0	0
-351	10543072	Los Hombre-Masa No Bailamos	los hombre masa no bailamos	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	203	2024-07-08 17:29:46.922665410+00:00	5209213	¿Y si salimos a pasear?
+343	10543072	Los Hombre-Masa No Bailamos	los hombre masa no bailamos	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	203	2024-07-08 17:29:46.922665410+00:00	5209213	¿Y si salimos a pasear?
 Nosotros no paseamos
 
 Ven y vayamos a bailar
@@ -17890,7 +17182,7 @@ Hombre de ciencia yo te voy a enseñar
 Shhhhhh...
 Ningún cobarde va a acostarse temprano
 Tira la piedra amigo y muestra la mano	NA	1	0	0
-352	12800780	Mucha Paja	mucha paja	Tus Amigos Nuevos	tus amigos nuevos	Persisten	persisten	284	2024-10-03 12:36:29.034592550+00:00	7469682	Ah- ah ah
+344	12800780	Mucha Paja	mucha paja	Tus Amigos Nuevos	tus amigos nuevos	Persisten	persisten	284	2024-10-03 12:36:29.034592550+00:00	7469682	Ah- ah ah
 Lo haría
 Lo haría
 ¡Te juro que lo haría!
@@ -17957,8 +17249,8 @@ Así como te entiendo yo a ti	[00:23.22] Ah- ah ah
 [02:02.09] No puedo estar más cerca de ti
 [02:06.07] Espero que me entiendas
 [02:22.49] Así como te entiendo yo a ti
-[02:24.74]	1	1	0
-353	13441314	No Sé	no se	Tus Amigos Nuevos	tus amigos nuevos	Persisten	persisten	284	2024-10-17 20:52:26.971545283+00:00	8110797	No sé si pueda dormirme altiro
+[02:24.74] 	1	1	0
+345	13441314	No Sé	no se	Tus Amigos Nuevos	tus amigos nuevos	Persisten	persisten	284	2024-10-17 20:52:26.971545283+00:00	8110797	No sé si pueda dormirme altiro
 Tu tibia en mi rodilla
 Tu cuerpo en tu pijama
 Ya sé que ya es muy tarde
@@ -17983,7 +17275,7 @@ Dormirme altiro
 
 No sé si pueda
 Dormir tranquilo	NA	1	0	0
-354	10543132	Paraná - Con Final y Todo	parana con final y todo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	340	2024-07-08 17:33:25.510841961+00:00	5209273	Más más uyuyui
+346	10543132	Paraná - Con Final y Todo	parana con final y todo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	340	2024-07-08 17:33:25.510841961+00:00	5209273	Más más uyuyui
 ¡Hunde la cabeza!
 
 Más más uyuyui
@@ -18024,7 +17316,7 @@ Que vergüenza
 No es gracioso
 Bueno un poco
 No es el punto Que idiota	NA	1	0	0
-355	10543133	Pateando Petróleo	pateando petroleo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	223	2024-07-08 17:33:28.680855544+00:00	5209274	Me he demorado porque soy el primero
+347	10543133	Pateando Petróleo	pateando petroleo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	223	2024-07-08 17:33:28.680855544+00:00	5209274	Me he demorado porque soy el primero
 No me resulta porque lo hago muy bien
 Si me llegaras a escuchar algún día
 Yo te aseguro que no habría vuelta atrás
@@ -18126,8 +17418,8 @@ Otra vez	[00:29.45] Me he demorado porque soy el primero
 [02:27.97] Otra vez
 [02:30.79] Otra vez
 [02:33.58] Otra vez
-[02:34.11]	1	1	0
-356	12042448	Promotora	promotora	Tus Amigos Nuevos	tus amigos nuevos	Persisten	persisten	236	2024-09-04 09:40:54.969277323+00:00	6710359	Pobrecita promotora, uh
+[02:34.11] 	1	1	0
+348	12042448	Promotora	promotora	Tus Amigos Nuevos	tus amigos nuevos	Persisten	persisten	236	2024-09-04 09:40:54.969277323+00:00	6710359	Pobrecita promotora, uh
 Yo no quiero tus folletos
 Pobrecita promotora, uh
 Olí tu pena a 10 cuadras de aquí
@@ -18187,8 +17479,8 @@ Sácame de aquí	[00:30.12] Pobrecita promotora, uh
 [03:05.14] Sácame de aquí
 [03:13.21] Dame tu mano
 [03:20.59] Sácame de aquí
-[03:24.58]	1	1	0
-357	13819028	T.A.N. avergonzada	t a n avergonzada	Tus Amigos Nuevos	tus amigos nuevos	Triunfo moral	triunfo moral	260	2024-10-27 18:46:05.840081945+00:00	8488951	ponle cowbell weón oh
+[03:24.58] 	1	1	0
+349	13819028	T.A.N. avergonzada	t a n avergonzada	Tus Amigos Nuevos	tus amigos nuevos	Triunfo moral	triunfo moral	260	2024-10-27 18:46:05.840081945+00:00	8488951	ponle cowbell weón oh
 ponle cowbell weón que pasa weón que chucha, weón por la... chucha
 ponle cowbell
 
@@ -18217,7 +17509,7 @@ ahora por qué? no
 ahora por qué? no
 
 quítale el cowbell	NA	1	0	0
-358	10543214	T.A.N. Avergonzada - Ponle Cowbell	t a n avergonzada ponle cowbell	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	260	2024-07-08 17:38:09.231911807+00:00	5209355	ponle cowbell weón oh
+350	10543214	T.A.N. Avergonzada - Ponle Cowbell	t a n avergonzada ponle cowbell	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	260	2024-07-08 17:38:09.231911807+00:00	5209355	ponle cowbell weón oh
 ponle cowbell weón que pasa weón que chucha, weón por la... chucha
 ponle cowbell
 
@@ -18246,7 +17538,7 @@ ahora por qué? no
 ahora por qué? no
 
 quítale el cowbell	NA	1	0	0
-359	10543219	Techno Rengo	techno rengo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	254	2024-07-08 17:38:28.123846729+00:00	5209360	Vente luego
+351	10543219	Techno Rengo	techno rengo	Tus Amigos Nuevos	tus amigos nuevos	Triunfo Moral	triunfo moral	254	2024-07-08 17:38:28.123846729+00:00	5209360	Vente luego
 Ya me lavé las manos por quinceava vez, igual
 ¿O acaso tienes miedo?
 ¡Obvio!
@@ -18342,8 +17634,8 @@ Disculpa, es que aún no entiendo tu forma de quererme	[00:48.23] Vente luego
 [03:49.54] Disculpa, es que aún no entiendo tu forma de quererme
 [03:53.72] Epa! me estás poniendo nervioso a mi también
 [03:56.57] Disculpa, es que aún no entiendo tu forma de quererme
-[04:04.31]	1	1	0
-360	11347129	Tu Fiesta Vale Callampa	tu fiesta vale callampa	Tus Amigos Nuevos	tus amigos nuevos	No Si Son	no si son	386	2024-08-07 02:54:09.917388588+00:00	6014216	Ya poh! (dimensiones variables)
+[04:04.31] 	1	1	0
+352	11347129	Tu Fiesta Vale Callampa	tu fiesta vale callampa	Tus Amigos Nuevos	tus amigos nuevos	No Si Son	no si son	386	2024-08-07 02:54:09.917388588+00:00	6014216	Ya poh! (dimensiones variables)
 
 ¿Supiste lo que dijo de ti en la fiesta?
 Nos dijo que vales callampa
@@ -18376,7 +17668,7 @@ Ya poh! (dimensiones variables)
 ¿Supiste lo que dijo de ti, de ti y de ti?
 Yo que tú no lo aguanto
 Así, así, así.	NA	1	0	0
-361	10482654	Viernes	viernes	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	165	2024-07-06 21:39:48.189031043+00:00	5148767	Este viernes
+353	10482654	Viernes	viernes	Tus Amigos Nuevos	tus amigos nuevos	No Sí Son	no si son	165	2024-07-06 21:39:48.189031043+00:00	5148767	Este viernes
 Nos vamos a tu casa, nos vamos a tu casa
 ¿Eres tonta o qué?
 El martes fue muy poco
@@ -18432,8 +17724,8 @@ Se fue a vivir a Italia y desde entonces no supe más	[00:30.87] Este viernes
 [02:02.03] Los unos a los otros, me dan escalofrío
 [02:06.56] Supiste que Mafalda conoció a Corto Maltés
 [02:18.56] Se fue a vivir a Italia y desde entonces no supe más
-[02:24.22]	1	1	0
-362	15217232	Dime Si Eres La Persona Que Soñé	dime si eres la persona que sone	99 Payasos	99 payasos	Caja Negra	caja negra	174	2024-12-01 08:47:44.400352826+00:00	9888570	Estoy acá pensando en ti
+[02:24.22] 	1	1	0
+354	15217232	Dime Si Eres La Persona Que Soñé	dime si eres la persona que sone	99 Payasos	99 payasos	Caja Negra	caja negra	174	2024-12-01 08:47:44.400352826+00:00	9888570	Estoy acá pensando en ti
 No sé si en verdad ahora tengo donde ir
 Estoy acá pensando en si
 Existe alguna mínima oportunidad
@@ -18478,8 +17770,8 @@ Eres la persona que soñé.	[00:08.72] Estoy acá pensando en ti
 [02:13.06] Dime la verdad
 [02:15.41] Dime la verdad, dime si existe alguna oportunidad
 [02:36.68] Eres la persona que soñé.
-[02:41.78]	1	1	0
-363	13303570	Enero 15	enero 15	99 Payasos	99 payasos	Enero 15	enero 15	197	2024-10-14 10:01:09.083115611+00:00	7972982	Puedo preguntarte, última vez
+[02:41.78] 	1	1	0
+355	13303570	Enero 15	enero 15	99 Payasos	99 payasos	Enero 15	enero 15	197	2024-10-14 10:01:09.083115611+00:00	7972982	Puedo preguntarte, última vez
 Puedo intentar ser tu camino
 Ser tu amigo
 Lo que quieras puedo ser
@@ -18540,7 +17832,7 @@ No sé bien lo que pasó
 No sé bien si fue mejor
 Sólo quiero un poco más
 Conocerte un poco más	NA	1	0	0
-364	12563367	La Despedida	la despedida	99 Payasos	99 payasos	Caja Negra	caja negra	160	2024-09-28 11:22:56.288026004+00:00	7232123	Estoy cansado de mentir
+356	12563367	La Despedida	la despedida	99 Payasos	99 payasos	Caja Negra	caja negra	160	2024-09-28 11:22:56.288026004+00:00	7232123	Estoy cansado de mentir
 Creer que todo funcionó
 Perdón pero no sigo aquí
 Ya es muy tarde, ya no pasó
@@ -18580,7 +17872,7 @@ En todo lo que vendrá en tu vida
 Espero te de una sonrisa
 Es triste ver que yo era
 La sonrisa en tu vida	NA	1	0	0
-365	11109041	Olvidar	olvidar	99 Payasos	99 payasos	Olvidar	olvidar	198	2024-07-27 06:09:32.192445350+00:00	5775786	Donde estas
+357	11109041	Olvidar	olvidar	99 Payasos	99 payasos	Olvidar	olvidar	198	2024-07-27 06:09:32.192445350+00:00	5775786	Donde estas
 Dónde vas
 
 Estoy cansado de rogarte
@@ -18628,7 +17920,7 @@ Al menos despídete
 
 Dónde vas
 Es que mejor te voy a olvidar...	NA	1	0	0
-366	13932777	Payaso	payaso	99 Payasos	99 payasos	De Pie	de pie	194	2024-10-30 21:21:06.629085194+00:00	8602827	Estoy sintiendo que ya no puedo más
+358	13932777	Payaso	payaso	99 Payasos	99 payasos	De Pie	de pie	194	2024-10-30 21:21:06.629085194+00:00	8602827	Estoy sintiendo que ya no puedo más
 Estoy creyendo que ya no estoy acá
 Miro mis ojos ya no puedo mirar
 El horizonte que empieza a acabar
@@ -18709,8 +18001,8 @@ En el que te no te volví a ver.	[00:32.02] Estoy sintiendo que ya no puedo más
 [02:58.76] Con tu actitud cualquiera pensaría
 [03:00.97] Que escapas igual como aquel día
 [03:03.75] En el que te no te volví a ver.
-[03:09.66]	1	1	0
-367	13360059	Pincel	pincel	99 Payasos	99 payasos	Caja Negra	caja negra	181	2024-10-15 09:27:33.506295907+00:00	8029481	Buscando y buscando
+[03:09.66] 	1	1	0
+359	13360059	Pincel	pincel	99 Payasos	99 payasos	Caja Negra	caja negra	181	2024-10-15 09:27:33.506295907+00:00	8029481	Buscando y buscando
 Al borde de la desesperación
 Te encontré
 Llenando ese vacío
@@ -18811,4 +18103,4 @@ Con este pincel	[00:19.89] Buscando y buscando
 [02:48.71] En que apareciste
 [02:51.11] Queriendo servirme
 [02:53.24] Con este pincel
-[02:56.66]	1	1	0
+[02:56.66] 	1	1	0

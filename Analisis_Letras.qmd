@@ -14,7 +14,7 @@ editor: visual
 
 Este proyecto utiliza R para realizar análisis de letras de canciones. Se usará la database de \[LRCLIB\](<https://lrclib.net/db-dumps>) y a partir de ella se crearán data frames para cada caso de estudio.
 
-A lo largo de todo el código se irá ejemplificando el desarrollo de una investigación sobre las letras de un conjunto de bandas. basado en algún grupo social, estilo, . El ejemplo seráel ***indie chileno*** actual, por tanto se van a ejemplificar todas las funciones dentro de este contexto. Esto incluye creación de corpus de texto, análisis de frecuencia de palabras en ciertas bandas o en conjuntos de bandas, etc.
+A lo largo de todo el código se irá ejemplificando el desarrollo de una investigación sobre las letras de un conjunto de bandas. basado en algún grupo social, estilo, . El ejemplo será el ***indie chileno*** actual, por tanto se van a ejemplificar todas las funciones dentro de este contexto. Esto incluye creación de corpus de texto, análisis de frecuencia de palabras en ciertas bandas o en conjuntos de bandas, etc.
 
 En resumen se tiene que definir una lista de artistas para analizar múltiples bandas. Crear un corpus unificado que combine las letras de todas las bandas seleccionadas. Realizar análisis lingüísticos básicos (frecuencia de palabras, longitud promedio, etc.). Incluir ejemplos de visualizaciones para explorar patrones.
 
@@ -69,49 +69,60 @@ Aquí importamos la base de datos, sus tablas y el tipo de información que pued
 
 ```{r}
 
-# Conectar a la base de datos
-db_file <- "db.sqlite3"
-conn <- dbConnect(RSQLite::SQLite(), dbname = db_file)
+# Función para conectar a la base de datos
+conectar_bd <- function(db_path = "db.sqlite3") {
+  if (!file.exists(db_path)) {
+    stop("El archivo de la base de datos no existe.")
+  }
+  conn <- dbConnect(SQLite(), dbname = db_path)
+  # message("Conexión exitosa a la base de datos: ", db_path)
+  return(conn)
+}
 
+# Función para desconectar de la base de datos
+desconectar_bd <- function(conn) {
+  if (!inherits(conn, "DBIConnection")) {
+    stop("El objeto proporcionado no es una conexión válida.")
+  }
+  dbDisconnect(conn)
+  # message("Conexión cerrada correctamente.")
+}
+
+# Abrir conexión para hacer pruebas
+conn <- conectar_bd()
 # Listar tablas
 # tables <- dbListTables(conn)
 # print(tables)
+desconectar_bd(conn)
 ```
 
 El resultado son las siguientes tablas:
 
 |  |  |  |  |  |  |
-|------------|------------|------------|------------|------------|------------|
+|----|----|----|----|----|----|
 | "\_litestream_lock" | "\_litestream_seq" | "flags" | "lyrics" | "missing_tracks" | "sqlite_sequence" |
 | "tracks" | "tracks_fts" | "tracks_fts_config" | "tracks_fts_data" | "tracks_fts_docsize" | "tracks_fts_idx" |
 
 ## Exploramos las tablas
 
 ```{r}
+# Conectamos a la base de datos
+conn <- conectar_bd()
+
 # Leer los primeros registros de tracks
 dataTracks <- dbGetQuery(conn, "SELECT * FROM tracks LIMIT 10")
-# print(dataTracks)
 
 # Consultar la estructura de tracks
 columnsTracks <- dbGetQuery(conn, "PRAGMA table_info(tracks)")
-#print(columnsTracks)
 
 # Leer los primeros registros de lyrics
 dataLyrics <- dbGetQuery(conn, "SELECT * FROM lyrics LIMIT 10")
-# print(dataLyrics)
 
 # Consultar la estructura de lyrics
 columnsLyrics <- dbGetQuery(conn, "PRAGMA table_info(lyrics)")
-#print(columnsLyrics)
 
-# Oros Test (dejar comentado):
-# Leer los primeros registros de una tabla
-# dataX <- dbGetQuery(conn, "SELECT * FROM tracks_fts LIMIT 10")
-# print(dataX)
-
-# Consultar la estructura de la tabla
-#columnsLyrics <- dbGetQuery(conn, "PRAGMA table_info(tracks_fts)")
-#print(columnsX)
+# Desconectamos la base de datos
+desconectar_bd(conn)
 ```
 
 ## Estructura de las tablas de interés
@@ -121,7 +132,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_
 ### Tracks
 
 | Columna | Tipo | Descripción | Ejemplo |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | `id` | INT | Clave primaria de la tabla. Usada para identificar de manera única cada canción o pista. | 3 |
 | `name` | TEXT | Nombre de la canción o pista. Es sensible a mayúsculas y minúsculas. | Wildest Dreams |
 | `name_lower` | TEXT | Versión en minúsculas del nombre de la pista (`name`). | wildest dreams |
@@ -137,7 +148,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_
 ### Lyrics
 
 | Columna | Tipo | Descripción | Ejemplo |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | `id` | INT | Clave primaria de la tabla, única para cada registro de letras. | 3 |
 | `plain_lyrics` | TEXT | Letras de la canción en formato simple (sin sincronización con la música). | Not tryna be indie\\nNot tryna be cool\\nJust tryna be in this\\nTell me, are you too?\\n\\nCan \[...\] |
 | `synced_lyrics` | TEXT | Letras sincronizadas, con marcas de tiempo para seguir la canción mientras se reproduce. | \[00:09.66\] Not tryna be indie\\n\[00:12.30\] Not tryna be cool\\n\[00:14.99\] Just tryna be in \[...\] |
@@ -188,8 +199,10 @@ Se ve que el resultado es "ninos del cerro", sin espacios, ni ñ, ni mayúsculas
 
 ```{r}
 
-buscarPorArtista <- function(nombre_artista, conexion) {
+buscarPorArtista <- function(nombre_artista) {
   nombre_artista_nrm <- nrmlztxt(nombre_artista)
+  # Conectamos a la base de datos
+  conexion <- conectar_bd()
   
   # Proteger el nombre para consultas SQL
   nombre_artista_quoted <- dbQuoteString(conexion, nombre_artista_nrm)
@@ -209,11 +222,13 @@ buscarPorArtista <- function(nombre_artista, conexion) {
   # Ejecutar la consulta
   data <- dbGetQuery(conexion, query)
   
+  # Desconectamos la bd
+  desconectar_bd(conexion)
   return(data)
 }
 
 # Ejemplo de uso de la función con nombre sin normalizar
-df_artista_ej <- buscarPorArtista(artista_ej, conn)
+df_artista_ej <- buscarPorArtista(artista_ej)
 
 # Mostrar las primeras filas del dataframe final
 # head(df_artista_ej)
@@ -226,7 +241,7 @@ Arroja 51 filas con 15 variables: **track_id** (\<int\>), **name** (\<chr\>), **
 Supongamos que tenemos un pequeño subconjunto de datos:
 
 | name_lower | artist_name_lower | has_synced_lyrics | updated_at | has_plain_lyrics |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | doce | asia menor | 0 | 2023-01-01 12:00:00 | 1 |
 | doce | asia menor | 1 | 2023-01-02 12:00:00 | 1 |
 | doce | asia menor | 1 | 2022-12-31 12:00:00 | 1 |
@@ -263,7 +278,7 @@ limpiarDuplicadosU <- function(data) {
 df_artista_ej <- limpiarDuplicadosU(df_artista_ej)
 ```
 
-Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat. En este caso, la tabla disminuyó de 47 casos con 15 variables a 44 casos con 15 variables.
+Funciona pero deja sin tratar algunos casos, como los (en vivo) o los que tienen ft. o feat. En este caso, la tabla disminuyó de 51 casos con 15 variables a 44 casos con 15 variables.
 
 # El indie chileno
 
@@ -342,7 +357,7 @@ bandas_indie <- c(
 
 ```{r}
 
-crearCorpusDeBandas <- function(lista_bandas, conexion) {
+crearCorpusDeBandas <- function(lista_bandas) {
   # Inicializar un dataframe vacío
   corpus_data <- data.frame(
     track_id = integer(),
@@ -365,21 +380,21 @@ crearCorpusDeBandas <- function(lista_bandas, conexion) {
   
   # Recorrer la lista de bandas
   for (artista in lista_bandas) {
-    cat("\nProcesando artista:", artista, "\n")  # Log de progreso
+    # cat("\nProcesando artista:", artista, "\n")  # Log de progreso
     
     # Obtener canciones del artista
-    df_artista <- buscarPorArtista(artista, conexion)
+    df_artista <- buscarPorArtista(artista)
     
     if (is.null(df_artista) || nrow(df_artista) == 0) {
-      cat("No se encontraron datos para el artista:", artista, "\n")
+      # cat("No se encontraron datos para el artista:", artista, "\n")
       next
     }
     
-    cat("Se encontraron", nrow(df_artista), "canciones para el artista:", artista, "\n")
+    # cat("Se encontraron", nrow(df_artista), "canciones para el artista:", artista, "\n")
     
     # Limpiar duplicados
     df_artista <- limpiarDuplicadosU(df_artista)
-    cat("Canciones únicas después de limpiar duplicados:", nrow(df_artista), "\n")
+    # cat("Canciones únicas después de limpiar duplicados:", nrow(df_artista), "\n")
     
     # Añadir al corpus
     corpus_data <- bind_rows(corpus_data, df_artista %>%
@@ -406,13 +421,73 @@ crearCorpusDeBandas <- function(lista_bandas, conexion) {
 }
 
 # Crear el corpus con todas las bandas
-corpus_df <- crearCorpusDeBandas(bandas_indie, conn)
+corpus_df <- crearCorpusDeBandas(bandas_indie)
 
 # Mostrar las primeras filas del dataframe resultante
 #head(corpus_df)
 ```
 
-Obtenemos una muestra de 367 canciones.
+Obtenemos una muestra de 359 canciones.
+
+# Exportación de data frames
+
+### En excel
+
+```{r}
+
+exportar_excel <- function(dataframe, file_path) {
+  # Verificar que el dataframe no esté vacío
+  if (nrow(dataframe) == 0) {
+    stop("El dataframe está vacío y no se puede exportar.")
+  }
+  
+  # Verificar que el paquete writexl esté instalado
+  if (!requireNamespace("writexl", quietly = TRUE)) {
+    stop("El paquete 'writexl' no está instalado. Usa install.packages('writexl') para instalarlo.")
+  }
+  
+  # Exportar el dataframe como archivo Excel
+  writexl::write_xlsx(dataframe, file_path)
+  
+  # Mensaje de confirmación
+  message("El archivo Excel se ha guardado correctamente en: ", file_path)
+}
+
+# Ejemplo de uso:
+exportar_excel(corpus_df, "corpus_bandas.xlsx")
+```
+
+### En texto
+
+```{r}
+exportar_texto <- function(data, nombre_archivo, separador = "\t", incluir_nombres_filas = FALSE, entrecomillar = FALSE) {
+  # Validar que data sea un data.frame
+  if (!is.data.frame(data)) {
+    stop("El objeto proporcionado no es un data.frame.")
+  }
+  
+  # Exportar el data.frame a un archivo de texto
+  write.table(
+    data,
+    file = nombre_archivo,
+    sep = separador,
+    row.names = incluir_nombres_filas,
+    quote = entrecomillar
+  )
+  
+  # Mensaje de confirmación
+  cat("Archivo exportado exitosamente en:", nombre_archivo, "\n")
+}
+
+# Llamar a la función para exportar tu data.frame
+exportar_texto(
+  data = corpus_df,               # DataFrame a exportar
+  nombre_archivo = "corpus_df_to_text.txt", # Nombre del archivo
+  separador = "\t",                  # Separador de columnas (tabulación)
+  incluir_nombres_filas = TRUE,     # No incluir índices de las filas
+  entrecomillar = FALSE              # No entrecomillar valores
+)
+```
 
 # Análisis de datos
 
@@ -468,7 +543,7 @@ Se disminuyen de 367 a 358 las observaciones, manteniendo 14 variables, ya que e
 ```{r}
 # Útiles de quanteda
 corpus_letras <- quanteda::corpus(sin_instrumentales$plain_lyrics)
-summary(corpus_letras)
+#summary(corpus_letras)
 stopwords_adhok <- c("you", "i", "the", "to", "go", "my", "in", "this", "and", "oh", "ah", "ay", "uh")
   
 stopwords_adhok <- union(stopwords("es"), stopwords_adhok)
@@ -530,11 +605,75 @@ dtm_bigrams <- dfm(tokens_bigrams)
 frecuencia_bigrams <- textstat_frequency(dtm_bigrams)
 
 # Eliminar bigramas con docfreq == 1 (que salen en una sola canción)
-frecuencia_bigrams_filtrada <- frecuencia_bigrams[frecuencia_bigrams$docfreq > 1, ]
+frecuencia_bigrams_filtrada <- frecuencia_bigrams[frecuencia_bigrams$docfreq > 4, ]
 
 # Ver los bigramas filtrados
-head(frecuencia_bigrams_filtrada, 50)
+print(frecuencia_bigrams_filtrada, 19)
 ```
+
+## Buscar bigramas en canciones
+
+```{r}
+buscar_bigramas <- function(dtm, bigramas, canciones, artistas) {
+  # Verificar que las entradas sean correctas
+  if (length(bigramas) == 0) {
+    stop("Por favor, ingresa al menos un bigrama.")
+  }
+  
+  # Crear una lista para almacenar las canciones donde aparecen los bigramas
+  resultados <- list()
+  
+  # Iterar sobre los bigramas
+  for (bigrama in bigramas) {
+    if (bigrama %in% colnames(dtm)) {
+      # Extraer la columna como vector lógico
+      vector_bigrama <- as.vector(dtm[, bigrama])
+      
+      # Encontrar las filas donde aparece el bigrama
+      indices <- which(vector_bigrama > 0)
+      
+      # Guardamos las canciones y artistas correspondientes
+      resultados[[bigrama]] <- data.frame(
+        cancion = canciones[indices],
+        artista = artistas[indices]
+      )
+    } else {
+      # Si el bigrama no está en la DTM, agregar un mensaje
+      resultados[[bigrama]] <- "El bigrama no está presente en el corpus."
+    }
+  }
+  
+  return(resultados)
+}
+
+# Ejemplo de uso
+# Bigramas que deseas buscar
+bigramas_buscar <- frecuencia_bigrams_filtrada$feature
+
+# Buscar los bigramas
+canciones_con_bigramas <- buscar_bigramas(dtm_bigrams, bigramas_buscar, sin_instrumentales$name, sin_instrumentales$artist_name)
+
+# Ver resultados
+# print(canciones_con_bigramas)
+```
+
+Por ejemplo,
+
+```         
+> canciones_con_bigramas[["voy_corriendo"]]
+
+            cancion                           artista
+            
+1      La Velocidad                          Adelaida
+2            BRONCE                    Déjenme Dormir
+3         EN TU VOZ                    Déjenme Dormir
+4 Baltazar Josefina                     Floresalegría
+5          Tormenta  Los Animales También Se Suicidan
+6      Las Palmeras                   Niños Del Cerro
+7       Gallo verde                     Rock n' chile
+```
+
+Ahora podemos ir a buscar en las canciones las letras que llevan estos bigramas que nos interesan, para el análisis literario, por ejemplo.
 
 ## Análisis de sentimientos
 
@@ -561,63 +700,3 @@ En las canciones, a diferencia de casos como las novelas o las noticias, el aná
 -   Resolver el problema de que el corpus para cada canción pueda ser muy pequeño, tal vez se tendran que hacer agrupamientos de canciones por album o por artista,
 
 -   La música tiene un elemento emocional o performativo que no puede captarse solo a través del texto. Por lo que habría que complementar con datos que se puedan sacar de apis como la de spotify o Essentia.
-
-# Exportación de data frames
-
-### En excel
-
-```{r}
-
-exportar_excel <- function(dataframe, file_path) {
-  # Verificar que el dataframe no esté vacío
-  if (nrow(dataframe) == 0) {
-    stop("El dataframe está vacío y no se puede exportar.")
-  }
-  
-  # Verificar que el paquete writexl esté instalado
-  if (!requireNamespace("writexl", quietly = TRUE)) {
-    stop("El paquete 'writexl' no está instalado. Usa install.packages('writexl') para instalarlo.")
-  }
-  
-  # Exportar el dataframe como archivo Excel
-  writexl::write_xlsx(dataframe, file_path)
-  
-  # Mensaje de confirmación
-  message("El archivo Excel se ha guardado correctamente en: ", file_path)
-}
-
-# Ejemplo de uso:
-exportar_excel(corpus_df, "corpus_bandas.xlsx")
-```
-
-### En texto
-
-```{r}
-exportar_texto <- function(data, nombre_archivo, separador = "\t", incluir_nombres_filas = FALSE, entrecomillar = FALSE) {
-  # Validar que data sea un data.frame
-  if (!is.data.frame(data)) {
-    stop("El objeto proporcionado no es un data.frame.")
-  }
-  
-  # Exportar el data.frame a un archivo de texto
-  write.table(
-    data,
-    file = nombre_archivo,
-    sep = separador,
-    row.names = incluir_nombres_filas,
-    quote = entrecomillar
-  )
-  
-  # Mensaje de confirmación
-  cat("Archivo exportado exitosamente en:", nombre_archivo, "\n")
-}
-
-# Llamar a la función para exportar tu data.frame
-exportar_texto(
-  data = corpus_df,               # DataFrame a exportar
-  nombre_archivo = "corpus_df_to_text.txt", # Nombre del archivo
-  separador = "\t",                  # Separador de columnas (tabulación)
-  incluir_nombres_filas = TRUE,     # No incluir índices de las filas
-  entrecomillar = FALSE              # No entrecomillar valores
-)
-```
