@@ -55,7 +55,8 @@ p_load(httr,
        readxl,
        quanteda,
        quanteda.textstats,
-       wordcloud
+       wordcloud,
+       syuzhet
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
@@ -99,7 +100,7 @@ desconectar_bd(conn)
 El resultado son las siguientes tablas:
 
 |  |  |  |  |  |  |
-|----|----|----|----|----|----|
+|------------|------------|------------|------------|------------|------------|
 | "\_litestream_lock" | "\_litestream_seq" | "flags" | "lyrics" | "missing_tracks" | "sqlite_sequence" |
 | "tracks" | "tracks_fts" | "tracks_fts_config" | "tracks_fts_data" | "tracks_fts_docsize" | "tracks_fts_idx" |
 
@@ -132,7 +133,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_
 ### Tracks
 
 | Columna | Tipo | Descripción | Ejemplo |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | `id` | INT | Clave primaria de la tabla. Usada para identificar de manera única cada canción o pista. | 3 |
 | `name` | TEXT | Nombre de la canción o pista. Es sensible a mayúsculas y minúsculas. | Wildest Dreams |
 | `name_lower` | TEXT | Versión en minúsculas del nombre de la pista (`name`). | wildest dreams |
@@ -148,7 +149,7 @@ Nos interesa particularmente la tabla tracks y la tabla lyrics, la tabla tracks_
 ### Lyrics
 
 | Columna | Tipo | Descripción | Ejemplo |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | `id` | INT | Clave primaria de la tabla, única para cada registro de letras. | 3 |
 | `plain_lyrics` | TEXT | Letras de la canción en formato simple (sin sincronización con la música). | Not tryna be indie\\nNot tryna be cool\\nJust tryna be in this\\nTell me, are you too?\\n\\nCan \[...\] |
 | `synced_lyrics` | TEXT | Letras sincronizadas, con marcas de tiempo para seguir la canción mientras se reproduce. | \[00:09.66\] Not tryna be indie\\n\[00:12.30\] Not tryna be cool\\n\[00:14.99\] Just tryna be in \[...\] |
@@ -241,7 +242,7 @@ Arroja 51 filas con 15 variables: **track_id** (\<int\>), **name** (\<chr\>), **
 Supongamos que tenemos un pequeño subconjunto de datos:
 
 | name_lower | artist_name_lower | has_synced_lyrics | updated_at | has_plain_lyrics |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | doce | asia menor | 0 | 2023-01-01 12:00:00 | 1 |
 | doce | asia menor | 1 | 2023-01-02 12:00:00 | 1 |
 | doce | asia menor | 1 | 2022-12-31 12:00:00 | 1 |
@@ -512,9 +513,12 @@ importar_excel <- function(ruta_archivo) {
 ```
 
 ```{r}
-# Si no se necesita importar el archivo, saltar este paso o comentar
-archivo <- "corpus_bandas.xlsx" #Cambiar si la ruta o el archivo es otro
+# Probar la función para importar el archivo
+archivo <- "corpus_bandas.xlsx"  # Cambiar si la ruta o el archivo es otro
 corpus_df <- importar_excel(archivo)
+
+# Verificar que se ha importado correctamente
+head(corpus_df)
 ```
 
 ```{r}
@@ -538,7 +542,7 @@ sinInstrumentales <- function(datos, lyrics_col = "lyrics_id", inst_col = "instr
 sin_instrumentales <- sinInstrumentales(corpus_df)
 ```
 
-Se disminuyen de 367 a 358 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.
+Se disminuyen de 359 a 350 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.
 
 ```{r}
 # Útiles de quanteda
@@ -592,8 +596,22 @@ wordcloud(words = frecuencias_df$term,
 
 ```{r}
 
-# Eliminar stopwords antes de la tokenización
-tokens_limpios <- tokens_remove(tokens_letras, stopwords_adhok)
+# Crear tokens del corpus
+tokens_letras <- tokens(corpus_letras, 
+                        remove_punct = TRUE,  # Eliminar puntuación
+                        remove_symbols = TRUE,  # Eliminar símbolos especiales
+                        remove_numbers = TRUE,  # Eliminar números
+                        remove_url = TRUE,  # Eliminar URLs
+                        what = "word")  # Solo tomar palabras
+
+# Normalizar los tokens
+tokens_normalizados <- lapply(tokens_letras, nrmlztxt)
+
+# Convertir los tokens normalizados en objetos de tipo tokens
+tokens_normalizados <- tokens(tokens_normalizados)
+
+# Eliminar stopwords después de la normalización
+tokens_limpios <- tokens_remove(tokens_normalizados, stopwords_adhok)
 
 # Generar bigramas (combinación de 2 palabras) sin stopwords
 tokens_bigrams <- tokens_ngrams(tokens_limpios, n = 2)
@@ -608,13 +626,13 @@ frecuencia_bigrams <- textstat_frequency(dtm_bigrams)
 frecuencia_bigrams_filtrada <- frecuencia_bigrams[frecuencia_bigrams$docfreq > 4, ]
 
 # Ver los bigramas filtrados
-print(frecuencia_bigrams_filtrada, 19)
+print(frecuencia_bigrams_filtrada)
 ```
 
 ## Buscar bigramas en canciones
 
 ```{r}
-buscar_bigramas <- function(dtm, bigramas, canciones, artistas) {
+buscar_bigramas <- function(dtm, bigramas, track_ids, canciones, artistas) {
   # Verificar que las entradas sean correctas
   if (length(bigramas) == 0) {
     stop("Por favor, ingresa al menos un bigrama.")
@@ -634,6 +652,7 @@ buscar_bigramas <- function(dtm, bigramas, canciones, artistas) {
       
       # Guardamos las canciones y artistas correspondientes
       resultados[[bigrama]] <- data.frame(
+        track_id = track_ids[indices],
         cancion = canciones[indices],
         artista = artistas[indices]
       )
@@ -651,7 +670,7 @@ buscar_bigramas <- function(dtm, bigramas, canciones, artistas) {
 bigramas_buscar <- frecuencia_bigrams_filtrada$feature
 
 # Buscar los bigramas
-canciones_con_bigramas <- buscar_bigramas(dtm_bigrams, bigramas_buscar, sin_instrumentales$name, sin_instrumentales$artist_name)
+canciones_con_bigramas <- buscar_bigramas(dtm_bigrams, bigramas_buscar, sin_instrumentales$track_id, sin_instrumentales$name, sin_instrumentales$artist_name)
 
 # Ver resultados
 # print(canciones_con_bigramas)
@@ -662,20 +681,86 @@ Por ejemplo,
 ```         
 > canciones_con_bigramas[["voy_corriendo"]]
 
-            cancion                           artista
-            
-1      La Velocidad                          Adelaida
-2            BRONCE                    Déjenme Dormir
-3         EN TU VOZ                    Déjenme Dormir
-4 Baltazar Josefina                     Floresalegría
-5          Tormenta  Los Animales También Se Suicidan
-6      Las Palmeras                   Niños Del Cerro
-7       Gallo verde                     Rock n' chile
+  track_id            cancion                           artista
+  
+1 13533874       La Velocidad                          Adelaida
+2 14169858             BRONCE                    Déjenme Dormir
+3 14869187          EN TU VOZ                    Déjenme Dormir
+4 13672981  Baltazar Josefina                     Floresalegría
+5 11599161           Tormenta  Los Animales También Se Suicidan
+6  3161193       Las Palmeras                   Niños Del Cerro
+7 12503286        Gallo verde                     Rock n' chile
 ```
 
 Ahora podemos ir a buscar en las canciones las letras que llevan estos bigramas que nos interesan, para el análisis literario, por ejemplo.
 
 ## Análisis de sentimientos
+
+Para realizar análisis de sentimientos, lo más efectivo de momento parece ser exportar algunos datos de un data frame `sin_instrumentales`, como su `track_id` y sus `plain_lyrics` . Esto se lleva a un link de Google Colab escrito para realizar análisis de sentimientos y poder importar posteriormente esos datos en un data frame de vuelta a este documento. Partimos por eliminar datos sin letras o que su letra es "(instrumental)", "instrumental" o similares. Luego exportaremos el data frame hacia el jupiternotebook en colab.
+
+[Jupiternotebook en Google Colab para realizar el análisis de sentimientos](https://colab.research.google.com/drive/1IMMNaCr-_hodOii7Fj98ZUZeMIJDULTI)
+
+```{r}
+# Exportamos sin instrumentales, eliminando antes posibles "datos NA colados" en el data_frame.
+
+revisar_eliminar_instrumentales <- function(df, umbral_instrumental = 20) {
+  # Verificamos si las columnas requeridas existen
+  if (!("plain_lyrics" %in% names(df)) || !("track_id" %in% names(df))) {
+    stop("El dataframe debe contener las columnas 'plain_lyrics' y 'track_id'.")
+  }
+  
+  # Iteramos en orden inverso para evitar problemas al eliminar filas
+  for (i in seq(nrow(df), 1)) {
+    # Obtenemos el largo del texto en plain_lyrics
+    lyric_length <- nchar(df$plain_lyrics[i])
+    
+    if (lyric_length < umbral_instrumental) {
+      # Imprimimos los valores
+      message("Eliminando fila con track_id: ", df$track_id[i], 
+              ", plain_lyrics: '", df$plain_lyrics[i], "' (longitud: ", lyric_length, ")")
+      
+      # Eliminamos la fila del dataframe
+      df <- df[-i, ]
+    }
+  }
+  
+  # Devolvemos el dataframe actualizado
+  return(df)
+}
+
+# Aplicar la función
+sin_instrumentales <- revisar_eliminar_instrumentales(sin_instrumentales)
+```
+
+#### Exportar para enviar a Google Colab
+
+```{r}
+
+# Primero vamos a filtrar las columnas que nos interesan
+df_a_exportar <- sin_instrumentales[,c("track_id", "plain_lyrics")]
+
+exportar_excel(df_a_exportar, "importar_en_colab.xlsx")
+```
+
+#### Volver a importar el data frame obtenido del jupiter notebook
+
+```{r}
+df_emociones <- read_excel("df_emociones.xlsx")
+
+# Ver las primeras filas
+head(df_emociones)
+
+# Seleccionar las columnas de la 3 a la 11 de df_emociones
+df_emociones_subset <- df_emociones[, 3:11]
+
+# Usar cbind para combinar sin_instrumentales con el subset de df_emociones
+df_combinado <- cbind(sin_instrumentales, df_emociones_subset)
+
+# Ver el DataFrame combinado
+head(df_combinado)
+```
+
+Ahora tenemos un dataframe con 349 canciones y 23 variables, incluyendo un json con las emociones asociadas a las estrofas de las canciones, así como un promedio de las emociones para las canciones completas.
 
 ## Análisis de complejidad textual
 

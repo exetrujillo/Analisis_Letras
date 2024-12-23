@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Exequiel Trujillo Escobar">
-<meta name="dcterms.date" content="2024-12-22">
+<meta name="dcterms.date" content="2024-12-23">
 <meta name="description" content="Extracción y análisis de letras de canciones">
 
 <title>Análisis de Letras</title>
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 22, 2024</p>
+      <p class="date">December 23, 2024</p>
     </div>
   </div>
   
@@ -156,10 +156,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>       readxl,</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       quanteda,</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       quanteda.textstats,</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>       wordcloud</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>       wordcloud,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>       syuzhet</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>       )</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Descomentar si necesitamos limpiar entorno</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -801,78 +802,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  } </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Si no se necesita importar el archivo, saltar este paso o comentar</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>archivo <span class="ot">&lt;-</span> <span class="st">"corpus_bandas.xlsx"</span> <span class="co">#Cambiar si la ruta o el archivo es otro</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probar la función para importar el archivo</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>archivo <span class="ot">&lt;-</span> <span class="st">"corpus_bandas.xlsx"</span>  <span class="co"># Cambiar si la ruta o el archivo es otro</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>corpus_df <span class="ot">&lt;-</span> <span class="fu">importar_excel</span>(archivo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>El archivo se ha importado correctamente.</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar que se ha importado correctamente</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(corpus_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 15
+  track_id name        name_lower  artist_name artist_name_lower album_name   
+     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;        
+1 13527560 1999        1999        Adelaida    adelaida          Paraiso      
+2 13533967 Adormidera  adormidera  Adelaida    adelaida          Madre Culebra
+3 13750819 Caída Libre caida libre Adelaida    adelaida          Caída Libre  
+4 13868333 Columpio    columpio    Adelaida    adelaida          Paraiso      
+5 13534510 El Bosque   el bosque   Adelaida    adelaida          Madre Culebra
+6 13534288 Holograma   holograma   Adelaida    adelaida          Madre Culebra
+# ℹ 9 more variables: album_name_lower &lt;chr&gt;, duration &lt;dbl&gt;, updated_at &lt;chr&gt;,
+#   lyrics_id &lt;dbl&gt;, plain_lyrics &lt;chr&gt;, synced_lyrics &lt;chr&gt;,
+#   has_plain_lyrics &lt;dbl&gt;, has_synced_lyrics &lt;dbl&gt;, instrumental &lt;dbl&gt;</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para quitarle filas NA o con instrumentales</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sinInstrumentales <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, <span class="at">lyrics_col =</span> <span class="st">"lyrics_id"</span>, <span class="at">inst_col =</span> <span class="st">"instrumental"</span>){</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># all() es para saber si son todos TRUE dentro del paréntesis</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(<span class="fu">c</span>(lyrics_col, inst_col) <span class="sc">%in%</span> <span class="fu">colnames</span>(datos))) {</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"La/s columna/s especificada/s no existe/n en el dataset."</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtramos el dataset</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  datos_limpios <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(.data[[lyrics_col]]), .data[[inst_col]] <span class="sc">!=</span> <span class="dv">1</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  datos_limpios<span class="sc">$</span>instrumental <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(datos_limpios)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Ej</span></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>sin_instrumentales <span class="ot">&lt;-</span> <span class="fu">sinInstrumentales</span>(corpus_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para quitarle filas NA o con instrumentales</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sinInstrumentales <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, <span class="at">lyrics_col =</span> <span class="st">"lyrics_id"</span>, <span class="at">inst_col =</span> <span class="st">"instrumental"</span>){</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># all() es para saber si son todos TRUE dentro del paréntesis</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(<span class="fu">c</span>(lyrics_col, inst_col) <span class="sc">%in%</span> <span class="fu">colnames</span>(datos))) {</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"La/s columna/s especificada/s no existe/n en el dataset."</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filtramos el dataset</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  datos_limpios <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(.data[[lyrics_col]]), .data[[inst_col]] <span class="sc">!=</span> <span class="dv">1</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  datos_limpios<span class="sc">$</span>instrumental <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(datos_limpios)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Ej</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>sin_instrumentales <span class="ot">&lt;-</span> <span class="fu">sinInstrumentales</span>(corpus_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Se disminuyen de 367 a 358 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.</p>
+<p>Se disminuyen de 359 a 350 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Útiles de quanteda</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>corpus_letras <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">corpus</span>(sin_instrumentales<span class="sc">$</span>plain_lyrics)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(corpus_letras)</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>stopwords_adhok <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"you"</span>, <span class="st">"i"</span>, <span class="st">"the"</span>, <span class="st">"to"</span>, <span class="st">"go"</span>, <span class="st">"my"</span>, <span class="st">"in"</span>, <span class="st">"this"</span>, <span class="st">"and"</span>, <span class="st">"oh"</span>, <span class="st">"ah"</span>, <span class="st">"ay"</span>, <span class="st">"uh"</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>stopwords_adhok <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">stopwords</span>(<span class="st">"es"</span>), stopwords_adhok)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenización</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>tokens_letras <span class="ot">&lt;-</span> <span class="fu">tokens</span>(corpus_letras, </span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar puntuación</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_symbols =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar símbolos especiales</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar números</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_url =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar URLs</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                        <span class="at">what =</span> <span class="st">"word"</span>  <span class="co"># Solo tomar palabras</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>                        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Útiles de quanteda</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>corpus_letras <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">corpus</span>(sin_instrumentales<span class="sc">$</span>plain_lyrics)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(corpus_letras)</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>stopwords_adhok <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"you"</span>, <span class="st">"i"</span>, <span class="st">"the"</span>, <span class="st">"to"</span>, <span class="st">"go"</span>, <span class="st">"my"</span>, <span class="st">"in"</span>, <span class="st">"this"</span>, <span class="st">"and"</span>, <span class="st">"oh"</span>, <span class="st">"ah"</span>, <span class="st">"ay"</span>, <span class="st">"uh"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>stopwords_adhok <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">stopwords</span>(<span class="st">"es"</span>), stopwords_adhok)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenización</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>tokens_letras <span class="ot">&lt;-</span> <span class="fu">tokens</span>(corpus_letras, </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar puntuación</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_symbols =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar símbolos especiales</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar números</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_url =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar URLs</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>                        <span class="at">what =</span> <span class="st">"word"</span>  <span class="co"># Solo tomar palabras</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>                        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="análisis-de-frecuencia-de-términos" class="level2">
 <h2 class="anchored" data-anchor-id="análisis-de-frecuencia-de-términos">Análisis de frecuencia de términos</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear matriz de documentos término (DTM)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dtm_letras <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokens_letras)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Eliminamos stopwords </span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>dtm_letras <span class="ot">&lt;-</span> <span class="fu">dfm_remove</span>(dtm_letras, stopwords_adhok)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>frecuencias <span class="ot">&lt;-</span> <span class="fu">topfeatures</span>(dtm_letras, <span class="at">n =</span> <span class="dv">100</span>)   <span class="co"># Cambia n para más términos</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(frecuencias)</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>frecuencias_totales <span class="ot">&lt;-</span> <span class="fu">textstat_frequency</span>(dtm_letras)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir frecuencias en un dataframe</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>frecuencias_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">term =</span> <span class="fu">names</span>(frecuencias), <span class="at">freq =</span> frecuencias)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la nube de palabras</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">words =</span> frecuencias_df<span class="sc">$</span>term, </span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">freq =</span> frecuencias_df<span class="sc">$</span>freq, </span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">min.freq =</span> <span class="dv">3</span>,  <span class="co"># Palabras con frecuencia mínima</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">max.words =</span> <span class="dv">200</span>,  <span class="co"># Número máximo de palabras</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">scale =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">0.5</span>),  <span class="co"># Tamaño de las palabras</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"Dark2"</span>),  <span class="co"># Paleta de colores</span></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">random.order =</span> <span class="cn">FALSE</span>)  <span class="co"># Las palabras más frecuentes en el centro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear matriz de documentos término (DTM)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dtm_letras <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokens_letras)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Eliminamos stopwords </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>dtm_letras <span class="ot">&lt;-</span> <span class="fu">dfm_remove</span>(dtm_letras, stopwords_adhok)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>frecuencias <span class="ot">&lt;-</span> <span class="fu">topfeatures</span>(dtm_letras, <span class="at">n =</span> <span class="dv">100</span>)   <span class="co"># Cambia n para más términos</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(frecuencias)</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>frecuencias_totales <span class="ot">&lt;-</span> <span class="fu">textstat_frequency</span>(dtm_letras)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir frecuencias en un dataframe</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>frecuencias_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">term =</span> <span class="fu">names</span>(frecuencias), <span class="at">freq =</span> frecuencias)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la nube de palabras</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(<span class="at">words =</span> frecuencias_df<span class="sc">$</span>term, </span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">freq =</span> frecuencias_df<span class="sc">$</span>freq, </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">min.freq =</span> <span class="dv">3</span>,  <span class="co"># Palabras con frecuencia mínima</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">max.words =</span> <span class="dv">200</span>,  <span class="co"># Número máximo de palabras</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">scale =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="fl">0.5</span>),  <span class="co"># Tamaño de las palabras</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">colors =</span> <span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"Dark2"</span>),  <span class="co"># Paleta de colores</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">random.order =</span> <span class="cn">FALSE</span>)  <span class="co"># Las palabras más frecuentes en el centro</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -885,108 +902,262 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="análisis-de-bi-gramas" class="level2">
 <h2 class="anchored" data-anchor-id="análisis-de-bi-gramas">Análisis de bi-gramas</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar stopwords antes de la tokenización</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tokens_limpios <span class="ot">&lt;-</span> <span class="fu">tokens_remove</span>(tokens_letras, stopwords_adhok)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar bigramas (combinación de 2 palabras) sin stopwords</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>tokens_bigrams <span class="ot">&lt;-</span> <span class="fu">tokens_ngrams</span>(tokens_limpios, <span class="at">n =</span> <span class="dv">2</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la matriz de documentos-término (DTM) para los bigramas</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>dtm_bigrams <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokens_bigrams)</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la frecuencia de los bigramas</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>frecuencia_bigrams <span class="ot">&lt;-</span> <span class="fu">textstat_frequency</span>(dtm_bigrams)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar bigramas con docfreq == 1 (que salen en una sola canción)</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>frecuencia_bigrams_filtrada <span class="ot">&lt;-</span> frecuencia_bigrams[frecuencia_bigrams<span class="sc">$</span>docfreq <span class="sc">&gt;</span> <span class="dv">4</span>, ]</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver los bigramas filtrados</span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(frecuencia_bigrams_filtrada, <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear tokens del corpus</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>tokens_letras <span class="ot">&lt;-</span> <span class="fu">tokens</span>(corpus_letras, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_punct =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar puntuación</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_symbols =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar símbolos especiales</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_numbers =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar números</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">remove_url =</span> <span class="cn">TRUE</span>,  <span class="co"># Eliminar URLs</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">what =</span> <span class="st">"word"</span>)  <span class="co"># Solo tomar palabras</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalizar los tokens</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>tokens_normalizados <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tokens_letras, nrmlztxt)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir los tokens normalizados en objetos de tipo tokens</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>tokens_normalizados <span class="ot">&lt;-</span> <span class="fu">tokens</span>(tokens_normalizados)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar stopwords después de la normalización</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>tokens_limpios <span class="ot">&lt;-</span> <span class="fu">tokens_remove</span>(tokens_normalizados, stopwords_adhok)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar bigramas (combinación de 2 palabras) sin stopwords</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>tokens_bigrams <span class="ot">&lt;-</span> <span class="fu">tokens_ngrams</span>(tokens_limpios, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear la matriz de documentos-término (DTM) para los bigramas</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>dtm_bigrams <span class="ot">&lt;-</span> <span class="fu">dfm</span>(tokens_bigrams)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la frecuencia de los bigramas</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>frecuencia_bigrams <span class="ot">&lt;-</span> <span class="fu">textstat_frequency</span>(dtm_bigrams)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar bigramas con docfreq == 1 (que salen en una sola canción)</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>frecuencia_bigrams_filtrada <span class="ot">&lt;-</span> frecuencia_bigrams[frecuencia_bigrams<span class="sc">$</span>docfreq <span class="sc">&gt;</span> <span class="dv">4</span>, ]</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver los bigramas filtrados</span></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(frecuencia_bigrams_filtrada)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          feature frequency rank docfreq group
 2      alguna_vez        35    2      10   all
 3      si_quieres        30    3      12   all
 4         tal_vez        29    4      16   all
-14       cada_vez        18   14       8   all
-15        dime_si        18   14       6   all
-18      puede_ser        17   16       9   all
-22    solo_quiero        16   19       6   all
-29        tan_mal        15   29       9   all
-30          sé_si        15   29       8   all
-33     quiero_ser        14   33       9   all
-39     quiero_ver        13   39       7   all
-53   ahora_quiero        12   50       7   all
-71        bien_si        11   70       7   all
-97  voy_corriendo         9   97       7   all
-132       hoy_día         8  124       6   all
-133      tan_bien         8  124       6   all
-311    última_vez         6  230       5   all
-377   hace_tiempo         5  377       5   all
-378     puedo_ver         5  377       5   all</code></pre>
+5         mas_mas        26    5       8   all
+16    solo_quiero        18   16       8   all
+17       cada_vez        18   16       8   all
+18        dime_si        18   16       6   all
+22     sera_mejor        17   19       5   all
+23      puede_ser        17   19       9   all
+35        tan_mal        15   35       9   all
+43     quiero_ver        13   43       7   all
+44     quiero_ser        13   43       8   all
+57   ahora_quiero        12   54       7   all
+76        bien_si        11   73       7   all
+89        vez_mas        10   81       8   all
+103 voy_corriendo         9  103       7   all
+139      tan_bien         8  131       6   all
+219       hoy_dia         7  193       5   all
+277    mas_quiero         6  243       6   all
+328    ultima_vez         6  243       5   all
+396   hace_tiempo         5  396       5   all
+397     puedo_ver         5  396       5   all</code></pre>
 </div>
 </div>
 </section>
 <section id="buscar-bigramas-en-canciones" class="level2">
 <h2 class="anchored" data-anchor-id="buscar-bigramas-en-canciones">Buscar bigramas en canciones</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>buscar_bigramas <span class="ot">&lt;-</span> <span class="cf">function</span>(dtm, bigramas, canciones, artistas) {</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar que las entradas sean correctas</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(bigramas) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Por favor, ingresa al menos un bigrama."</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear una lista para almacenar las canciones donde aparecen los bigramas</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  resultados <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterar sobre los bigramas</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (bigrama <span class="cf">in</span> bigramas) {</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (bigrama <span class="sc">%in%</span> <span class="fu">colnames</span>(dtm)) {</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Extraer la columna como vector lógico</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>      vector_bigrama <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(dtm[, bigrama])</span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Encontrar las filas donde aparece el bigrama</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>      indices <span class="ot">&lt;-</span> <span class="fu">which</span>(vector_bigrama <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Guardamos las canciones y artistas correspondientes</span></span>
-<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>      resultados[[bigrama]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">cancion =</span> canciones[indices],</span>
-<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">artista =</span> artistas[indices]</span>
-<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Si el bigrama no está en la DTM, agregar un mensaje</span></span>
-<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>      resultados[[bigrama]] <span class="ot">&lt;-</span> <span class="st">"El bigrama no está presente en el corpus."</span></span>
-<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultados)</span>
-<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso</span></span>
-<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Bigramas que deseas buscar</span></span>
-<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>bigramas_buscar <span class="ot">&lt;-</span> frecuencia_bigrams_filtrada<span class="sc">$</span>feature</span>
-<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscar los bigramas</span></span>
-<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>canciones_con_bigramas <span class="ot">&lt;-</span> <span class="fu">buscar_bigramas</span>(dtm_bigrams, bigramas_buscar, sin_instrumentales<span class="sc">$</span>name, sin_instrumentales<span class="sc">$</span>artist_name)</span>
-<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver resultados</span></span>
-<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a><span class="co"># print(canciones_con_bigramas)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>buscar_bigramas <span class="ot">&lt;-</span> <span class="cf">function</span>(dtm, bigramas, track_ids, canciones, artistas) {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar que las entradas sean correctas</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(bigramas) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Por favor, ingresa al menos un bigrama."</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear una lista para almacenar las canciones donde aparecen los bigramas</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  resultados <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iterar sobre los bigramas</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (bigrama <span class="cf">in</span> bigramas) {</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (bigrama <span class="sc">%in%</span> <span class="fu">colnames</span>(dtm)) {</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Extraer la columna como vector lógico</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>      vector_bigrama <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(dtm[, bigrama])</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Encontrar las filas donde aparece el bigrama</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>      indices <span class="ot">&lt;-</span> <span class="fu">which</span>(vector_bigrama <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Guardamos las canciones y artistas correspondientes</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>      resultados[[bigrama]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">track_id =</span> track_ids[indices],</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">cancion =</span> canciones[indices],</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">artista =</span> artistas[indices]</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Si el bigrama no está en la DTM, agregar un mensaje</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>      resultados[[bigrama]] <span class="ot">&lt;-</span> <span class="st">"El bigrama no está presente en el corpus."</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultados)</span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso</span></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Bigramas que deseas buscar</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>bigramas_buscar <span class="ot">&lt;-</span> frecuencia_bigrams_filtrada<span class="sc">$</span>feature</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscar los bigramas</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>canciones_con_bigramas <span class="ot">&lt;-</span> <span class="fu">buscar_bigramas</span>(dtm_bigrams, bigramas_buscar, sin_instrumentales<span class="sc">$</span>track_id, sin_instrumentales<span class="sc">$</span>name, sin_instrumentales<span class="sc">$</span>artist_name)</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver resultados</span></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="co"># print(canciones_con_bigramas)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Por ejemplo,</p>
 <pre><code>&gt; canciones_con_bigramas[["voy_corriendo"]]
 
-            cancion                           artista
-            
-1      La Velocidad                          Adelaida
-2            BRONCE                    Déjenme Dormir
-3         EN TU VOZ                    Déjenme Dormir
-4 Baltazar Josefina                     Floresalegría
-5          Tormenta  Los Animales También Se Suicidan
-6      Las Palmeras                   Niños Del Cerro
-7       Gallo verde                     Rock n' chile</code></pre>
+  track_id            cancion                           artista
+  
+1 13533874       La Velocidad                          Adelaida
+2 14169858             BRONCE                    Déjenme Dormir
+3 14869187          EN TU VOZ                    Déjenme Dormir
+4 13672981  Baltazar Josefina                     Floresalegría
+5 11599161           Tormenta  Los Animales También Se Suicidan
+6  3161193       Las Palmeras                   Niños Del Cerro
+7 12503286        Gallo verde                     Rock n' chile</code></pre>
 <p>Ahora podemos ir a buscar en las canciones las letras que llevan estos bigramas que nos interesan, para el análisis literario, por ejemplo.</p>
 </section>
 <section id="análisis-de-sentimientos" class="level2">
 <h2 class="anchored" data-anchor-id="análisis-de-sentimientos">Análisis de sentimientos</h2>
+<p>Para realizar análisis de sentimientos, lo más efectivo de momento parece ser exportar algunos datos de un data frame <code>sin_instrumentales</code>, como su <code>track_id</code> y sus <code>plain_lyrics</code> . Esto se lleva a un link de Google Colab escrito para realizar análisis de sentimientos y poder importar posteriormente esos datos en un data frame de vuelta a este documento. Partimos por eliminar datos sin letras o que su letra es “(instrumental)”, “instrumental” o similares. Luego exportaremos el data frame hacia el jupiternotebook en colab.</p>
+<p><a href="https://colab.research.google.com/drive/1IMMNaCr-_hodOii7Fj98ZUZeMIJDULTI">Jupiternotebook en Google Colab para realizar el análisis de sentimientos</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportamos sin instrumentales, eliminando antes posibles "datos NA colados" en el data_frame.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>revisar_eliminar_instrumentales <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">umbral_instrumental =</span> <span class="dv">20</span>) {</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificamos si las columnas requeridas existen</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>(<span class="st">"plain_lyrics"</span> <span class="sc">%in%</span> <span class="fu">names</span>(df)) <span class="sc">||</span> <span class="sc">!</span>(<span class="st">"track_id"</span> <span class="sc">%in%</span> <span class="fu">names</span>(df))) {</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"El dataframe debe contener las columnas 'plain_lyrics' y 'track_id'."</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Iteramos en orden inverso para evitar problemas al eliminar filas</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="fu">nrow</span>(df), <span class="dv">1</span>)) {</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Obtenemos el largo del texto en plain_lyrics</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    lyric_length <span class="ot">&lt;-</span> <span class="fu">nchar</span>(df<span class="sc">$</span>plain_lyrics[i])</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (lyric_length <span class="sc">&lt;</span> umbral_instrumental) {</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Imprimimos los valores</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">message</span>(<span class="st">"Eliminando fila con track_id: "</span>, df<span class="sc">$</span>track_id[i], </span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>              <span class="st">", plain_lyrics: '"</span>, df<span class="sc">$</span>plain_lyrics[i], <span class="st">"' (longitud: "</span>, lyric_length, <span class="st">")"</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Eliminamos la fila del dataframe</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>      df <span class="ot">&lt;-</span> df[<span class="sc">-</span>i, ]</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Devolvemos el dataframe actualizado</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Aplicar la función</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>sin_instrumentales <span class="ot">&lt;-</span> <span class="fu">revisar_eliminar_instrumentales</span>(sin_instrumentales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Eliminando fila con track_id: 13809339, plain_lyrics: '(Instrumental)' (longitud: 14)</code></pre>
+</div>
+</div>
+<section id="exportar-para-enviar-a-google-colab" class="level4">
+<h4 class="anchored" data-anchor-id="exportar-para-enviar-a-google-colab">Exportar para enviar a Google Colab</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primero vamos a filtrar las columnas que nos interesan</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>df_a_exportar <span class="ot">&lt;-</span> sin_instrumentales[,<span class="fu">c</span>(<span class="st">"track_id"</span>, <span class="st">"plain_lyrics"</span>)]</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">exportar_excel</span>(df_a_exportar, <span class="st">"importar_en_colab.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>El archivo Excel se ha guardado correctamente en: importar_en_colab.xlsx</code></pre>
+</div>
+</div>
+</section>
+<section id="volver-a-importar-el-data-frame-obtenido-del-jupiter-notebook" class="level4">
+<h4 class="anchored" data-anchor-id="volver-a-importar-el-data-frame-obtenido-del-jupiter-notebook">Volver a importar el data frame obtenido del jupiter notebook</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_emociones <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"df_emociones.xlsx"</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver las primeras filas</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_emociones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+  track_id plain_lyrics       plain_lyrics_en estrofas anger disgust  fear   joy
+     &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;           &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 13527560 "Hace tanto tiemp… "I've been loo… "[{'est…  2.11    2.16  1.06 3.02 
+2 13533967 "Y caigo más al f… "And I fall de… "[{'est…  2.66    4.65 33.1  1.31 
+3 13750819 "¿Cuántas estrell… "How many star… "[{'est… 10.8     1.46 30.5  3.59 
+4 13868333 "No, preguntar su… "No, ask her n… "[{'est… 24.3    11.9  14.1  1.32 
+5 13534510 "en el rió se va\… "In the river … "[{'est…  1.62    3.06 11.7  3.00 
+6 13534288 "Sobrenadando\nel… "Overwhelming … "[{'est…  1.70    2.74 13.2  0.258
+# ℹ 3 more variables: neutral &lt;dbl&gt;, sadness &lt;dbl&gt;, surprise &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas de la 3 a la 11 de df_emociones</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df_emociones_subset <span class="ot">&lt;-</span> df_emociones[, <span class="dv">3</span><span class="sc">:</span><span class="dv">11</span>]</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usar cbind para combinar sin_instrumentales con el subset de df_emociones</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df_combinado <span class="ot">&lt;-</span> <span class="fu">cbind</span>(sin_instrumentales, df_emociones_subset)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver el DataFrame combinado</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_combinado)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  track_id        name  name_lower artist_name artist_name_lower    album_name
+1 13527560        1999        1999    Adelaida          adelaida       Paraiso
+2 13533967  Adormidera  adormidera    Adelaida          adelaida Madre Culebra
+3 13750819 Caída Libre caida libre    Adelaida          adelaida   Caída Libre
+4 13868333    Columpio    columpio    Adelaida          adelaida       Paraiso
+5 13534510   El Bosque   el bosque    Adelaida          adelaida Madre Culebra
+6 13534288   Holograma   holograma    Adelaida          adelaida Madre Culebra
+  album_name_lower duration                          updated_at lyrics_id
+1          paraiso      219 2024-10-19 16:25:45.367022628+00:00   8197130
+2    madre culebra      196 2024-10-19 20:01:14.720224286+00:00   8203542
+3      caida libre      246 2024-10-26 10:09:41.428271417+00:00   8420642
+4          paraiso      243 2024-10-29 00:09:48.560411763+00:00   8538283
+5    madre culebra      296 2024-10-19 20:27:09.898391580+00:00   8204085
+6    madre culebra      240 2024-10-19 20:17:25.133088057+00:00   8203863
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       plain_lyrics
+1 Hace tanto tiempo que\nbusco brillan en vano\nSin embargo sigo aqui\nsangran las heridas\nMe va hacer bien olvidarte\nvoy restando\n\n¿A donde fueron todos?\n\nTe digo con el tiempo\n\nNo podria ser mejor\nbusco mas el tiempo así\nNo tendremos otra opcion\nsolo más preguntas\n\nTe va hacer bien olvidarme\nmientras tanto\n\n¿A donde fueron todos?\nPerdidos con el tiempo\nLos días son tan largos\n\n(uoh uoh uoh uoh)\n\nNo pasarás\nla noche en vela
+2                                                                                                                          Y caigo más al fondo en el vacío natural\nahí sabré lo verdadero, lo real\n\nEs una y otra vez, lo siento a flor de piel\nen una pesadilla encontrara la claridad\n\nah ah ah ah ah ah ah ah\ny no será casualidad\nah ah ah ah ah ah ah ah\n\nNo, no debería estar subiendo si no puedo ver\nensordecida estás, es tanto y ya no puedes
+3                                                  ¿Cuántas estrellas se irán por la mañana?\nAhora sé que es más de piel\nDe piel\nDe piel\n\nNo me atreví a decir que no\nContengo la respiración\nNo siento ya ningún dolor\nDecir que no, decir que no\n\nHace tiempo que esperé a alguien como tú\n¿A dónde fue? Si estaba bien\nSin él\nSin él\n\nNo me atreví a decir que no\nContengo la respiración\nNo siento ya ningún dolor\nDecir que no, decir que no
+4                                                        No, preguntar su nombre y diles la razón\nPuedes olvidarte de quedar así\nEn algún lugar que no sentimos más\nSíntomas, síntomas\n\n¡Ya miré más allá!\n¡Ya no soy, ya no soy!\n\nDescuidamos nuestra única razón de ser\nEn algún lugar se volvió a repetir\nSin hablar, sin hablar\nDe tu pobre corazón\n\n¡Ya miré más allá!\n¡Ya no soy, ya no soy!\n\n¡Sin mirar hacia atrás!\n¡Ya no soy, ya no soy!
+5                                                                                               en el rió se va\ndesemboca la cordura\ndame alguna razón y dime\n"es nuestro tiempo"\nSoy yo, tu amigo del bosque\nvolvió la magia y la noche\n\nUoh oh, Uoh oh\n\nLas heridas están\ny no sangran mas que el musgo\nbuscaras la señal\ncomenzando bien el viaje\n\nEstoy perdido en el monte\nBusco la magia en el bosque.\n\nUoh oh, Uoh\n\n(Solo)\n\nUoh oh, Uoh
+6                                                                                                                             Sobrenadando\nel sonido se fundió en profundidad\nno podia ver el horizonte con esta pared\nde su sombra, no te olvidaras\n\nYa no estaba, Ya no estaba\nDonde estabas, donde estabas, donde estaba yo?\n\nLo siento tanto\nEl sabor ya lo olvidé\nMas de alguna vez, corrí, caí, perdí fragilidad\nen la oscuridad, puedo verte más.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                synced_lyrics
+1 [00:24.13] Hace tanto tiempo que\n[00:28.50] busco brillan en vano\n[00:32.42] Sin embargo sigo aqui\n[00:37.13] sangran las heridas\n[00:41.08] Me va hacer bien olvidarte\n[00:49.27] voy restando\n[01:02.25] ¿A donde fueron todos?\n[01:10.39] Te digo con el tiempo\n[01:31.43] No podria ser mejor\n[01:35.47] busco mas el tiempo así\n[01:39.36] No tendremos otra opcion\n[01:43.55] solo más preguntas\n[01:47.93] Te va hacer bien olvidarme\n[01:56.05] mientras tanto\n[02:08.64] ¿A donde fueron todos?\n[02:17.20] Perdidos con el tiempo\n[02:25.86] Los días son tan largos\n[02:33.68] (uoh uoh uoh uoh)\n[02:42.21] No pasarás\n[02:48.48] la noche en vela\n[02:54.65]
+2                                                                                                                                                                                                                                                       [00:27.30] Y caigo más al fondo en el vacío natural\n[00:35.44] ahí sabré lo verdadero, lo real\n[01:13.51] Es una y otra vez, lo siento a flor de piel\n[01:22.11] en una pesadilla encontrara la claridad\n[01:28.78] ah ah ah ah ah ah ah ah\n[01:35.20] y no será casualidad\n[01:39.15] ah ah ah ah ah ah ah ah\n[02:17.55] No, no debería estar subiendo si no puedo ver\n[02:26.05] ensordecida estás, es tanto y ya no puedes
+3                                                                         [00:32.16] ¿Cuántas estrellas se irán por la mañana?\n[00:39.81] Ahora sé que es más de piel\n[00:51.79] De piel\n[00:59.64] De piel\n[01:13.62] No me atreví a decir que no\n[01:19.57] Contengo la respiración\n[01:27.62] No siento ya ningún dolor\n[01:35.74] Decir que no, decir que no\n[01:40.83] \n[01:56.65] Hace tiempo que esperé a alguien como tú\n[02:03.44] ¿A dónde fue? Si estaba bien\n[02:15.79] Sin él\n[02:23.70] Sin él\n[02:37.80] No me atreví a decir que no\n[02:43.67] Contengo la respiración\n[02:51.77] No siento ya ningún dolor\n[02:59.54] Decir que no, decir que no\n[03:04.84]
+4                                                                                                       [00:28.84] No, preguntar su nombre y diles la razón\n[00:36.11] Puedes olvidarte de quedar así\n[00:41.83] En algún lugar que no sentimos más\n[00:48.06] Síntomas, síntomas\n[00:53.95] ¡Ya miré más allá!\n[00:59.55] ¡Ya no soy, ya no soy!\n[01:04.73] \n[01:14.80] Descuidamos nuestra única razón de ser\n[01:21.46] En algún lugar se volvió a repetir\n[01:27.60] Sin hablar, sin hablar\n[01:32.79] De tu pobre corazón\n[01:39.46] ¡Ya miré más allá!\n[01:44.78] ¡Ya no soy, ya no soy!\n[01:50.57] ¡Sin mirar hacia atrás!\n[01:56.02] ¡Ya no soy, ya no soy!\n[01:58.92]
+5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+6                                                                                                                                                                                                                                 [00:23.09] Sobrenadando\n[00:31.68] el sonido se fundió en profundidad\n[00:39.57] no podia ver el horizonte con esta pared\n[00:47.65] de su sombra, no te olvidaras\n[00:58.80] Ya no estaba, Ya no estaba\n[01:07.23] Donde estabas, donde estabas, donde estaba yo?\n[01:16.24] Lo siento tanto\n[01:24.36] El sabor ya lo olvidé\n[01:32.99] Mas de alguna vez, corrí, caí, perdí fragilidad\n[01:41.18] en la oscuridad, puedo verte más.\n[01:48.00]
+  has_plain_lyrics has_synced_lyrics
+1                1                 1
+2                1                 1
+3                1                 1
+4                1                 1
+5                1                 0
+6                1                 1
+                                                                                                                                                                                                                                                                                                                                                                                                                                             plain_lyrics_en
+1 I've been looking for so long they shine in vain But I'm still here bleeding wounds It's gonna be good to forget you I'm subtracting\n\nWhere did they all go?\n\nI tell you in time\n\nCouldn't be better looking for more time so we won't have another choice just more questions\n\nIt'll do you good to forget me in the meantime.\n\nWhere did they all go? Lost over time The days are so long\n\n(uoh uoh uoh uoh)\n\nYou won't stay up all night.
+2                                                                                                     And I fall deeper into the natural void there I will know the real, the real\n\nIt's over and over again, I feel like I'm fuzzy in a nightmare. I'll find the clarity.\n\nAh ah ah ah ah ah ah ah and it will not be chance ah ah ah ah ah ah ah ah ah\n\nNo, I shouldn't be going up if I can't see you deafened, it's so much and you can't anymore.
+3                                                                                                                                How many stars will leave in the morning? Now I know it’s more skin skin\n\nI didn't dare say I don't hold my breath. I don't feel any pain anymore. Say no, say no.\n\nI've been waiting for someone like you for a long time.\n\nI didn't dare say I don't hold my breath. I don't feel any pain anymore. Say no, say no.
+4                           No, ask her name and tell them the reason You can forget to stay like this Somewhere we don't feel any more Symptoms, symptoms\n\nI've looked beyond it, I'm no longer, I'm no longer!\n\nLet's neglect our only raison d'être Somewhere it was repeated without talking, without talking about your poor heart\n\nI've looked beyond it, I'm no longer, I'm no longer!\n\nWithout looking back! I am no longer, I am no longer!
+5                                             In the river goes the sanity flows give me some reason and tell me "it's our time" It's me, your friend from the forest returned the magic and the night\n\nWhoa, whoa, whoa, whoa.\n\nThe wounds are and they bleed no more than the moss you will seek the signal starting well the journey\n\nI'm lost in the bush. I'm looking for magic in the woods.\n\nWhoa, whoa, whoa.\n\n(Only)\n\nWhoa, whoa, whoa.
+6                                                                                                                                     Overwhelming the sound melted in depth I could not see the horizon with this wall of its shadow, you will not forget\n\nI was gone, I wasn't where you were, where you were, where I was?\n\nI'm so sorry The taste I've forgotten More once upon a time, I ran, fell, lost fragility in the dark, I can see you more.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                estrofas
+1 [{'estrofa': "I've been looking for so long they shine in vain But I'm still here bleeding wounds It's gonna be good to forget you I'm subtracting", 'emociones': {'anger': 0.005914990324527025, 'disgust': 0.015468649566173553, 'fear': 0.005224702414125204, 'joy': 0.009718283079564571, 'neutral': 0.15071602165699005, 'sadness': 0.7946373224258423, 'surprise': 0.018320057541131973}}, {'estrofa': 'Where did they all go?', 'emociones': {'anger': 0.023376211524009705, 'disgust': 0.013436890207231045, 'fear': 0.008889421820640564, 'joy': 0.0023913851473480463, 'neutral': 0.5033754110336304, 'sadness': 0.02301066927611828, 'surprise': 0.4255200922489166}}, {'estrofa': 'I tell you in time', 'emociones': {'anger': 0.006901204586029053, 'disgust': 0.0023408974520862103, 'fear': 0.0028648606967180967, 'joy': 0.0059613012708723545, 'neutral': 0.9192948937416077, 'sadness': 0.004694467876106501, 'surprise': 0.05794244259595871}}, {'estrofa': "Couldn't be better looking for more time so we won't have another choice just more questions", 'emociones': {'anger': 0.004220649134367704, 'disgust': 0.004802197217941284, 'fear': 0.0027286161202937365, 'joy': 0.0026873250026255846, 'neutral': 0.9458257555961609, 'sadness': 0.025309138000011444, 'surprise': 0.0144263356924057}}, {'estrofa': "It'll do you good to forget me in the meantime.", 'emociones': {'anger': 0.009038916788995266, 'disgust': 0.01809818111360073, 'fear': 0.003347651334479451, 'joy': 0.11206655204296112, 'neutral': 0.7830196619033813, 'sadness': 0.0646413043141365, 'surprise': 0.0097877262160182}}, {'estrofa': 'Where did they all go? Lost over time The days are so long', 'emociones': {'anger': 0.00798489898443222, 'disgust': 0.017450395971536636, 'fear': 0.014358860440552235, 'joy': 0.0026731458492577076, 'neutral': 0.6216217875480652, 'sadness': 0.24576163291931152, 'surprise': 0.09014929831027985}}, {'estrofa': '(uoh uoh uoh uoh)', 'emociones': {'anger': 0.016762787476181984, 'disgust': 0.04971310496330261, 'fear': 0.015871068462729454, 'joy': 0.10123670846223831, 'neutral': 0.40963712334632874, 'sadness': 0.09317683428525925, 'surprise': 0.3136022984981537}}, {'estrofa': "You won't stay up all night.", 'emociones': {'anger': 0.09434022754430771, 'disgust': 0.05114074423909187, 'fear': 0.031314555555582047, 'joy': 0.004843535367399454, 'neutral': 0.7189053893089294, 'sadness': 0.08842387050390244, 'surprise': 0.011031685397028923}}]
+2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [{'estrofa': 'And I fall deeper into the natural void there I will know the real, the real', 'emociones': {'anger': 0.011584044434130192, 'disgust': 0.019468514248728752, 'fear': 0.11523212492465973, 'joy': 0.005500602535903454, 'neutral': 0.6872371435165405, 'sadness': 0.033453162759542465, 'surprise': 0.12752433121204376}}, {'estrofa': "It's over and over again, I feel like I'm fuzzy in a nightmare. I'll find the clarity.", 'emociones': {'anger': 0.0034494376741349697, 'disgust': 0.015354232862591743, 'fear': 0.883663535118103, 'joy': 0.0014626106712967157, 'neutral': 0.0527210533618927, 'sadness': 0.02145879901945591, 'surprise': 0.02189033292233944}}, {'estrofa': 'Ah ah ah ah ah ah ah ah and it will not be chance ah ah ah ah ah ah ah ah ah', 'emociones': {'anger': 0.03924330323934555, 'disgust': 0.015569965355098248, 'fear': 0.10170365869998932, 'joy': 0.04027583822607994, 'neutral': 0.5434571504592896, 'sadness': 0.1796324998140335, 'surprise': 0.08011763542890549}}, {'estrofa': "No, I shouldn't be going up if I can't see you deafened, it's so much and you can't anymore.", 'emociones': {'anger': 0.05215630307793617, 'disgust': 0.13579152524471283, 'fear': 0.22492092847824097, 'joy': 0.005189938470721245, 'neutral': 0.32019782066345215, 'sadness': 0.17606371641159058, 'surprise': 0.08567977696657181}}]
+3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              [{'estrofa': 'How many stars will leave in the morning? Now I know it’s more skin skin', 'emociones': {'anger': 0.012245796620845795, 'disgust': 0.02119058184325695, 'fear': 0.004744344856590033, 'joy': 0.003742470405995846, 'neutral': 0.6798797249794006, 'sadness': 0.01564980484545231, 'surprise': 0.2625473141670227}}, {'estrofa': "I didn't dare say I don't hold my breath. I don't feel any pain anymore. Say no, say no.", 'emociones': {'anger': 0.20810982584953308, 'disgust': 0.017305530607700348, 'fear': 0.6038517355918884, 'joy': 0.0036610611714422703, 'neutral': 0.022827811539173126, 'sadness': 0.1424597203731537, 'surprise': 0.0017842944944277406}}, {'estrofa': "I've been waiting for someone like you for a long time.", 'emociones': {'anger': 0.004840309731662273, 'disgust': 0.002408882137387991, 'fear': 0.007677158806473017, 'joy': 0.13256680965423584, 'neutral': 0.7380464673042297, 'sadness': 0.0158134363591671, 'surprise': 0.09864691644906998}}, {'estrofa': "I didn't dare say I don't hold my breath. I don't feel any pain anymore. Say no, say no.", 'emociones': {'anger': 0.20810982584953308, 'disgust': 0.017305530607700348, 'fear': 0.6038517355918884, 'joy': 0.0036610611714422703, 'neutral': 0.022827811539173126, 'sadness': 0.1424597203731537, 'surprise': 0.0017842944944277406}}]
+4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 [{'estrofa': "No, ask her name and tell them the reason You can forget to stay like this Somewhere we don't feel any more Symptoms, symptoms", 'emociones': {'anger': 0.017589379101991653, 'disgust': 0.06613032519817352, 'fear': 0.09073365479707718, 'joy': 0.004232274368405342, 'neutral': 0.5619925856590271, 'sadness': 0.2264188528060913, 'surprise': 0.03290293365716934}}, {'estrofa': "I've looked beyond it, I'm no longer, I'm no longer!", 'emociones': {'anger': 0.2845779061317444, 'disgust': 0.11012367904186249, 'fear': 0.22235000133514404, 'joy': 0.024123452603816986, 'neutral': 0.10245399177074432, 'sadness': 0.03900089114904404, 'surprise': 0.21737007796764374}}, {'estrofa': "Let's neglect our only raison d'être Somewhere it was repeated without talking, without talking about your poor heart", 'emociones': {'anger': 0.08747381716966629, 'disgust': 0.2469882071018219, 'fear': 0.00728965550661087, 'joy': 0.002552637131884694, 'neutral': 0.2109752595424652, 'sadness': 0.4386247396469116, 'surprise': 0.006095648277550936}}, {'estrofa': "I've looked beyond it, I'm no longer, I'm no longer!", 'emociones': {'anger': 0.2845779061317444, 'disgust': 0.11012367904186249, 'fear': 0.22235000133514404, 'joy': 0.024123452603816986, 'neutral': 0.10245399177074432, 'sadness': 0.03900089114904404, 'surprise': 0.21737007796764374}}, {'estrofa': 'Without looking back! I am no longer, I am no longer!', 'emociones': {'anger': 0.5393847823143005, 'disgust': 0.06412363797426224, 'fear': 0.1632666140794754, 'joy': 0.010801216587424278, 'neutral': 0.05692045018076897, 'sadness': 0.10762766748666763, 'surprise': 0.05787568539381027}}]
+5                                                                                                                                                                                                                                                                                          [{'estrofa': 'In the river goes the sanity flows give me some reason and tell me "it\\'s our time" It\\'s me, your friend from the forest returned the magic and the night', 'emociones': {'anger': 0.023834343999624252, 'disgust': 0.003969954326748848, 'fear': 0.011231444776058197, 'joy': 0.18115338683128357, 'neutral': 0.729739785194397, 'sadness': 0.02222440391778946, 'surprise': 0.02784670889377594}}, {'estrofa': 'Whoa, whoa, whoa, whoa.', 'emociones': {'anger': 0.013084715232253075, 'disgust': 0.01594504714012146, 'fear': 0.0058495341800153255, 'joy': 0.006263724062591791, 'neutral': 0.006666271481662989, 'sadness': 0.0064597362652421, 'surprise': 0.9457309246063232}}, {'estrofa': 'The wounds are and they bleed no more than the moss you will seek the signal starting well the journey', 'emociones': {'anger': 0.034338414669036865, 'disgust': 0.13813112676143646, 'fear': 0.023194490000605583, 'joy': 0.0038726450875401497, 'neutral': 0.5178723931312561, 'sadness': 0.2633854150772095, 'surprise': 0.019205495715141296}}, {'estrofa': "I'm lost in the bush. I'm looking for magic in the woods.", 'emociones': {'anger': 0.0072194961830973625, 'disgust': 0.008723597973585129, 'fear': 0.7624333500862122, 'joy': 0.0026928808074444532, 'neutral': 0.07718818634748459, 'sadness': 0.08195164799690247, 'surprise': 0.05979085713624954}}, {'estrofa': 'Whoa, whoa, whoa.', 'emociones': {'anger': 0.013965010643005371, 'disgust': 0.018648570403456688, 'fear': 0.0058060577139258385, 'joy': 0.006253587547689676, 'neutral': 0.006812129635363817, 'sadness': 0.006124870851635933, 'surprise': 0.9423897862434387}}, {'estrofa': '(Only)', 'emociones': {'anger': 0.006833312567323446, 'disgust': 0.010078707709908485, 'fear': 0.0034221967216581106, 'joy': 0.003538526361808181, 'neutral': 0.910372257232666, 'sadness': 0.03291940689086914, 'surprise': 0.032835643738508224}}, {'estrofa': 'Whoa, whoa, whoa.', 'emociones': {'anger': 0.013965010643005371, 'disgust': 0.018648570403456688, 'fear': 0.0058060577139258385, 'joy': 0.006253587547689676, 'neutral': 0.006812129635363817, 'sadness': 0.006124870851635933, 'surprise': 0.9423897862434387}}]
+6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          [{'estrofa': 'Overwhelming the sound melted in depth I could not see the horizon with this wall of its shadow, you will not forget', 'emociones': {'anger': 0.018175195902585983, 'disgust': 0.017480308189988136, 'fear': 0.13798105716705322, 'joy': 0.0020322955679148436, 'neutral': 0.020532405003905296, 'sadness': 0.007194848731160164, 'surprise': 0.7966038584709167}}, {'estrofa': "I was gone, I wasn't where you were, where you were, where I was?", 'emociones': {'anger': 0.02897810749709606, 'disgust': 0.03073413297533989, 'fear': 0.07962903380393982, 'joy': 0.0028747490141540766, 'neutral': 0.06862321496009827, 'sadness': 0.023588206619024277, 'surprise': 0.7655725479125977}}, {'estrofa': "I'm so sorry The taste I've forgotten More once upon a time, I ran, fell, lost fragility in the dark, I can see you more.", 'emociones': {'anger': 0.003839536104351282, 'disgust': 0.0339076854288578, 'fear': 0.17952995002269745, 'joy': 0.002833873499184847, 'neutral': 0.06794943660497665, 'sadness': 0.6842495799064636, 'surprise': 0.02769000083208084}}]
+      anger   disgust      fear       joy   neutral   sadness  surprise
+1  2.106749  2.155638  1.057497 3.0197279 63.154949 16.745690 11.759749
+2  2.660827  4.654606 33.138006 1.3107248 40.090329 10.265204  7.880302
+3 10.832644  1.455263 30.503125 3.5907851 36.589546  7.909567  9.119071
+4 24.272076 11.949791 14.119798 1.3166607 20.695925 17.013461 10.632288
+5  1.617719  3.059222 11.682045 3.0004048 32.220902  5.988434 42.431274
+6  1.699761  2.737404 13.238001 0.2580306  5.236835 23.834421 52.995546</code></pre>
+</div>
+</div>
+<p>Ahora tenemos un dataframe con 349 canciones y 23 variables, incluyendo un json con las emociones asociadas a las estrofas de las canciones, así como un promedio de las emociones para las canciones completas.</p>
+</section>
 </section>
 <section id="análisis-de-complejidad-textual" class="level2">
 <h2 class="anchored" data-anchor-id="análisis-de-complejidad-textual">Análisis de complejidad textual</h2>
