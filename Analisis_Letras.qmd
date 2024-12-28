@@ -22,9 +22,7 @@ En resumen se tiene que definir una lista de artistas para analizar múltiples b
 
 -   Análisis:
 
-    -   Análisis de frecuencia léxica
-
-    -   Análisis de sentimientos
+    -   En el análisis de sentimientos
 
     -   Análisis de complejidad textual
 
@@ -55,8 +53,7 @@ p_load(httr,
        readxl,
        quanteda,
        quanteda.textstats,
-       wordcloud,
-       syuzhet
+       wordcloud
        )
 
 rm(list = ls()) # Descomentar si necesitamos limpiar entorno
@@ -92,8 +89,8 @@ desconectar_bd <- function(conn) {
 # Abrir conexión para hacer pruebas
 conn <- conectar_bd()
 # Listar tablas
-# tables <- dbListTables(conn)
-# print(tables)
+#tables <- dbListTables(conn)
+#print(tables)
 desconectar_bd(conn)
 ```
 
@@ -292,16 +289,36 @@ Lo amplio del indie también refiere a la diversidad de estilos que se entremezc
 ```{r}
 
 bandas_indie <- c(
+  "Abelocaín",
+  "Ablusion",
   "Adelaida",
+  "Adolescentes sin Edad",
+  "Aguanieve",
+  "Akero",
+  "Alechito",
   "Amarga Marga",
+  "Animales Extintos",
+  "Antonel",
   "Anttonias",
+  "Aquí Brillamos",
   "Árbol Lunar",
+  "Arranquemos del Invierno",
   "Asia menor",
   "Asamblea Internacional del Fuego", #Poshardcore
+  "Bolpo",
+  "BorisKarloff",
+  "BuenaMemoria",
   "Cabro",
   "Candelabro",
+  "cata teuber",
+  "Cazaladrillo",
+  "Chico Bestia",
+  "Chico Eléctrico",
   "Chini and the technicians",
   "Chini png",
+  "Círculo Polar",
+  "Ciudad Vapor",
+  "Clara Löffel",
   "Columpios al Suelo",
   "Confío en tus amigos",
   "Cristóbal Gacitúa",
@@ -309,47 +326,94 @@ bandas_indie <- c(
   "Cepa Funk",
   "Daniela Gatica y el fruto del ruido",
   "De Perder sus Pétalos",
+  "Del Otro Balcón",
   "Déjenme Dormir",
-  "Dolorio & los Tunantes",
+  "Dolorio los Tunantes", # Le quité el &
+  "Dúo Dial",
   "El cómodo silencio de los que hablan poco",
+  "Emisario Greda",
+  "Es lo que Hay",
   "Etéreos",
+  "Fantasmático",
+  "Fabiancito",
+  "Felert",
   "Fin del Mundo",
   "Flores",
   "Floresalegría",
+  "Fonosida",
+  "fosfenos",
+  "Francisca y los Exploradores", # Quitar, es argentino
   "Frucola Frappé",
+  "Funktasmas",
   "Gangrena Surf",
+  "Girocompás",
+  "Gomitas Ácidas",
+  "Guillermo Paf",
   "Helices",
   "Hemisferio Sur",
   "Hesse Kassel",
   "iiii", # Sí, es el nombre de la banda
+  "Imágenes Sepia",
+  "Inundaremos",
+  "Josefina Espejo",
+  "Kirtongo",
+  "Laurela",
   "Las Olas NoisPop",
   "Lejania",
   "Los animales también se suicidan",
+  "Los fugitivos gnomos",
+  "Los Martinez",
   "Los repuestos superpuestos",
   "Los Santos Dumont",
+  "Los Turis",
   "Los Valentina",
-  "Mark 62", # Pop punk
+  "Luces Cálidas",
+  "Mantarraya",
   "María Tyrana",
+  "Medio Hermano",
   "MonoAzul",
+  "Niña Tormenta",
+  "Niño Cohete",
   "Niños del Cerro",
+  "No Invierno",
   "Novio",
+  "Odisea",
+  "Oye Elizabeth",
   "Palacio Verde",
+  "Panico",
   "Paracaidistas",
   "Parálisis del Sueño",
   "Patio Solar",
+  "Pau",
   "Phuyu y la Fantasma",
+  "Perfectos Extraños",
   "Perrogato",
+  "Pieza Oscura",
+  "Piscina Recreo",
+  "Planetario",
+  "Prehistöricos",
+  "Problemas en Paris",
   "Protistas",
+  "Pulmón",
+  "Ratarro y los Roedores",
   "Rock N Chile",
   "Rosario Alfonso",
-  # "Samsara", # Sale otra banda en inglés
+  "Rubor Cassata",
+  "ruido nominal",
+  "Salares",
+  "siempre perdida",
   "Siniestra Pandora",
   "Silabario",
   "Super Especial",
   "Supertriste",
+  "Taller Dejao",
   "Teoría de Maicol", # Pop alternativo
+  "Tres Agujas",
+  "Tus amigos imaginarios",
   "Tus amigos nuevos",
   "Violentistas de Siempre",
+  "Voy y Vuelvo",
+  "Yaney",
   "99 Payasos" # Pop punk
 )
 ```
@@ -387,7 +451,7 @@ crearCorpusDeBandas <- function(lista_bandas) {
     df_artista <- buscarPorArtista(artista)
     
     if (is.null(df_artista) || nrow(df_artista) == 0) {
-      # cat("No se encontraron datos para el artista:", artista, "\n")
+      cat("No se encontraron datos para el artista:", artista, "\n")
       next
     }
     
@@ -428,7 +492,7 @@ corpus_df <- crearCorpusDeBandas(bandas_indie)
 #head(corpus_df)
 ```
 
-Obtenemos una muestra de 359 canciones.
+Obtenemos una muestra de 530 canciones.
 
 # Exportación de data frames
 
@@ -542,7 +606,7 @@ sinInstrumentales <- function(datos, lyrics_col = "lyrics_id", inst_col = "instr
 sin_instrumentales <- sinInstrumentales(corpus_df)
 ```
 
-Se disminuyen de 359 a 350 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.
+Se disminuyen de 558 a 548 las observaciones, manteniendo 14 variables, ya que eliminamos la columna que decía si era instrumental o no, que ya no sirve.
 
 ```{r}
 # Útiles de quanteda
@@ -623,7 +687,7 @@ dtm_bigrams <- dfm(tokens_bigrams)
 frecuencia_bigrams <- textstat_frequency(dtm_bigrams)
 
 # Eliminar bigramas con docfreq == 1 (que salen en una sola canción)
-frecuencia_bigrams_filtrada <- frecuencia_bigrams[frecuencia_bigrams$docfreq > 4, ]
+frecuencia_bigrams_filtrada <- frecuencia_bigrams[frecuencia_bigrams$docfreq > 3, ]
 
 # Ver los bigramas filtrados
 print(frecuencia_bigrams_filtrada)
@@ -745,7 +809,7 @@ exportar_excel(df_a_exportar, "importar_en_colab.xlsx")
 #### Volver a importar el data frame obtenido del jupiter notebook
 
 ```{r}
-df_emociones <- read_excel("df_emociones.xlsx")
+df_emociones <- importar_excel("df_emociones.xlsx")
 
 # Ver las primeras filas
 head(df_emociones)
@@ -757,10 +821,35 @@ df_emociones_subset <- df_emociones[, 3:11]
 df_combinado <- cbind(sin_instrumentales, df_emociones_subset)
 
 # Ver el DataFrame combinado
-head(df_combinado)
+# head(df_combinado)
+
+# Calcular estadísticas básicas
+estadisticas <- df_combinado %>%
+  select(anger, disgust, fear, joy, neutral, sadness, surprise) %>%
+  summarise(
+    across(
+      everything(),
+      list(
+        # Media = ~mean(.x, na.rm = TRUE)
+        # Mediana = ~median(.x, na.rm = TRUE)
+        # Min = ~min(.x, na.rm = TRUE)
+        # Max = ~max(.x, na.rm = TRUE),
+        # Desviacion = ~sd(.x, na.rm = TRUE)
+      )
+    )
+  )
+
+print(estadisticas)
 ```
 
-Ahora tenemos un dataframe con 349 canciones y 23 variables, incluyendo un json con las emociones asociadas a las estrofas de las canciones, así como un promedio de las emociones para las canciones completas.
+Ahora tenemos un dataframe con 349 canciones y 23 variables, incluyendo un json con las emociones asociadas a las estrofas de las canciones, así como un promedio de las emociones para las canciones completas. Debemos terminar de ajustar los objetos json de la columna df_combinado.
+
+Se creó también una lista de spotify con las 20 primeras canciones de cada emoción [aquí.](https://open.spotify.com/playlist/4fBoykAd76rcsgaRyOtZKz)
+
+```{r}
+
+# Función para pasar de char a json
+```
 
 ## Análisis de complejidad textual
 
